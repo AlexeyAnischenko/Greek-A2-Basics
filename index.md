@@ -45,6 +45,7 @@ not here, you do not need it yet.
 | **18** | grammar/16-numbers-time.md | Numbers & time | Numbers, clock, dates, days, months |
 | **19** | grammar/17-word-order-negation.md | Word order & negation | δεν / μη, questions, pronoun placement |
 | **20** | grammar/18-A2-checklist.md | A2 checklist | Self-test grid |
+| **21** | grammar/19-eimai.md | **The verb είμαι** | to be — every form in one place |
 
 ## The four cases — what they actually do
 

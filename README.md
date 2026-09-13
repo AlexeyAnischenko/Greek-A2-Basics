@@ -38,6 +38,7 @@ one sheet per page break, with repeating table headers.
 | 18 | Numbers, time & dates |
 | 19 | Word order & negation |
 | 20 | A2 self-test checklist |
+| 21 | The verb είμαι (to be) |
 
 Individual sheets are in [`pages/`](pages/).
 

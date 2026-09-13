@@ -1,0 +1,194 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>19 · The verb είμαι (to be)</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>19 · The verb είμαι (to be)</h1>
+<p>The most common verb in Greek, and the one that behaves least like the others. Learn it as its own thing — the patterns on pages 9–12 mostly do <strong>not</strong> apply to it.</p>
+<h2>What makes it different ⚠</h2>
+<div class="tw"><table><thead><tr><th>Other verbs</th><th>είμαι</th></tr></thead><tbody><tr><td>have an aorist (έγραψα)</td><td><strong>no aorist</strong> — one past tense only</td></tr><tr><td>have a dependent form (να γράψω)</td><td><strong>no dependent form</strong></td></tr><tr><td>have two futures (θα γράψω / θα γράφω)</td><td><strong>one future</strong> only</td></tr><tr><td>have a perfect (έχω γράψει)</td><td><strong>no perfect</strong></td></tr><tr><td>take an object in the accusative</td><td>takes a <strong>nominative</strong> after it</td></tr></tbody></table></div>
+<p>So there is far less to learn than for a normal verb — but the forms are irregular and have to be memorised outright.</p>
+<h2>1. Present — &quot;I am&quot;</h2>
+<div class="tw"><table><thead><tr><th>Person</th><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>1st singular</td><td><strong>είμαι</strong></td><td>I am</td></tr><tr><td>2nd singular</td><td><strong>είσαι</strong></td><td>you are</td></tr><tr><td>3rd singular</td><td><strong>είναι</strong></td><td>he / she / it is</td></tr><tr><td>1st plural</td><td><strong>είμαστε</strong></td><td>we are</td></tr><tr><td>2nd plural</td><td><strong>είστε</strong> / <strong>είσαστε</strong></td><td>you are (plural or polite)</td></tr><tr><td>3rd plural</td><td><strong>είναι</strong></td><td>they are</td></tr></tbody></table></div>
+<p>⚠ <strong>είναι</strong> is both &quot;is&quot; <strong>and</strong> &quot;are&quot; — the same word for 3rd singular and 3rd plural. Context tells you which: <em>Ο Γιάννης </em><em>είναι</em>* εδώ* / <em>Τα παιδιά </em><em>είναι</em>* εδώ*.</p>
+<p>⚠ <strong>είστε</strong> and <strong>είσαστε</strong> are both correct. <strong>είστε</strong> is the more common written form.</p>
+<p>⚠ The stress never moves: <strong>εί</strong>μαι, <strong>εί</strong>σαι, <strong>εί</strong>ναι, <strong>εί</strong>μαστε, <strong>εί</strong>στε.</p>
+<p>⚠ The endings look like the passive ones on page 9 (-μαι, -σαι, -ται) — that is not a coincidence, but do not try to derive them. Just learn the six.</p>
+<h2>2. Past — &quot;I was&quot;</h2>
+<p>Only <strong>one</strong> past tense (the imperfect). There is no aorist, so this covers both &quot;I was&quot; and &quot;I have been&quot;.</p>
+<div class="tw"><table><thead><tr><th>Person</th><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>1st singular</td><td><strong>ήμουν</strong></td><td>I was</td></tr><tr><td>2nd singular</td><td><strong>ήσουν</strong></td><td>you were</td></tr><tr><td>3rd singular</td><td><strong>ήταν</strong></td><td>he / she / it was</td></tr><tr><td>1st plural</td><td><strong>ήμασταν</strong></td><td>we were</td></tr><tr><td>2nd plural</td><td><strong>ήσασταν</strong></td><td>you were</td></tr><tr><td>3rd plural</td><td><strong>ήταν</strong></td><td>they were</td></tr></tbody></table></div>
+<p>⚠ <strong>ήταν</strong> again covers both 3rd singular and 3rd plural. ⚠ The stress is on <strong>ή-</strong> in every form. ✦ In speech you will also hear <strong>ήμουνα, ήσουνα, ήτανε</strong> — same meaning, more colloquial.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Ήμουν</strong> στη δουλειά.</td><td>I was at work.</td></tr><tr><td><strong>Ήταν</strong> πολύ ωραία!</td><td>It was really nice!</td></tr><tr><td>Όταν <strong>ήμουν</strong> μικρός…</td><td>When I was little…</td></tr><tr><td><strong>Ήμασταν</strong> μαζί.</td><td>We were together.</td></tr><tr><td>Πού <strong>ήσουν</strong>;</td><td>Where were you?</td></tr></tbody></table></div>
+<h2>3. Future — &quot;I will be&quot;</h2>
+<p>One future only, because there is no dependent form to build a second one from.</p>
+<div class="tw"><table><thead><tr><th>Person</th><th>Greek</th></tr></thead><tbody><tr><td>1st singular</td><td><strong>θα είμαι</strong></td></tr><tr><td>2nd singular</td><td><strong>θα είσαι</strong></td></tr><tr><td>3rd singular</td><td><strong>θα είναι</strong></td></tr><tr><td>1st plural</td><td><strong>θα είμαστε</strong></td></tr><tr><td>2nd plural</td><td><strong>θα είστε</strong></td></tr><tr><td>3rd plural</td><td><strong>θα είναι</strong></td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Θα είμαι</strong> εκεί στις 8.</td><td>I&#x27;ll be there at 8.</td></tr><tr><td><strong>Θα είναι</strong> έτοιμο αύριο.</td><td>It&#x27;ll be ready tomorrow.</td></tr></tbody></table></div>
+<h2>4. After να (and so after πρέπει, μπορεί, θέλω…)</h2>
+<p>Just <strong>να</strong> + the present forms — nothing new to learn.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>Θέλω <strong>να είμαι</strong> εκεί.</td><td>I want to be there.</td></tr><tr><td><strong>Πρέπει να είσαι</strong> κουρασμένος.</td><td>You must be tired.</td></tr><tr><td><strong>Μπορεί να είναι</strong> στο σπίτι.</td><td>He may be at home.</td></tr><tr><td>Ελπίζω <strong>να είστε</strong> καλά.</td><td>I hope you&#x27;re well.</td></tr></tbody></table></div>
+<h2>5. Imperative — only with να</h2>
+<p>There is no plain command form; use <strong>να</strong> + the 2nd person.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Να είσαι</strong> καλά!</td><td>Be well! / Take care! (also &quot;thank you&quot;)</td></tr><tr><td><strong>Να είστε</strong> προσεκτικοί!</td><td>Be careful! (plural)</td></tr><tr><td><strong>Να μην είσαι</strong> έτσι.</td><td>Don&#x27;t be like that.</td></tr></tbody></table></div>
+<h2>6. ⚠ What follows είμαι stays NOMINATIVE</h2>
+<p>This is the rule that catches people out. είμαι does not take an object — the word after it is another subject, so it keeps the nominative, and adjectives agree with the subject.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th></th></tr></thead><tbody><tr><td>Ο πατέρας μου είναι <strong>γιατρός</strong>.</td><td>My father is a doctor.</td><td>noun, nominative</td></tr><tr><td>Η Μαρία είναι <strong>κουρασμένη</strong>.</td><td>Maria is tired.</td><td>feminine adjective</td></tr><tr><td>Τα παιδιά είναι <strong>χαρούμενα</strong>.</td><td>The children are happy.</td><td>neuter plural</td></tr><tr><td>Αυτός είναι <strong>ο Γιάννης</strong>.</td><td>That&#x27;s John.</td><td>nominative both sides</td></tr><tr><td>Είμαι <strong>Ρώσος</strong> / <strong>Ρωσίδα</strong>.</td><td>I&#x27;m Russian (man / woman).</td><td>matches the speaker</td></tr></tbody></table></div>
+<p>⚠ Compare with a normal verb, which <strong>does</strong> take the accusative: <em>Βλέπω </em><em>τον γιατρό</em><strong> (accusative) vs *Είμαι </strong>γιατρός*** (nominative).</p>
+<h2>7. ⚠ είναι vs υπάρχει — &quot;it is&quot; vs &quot;there is&quot;</h2>
+<div class="tw"><table><thead><tr><th>Meaning</th><th>Use</th><th>Example</th></tr></thead><tbody><tr><td>&quot;there is / there are&quot;</td><td><strong>υπάρχει / υπάρχουν</strong></td><td><strong>Υπάρχει</strong> ένα πρόβλημα. — There&#x27;s a problem.</td></tr><tr><td>&quot;it is / they are&quot;</td><td><strong>είναι</strong></td><td><strong>Είναι</strong> ένα πρόβλημα. — It is a problem.</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>⚠ Wrong</th><th>✔ Right</th></tr></thead><tbody><tr><td><s>Είναι πολλοί άνθρωποι εδώ.</s></td><td><strong>Υπάρχουν</strong> πολλοί άνθρωποι εδώ.</td></tr><tr><td><s>Δεν είναι χρόνος.</s></td><td><strong>Δεν υπάρχει</strong> χρόνος.</td></tr></tbody></table></div>
+<h2>8. ⚠ Weather is κάνει, not είναι</h2>
+<div class="tw"><table><thead><tr><th>⚠ Wrong</th><th>✔ Right</th><th>English</th></tr></thead><tbody><tr><td><s>Είναι κρύο σήμερα.</s></td><td><strong>Κάνει</strong> κρύο σήμερα.</td><td>It&#x27;s cold today.</td></tr><tr><td><s>Είναι ζέστη.</s></td><td><strong>Κάνει</strong> ζέστη.</td><td>It&#x27;s hot.</td></tr></tbody></table></div>
+<p>But for a <strong>thing</strong>, είναι is right: <em>Ο καφές </em><em>είναι</em>* κρύος.* — The coffee is cold.</p>
+<h2>9. Negation and questions</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Δεν είμαι</strong> έτοιμος.</td><td>I&#x27;m not ready.</td></tr><tr><td><strong>Δεν είναι</strong> εδώ.</td><td>He isn&#x27;t here.</td></tr><tr><td><strong>Δεν ήταν</strong> καλό.</td><td>It wasn&#x27;t good.</td></tr><tr><td><strong>Είσαι</strong> καλά;</td><td>Are you OK?</td></tr><tr><td><strong>Πού είναι</strong> η τουαλέτα;</td><td>Where is the toilet?</td></tr><tr><td><strong>Τι είναι</strong> αυτό;</td><td>What is this?</td></tr></tbody></table></div>
+<p>⚠ Questions are made by intonation only — the word order does not change (page 19).</p>
+<h2>10. The phrases you will use every day</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Πώς είσαι;</strong> — <strong>Είμαι καλά.</strong></td><td>How are you? — I&#x27;m fine.</td></tr><tr><td><strong>Τι ώρα είναι;</strong></td><td>What time is it?</td></tr><tr><td><strong>Πόσο είναι;</strong></td><td>How much is it?</td></tr><tr><td><strong>Από πού είσαι;</strong> — <strong>Είμαι από τη Ρωσία.</strong></td><td>Where are you from? — I&#x27;m from Russia.</td></tr><tr><td><strong>Πόσων χρονών είσαι;</strong> — <strong>Είμαι 35 χρονών.</strong></td><td>How old are you? — I&#x27;m 35.</td></tr><tr><td><strong>Είναι εντάξει.</strong></td><td>It&#x27;s fine / OK.</td></tr><tr><td><strong>Δεν είναι τίποτα.</strong></td><td>It&#x27;s nothing / don&#x27;t mention it.</td></tr><tr><td><strong>Είναι δικό μου.</strong></td><td>It&#x27;s mine.</td></tr><tr><td><strong>Είναι κρίμα.</strong></td><td>It&#x27;s a pity.</td></tr><tr><td><strong>Είμαι παντρεμένος / -η.</strong></td><td>I&#x27;m married.</td></tr><tr><td><strong>Είμαι κουρασμένος / -η.</strong></td><td>I&#x27;m tired.</td></tr><tr><td><strong>Να είσαι καλά!</strong></td><td>Take care! / Bless you!</td></tr></tbody></table></div>
+<h2>11. γίνομαι — &quot;become&quot;, the one to keep apart from it</h2>
+<p>γίνομαι follows the same nominative rule, but means a <strong>change</strong> rather than a state.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Είναι</strong> δάσκαλος.</td><td>He <strong>is</strong> a teacher.</td></tr><tr><td><strong>Έγινε</strong> δάσκαλος.</td><td>He <strong>became</strong> a teacher.</td></tr><tr><td><strong>Γίνεται</strong> κρύο.</td><td>It&#x27;s getting cold.</td></tr><tr><td><strong>Τι έγινε;</strong></td><td>What happened?</td></tr></tbody></table></div>
+<p>Unlike είμαι, γίνομαι is a normal verb: present γίνομαι, aorist <strong>έγινα</strong>, dependent <strong>να γίνω</strong>.</p>
+<h2>12. Drill — say all six, then translate</h2>
+<div class="tw"><table><thead><tr><th>Prompt</th><th>Answer</th></tr></thead><tbody><tr><td>present, all six</td><td>είμαι, είσαι, είναι, είμαστε, είστε, είναι</td></tr><tr><td>past, all six</td><td>ήμουν, ήσουν, ήταν, ήμασταν, ήσασταν, ήταν</td></tr><tr><td>future, all six</td><td>θα είμαι, θα είσαι, θα είναι, θα είμαστε, θα είστε, θα είναι</td></tr><tr><td>I am tired (feminine)</td><td>Είμαι κουρασμένη</td></tr><tr><td>We were at home</td><td>Ήμασταν στο σπίτι</td></tr><tr><td>They are here</td><td>Είναι εδώ</td></tr><tr><td>She is a teacher</td><td>Είναι δασκάλα</td></tr><tr><td>It will be ready</td><td>Θα είναι έτοιμο</td></tr><tr><td>There is a problem</td><td>Υπάρχει ένα πρόβλημα</td></tr><tr><td>It&#x27;s cold today</td><td>Κάνει κρύο σήμερα</td></tr><tr><td>Where were you?</td><td>Πού ήσουν;</td></tr><tr><td>You must be tired</td><td>Πρέπει να είσαι κουρασμένος</td></tr><tr><td>I&#x27;m not ready</td><td>Δεν είμαι έτοιμος</td></tr><tr><td>Take care!</td><td>Να είσαι καλά!</td></tr><tr><td>What happened?</td><td>Τι έγινε;</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

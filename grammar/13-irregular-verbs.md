@@ -7,7 +7,7 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 
 | Present | Meaning | Aorist | Dependent | Imperative |
 |---|---|---|---|---|
-| **είμαι** | be | ήμουν *(imperfect)* | να είμαι | να είσαι / να είστε |
+| **είμαι** | be | ήμουν *(imperfect)* | να είμαι | να είσαι / να είστε *(page 21)* |
 | **έχω** | have | είχα *(imperfect)* | να έχω | να έχεις / να έχετε |
 | **πάω / πηγαίνω** | go | **πήγα** | να πάω | πήγαινε / πηγαίνετε |
 | **έρχομαι** | come | **ήρθα** | να έρθω | **έλα / ελάτε** |
