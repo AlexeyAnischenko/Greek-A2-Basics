@@ -25,14 +25,14 @@ Take the dependent (να-) stem from page 11 and add **-ει**.
 
 ## 2. The perfect: έχω + invariable form
 
-| Person | Form |
-|---|---|
-| 1st singular | **έχω** γράψει |
-| 2nd singular | **έχεις** γράψει |
-| 3rd singular | **έχει** γράψει |
-| 1st plural | **έχουμε** γράψει |
-| 2nd plural | **έχετε** γράψει |
-| 3rd plural | **έχουν** γράψει |
+| Pronoun | Person | Form |
+|---|---|---|
+| **εγώ** | 1st singular | **έχω** γράψει |
+| **εσύ** | 2nd singular | **έχεις** γράψει |
+| **αυτός / αυτή / αυτό** | 3rd singular | **έχει** γράψει |
+| **εμείς** | 1st plural | **έχουμε** γράψει |
+| **εσείς** | 2nd plural | **έχετε** γράψει |
+| **αυτοί / αυτές / αυτά** | 3rd plural | **έχουν** γράψει |
 
 Only **έχω** conjugates. The second word is frozen.
 

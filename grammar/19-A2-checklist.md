@@ -1,4 +1,4 @@
-# 18 · A2 Self-Test Checklist
+# 19 · A2 Self-Test Checklist
 
 Mark each row: **✓** cold recall · **~** with hesitation · **✗** not yet.
 Re-test weekly. Anything not ✓ twice in a row goes back to daily drilling.

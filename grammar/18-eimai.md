@@ -1,4 +1,4 @@
-# 19 · The verb είμαι (to be)
+# 18 · The verb είμαι (to be)
 
 The most common verb in Greek, and the one that behaves least like the others.
 Learn it as its own thing — the patterns on pages 9–12 mostly do **not** apply to it.

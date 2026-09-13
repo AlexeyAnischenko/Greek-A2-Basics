@@ -20,14 +20,14 @@ Greek has **two** simple past tenses. Choosing between them is the core A2 skill
 
 Past-tense stress must fall on the **3rd syllable from the end**. If the word is too short, prefix **έ-**.
 
-| Person | Form | Why |
-|---|---|---|
-| 1st singular | **έ**γραψα | γρα-ψα = only 2 syllables → add έ- |
-| 2nd singular | **έ**γραψες | same |
-| 3rd singular | **έ**γραψε | same |
-| 1st plural | γράψαμε | 3 syllables already → no έ- |
-| 2nd plural | γράψατε | 3 syllables → no έ- |
-| 3rd plural | **έ**γραψαν *or* γράψα**νε** | either add έ- or add -νε |
+| Pronoun | Person | Form | Why |
+|---|---|---|---|
+| **εγώ** | 1st singular | **έ**γραψα | γρα-ψα = only 2 syllables → add έ- |
+| **εσύ** | 2nd singular | **έ**γραψες | same |
+| **αυτός / αυτή / αυτό** | 3rd singular | **έ**γραψε | same |
+| **εμείς** | 1st plural | γράψαμε | 3 syllables already → no έ- |
+| **εσείς** | 2nd plural | γράψατε | 3 syllables → no έ- |
+| **αυτοί / αυτές / αυτά** | 3rd plural | **έ**γραψαν *or* γράψα**νε** | either add έ- or add -νε |
 
 Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα, αγόρασα.
 
@@ -35,25 +35,25 @@ Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα,
 
 ### Endings (identical for all groups — only the **stem** changes)
 
-| Person | Ending |
-|---|---|
-| 1st singular | **-α** |
-| 2nd singular | **-ες** |
-| 3rd singular | **-ε** |
-| 1st plural | **-αμε** |
-| 2nd plural | **-ατε** |
-| 3rd plural | **-αν / -ανε** |
+| Pronoun | Person | Ending |
+|---|---|---|
+| **εγώ** | 1st singular | **-α** |
+| **εσύ** | 2nd singular | **-ες** |
+| **αυτός / αυτή / αυτό** | 3rd singular | **-ε** |
+| **εμείς** | 1st plural | **-αμε** |
+| **εσείς** | 2nd plural | **-ατε** |
+| **αυτοί / αυτές / αυτά** | 3rd plural | **-αν / -ανε** |
 
 ### Example: γράφω → aorist stem **γραψ-**
 
-| Person | Form |
-|---|---|
-| 1st singular | έγραψ**α** |
-| 2nd singular | έγραψ**ες** |
-| 3rd singular | έγραψ**ε** |
-| 1st plural | γράψ**αμε** |
-| 2nd plural | γράψ**ατε** |
-| 3rd plural | έγραψ**αν** / γράψ**ανε** |
+| Pronoun | Person | Form |
+|---|---|---|
+| **εγώ** | 1st singular | έγραψ**α** |
+| **εσύ** | 2nd singular | έγραψ**ες** |
+| **αυτός / αυτή / αυτό** | 3rd singular | έγραψ**ε** |
+| **εμείς** | 1st plural | γράψ**αμε** |
+| **εσείς** | 2nd plural | γράψ**ατε** |
+| **αυτοί / αυτές / αυτά** | 3rd plural | έγραψ**αν** / γράψ**ανε** |
 
 ### Aorist stem formation — sound table ⚠ THE key table
 
@@ -74,27 +74,27 @@ Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα,
 
 ### Group A: present stem + -α, -ες, -ε, -αμε, -ατε, -αν
 
-| Person | γράφω |
-|---|---|
-| 1st singular | έγραφ**α** |
-| 2nd singular | έγραφ**ες** |
-| 3rd singular | έγραφ**ε** |
-| 1st plural | γράφ**αμε** |
-| 2nd plural | γράφ**ατε** |
-| 3rd plural | έγραφ**αν** / γράφ**ανε** |
+| Pronoun | Person | γράφω |
+|---|---|---|
+| **εγώ** | 1st singular | έγραφ**α** |
+| **εσύ** | 2nd singular | έγραφ**ες** |
+| **αυτός / αυτή / αυτό** | 3rd singular | έγραφ**ε** |
+| **εμείς** | 1st plural | γράφ**αμε** |
+| **εσείς** | 2nd plural | γράφ**ατε** |
+| **αυτοί / αυτές / αυτά** | 3rd plural | έγραφ**αν** / γράφ**ανε** |
 
 ⚠ The only difference from the aorist is the **stem**: έγρα**φ**α (imperfect) vs έγρα**ψ**α (aorist).
 
 ### Groups B1 / B2: insert **-ούσ-**
 
-| Person | αγαπάω | μπορώ |
-|---|---|---|
-| 1st singular | αγαπ**ούσα** | μπορ**ούσα** |
-| 2nd singular | αγαπ**ούσες** | μπορ**ούσες** |
-| 3rd singular | αγαπ**ούσε** | μπορ**ούσε** |
-| 1st plural | αγαπ**ούσαμε** | μπορ**ούσαμε** |
-| 2nd plural | αγαπ**ούσατε** | μπορ**ούσατε** |
-| 3rd plural | αγαπ**ούσαν** | μπορ**ούσαν** |
+| Pronoun | Person | αγαπάω | μπορώ |
+|---|---|---|---|
+| **εγώ** | 1st singular | αγαπ**ούσα** | μπορ**ούσα** |
+| **εσύ** | 2nd singular | αγαπ**ούσες** | μπορ**ούσες** |
+| **αυτός / αυτή / αυτό** | 3rd singular | αγαπ**ούσε** | μπορ**ούσε** |
+| **εμείς** | 1st plural | αγαπ**ούσαμε** | μπορ**ούσαμε** |
+| **εσείς** | 2nd plural | αγαπ**ούσατε** | μπορ**ούσατε** |
+| **αυτοί / αυτές / αυτά** | 3rd plural | αγαπ**ούσαν** | μπορ**ούσαν** |
 
 ✦ Many group-A verbs also allow -ούσα. Irregulars: λέω→**έλεγα**, ακούω→**άκουγα**, τρώω→**έτρωγα**, πάω→**πήγαινα**, ξέρω→**ήξερα**.
 
@@ -116,14 +116,14 @@ Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα,
 
 ### Endings
 
-| Person | Ending |
-|---|---|
-| 1st singular | **-θηκα** |
-| 2nd singular | **-θηκες** |
-| 3rd singular | **-θηκε** |
-| 1st plural | **-θήκαμε** |
-| 2nd plural | **-θήκατε** |
-| 3rd plural | **-θηκαν** |
+| Pronoun | Person | Ending |
+|---|---|---|
+| **εγώ** | 1st singular | **-θηκα** |
+| **εσύ** | 2nd singular | **-θηκες** |
+| **αυτός / αυτή / αυτό** | 3rd singular | **-θηκε** |
+| **εμείς** | 1st plural | **-θήκαμε** |
+| **εσείς** | 2nd plural | **-θήκατε** |
+| **αυτοί / αυτές / αυτά** | 3rd plural | **-θηκαν** |
 
 ⚠ Note the **stress shift** to -θή- in the 1st and 2nd plural.
 

@@ -4,14 +4,14 @@ Only the **2nd person** exists (singular + plural). Everything else uses **να*
 
 ## 1. Two imperatives, two aspects
 
-| Aspect | Built from | 2nd singular | 2nd plural | Use |
+| Aspect | Built from | 2nd singular (εσύ) | 2nd plural (εσείς) | Use |
 |---|---|---|---|---|
 | **Simple** (do it once) | dependent stem | **-ε** | **-τε / -ετε** | Γράψ**ε** το! |
 | **Continuous** (keep doing) | present stem | **-ε** | **-ετε** | Γράφ**ε** καθαρά! |
 
 ## 2. Active imperative by group
 
-| Group | Verb | Simple 2nd singular | Simple 2nd plural | Continuous 2nd singular | Continuous 2nd plural |
+| Group | Verb | Simple 2nd singular (εσύ) | Simple 2nd plural (εσείς) | Continuous 2nd singular (εσύ) | Continuous 2nd plural (εσείς) |
 |---|---|---|---|---|---|
 | **A** | γράφω | γράψ**ε** | γράψ**τε** | γράφ**ε** | γράφ**ετε** |
 | **A** | διαβάζω | διάβασ**ε** | διαβάσ**τε** | διάβαζ**ε** | διαβάζ**ετε** |
@@ -28,7 +28,7 @@ Only the **2nd person** exists (singular + plural). Everything else uses **να*
 
 ## 3. ⚠ Irregular imperatives — memorise the whole column
 
-| Verb | 2nd singular | 2nd plural | Meaning |
+| Verb | 2nd singular (εσύ) | 2nd plural (εσείς) | Meaning |
 |---|---|---|---|
 | **έρχομαι** | **έλα** | **ελάτε** | come! |
 | **πάω / πηγαίνω** | **πήγαινε** | **πηγαίνετε** | go! |
@@ -55,7 +55,7 @@ Only the **2nd person** exists (singular + plural). Everything else uses **να*
 
 ## 4. Passive imperative — endings -ου (2nd singular) / -είτε (2nd plural)
 
-| Verb | 2nd singular | 2nd plural |
+| Verb | 2nd singular (εσύ) | 2nd plural (εσείς) |
 |---|---|---|
 | πλένομαι | πλύσ**ου** | πλυθ**είτε** |
 | ντύνομαι | ντύσ**ου** | ντυθ**είτε** |

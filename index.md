@@ -6,7 +6,7 @@ No prose explanation longer than a line. Every ending you need is in a cell.
 Scope is **A2 only**. Anything that belongs to B1 has been left out on purpose, so if a rule is
 not here, you do not need it yet.
 
-> Mirror of the Preply canvas (20 pages). Page numbers below are canvas pages.
+> Mirror of the Preply canvas (21 pages). Page numbers below are canvas pages.
 
 ## Tools
 
@@ -44,8 +44,8 @@ not here, you do not need it yet.
 | **17** | grammar/15-conjunctions.md | Conjunctions | και, αλλά, όταν, επειδή, αν, που… |
 | **18** | grammar/16-numbers-time.md | Numbers & time | Numbers, clock, dates, days, months |
 | **19** | grammar/17-word-order-negation.md | Word order & negation | δεν / μη, questions, pronoun placement |
-| **20** | grammar/18-A2-checklist.md | A2 checklist | Self-test grid |
-| **21** | grammar/19-eimai.md | **The verb είμαι** | to be — every form in one place |
+| **20** | grammar/18-eimai.md | **The verb είμαι** | to be — every form in one place |
+| **21** | grammar/19-A2-checklist.md | A2 checklist | Self-test grid — the last page |
 
 ## The four cases — what they actually do
 
