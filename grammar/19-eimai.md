@@ -18,14 +18,17 @@ and have to be memorised outright.
 
 ## 1. Present — "I am"
 
-| Person | Greek | English |
+| Pronoun | Greek | English |
 |---|---|---|
-| 1st singular | **είμαι** | I am |
-| 2nd singular | **είσαι** | you are |
-| 3rd singular | **είναι** | he / she / it is |
-| 1st plural | **είμαστε** | we are |
-| 2nd plural | **είστε** / **είσαστε** | you are (plural or polite) |
-| 3rd plural | **είναι** | they are |
+| **εγώ** | **είμαι** | I am |
+| **εσύ** | **είσαι** | you are |
+| **αυτός / αυτή / αυτό** | **είναι** | he / she / it is |
+| **εμείς** | **είμαστε** | we are |
+| **εσείς** | **είστε** / **είσαστε** | you are (plural or polite) |
+| **αυτοί / αυτές / αυτά** | **είναι** | they are |
+
+⚠ The pronoun is normally **left out** — the ending already says who. Say *Είμαι κουρασμένος*,
+not *Εγώ είμαι κουρασμένος*, unless you are making a contrast: ***Εγώ** είμαι εδώ, **εσύ** πού είσαι;*
 
 ⚠ **είναι** is both "is" **and** "are" — the same word for 3rd singular and 3rd plural.
 Context tells you which: *Ο Γιάννης **είναι** εδώ* / *Τα παιδιά **είναι** εδώ*.
@@ -42,14 +45,14 @@ coincidence, but do not try to derive them. Just learn the six.
 Only **one** past tense (the imperfect). There is no aorist, so this covers both
 "I was" and "I have been".
 
-| Person | Greek | English |
+| Pronoun | Greek | English |
 |---|---|---|
-| 1st singular | **ήμουν** | I was |
-| 2nd singular | **ήσουν** | you were |
-| 3rd singular | **ήταν** | he / she / it was |
-| 1st plural | **ήμασταν** | we were |
-| 2nd plural | **ήσασταν** | you were |
-| 3rd plural | **ήταν** | they were |
+| **εγώ** | **ήμουν** | I was |
+| **εσύ** | **ήσουν** | you were |
+| **αυτός / αυτή / αυτό** | **ήταν** | he / she / it was |
+| **εμείς** | **ήμασταν** | we were |
+| **εσείς** | **ήσασταν** | you were |
+| **αυτοί / αυτές / αυτά** | **ήταν** | they were |
 
 ⚠ **ήταν** again covers both 3rd singular and 3rd plural.
 ⚠ The stress is on **ή-** in every form.
@@ -67,14 +70,14 @@ Only **one** past tense (the imperfect). There is no aorist, so this covers both
 
 One future only, because there is no dependent form to build a second one from.
 
-| Person | Greek |
-|---|---|
-| 1st singular | **θα είμαι** |
-| 2nd singular | **θα είσαι** |
-| 3rd singular | **θα είναι** |
-| 1st plural | **θα είμαστε** |
-| 2nd plural | **θα είστε** |
-| 3rd plural | **θα είναι** |
+| Pronoun | Greek | English |
+|---|---|---|
+| **εγώ** | **θα είμαι** | I will be |
+| **εσύ** | **θα είσαι** | you will be |
+| **αυτός / αυτή / αυτό** | **θα είναι** | he / she / it will be |
+| **εμείς** | **θα είμαστε** | we will be |
+| **εσείς** | **θα είστε** | you will be |
+| **αυτοί / αυτές / αυτά** | **θα είναι** | they will be |
 
 | Greek | English |
 |---|---|
