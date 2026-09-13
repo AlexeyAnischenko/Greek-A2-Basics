@@ -18,10 +18,10 @@ one sheet per page break, with repeating table headers.
 
 | Page | Topic |
 |---|---|
-| 1 | Index, and **the four cases explained in full** |
+| 1 | Contents and how to use these sheets |
 | 2 | Alphabet & sounds |
 | 3 | Articles |
-| 4 | Nouns — all A2 declensions |
+| 4 | Nouns — all A2 declensions, **and what the four cases do** |
 | 5 | Plurals |
 | 6 | Adjectives |
 | 7 | Comparison & adverbs |
@@ -57,10 +57,59 @@ python build.py
 
 | Source | |
 |---|---|
-| `index.md` | the page-1 sheet (contents + the four cases) |
+| `index.md` | the page-1 sheet (contents + how to drill) |
 | `grammar/*.md` | the 19 topic sheets |
 | `build.py` | markdown → `index.html`, `pages/*.html`, `greek-a2.pdf` |
 
 Output is written in place at the repo root so GitHub Pages serves it straight from `main`.
 Only Python (stdlib) is needed; Chrome or Edge is used for the PDF step and is skipped if absent.
 `keyboard.html` is hand-written and not generated.
+
+### Output
+
+| Output | What it is |
+|---|---|
+| `dist/greek-a2.html` | All 20 sheets in one self-contained file, with a sticky contents sidebar |
+| `dist/pages/*.html` | One standalone file per sheet |
+| `dist/greek-a2.pdf` | 59-page A4 print, one sheet per page break, colour bands preserved |
+
+The build needs only Python (stdlib) plus Chrome or Edge for the PDF step; if neither is
+found the HTML is still written and the PDF step is skipped.
+
+In the HTML and PDF the gender bands are real cell backgrounds that fill the whole row.
+
+### Theme switch
+
+Every HTML file (the combined one and each per-sheet file) has a pill button in the top-right
+corner that cycles:
+
+| Label | Behaviour |
+|---|---|
+| **Auto** | follows the OS / browser setting via `prefers-color-scheme` (the default) |
+| **Light** | pinned light, ignores the OS setting |
+| **Dark** | pinned dark, ignores the OS setting |
+
+The choice is stored in `localStorage` under `greek-a2-theme` and survives reloads. A tiny
+script in `<head>` applies it before first paint, so a pinned dark theme does not flash white.
+Dark mode uses deeper gender bands with light text rather than the pastel ones.
+
+#### Why `color-scheme` is written the way it is
+
+Do not "simplify" these three declarations:
+
+| Selector | Value | Reason |
+|---|---|---|
+| `:root` | `light dark` | must advertise dark support **at all times** |
+| `:root[data-theme="light"]` | `only light` | explicit opt-out of forced darkening |
+| `:root[data-theme="dark"]` | `only dark` | same, for the pinned dark theme |
+
+Chrome's **Auto Dark Mode for Web Contents** (`chrome://flags/#enable-force-dark`) inverts any
+page whose root resolves to light-only. With plain `color-scheme: light` the Light setting was
+silently inverted back to a black background, so the toggle appeared to do nothing but nudge the
+text colour. The `only` keyword is the documented opt-out. Verified by rendering each state with
+`--enable-features=WebContentsForceDark` and confirming the output is byte-identical to a normal
+render.
+
+⚠ The **PDF is always light**, whatever theme is selected — the print stylesheet resets the
+palette. Worth knowing because headless Chrome reports `prefers-color-scheme: dark`, so without
+that reset the PDF would have printed dark.
