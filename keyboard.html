@@ -60,10 +60,27 @@ button.primary:hover{filter:brightness(1.08)}
 .kb{margin-top:14px}
 .row{display:flex;gap:6px;justify-content:center;margin-bottom:6px;flex-wrap:wrap}
 .k{
+  position:relative;
   min-width:46px;height:50px;padding:0;display:inline-flex;flex-direction:column;
   align-items:center;justify-content:center;gap:0;background:var(--key-bg);
   box-shadow:var(--key-sh);font-size:19px;line-height:1;
+  touch-action:manipulation;-webkit-touch-callout:none;
+  -webkit-user-select:none;user-select:none;
 }
+/* a key that has accented variants under a long press */
+.k.hasvar::after{
+  content:"";position:absolute;top:3px;right:4px;width:4px;height:4px;
+  border-radius:50%;background:var(--muted);opacity:.55;
+}
+.k.holding{background:var(--pend-bg);border-color:var(--pend);color:var(--pend)}
+.variants{
+  position:absolute;z-index:80;display:flex;gap:4px;padding:5px;
+  border:1px solid var(--line);border-radius:10px;background:var(--key-bg);
+  box-shadow:0 8px 22px rgba(0,0,0,.30);
+}
+.variants button{min-width:42px;height:46px;font-size:21px;padding:0;background:var(--key-bg)}
+.variants button:hover,.variants button.hot{
+  background:var(--accent);border-color:var(--accent);color:#fff}
 .k small{font-size:9.5px;color:var(--muted);margin-top:3px;letter-spacing:.04em}
 .k.wide{min-width:78px}
 .k.xwide{min-width:150px;font-size:14px}
@@ -101,7 +118,8 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
     <a class="back" href="./">← back to the grammar sheets</a>
   </header>
   <p class="lede">Type your homework answers here, then copy and paste them wherever you need.
-  You can also just type on your real keyboard — Latin keys are mapped to the Greek layout.</p>
+  <b>Hold a vowel</b> for its accented form (α → ά), or use the ◌́ key. You can also just type on
+  your real keyboard — Latin keys are mapped to the Greek layout.</p>
 
   <textarea id="out" spellcheck="false" autofocus
     placeholder="Γράψε εδώ…  (type here)"></textarea>
@@ -131,6 +149,12 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
     <table>
       <thead><tr><th>Key</th><th>What it does</th><th>Example</th></tr></thead>
       <tbody>
+        <tr><td><b>Long press</b></td>
+            <td>Hold a vowel to get its accented form, the way a phone keyboard works. Keys with
+                something to offer have a small dot in the corner. <b>ι</b> and <b>υ</b> have three
+                forms each, so holding them opens a chooser — tap one, or slide onto it and let go.
+                Holding <b>σ</b> gives final <b>ς</b>.</td>
+            <td>hold α → <b>ά</b></td></tr>
         <tr><td><b>΄</b> tonos</td>
             <td>Accents the vowel <b>just before the cursor</b>. If the character before the
                 cursor is not an accentable vowel, it arms instead and the <b>next</b> vowel you
@@ -319,9 +343,123 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
   row('ctrl').appendChild(key('⌫', {act:'back', cls:'wide'}));
   row('ctrl').appendChild(key('↵', {act:'enter', cls:'wide'}));
 
+  /* ---------------- long press -> accented variants ---------------- */
+  // Hold a vowel the way you would on a phone keyboard. Letters with a single
+  // variant insert it straight away; ι and υ open a small chooser.
+  var VARIANTS = {
+    'α':['ά'], 'ε':['έ'], 'η':['ή'], 'ο':['ό'], 'ω':['ώ'],
+    'ι':['ί','ϊ','ΐ'], 'υ':['ύ','ϋ','ΰ'],
+    'σ':['ς']                                   // handy: final sigma
+  };
+  var HOLD_MS = 420;
+  var holdTimer = null, holdKey = null, longFired = false, popup = null;
+
+  function variantsFor(ch){
+    var list = VARIANTS[ch.toLowerCase()];
+    if (!list) return null;
+    if (ch === ch.toLowerCase()) return list.slice();
+    // capitals: keep only variants that have a single-character uppercase form
+    var up = [];
+    list.forEach(function(v){
+      var u = v.toUpperCase();
+      if (u.length === 1 && u !== ch) up.push(u);
+    });
+    return up.length ? up : null;
+  }
+  function keyChar(b){ return b.firstChild.nodeValue; }
+
+  function closePopup(){
+    if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+    popup = null;
+  }
+  function choose(ch){
+    closePopup();
+    emit(ch);
+    if (shift === 1) setShift(0);
+    longFired = false;      // the popup click never reaches the key handler
+  }
+  function openPopup(keyEl, list){
+    closePopup();
+    popup = document.createElement('div');
+    popup.className = 'variants';
+    list.forEach(function(v){
+      var vb = document.createElement('button');
+      vb.type = 'button'; vb.textContent = v; vb.dataset.v = v;
+      vb.addEventListener('click', function(e){ e.stopPropagation(); choose(v); });
+      popup.appendChild(vb);
+    });
+    document.body.appendChild(popup);
+    var r = keyEl.getBoundingClientRect(), p = popup.getBoundingClientRect();
+    var left = window.scrollX + r.left + r.width / 2 - p.width / 2;
+    left = Math.max(window.scrollX + 6,
+           Math.min(left, window.scrollX + document.documentElement.clientWidth - p.width - 6));
+    popup.style.left = left + 'px';
+    popup.style.top  = (window.scrollY + r.top - p.height - 6) + 'px';
+  }
+
+  function endHold(){
+    if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+    if (holdKey) { holdKey.classList.remove('holding'); holdKey = null; }
+  }
+
+  var kbEl = document.getElementById('kb');
+
+  kbEl.addEventListener('pointerdown', function(ev){
+    var b = ev.target.closest('.k');
+    if (!b) return;
+    // reset before the data-ch check, or a following modifier key press
+    // would be swallowed by the longFired guard in the click handler
+    closePopup();
+    longFired = false;
+    if (!b.dataset.ch) return;
+    var list = variantsFor(keyChar(b));
+    if (!list) return;
+    holdKey = b;
+    b.classList.add('holding');
+    holdTimer = setTimeout(function(){
+      holdTimer = null;
+      longFired = true;
+      b.classList.remove('holding');
+      if (list.length === 1) { choose(list[0]); }
+      else { openPopup(b, list); }
+    }, HOLD_MS);
+  });
+
+  // slide off the key and release onto a variant, phone-style
+  document.addEventListener('pointerup', function(ev){
+    endHold();
+    if (popup && longFired){
+      var el = document.elementFromPoint(ev.clientX, ev.clientY);
+      var vb = el && el.closest ? el.closest('.variants button') : null;
+      if (vb) choose(vb.dataset.v);
+    }
+  });
+  document.addEventListener('pointercancel', endHold);
+  document.addEventListener('pointermove', function(ev){
+    if (!popup) return;
+    var el = document.elementFromPoint(ev.clientX, ev.clientY);
+    var vb = el && el.closest ? el.closest('.variants button') : null;
+    [].forEach.call(popup.children, function(c){ c.classList.toggle('hot', c === vb); });
+  });
+  // long press on touch would otherwise pop the OS callout menu
+  kbEl.addEventListener('contextmenu', function(ev){
+    if (ev.target.closest('.k')) ev.preventDefault();
+  });
+  document.addEventListener('click', function(ev){
+    if (popup && !ev.target.closest('.variants') && !ev.target.closest('.k')) closePopup();
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape') closePopup();
+  });
+  // mark the keys that have something under a long press
+  [].forEach.call(document.querySelectorAll('.k[data-ch]'), function(b){
+    if (VARIANTS[b.dataset.ch]) b.classList.add('hasvar');
+  });
+
   /* ---------------- key clicks ---------------- */
   document.getElementById('kb').addEventListener('click', function(ev){
     var b = ev.target.closest('.k'); if (!b) return;
+    if (longFired) { longFired = false; return; }   // the long press already acted
     var act = b.dataset.act;
     if (act === 'tonos' || act === 'dia' || act === 'both') { applyAccent(act); ta.focus(); return; }
     if (act === 'shift') { setShift(shift === 0 ? 1 : (shift === 1 ? 2 : 0)); ta.focus(); return; }
