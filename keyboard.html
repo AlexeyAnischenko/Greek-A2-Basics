@@ -81,6 +81,26 @@ button.primary:hover{filter:brightness(1.08)}
 .variants button{min-width:42px;height:46px;font-size:21px;padding:0;background:var(--key-bg)}
 .variants button:hover,.variants button.hot{
   background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* pronunciation balloon */
+.tip{
+  position:absolute;z-index:70;max-width:250px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:9px;background:var(--key-bg);
+  box-shadow:0 8px 22px rgba(0,0,0,.28);font-size:13.5px;line-height:1.45;
+  pointer-events:none;
+}
+.tip .ltr{font-size:20px;font-weight:700;margin-right:6px}
+.tip .nm{color:var(--accent);font-weight:600}
+.tip .snd{margin-top:3px}
+.tip .note{margin-top:5px;padding-top:5px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px}
+.tip::after{
+  content:"";position:absolute;left:50%;margin-left:-6px;bottom:-6px;
+  width:11px;height:11px;background:var(--key-bg);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  transform:rotate(45deg);
+}
+.tip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
 .k small{font-size:9.5px;color:var(--muted);margin-top:3px;letter-spacing:.04em}
 .k.wide{min-width:78px}
 .k.xwide{min-width:150px;font-size:14px}
@@ -118,8 +138,9 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
     <a class="back" href="./">← back to the grammar sheets</a>
   </header>
   <p class="lede">Type your homework answers here, then copy and paste them wherever you need.
-  <b>Hold a vowel</b> for its accented form (α → ά), or use the ◌́ key. You can also just type on
-  your real keyboard — Latin keys are mapped to the Greek layout.</p>
+  <b>Hover a key</b> to see what the letter is called and how it sounds. <b>Hold a vowel</b> for its
+  accented form (α → ά), or use the ◌́ key. You can also just type on your real keyboard — Latin keys
+  are mapped to the Greek layout.</p>
 
   <textarea id="out" spellcheck="false" autofocus
     placeholder="Γράψε εδώ…  (type here)"></textarea>
@@ -149,6 +170,11 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
     <table>
       <thead><tr><th>Key</th><th>What it does</th><th>Example</th></tr></thead>
       <tbody>
+        <tr><td><b>Hover</b></td>
+            <td>Point at any letter and a balloon shows its name and pronunciation —
+                <b>ο</b> is "omicron", pronounced like the o in <i>not</i>. Several keys add a note
+                about how they change in context (γ before ε/ι, υ in αυ/ευ, σ before μ β γ δ).</td>
+            <td>ο → omicron</td></tr>
         <tr><td><b>Long press</b></td>
             <td>Hold a vowel to get its accented form, the way a phone keyboard works. Keys with
                 something to offer have a small dot in the corner. <b>ι</b> and <b>υ</b> have three
@@ -343,6 +369,88 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
   row('ctrl').appendChild(key('⌫', {act:'back', cls:'wide'}));
   row('ctrl').appendChild(key('↵', {act:'enter', cls:'wide'}));
 
+  /* ---------------- hover balloon: letter name + pronunciation ------ */
+  // [english name, greek name, sound, extra note]
+  var SOUND = {
+    'α':['alpha','άλφα','<b>a</b> — like the a in <i>father</i>'],
+    'β':['beta','βήτα','<b>v</b> — like the v in <i>very</i>','Never "b". That sound is written μπ.'],
+    'γ':['gamma','γάμα','<b>gh</b> — a soft g, made at the back of the throat',
+         'Before ε and ι it turns into a <b>y</b> sound: γεια = "ya".'],
+    'δ':['delta','δέλτα','<b>th</b> — voiced, like the th in <i>this</i>','Never the d of "dog". That is ντ.'],
+    'ε':['epsilon','έψιλον','<b>e</b> — like the e in <i>pet</i>'],
+    'ζ':['zeta','ζήτα','<b>z</b> — like the z in <i>zoo</i>'],
+    'η':['eta','ήτα','<b>i</b> — like the ee in <i>see</i>','One of the five ways to write "i": ι η υ ει οι.'],
+    'θ':['theta','θήτα','<b>th</b> — unvoiced, like the th in <i>think</i>'],
+    'ι':['iota','ιώτα','<b>i</b> — like the ee in <i>see</i>','One of the five ways to write "i".'],
+    'κ':['kappa','κάπα','<b>k</b> — like the k in <i>kite</i>'],
+    'λ':['lambda','λάμδα','<b>l</b> — like the l in <i>lamp</i>'],
+    'μ':['mu','μι','<b>m</b> — like the m in <i>man</i>'],
+    'ν':['nu','νι','<b>n</b> — like the n in <i>net</i>'],
+    'ξ':['xi','ξι','<b>ks</b> — like the x in <i>box</i>','One letter, two sounds.'],
+    'ο':['omicron','όμικρον','<b>o</b> — like the o in <i>not</i>','Same sound as ω.'],
+    'π':['pi','πι','<b>p</b> — like the p in <i>pen</i>'],
+    'ρ':['rho','ρο','<b>r</b> — lightly tapped, as in Italian or Russian'],
+    'σ':['sigma','σίγμα','<b>s</b> — like the s in <i>sun</i>',
+         'Becomes <b>z</b> before μ β γ δ: κόσμος = "kozmos".'],
+    'ς':['final sigma','τελικό σίγμα','<b>s</b> — the same sound as σ',
+         'Used <b>only</b> at the end of a word: μαθητή<b>ς</b>.'],
+    'τ':['tau','ταυ','<b>t</b> — like the t in <i>top</i>'],
+    'υ':['upsilon','ύψιλον','<b>i</b> — like the ee in <i>see</i>',
+         'In αυ / ευ it becomes <b>f</b> or <b>v</b>: αυτός = "aftos".'],
+    'φ':['phi','φι','<b>f</b> — like the f in <i>fish</i>'],
+    'χ':['chi','χι','<b>ch</b> — as in German <i>ach</i> / <i>ich</i>'],
+    'ψ':['psi','ψι','<b>ps</b> — like the ps in <i>lapse</i>','One letter, two sounds.'],
+    'ω':['omega','ωμέγα','<b>o</b> — like the o in <i>not</i>','Same sound as ο.'],
+    // accented vowels
+    'ά':['alpha with tonos','άλφα με τόνο','<b>a</b> — stressed'],
+    'έ':['epsilon with tonos','έψιλον με τόνο','<b>e</b> — stressed'],
+    'ή':['eta with tonos','ήτα με τόνο','<b>i</b> — stressed'],
+    'ί':['iota with tonos','ιώτα με τόνο','<b>i</b> — stressed'],
+    'ό':['omicron with tonos','όμικρον με τόνο','<b>o</b> — stressed'],
+    'ύ':['upsilon with tonos','ύψιλον με τόνο','<b>i</b> — stressed'],
+    'ώ':['omega with tonos','ωμέγα με τόνο','<b>o</b> — stressed'],
+    'ϊ':['iota with dialytika','ιώτα με διαλυτικά','<b>i</b> — pronounced separately',
+         'The dots say "read this vowel on its own", not as part of a pair.'],
+    'ϋ':['upsilon with dialytika','ύψιλον με διαλυτικά','<b>i</b> — pronounced separately'],
+    'ΐ':['iota, dialytika + tonos','ιώτα με διαλυτικά και τόνο','<b>i</b> — separate and stressed'],
+    'ΰ':['upsilon, dialytika + tonos','ύψιλον με διαλυτικά και τόνο','<b>i</b> — separate and stressed'],
+    // punctuation
+    ';':['Greek question mark','ερωτηματικό','Written like a semicolon, read as <b>?</b>',
+         'Πού είσαι<b>;</b> = Where are you?'],
+    '·':['ano teleia','άνω τελεία','The Greek <b>semicolon</b>']
+  };
+
+  var tip = null, tipTimer = null;
+
+  function hideTip(){
+    if (tipTimer) { clearTimeout(tipTimer); tipTimer = null; }
+    if (tip && tip.parentNode) tip.parentNode.removeChild(tip);
+    tip = null;
+  }
+  function showTip(keyEl){
+    var ch = keyEl.firstChild.nodeValue;
+    var d = SOUND[ch] || SOUND[ch.toLowerCase()];
+    if (!d) return;
+    hideTip();
+    var upper = ch.toLowerCase() !== ch.toUpperCase()
+      ? ch.toLowerCase() + ' ' + ch.toUpperCase() : ch;
+    tip = document.createElement('div');
+    tip.className = 'tip';
+    tip.innerHTML = '<span class="ltr">' + upper + '</span>'
+      + '<span class="nm">' + d[0] + '</span> · ' + d[1]
+      + '<div class="snd">' + d[2] + '</div>'
+      + (d[3] ? '<div class="note">' + d[3] + '</div>' : '');
+    document.body.appendChild(tip);
+    var r = keyEl.getBoundingClientRect(), p = tip.getBoundingClientRect();
+    var left = window.scrollX + r.left + r.width / 2 - p.width / 2;
+    left = Math.max(window.scrollX + 6,
+           Math.min(left, window.scrollX + document.documentElement.clientWidth - p.width - 6));
+    tip.style.left = left + 'px';
+    var above = r.top - p.height - 10;
+    if (above < 4) { tip.classList.add('below'); tip.style.top = (window.scrollY + r.bottom + 10) + 'px'; }
+    else           { tip.style.top = (window.scrollY + above) + 'px'; }
+  }
+
   /* ---------------- long press -> accented variants ---------------- */
   // Hold a vowel the way you would on a phone keyboard. Letters with a single
   // variant insert it straight away; ι and υ open a small chooser.
@@ -446,6 +554,33 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
   // long press on touch would otherwise pop the OS callout menu
   kbEl.addEventListener('contextmenu', function(ev){
     if (ev.target.closest('.k')) ev.preventDefault();
+  });
+
+  /* hover a letter -> balloon with its name and sound */
+  kbEl.addEventListener('mouseover', function(ev){
+    var b = ev.target.closest('.k');
+    if (!b || !b.dataset.ch || popup) return;
+    if (tipTimer) clearTimeout(tipTimer);
+    tipTimer = setTimeout(function(){ showTip(b); }, 300);
+  });
+  kbEl.addEventListener('mouseout', function(ev){
+    var b = ev.target.closest('.k');
+    if (b) hideTip();
+  });
+  // the balloon must never linger over something it no longer describes
+  kbEl.addEventListener('pointerdown', hideTip);
+  window.addEventListener('scroll', hideTip, true);
+  window.addEventListener('blur', hideTip);
+  // keyboard users get it too
+  kbEl.addEventListener('focusin', function(ev){
+    var b = ev.target.closest('.k');
+    if (b && b.dataset.ch) showTip(b);
+  });
+  kbEl.addEventListener('focusout', hideTip);
+  // the balloon replaces the native tooltip on letter keys, so they do not double up
+  [].forEach.call(document.querySelectorAll('.k[data-ch]'), function(b){
+    var ch = b.dataset.ch;
+    if (SOUND[ch] || SOUND[ch.toLowerCase()]) b.removeAttribute('title');
   });
   document.addEventListener('click', function(ev){
     if (popup && !ev.target.closest('.variants') && !ev.target.closest('.k')) closePopup();
