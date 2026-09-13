@@ -1,0 +1,184 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>09 · Future &amp; Subjunctive (Μέλλοντας · Υποτακτική)</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>09 · Future &amp; Subjunctive (Μέλλοντας · Υποτακτική)</h1>
+<h2>0. The big idea: Greek has no infinitive</h2>
+<p>English &quot;to write&quot; does not exist. Instead Greek uses <strong>να + a conjugated verb</strong>. That conjugated form is the <strong>subjunctive (υποτακτική)</strong>, built on the <strong>dependent stem</strong>.</p>
+<pre>θέλω να γράψω        = I want to write   (literally &quot;I want that I write&quot;)
+μπορείς να έρθεις;   = can you come?
+πρέπει να φύγουμε    = we must leave</pre>
+<p>Everything here uses <strong>the same two stems</strong> you know from page 10:</p>
+<div class="tw"><table><thead><tr><th>Stem</th><th>Where it comes from</th><th>Used for</th></tr></thead><tbody><tr><td><strong>present stem</strong> (γράφ-)</td><td>present tense</td><td>ongoing / repeated</td></tr><tr><td><strong>dependent stem</strong> (γράψ-)</td><td>aorist minus έ- and -α</td><td>one-off / completed</td></tr></tbody></table></div>
+<h2>1. The DEPENDENT FORM — build it in 2 steps</h2>
+<ol><li>Take the <strong>aorist</strong>: έγρα<strong>ψ</strong>α</li><li>Strip έ- and -α, then add <strong>present-tense endings</strong>: γράψ<strong>ω</strong>, γράψ<strong>εις</strong>, γράψ<strong>ει</strong>…</li></ol>
+<h3>Active</h3>
+<div class="tw"><table><thead><tr><th>Person</th><th><strong>A</strong> γράφω</th><th><strong>B1</strong> αγαπάω</th><th><strong>B2</strong> μπορώ</th></tr></thead><tbody><tr><td>1st singular</td><td>(να) γράψ<strong>ω</strong></td><td>(να) αγαπήσ<strong>ω</strong></td><td>(να) μπορέσ<strong>ω</strong></td></tr><tr><td>2nd singular</td><td>(να) γράψ<strong>εις</strong></td><td>(να) αγαπήσ<strong>εις</strong></td><td>(να) μπορέσ<strong>εις</strong></td></tr><tr><td>3rd singular</td><td>(να) γράψ<strong>ει</strong></td><td>(να) αγαπήσ<strong>ει</strong></td><td>(να) μπορέσ<strong>ει</strong></td></tr><tr><td>1st plural</td><td>(να) γράψ<strong>ουμε</strong></td><td>(να) αγαπήσ<strong>ουμε</strong></td><td>(να) μπορέσ<strong>ουμε</strong></td></tr><tr><td>2nd plural</td><td>(να) γράψ<strong>ετε</strong></td><td>(να) αγαπήσ<strong>ετε</strong></td><td>(να) μπορέσ<strong>ετε</strong></td></tr><tr><td>3rd plural</td><td>(να) γράψ<strong>ουν</strong></td><td>(να) αγαπήσ<strong>ουν</strong></td><td>(να) μπορέσ<strong>ουν</strong></td></tr></tbody></table></div>
+<p>⚠ <strong>Never</strong> an έ- augment — this is not a past tense.</p>
+<h3>Passive — endings -θώ, -θείς, -θεί, -θούμε, -θείτε, -θούν</h3>
+<div class="tw"><table><thead><tr><th>Person</th><th>πλένομαι</th><th>κοιμάμαι</th><th>έρχομαι ⚠</th></tr></thead><tbody><tr><td>1st singular</td><td>(να) πλυ<strong>θώ</strong></td><td>(να) κοιμη<strong>θώ</strong></td><td>(να) <strong>έρθω</strong></td></tr><tr><td>2nd singular</td><td>(να) πλυ<strong>θείς</strong></td><td>(να) κοιμη<strong>θείς</strong></td><td>(να) <strong>έρθεις</strong></td></tr><tr><td>3rd singular</td><td>(να) πλυ<strong>θεί</strong></td><td>(να) κοιμη<strong>θεί</strong></td><td>(να) <strong>έρθει</strong></td></tr><tr><td>1st plural</td><td>(να) πλυ<strong>θούμε</strong></td><td>(να) κοιμη<strong>θούμε</strong></td><td>(να) <strong>έρθουμε</strong></td></tr><tr><td>2nd plural</td><td>(να) πλυ<strong>θείτε</strong></td><td>(να) κοιμη<strong>θείτε</strong></td><td>(να) <strong>έρθετε</strong></td></tr><tr><td>3rd plural</td><td>(να) πλυ<strong>θούν</strong></td><td>(να) κοιμη<strong>θούν</strong></td><td>(να) <strong>έρθουν</strong></td></tr></tbody></table></div>
+<p>Derive it from the passive aorist: γράφτηκα→να <strong>γραφτώ</strong> · σκέφτηκα→να <strong>σκεφτώ</strong> · βρέθηκα→να <strong>βρεθώ</strong> · φοβήθηκα→να <strong>φοβηθώ</strong></p>
+<h2>2. FUTURE — θα + one of two stems</h2>
+<div class="tw"><table><thead><tr><th>Future</th><th>Formula</th><th>Example</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Simple</strong></td><td><strong>θα</strong> + dependent</td><td><strong>θα γράψω</strong></td><td>I will write (once)</td></tr><tr><td><strong>Continuous</strong></td><td><strong>θα</strong> + present</td><td><strong>θα γράφω</strong></td><td>I will be writing / will write regularly</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>Same verb, both futures</th><th>Meaning</th></tr></thead><tbody><tr><td>Αύριο <strong>θα διαβάσω</strong> το βιβλίο.</td><td>Tomorrow I&#x27;ll read the book (finish it).</td></tr><tr><td>Κάθε μέρα <strong>θα διαβάζω</strong> μια ώρα.</td><td>Every day I&#x27;ll read for an hour.</td></tr><tr><td><strong>Θα σε δω</strong> στις 8.</td><td>I&#x27;ll see you at 8.</td></tr><tr><td><strong>Θα σε βλέπω</strong> κάθε Σάββατο.</td><td>I&#x27;ll be seeing you every Saturday.</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>Person</th><th>θα + dependent</th><th>θα + present</th></tr></thead><tbody><tr><td>1st singular</td><td>θα γράψω</td><td>θα γράφω</td></tr><tr><td>2nd singular</td><td>θα γράψεις</td><td>θα γράφεις</td></tr><tr><td>3rd singular</td><td>θα γράψει</td><td>θα γράφει</td></tr><tr><td>1st plural</td><td>θα γράψουμε</td><td>θα γράφουμε</td></tr><tr><td>2nd plural</td><td>θα γράψετε</td><td>θα γράφετε</td></tr><tr><td>3rd plural</td><td>θα γράψουν</td><td>θα γράφουν</td></tr></tbody></table></div>
+<p>⚠ <strong>θα είμαι / θα έχω</strong> — είμαι and έχω have no dependent form, so only one future each.</p>
+<h2>3. ΝΑ — the subjunctive particle: its A2 jobs</h2>
+<div class="tw"><table><thead><tr><th>Job</th><th>Structure</th><th>Example</th></tr></thead><tbody><tr><td><strong>&quot;to&quot; (infinitive replacement)</strong></td><td>verb + <strong>να</strong> + verb</td><td>Θέλω <strong>να</strong> φύγω.</td></tr><tr><td><strong>Must / should</strong></td><td>πρέπει <strong>να</strong></td><td><strong>Πρέπει να</strong> πάω.</td></tr><tr><td><strong>Can / may</strong></td><td>μπορώ <strong>να</strong></td><td><strong>Μπορείς να</strong> έρθεις;</td></tr><tr><td><strong>Suggestion / offer</strong></td><td><strong>Να</strong> …;</td><td><strong>Να</strong> σου φέρω νερό; — Shall I bring you water?</td></tr><tr><td><strong>Purpose (&quot;in order to&quot;)</strong></td><td>(για) <strong>να</strong></td><td>Ήρθα <strong>(για) να</strong> σε δω.</td></tr><tr><td><strong>Wish</strong></td><td><strong>Να</strong> …!</td><td><strong>Να</strong> περάσεις καλά!</td></tr><tr><td><strong>Softened command</strong></td><td><strong>να</strong> + 2nd person</td><td><strong>Να</strong> προσέχεις!</td></tr><tr><td><strong>Before / without</strong></td><td>πριν <strong>να</strong>, χωρίς <strong>να</strong></td><td><strong>Πριν να</strong> φύγεις… · <strong>Χωρίς να</strong> μιλήσει…</td></tr><tr><td><strong>Negative</strong></td><td><strong>να μη(ν)</strong></td><td>Θέλω <strong>να μην</strong> πας.</td></tr></tbody></table></div>
+<h3>Present vs dependent after να — the same aspect logic</h3>
+<div class="tw"><table><thead><tr><th>Greek</th><th>Meaning</th></tr></thead><tbody><tr><td>Θέλω <strong>να διαβάσω</strong> αυτό το βιβλίο.</td><td>I want to read this book (once, all of it).</td></tr><tr><td>Θέλω <strong>να διαβάζω</strong> κάθε μέρα.</td><td>I want to read every day (habitually).</td></tr><tr><td>Πρέπει <strong>να πάρω</strong> το φάρμακο.</td><td>I must take the medicine (now).</td></tr><tr><td>Πρέπει <strong>να παίρνω</strong> το φάρμακο.</td><td>I must take the medicine (regularly).</td></tr></tbody></table></div>
+<h2>4. Verbs &amp; expressions that trigger να</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>θέλω να</td><td>want to</td><td>πρέπει να</td><td>must</td></tr><tr><td>μπορώ να</td><td>can</td><td>μπορεί να</td><td>maybe / it may be</td></tr><tr><td>ξέρω να</td><td>know how to</td><td>είναι εύκολο / δύσκολο να</td><td>it&#x27;s easy / hard to</td></tr><tr><td>μαθαίνω να</td><td>learn to</td><td>φοβάμαι να</td><td>be afraid to</td></tr><tr><td>αρχίζω να</td><td>start to</td><td>ελπίζω να</td><td>hope to</td></tr><tr><td>σταματάω να</td><td>stop -ing</td><td>προτιμώ να</td><td>prefer to</td></tr><tr><td>προσπαθώ να</td><td>try to</td><td>συνεχίζω να</td><td>continue to</td></tr><tr><td>αποφασίζω να</td><td>decide to</td><td>χρειάζεται να</td><td>it&#x27;s necessary to</td></tr><tr><td>ξεχνάω να</td><td>forget to</td><td>είμαι έτοιμος να</td><td>be ready to</td></tr><tr><td>θυμάμαι να</td><td>remember to</td><td>μου αρέσει να</td><td>I like to</td></tr><tr><td>πάω να</td><td>go to (do)</td><td></td><td></td></tr></tbody></table></div>
+<h2>5. ΑΣ — &quot;let&#x27;s / let me&quot;</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Ας</strong> πάμε!</td><td>Let&#x27;s go!</td></tr><tr><td><strong>Ας</strong> φύγουμε τώρα.</td><td>Let&#x27;s leave now.</td></tr><tr><td><strong>Ας</strong> το κάνω εγώ.</td><td>Let me do it.</td></tr><tr><td><strong>Ας</strong> μη μιλάμε γι&#x27; αυτό.</td><td>Let&#x27;s not talk about it.</td></tr></tbody></table></div>
+<p>Also <strong>Πάμε!</strong> (let&#x27;s go) — just the 1st plural present, very common.</p>
+<h2>6. Conditionals with αν — A2 needs only the real ones</h2>
+<div class="tw"><table><thead><tr><th>Type</th><th>Formula</th><th>Example</th></tr></thead><tbody><tr><td><strong>Real / likely</strong></td><td>αν + present or dependent → <strong>θα</strong> + future</td><td><strong>Αν</strong> έχω χρόνο, <strong>θα</strong> έρθω.</td></tr><tr><td><strong>Habitual</strong></td><td>αν + present → present</td><td><strong>Αν</strong> βρέχει, <strong>μένω</strong> σπίτι.</td></tr></tbody></table></div>
+<p>⚠ After <strong>αν</strong> never use θα. ⚠ <strong>όταν</strong> (when, factual) vs <strong>αν</strong> (if): Όταν έρθει, θα φάμε. / Αν έρθει, θα φάμε.</p>
+<h2>7. Politeness formulas — learn these as fixed phrases (A2)</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>Θα ήθελα</strong> ένα καφέ.</td><td>I would like a coffee.</td></tr><tr><td><strong>Θα μπορούσες</strong> να με βοηθήσεις;</td><td>Could you help me?</td></tr><tr><td><strong>Θα μπορούσατε</strong> να…;</td><td>Could you… (formal)</td></tr></tbody></table></div>
+<h2>8. Drill</h2>
+<div class="tw"><table><thead><tr><th>Say in Greek</th><th>Answer</th></tr></thead><tbody><tr><td>I want to go</td><td>Θέλω να πάω</td></tr><tr><td>I must work</td><td>Πρέπει να δουλέψω</td></tr><tr><td>Can you help me?</td><td>Μπορείς να με βοηθήσεις;</td></tr><tr><td>I&#x27;ll write tomorrow</td><td>Θα γράψω αύριο</td></tr><tr><td>I&#x27;ll be writing every day</td><td>Θα γράφω κάθε μέρα</td></tr><tr><td>Let&#x27;s eat!</td><td>Ας φάμε! / Πάμε να φάμε!</td></tr><tr><td>Shall I open the window?</td><td>Να ανοίξω το παράθυρο;</td></tr><tr><td>I came to see you</td><td>Ήρθα να σε δω</td></tr><tr><td>If I have time, I&#x27;ll come</td><td>Αν έχω χρόνο, θα έρθω</td></tr><tr><td>I would like a beer</td><td>Θα ήθελα μια μπύρα</td></tr><tr><td>I want you not to go</td><td>Θέλω να μην πας</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

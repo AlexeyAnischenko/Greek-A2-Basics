@@ -1,0 +1,159 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>00 · Alphabet &amp; Sounds</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>00 · Alphabet &amp; Sounds</h1>
+<h2>The 24 letters</h2>
+<div class="tw"><table><thead><tr><th>Upper</th><th>Lower</th><th>Name</th><th>Sound</th></tr></thead><tbody><tr><td>Α</td><td>α</td><td>άλφα</td><td>a (as in <em>father</em>)</td></tr><tr><td>Β</td><td>β</td><td>βήτα</td><td><strong>v</strong></td></tr><tr><td>Γ</td><td>γ</td><td>γάμα</td><td>soft g / y before ε, ι (γη = &quot;yi&quot;)</td></tr><tr><td>Δ</td><td>δ</td><td>δέλτα</td><td><strong>th</strong> as in <em>this</em></td></tr><tr><td>Ε</td><td>ε</td><td>έψιλον</td><td>e (as in <em>pet</em>)</td></tr><tr><td>Ζ</td><td>ζ</td><td>ζήτα</td><td>z</td></tr><tr><td>Η</td><td>η</td><td>ήτα</td><td><strong>i</strong></td></tr><tr><td>Θ</td><td>θ</td><td>θήτα</td><td><strong>th</strong> as in <em>think</em></td></tr><tr><td>Ι</td><td>ι</td><td>ιώτα</td><td>i</td></tr><tr><td>Κ</td><td>κ</td><td>κάπα</td><td>k</td></tr><tr><td>Λ</td><td>λ</td><td>λάμδα</td><td>l</td></tr><tr><td>Μ</td><td>μ</td><td>μι</td><td>m</td></tr><tr><td>Ν</td><td>ν</td><td>νι</td><td>n</td></tr><tr><td>Ξ</td><td>ξ</td><td>ξι</td><td><strong>ks</strong></td></tr><tr><td>Ο</td><td>ο</td><td>όμικρον</td><td>o</td></tr><tr><td>Π</td><td>π</td><td>πι</td><td>p</td></tr><tr><td>Ρ</td><td>ρ</td><td>ρο</td><td>r (tapped)</td></tr><tr><td>Σ</td><td>σ / <strong>ς</strong></td><td>σίγμα</td><td>s — <strong>ς only at word end</strong></td></tr><tr><td>Τ</td><td>τ</td><td>ταυ</td><td>t</td></tr><tr><td>Υ</td><td>υ</td><td>ύψιλον</td><td><strong>i</strong></td></tr><tr><td>Φ</td><td>φ</td><td>φι</td><td>f</td></tr><tr><td>Χ</td><td>χ</td><td>χι</td><td>ch (German <em>ach</em> / <em>ich</em>)</td></tr><tr><td>Ψ</td><td>ψ</td><td>ψι</td><td><strong>ps</strong></td></tr><tr><td>Ω</td><td>ω</td><td>ωμέγα</td><td>o</td></tr></tbody></table></div>
+<p><strong>Five ways to write &quot;i&quot;:</strong> ι, η, υ, ει, οι — all identical in sound. Spelling must be memorised. <strong>Two ways to write &quot;o&quot;:</strong> ο, ω. <strong>Two ways to write &quot;e&quot;:</strong> ε, αι.</p>
+<h2>Digraphs (δίψηφα)</h2>
+<div class="tw"><table><thead><tr><th>Written</th><th>Sound</th><th>Example</th></tr></thead><tbody><tr><td>αι</td><td>e</td><td>και (ke) = and</td></tr><tr><td>ει, οι, υι</td><td>i</td><td>είναι, οίκος</td></tr><tr><td>ου</td><td>u</td><td>πού (pu) = where</td></tr><tr><td>αυ</td><td>af / av</td><td>αυτός (aftós), αύριο (ávrio)</td></tr><tr><td>ευ</td><td>ef / ev</td><td>ευχαριστώ (efharistó), Ευρώπη (Evrópi)</td></tr><tr><td>μπ</td><td>b (word-start) / mb (inside)</td><td>μπύρα (bíra), λάμπα (lámba)</td></tr><tr><td>ντ</td><td>d (word-start) / nd (inside)</td><td>ντομάτα (domáta), πέντε (pénde)</td></tr><tr><td>γκ / γγ</td><td>g / ng</td><td>γκολ (gol), αγγλικά (anglika)</td></tr><tr><td>τσ</td><td>ts</td><td>τσάι (tsái)</td></tr><tr><td>τζ</td><td>dz</td><td>τζάμι (dzámi)</td></tr><tr><td>γχ</td><td>nch</td><td>συγχαρητήρια</td></tr></tbody></table></div>
+<h2>Consonant + vowel traps</h2>
+<div class="tw"><table><thead><tr><th>Combo</th><th>Sound</th><th>Example</th></tr></thead><tbody><tr><td>γι, γει, γυ</td><td>y-</td><td>γιατί (yatí), γεια (ya)</td></tr><tr><td>χι, χε</td><td>soft &quot;hy&quot;</td><td>χέρι (héri)</td></tr><tr><td>σ before μ/β/γ/δ</td><td>z</td><td>κόσμος (kózmos), Ισραήλ</td></tr></tbody></table></div>
+<h2>Stress (τόνος) — the only accent mark</h2>
+<div class="tw"><table><thead><tr><th>Rule</th><th>Detail</th></tr></thead><tbody><tr><td>Every word of 2+ syllables</td><td>has <strong>exactly one</strong> written accent: μαμά, τραπέζι</td></tr><tr><td>One-syllable words</td><td>no accent…</td></tr><tr><td>…<strong>except</strong></td><td>πού (where?), πώς (how?), τί/τι, ή (or), πιό/πιο to disambiguate</td></tr><tr><td>Stress position</td><td>only on one of the <strong>last three</strong> syllables</td></tr><tr><td>Stress <strong>moves</strong></td><td>άνθρωπος → ανθρώπου; μάθημα → μαθήματα (see Nouns, p. 4)</td></tr><tr><td>Diaeresis ¨</td><td>splits a digraph: παϊδάκι = pa-i-, not pe-</td></tr></tbody></table></div>
+<h2>Punctuation differences</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>Means</th></tr></thead><tbody><tr><td><strong>;</strong></td><td>question mark (not semicolon!)</td></tr><tr><td><strong>·</strong></td><td>semicolon (ano teleia)</td></tr><tr><td>« »</td><td>quotation marks</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

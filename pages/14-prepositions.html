@@ -1,0 +1,169 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>14 · Prepositions (Προθέσεις)</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>14 · Prepositions (Προθέσεις)</h1>
+<h2>Golden rule: every common preposition takes the ACCUSATIVE.</h2>
+<h2>1. The core set</h2>
+<div class="tw"><table><thead><tr><th>Preposition</th><th>Meanings</th><th>Example</th></tr></thead><tbody><tr><td><strong>σε</strong></td><td>in, at, to, on</td><td>Πάω <strong>στην</strong> Αθήνα. Είμαι <strong>στο</strong> σπίτι.</td></tr><tr><td><strong>από</strong></td><td>from, of, by, than, through</td><td>Έρχομαι <strong>από</strong> τη δουλειά.</td></tr><tr><td><strong>με</strong></td><td>with, by (means)</td><td>Πάω <strong>με</strong> το αυτοκίνητο. Μιλάω <strong>με</strong> τη Μαρία.</td></tr><tr><td><strong>για</strong></td><td>for, about, to (purpose)</td><td>Αυτό είναι <strong>για</strong> σένα. Μιλάμε <strong>για</strong> το βιβλίο.</td></tr><tr><td><strong>χωρίς</strong></td><td>without</td><td>Καφές <strong>χωρίς</strong> ζάχαρη.</td></tr><tr><td><strong>μέχρι / ως</strong></td><td>until, up to</td><td><strong>Μέχρι</strong> τις 5.</td></tr><tr><td><strong>προς</strong></td><td>towards</td><td>Πάμε <strong>προς</strong> το κέντρο.</td></tr><tr><td><strong>κατά</strong></td><td>during, against, around</td><td><strong>Κατά</strong> τις 6. <strong>Κατά</strong> τη γνώμη μου.</td></tr><tr><td><strong>μετά</strong></td><td>after</td><td><strong>Μετά</strong> το μάθημα.</td></tr><tr><td><strong>πριν</strong></td><td>before</td><td><strong>Πριν</strong> το φαγητό.</td></tr><tr><td><strong>παρά</strong></td><td>minus (telling the time)</td><td>Πέντε <strong>παρά</strong> δέκα.</td></tr><tr><td><strong>σαν</strong></td><td>like, as</td><td>Είναι <strong>σαν</strong> αδερφός μου.</td></tr><tr><td><strong>εκτός από</strong></td><td>except</td><td>Όλοι <strong>εκτός από</strong> μένα.</td></tr><tr><td><strong>αντί (για)</strong></td><td>instead of</td><td><strong>Αντί για</strong> καφέ, τσάι.</td></tr><tr><td><strong>γύρω από</strong></td><td>around</td><td><strong>Γύρω από</strong> το τραπέζι.</td></tr><tr><td><strong>μαζί με</strong></td><td>together with</td><td>Ήρθα <strong>μαζί με</strong> τον Γιάννη.</td></tr></tbody></table></div>
+<h2>2. σε + article — always contracted ⚠ must become automatic</h2>
+<div class="tw"><table><thead><tr><th>σε + article</th><th>Contraction</th><th>Example</th></tr></thead><tbody><tr><td>σε + τον</td><td><strong>στον</strong></td><td><strong>στον</strong> δρόμο (in the street)</td></tr><tr><td>σε + την</td><td><strong>στην</strong></td><td><strong>στην</strong> Αθήνα</td></tr><tr><td>σε + το</td><td><strong>στο</strong></td><td><strong>στο</strong> σπίτι</td></tr><tr><td>σε + τους</td><td><strong>στους</strong></td><td><strong>στους</strong> φίλους</td></tr><tr><td>σε + τις</td><td><strong>στις</strong></td><td><strong>στις</strong> 5 (at 5 o&#x27;clock)</td></tr><tr><td>σε + τα</td><td><strong>στα</strong></td><td><strong>στα</strong> παιδιά</td></tr><tr><td>σε + έναν</td><td><strong>σ&#x27; έναν</strong></td><td><strong>σ&#x27; έναν</strong> φίλο</td></tr><tr><td>σε + μία</td><td><strong>σε μια</strong></td><td><strong>σε μια</strong> ώρα</td></tr><tr><td>σε + ένα</td><td><strong>σ&#x27; ένα</strong></td><td><strong>σ&#x27; ένα</strong> μαγαζί</td></tr></tbody></table></div>
+<p><strong>από</strong> contracts optionally: από τον → <strong>απ&#x27; τον</strong>, από το → <strong>απ&#x27; το</strong>, από την → <strong>απ&#x27; την</strong>. <strong>με / για / σαν</strong> may elide before a vowel: <strong>μ&#x27; αυτόν</strong>, <strong>γι&#x27; αυτό</strong>, <strong>σ&#x27; αυτό</strong>.</p>
+<h2>3. σε vs από — the direction pair</h2>
+<div class="tw"><table><thead><tr><th>σε (motion <strong>to</strong> / position <strong>in</strong>)</th><th>από (motion <strong>from</strong> / origin)</th></tr></thead><tbody><tr><td>Πάω <strong>στο</strong> σχολείο.</td><td>Έρχομαι <strong>από</strong> το σχολείο.</td></tr><tr><td>Μένω <strong>στην</strong> Κύπρο.</td><td>Είμαι <strong>από</strong> την Κύπρο.</td></tr><tr><td>Το βάζω <strong>στο</strong> τραπέζι.</td><td>Το παίρνω <strong>από</strong> το τραπέζι.</td></tr><tr><td>Μιλάω <strong>στον</strong> Γιάννη. (to John)</td><td>Το άκουσα <strong>από</strong> τον Γιάννη.</td></tr><tr><td>Φτάνω <strong>στις</strong> 8.</td><td>Δουλεύω <strong>από</strong> τις 8.</td></tr></tbody></table></div>
+<h2>4. Place words</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th>Construction</th></tr></thead><tbody><tr><td><strong>πάνω σε / πάνω από</strong></td><td>on / above</td><td><strong>πάνω στο</strong> τραπέζι, <strong>πάνω από</strong> το κρεβάτι</td></tr><tr><td><strong>κάτω από</strong></td><td>under</td><td><strong>κάτω από</strong> την καρέκλα</td></tr><tr><td><strong>μέσα σε</strong></td><td>inside</td><td><strong>μέσα στο</strong> σπίτι</td></tr><tr><td><strong>έξω από</strong></td><td>outside</td><td><strong>έξω από</strong> το μαγαζί</td></tr><tr><td><strong>μπροστά από</strong></td><td>in front of</td><td><strong>μπροστά από</strong> την πόρτα</td></tr><tr><td><strong>πίσω από</strong></td><td>behind</td><td><strong>πίσω από</strong> το κτίριο</td></tr><tr><td><strong>δίπλα σε</strong></td><td>next to</td><td><strong>δίπλα στο</strong> παράθυρο</td></tr><tr><td><strong>απέναντι από</strong></td><td>opposite</td><td><strong>απέναντι από</strong> την τράπεζα</td></tr><tr><td><strong>κοντά σε</strong></td><td>near</td><td><strong>κοντά στη</strong> θάλασσα</td></tr><tr><td><strong>μακριά από</strong></td><td>far from</td><td><strong>μακριά από</strong> το κέντρο</td></tr><tr><td><strong>γύρω από</strong></td><td>around</td><td><strong>γύρω από</strong> την πλατεία</td></tr><tr><td><strong>στην αρχή / στο τέλος</strong></td><td>at the start / end</td><td><strong>στην αρχή</strong> του δρόμου</td></tr></tbody></table></div>
+<h2>5. Time expressions</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td><strong>στις</strong> 8 (η ώρα)</td><td>at 8 o&#x27;clock</td></tr><tr><td><strong>σε</strong> δύο ώρες</td><td>in two hours</td></tr><tr><td><strong>από</strong> τις 8 <strong>μέχρι</strong> τις 5</td><td>from 8 to 5</td></tr><tr><td><strong>τη</strong> Δευτέρα</td><td>on Monday</td></tr><tr><td><strong>τον</strong> Ιανουάριο / <strong>το</strong> Μάιο</td><td>in January / May</td></tr><tr><td><strong>το</strong> 2026</td><td>in 2026</td></tr><tr><td><strong>το</strong> πρωί / <strong>το</strong> βράδυ</td><td>in the morning / evening</td></tr><tr><td><strong>τη</strong> νύχτα</td><td>at night</td></tr><tr><td><strong>πριν από</strong> δύο μέρες</td><td>two days ago</td></tr><tr><td><strong>μετά από</strong> μια ώρα</td><td>after an hour</td></tr><tr><td><strong>κατά</strong> τις 6</td><td>around 6</td></tr><tr><td><strong>για</strong> δύο μέρες</td><td>for two days</td></tr><tr><td><strong>μέσα σε</strong> μια βδομάδα</td><td>within a week</td></tr><tr><td><strong>κάθε</strong> μέρα</td><td>every day</td></tr></tbody></table></div>
+<p>⚠ Days and months take the <strong>article, not σε</strong>: Τη Δευτέρα πάω… (not <s>στη Δευτέρα</s>).</p>
+<h2>6. με — its four jobs</h2>
+<div class="tw"><table><thead><tr><th>Job</th><th>Example</th></tr></thead><tbody><tr><td>accompaniment (&quot;with&quot;)</td><td>Πάω <strong>με</strong> τους φίλους μου.</td></tr><tr><td>means of transport</td><td>Πάω <strong>με</strong> το λεωφορείο / <strong>με</strong> τα πόδια (on foot)</td></tr><tr><td>instrument</td><td>Γράφω <strong>με</strong> το μολύβι.</td></tr><tr><td>description</td><td>Το κορίτσι <strong>με</strong> τα μαύρα μαλλιά. Καφές <strong>με</strong> γάλα.</td></tr></tbody></table></div>
+<h2>7. Frequent από idioms</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>πεθαίνω <strong>από</strong> πείνα</td><td>die of hunger</td></tr><tr><td>πιο ψηλός <strong>από</strong> μένα</td><td>taller than me</td></tr><tr><td>ένα <strong>από</strong> τα παιδιά</td><td>one of the children</td></tr><tr><td>περνάω <strong>από</strong> το κέντρο</td><td>pass through the centre</td></tr><tr><td><strong>από</strong> τηλέφωνο</td><td>by phone</td></tr><tr><td>φτιαγμένο <strong>από</strong> ξύλο</td><td>made of wood</td></tr><tr><td>γραμμένο <strong>από</strong> τον Καζαντζάκη</td><td>written by Kazantzakis</td></tr><tr><td><strong>Από</strong> πού είσαι;</td><td>Where are you from?</td></tr></tbody></table></div>
+<h2>8. Prepositions + weak pronouns → use the STRONG form</h2>
+<div class="tw"><table><thead><tr><th>Wrong</th><th>Right</th></tr></thead><tbody><tr><td><s>για με</s></td><td><strong>για μένα</strong></td></tr><tr><td><s>με σε</s></td><td><strong>με σένα</strong></td></tr><tr><td><s>από τον</s> (as a pronoun)</td><td><strong>από αυτόν</strong></td></tr><tr><td><s>σε μας</s></td><td><strong>σ&#x27; εμάς</strong></td></tr></tbody></table></div>
+<h2>9. Drill</h2>
+<div class="tw"><table><thead><tr><th>Say in Greek</th><th>Answer</th></tr></thead><tbody><tr><td>I go to Athens</td><td>Πάω στην Αθήνα</td></tr><tr><td>I come from work</td><td>Έρχομαι από τη δουλειά</td></tr><tr><td>at 5 o&#x27;clock</td><td>στις 5</td></tr><tr><td>in two hours</td><td>σε δύο ώρες</td></tr><tr><td>with my friends</td><td>με τους φίλους μου</td></tr><tr><td>for me</td><td>για μένα</td></tr><tr><td>coffee without sugar</td><td>καφές χωρίς ζάχαρη</td></tr><tr><td>under the table</td><td>κάτω από το τραπέζι</td></tr><tr><td>next to the window</td><td>δίπλα στο παράθυρο</td></tr><tr><td>on Monday</td><td>τη Δευτέρα</td></tr><tr><td>two days ago</td><td>πριν από δύο μέρες</td></tr><tr><td>by bus</td><td>με το λεωφορείο</td></tr><tr><td>everyone except me</td><td>όλοι εκτός από μένα</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

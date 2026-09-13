@@ -1,0 +1,190 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>02 · Nouns (Ουσιαστικά) — the A2 declensions</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>02 · Nouns (Ουσιαστικά) — the A2 declensions</h1>
+<p><strong>Gender is not guessable from meaning — learn every noun with its article.</strong> Quick heuristic (about 85% reliable):</p>
+<div class="tw"><table><thead><tr><th>Ending</th><th>Usually</th><th>Example</th></tr></thead><tbody><tr><td>-ος, -ας, -ης, -ες, -ους</td><td>masculine</td><td>ο δρόμος, ο άντρας, ο μαθητής, ο καφές, ο παππούς</td></tr><tr><td>-α, -η, -ού</td><td>feminine</td><td>η ώρα, η νίκη, η αλεπού</td></tr><tr><td>-ο, -ι, -μα</td><td>neuter</td><td>το βιβλίο, το παιδί, το μάθημα</td></tr></tbody></table></div>
+<h2>MASCULINE</h2>
+<h3>M1 · -ας (ο άντρας — man) ✦ also: ο πατέρας, ο μήνας, ο χειμώνας</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="m">Nominative</td><td class="m">ο άντρ<strong>ας</strong></td><td class="m">οι άντρ<strong>ες</strong></td></tr><tr><td class="m">Accusative</td><td class="m">τον άντρ<strong>α</strong></td><td class="m">τους άντρ<strong>ες</strong></td></tr><tr><td class="m">Genitive</td><td class="m">του άντρ<strong>α</strong></td><td class="m">των αντρ<strong>ών</strong></td></tr><tr><td class="m">Vocative</td><td class="m">άντρ<strong>α</strong>!</td><td class="m">άντρ<strong>ες</strong>!</td></tr></tbody></table></div>
+<h3>M2 · -ης (ο μαθητής — pupil) ✦ also: ο εργάτης, ο πολίτης, ο κλέφτης</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="m">Nominative</td><td class="m">ο μαθητ<strong>ής</strong></td><td class="m">οι μαθητ<strong>ές</strong></td></tr><tr><td class="m">Accusative</td><td class="m">τον μαθητ<strong>ή</strong></td><td class="m">τους μαθητ<strong>ές</strong></td></tr><tr><td class="m">Genitive</td><td class="m">του μαθητ<strong>ή</strong></td><td class="m">των μαθητ<strong>ών</strong></td></tr><tr><td class="m">Vocative</td><td class="m">μαθητ<strong>ή</strong>!</td><td class="m">μαθητ<strong>ές</strong>!</td></tr></tbody></table></div>
+<h3>M3 · -ος (ο δρόμος — street) ✦ also: ο άνθρωπος, ο φίλος, ο ουρανός, ο γιατρός</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="m">Nominative</td><td class="m">ο δρόμ<strong>ος</strong></td><td class="m">οι δρόμ<strong>οι</strong></td></tr><tr><td class="m">Accusative</td><td class="m">τον δρόμ<strong>ο</strong></td><td class="m">τους δρόμ<strong>ους</strong></td></tr><tr><td class="m">Genitive</td><td class="m">του δρόμ<strong>ου</strong></td><td class="m">των δρόμ<strong>ων</strong></td></tr><tr><td class="m">Vocative</td><td class="m">δρόμ<strong>ε</strong>!</td><td class="m">δρόμ<strong>οι</strong>!</td></tr></tbody></table></div>
+<p>⚠ <strong>Stress shift</strong> in three-syllable -ος words stressed on the third-from-last: ο <strong>ά</strong>νθρωπος → του ανθρ<strong>ώ</strong>που, των ανθρ<strong>ώ</strong>πων, τους ανθρ<strong>ώ</strong>πους (the nominative plural keeps it: οι <strong>ά</strong>νθρωποι)</p>
+<h3>M4 · -ες / -ους (ο καφές, ο παππούς) — &quot;add -δ-&quot;</h3>
+<div class="tw"><table><thead><tr><th></th><th>ο καφές</th><th>ο παππούς</th></tr></thead><tbody><tr><td class="m">Nominative singular</td><td class="m">ο καφ<strong>ές</strong></td><td class="m">ο παππ<strong>ούς</strong></td></tr><tr><td class="m">Accusative / Genitive singular</td><td class="m">τον / του καφ<strong>έ</strong></td><td class="m">τον / του παππ<strong>ού</strong></td></tr><tr><td class="m">Nominative / Accusative plural</td><td class="m">οι / τους καφ<strong>έδες</strong></td><td class="m">οι / τους παππ<strong>ούδες</strong></td></tr><tr><td class="m">Genitive plural</td><td class="m">των καφ<strong>έδων</strong></td><td class="m">των παππ<strong>ούδων</strong></td></tr></tbody></table></div>
+<p>✦ also: ο μπακλαβάς→μπακλαβάδες, ο ψαράς→ψαράδες</p>
+<h2>FEMININE</h2>
+<h3>F1 · -α (η ώρα — hour) ✦ also: η γλώσσα, η θάλασσα, η μητέρα, η καρέκλα</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="f">Nominative</td><td class="f">η ώρ<strong>α</strong></td><td class="f">οι ώρ<strong>ες</strong></td></tr><tr><td class="f">Accusative</td><td class="f">την ώρ<strong>α</strong></td><td class="f">τις ώρ<strong>ες</strong></td></tr><tr><td class="f">Genitive</td><td class="f">της ώρ<strong>ας</strong></td><td class="f">των ωρ<strong>ών</strong></td></tr><tr><td class="f">Vocative</td><td class="f">ώρ<strong>α</strong>!</td><td class="f">ώρ<strong>ες</strong>!</td></tr></tbody></table></div>
+<h3>F2 · -η (η νίκη — victory) ✦ also: η ζάχαρη, η αγάπη, η τέχνη, η αδερφή</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="f">Nominative</td><td class="f">η νίκ<strong>η</strong></td><td class="f">οι νίκ<strong>ες</strong></td></tr><tr><td class="f">Accusative</td><td class="f">τη νίκ<strong>η</strong></td><td class="f">τις νίκ<strong>ες</strong></td></tr><tr><td class="f">Genitive</td><td class="f">της νίκ<strong>ης</strong></td><td class="f">των νικ<strong>ών</strong></td></tr></tbody></table></div>
+<h3>F3 · -η → -εις (η πόλη — city) ⚠ high-frequency, learn it</h3>
+<p>✦ also: η τάξη, η λέξη, η στάση, η σκέψη, η δύναμη, η άσκηση, η κυβέρνηση</p>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="f">Nominative</td><td class="f">η πόλ<strong>η</strong></td><td class="f">οι πόλ<strong>εις</strong></td></tr><tr><td class="f">Accusative</td><td class="f">την πόλ<strong>η</strong></td><td class="f">τις πόλ<strong>εις</strong></td></tr><tr><td class="f">Genitive</td><td class="f">της πόλ<strong>ης</strong></td><td class="f">των πόλ<strong>εων</strong></td></tr></tbody></table></div>
+<h3>F4 · -ού (η αλεπού — fox) ✦ also: η γιαγιά (→γιαγιάδες), η μαϊμού</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="f">Nominative / Accusative</td><td class="f">η / την αλεπ<strong>ού</strong></td><td class="f">οι / τις αλεπ<strong>ούδες</strong></td></tr><tr><td class="f">Genitive</td><td class="f">της αλεπ<strong>ούς</strong></td><td class="f">των αλεπ<strong>ούδων</strong></td></tr></tbody></table></div>
+<h2>NEUTER</h2>
+<h3>N1 · -ο (το βιβλίο — book) ✦ also: το δέντρο, το αυτοκίνητο, το πρόσωπο</h3>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="n">Nominative / Accusative / Vocative</td><td class="n">το βιβλί<strong>ο</strong></td><td class="n">τα βιβλί<strong>α</strong></td></tr><tr><td class="n">Genitive</td><td class="n">του βιβλί<strong>ου</strong></td><td class="n">των βιβλί<strong>ων</strong></td></tr></tbody></table></div>
+<p>⚠ Stress shift: το <strong>αυ</strong>τοκίνητο → των αυτοκιν<strong>ή</strong>των.</p>
+<h3>N2 · -ι (το παιδί — child) ✦ also: το σπίτι, το τραπέζι, το ψωμί, το κρασί</h3>
+<p>The genitive inserts <strong>-ού</strong>:</p>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="n">Nominative / Accusative</td><td class="n">το παιδ<strong>ί</strong></td><td class="n">τα παιδι<strong>ά</strong></td></tr><tr><td class="n">Genitive</td><td class="n">του παιδι<strong>ού</strong></td><td class="n">των παιδι<strong>ών</strong></td></tr></tbody></table></div>
+<h3>N3 · -μα (το μάθημα — lesson) ✦ also: το πρόβλημα, το όνομα, το πράγμα, το γράμμα</h3>
+<p>Insert <strong>-ματ-</strong>:</p>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="n">Nominative / Accusative</td><td class="n">το μάθη<strong>μα</strong></td><td class="n">τα μαθή<strong>ματα</strong></td></tr><tr><td class="n">Genitive</td><td class="n">του μαθή<strong>ματος</strong></td><td class="n">των μαθη<strong>μάτων</strong></td></tr></tbody></table></div>
+<p>⚠ The stress moves right in every form except the nominative / accusative singular.</p>
+<h3>N4 · -ος neuter (το λάθος — mistake) — only a few words, but common</h3>
+<p>✦ also: το μέρος, το δάσος, το κράτος, το έθνος</p>
+<div class="tw"><table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td class="n">Nominative / Accusative</td><td class="n">το λάθ<strong>ος</strong></td><td class="n">τα λάθ<strong>η</strong></td></tr><tr><td class="n">Genitive</td><td class="n">του λάθ<strong>ους</strong></td><td class="n">των λαθ<strong>ών</strong></td></tr></tbody></table></div>
+<h2>Master ending grid (write from memory in 3 minutes)</h2>
+<div class="tw"><table><thead><tr><th></th><th class="m">M -ας</th><th class="m">M -ης</th><th class="m">M -ος</th><th class="f">F -α</th><th class="f">F -η</th><th class="f">F -εις</th><th class="n">N -ο</th><th class="n">N -ι</th><th class="n">N -μα</th></tr></thead><tbody><tr><td>Nominative singular</td><td class="m">-ας</td><td class="m">-ής</td><td class="m">-ος</td><td class="f">-α</td><td class="f">-η</td><td class="f">-η</td><td class="n">-ο</td><td class="n">-ί</td><td class="n">-μα</td></tr><tr><td>Accusative singular</td><td class="m">-α</td><td class="m">-ή</td><td class="m">-ο</td><td class="f">-α</td><td class="f">-η</td><td class="f">-η</td><td class="n">-ο</td><td class="n">-ί</td><td class="n">-μα</td></tr><tr><td>Genitive singular</td><td class="m">-α</td><td class="m">-ή</td><td class="m">-ου</td><td class="f">-ας</td><td class="f">-ης</td><td class="f">-ης</td><td class="n">-ου</td><td class="n">-ιού</td><td class="n">-ματος</td></tr><tr><td>Nominative plural</td><td class="m">-ες</td><td class="m">-ές</td><td class="m">-οι</td><td class="f">-ες</td><td class="f">-ες</td><td class="f">-εις</td><td class="n">-α</td><td class="n">-ιά</td><td class="n">-ματα</td></tr><tr><td>Accusative plural</td><td class="m">-ες</td><td class="m">-ές</td><td class="m">-ους</td><td class="f">-ες</td><td class="f">-ες</td><td class="f">-εις</td><td class="n">-α</td><td class="n">-ιά</td><td class="n">-ματα</td></tr><tr><td>Genitive plural</td><td class="m">-ών</td><td class="m">-ών</td><td class="m">-ων</td><td class="f">-ών</td><td class="f">-ών</td><td class="f">-εων</td><td class="n">-ων</td><td class="n">-ιών</td><td class="n">-μάτων</td></tr></tbody></table></div>
+<h2>Case usage in one table</h2>
+<div class="tw"><table><thead><tr><th>Case</th><th>Used for</th><th>Example</th></tr></thead><tbody><tr><td><strong>Nominative</strong></td><td>subject; after είμαι / γίνομαι</td><td><strong>Ο Γιάννης</strong> είναι <strong>γιατρός</strong>.</td></tr><tr><td><strong>Accusative</strong></td><td>direct object; after <strong>all</strong> prepositions</td><td>Βλέπω <strong>τον Γιάννη</strong>. Πάω <strong>στην Αθήνα</strong>.</td></tr><tr><td><strong>Genitive</strong></td><td>possession; indirect object (to whom)</td><td>Το σπίτι <strong>του Γιάννη</strong>. Δίνω <strong>της Μαρίας</strong> το βιβλίο.</td></tr><tr><td><strong>Vocative</strong></td><td>calling someone</td><td><strong>Γιάννη</strong>! <strong>Μαρία</strong>! <strong>Κύριε</strong>!</td></tr></tbody></table></div>
+<p>⚠ Greek has <strong>no dative</strong> — &quot;to / for someone&quot; is either the genitive or <strong>σε</strong> + accusative: Δίνω <strong>της Μαρίας</strong> το βιβλίο. = Δίνω το βιβλίο <strong>στη Μαρία</strong>.</p></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>
