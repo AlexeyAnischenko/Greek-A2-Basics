@@ -376,7 +376,9 @@ kbd{background:var(--head);border:1px solid var(--line);border-bottom-width:2px;
     closePopup();
     emit(ch);
     if (shift === 1) setShift(0);
-    longFired = false;      // the popup click never reaches the key handler
+    // longFired stays true on purpose: a click on the held key is still coming
+    // and must be swallowed, or the plain letter lands next to the accented one.
+    // It is cleared by that click, or failing that by the next pointerdown.
   }
   function openPopup(keyEl, list){
     closePopup();
