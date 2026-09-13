@@ -9,6 +9,7 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 |---|---|
 | 📖 **Online (all 20 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
 | 📄 **PDF (62 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
+| ⌨ **Greek keyboard** | https://alexeyanischenko.github.io/Greek-A2-Basics/keyboard.html |
 
 The online version has a light/dark theme switch and a contents sidebar. The PDF is always light,
 one sheet per page break, with repeating table headers.
@@ -44,3 +45,21 @@ Individual sheets are in [`pages/`](pages/).
 
 Gender-marked rows and columns are banded: **masculine = blue**, **feminine = purple**,
 **neuter = green**.
+
+## Building it yourself
+
+The HTML and PDF are generated from the markdown in this repo:
+
+```
+python build.py
+```
+
+| Source | |
+|---|---|
+| `index.md` | the page-1 sheet (contents + the four cases) |
+| `grammar/*.md` | the 19 topic sheets |
+| `build.py` | markdown → `index.html`, `pages/*.html`, `greek-a2.pdf` |
+
+Output is written in place at the repo root so GitHub Pages serves it straight from `main`.
+Only Python (stdlib) is needed; Chrome or Edge is used for the PDF step and is skipped if absent.
+`keyboard.html` is hand-written and not generated.
