@@ -1,0 +1,81 @@
+# row label	column	Greek	English
+# column 1..6 = nominative/accusative/genitive singular, then plural
+# consumed by build.py -> hover balloons on the master grid (HTML only)
+M1 · -ας	1	Ο άντρας διαβάζει εφημερίδα.	The man is reading a newspaper.
+M1 · -ας	2	Είδα τον άντρα στον δρόμο.	I saw the man in the street.
+M1 · -ας	3	Το αυτοκίνητο του άντρα είναι μαύρο.	The man's car is black.
+M1 · -ας	4	Οι άντρες περιμένουν έξω.	The men are waiting outside.
+M1 · -ας	5	Ρώτησα τους άντρες.	I asked the men.
+M1 · -ας	6	Τα παιδιά των αντρών παίζουν.	The men's children are playing.
+M2 · -ης	1	Ο μαθητής γράφει την άσκηση.	The pupil is writing the exercise.
+M2 · -ης	2	Η δασκάλα ρωτάει τον μαθητή.	The teacher asks the pupil.
+M2 · -ης	3	Το τετράδιο του μαθητή είναι εδώ.	The pupil's notebook is here.
+M2 · -ης	4	Οι μαθητές μπαίνουν στην τάξη.	The pupils are going into the classroom.
+M2 · -ης	5	Ο δάσκαλος βλέπει τους μαθητές.	The teacher sees the pupils.
+M2 · -ης	6	Οι βαθμοί των μαθητών ήταν καλοί.	The pupils' grades were good.
+M3 · -ος	1	Ο δρόμος είναι κλειστός σήμερα.	The street is closed today.
+M3 · -ος	2	Περνάω τον δρόμο προσεκτικά.	I cross the street carefully.
+M3 · -ος	3	Στο τέλος του δρόμου έχει φούρνο.	At the end of the street there's a bakery.
+M3 · -ος	4	Οι δρόμοι είναι γεμάτοι κόσμο.	The streets are full of people.
+M3 · -ος	5	Ξέρω καλά τους δρόμους της πόλης.	I know the city's streets well.
+M3 · -ος	6	Τα ονόματα των δρόμων άλλαξαν.	The names of the streets changed.
+M4 · -ές	1	Ο καφές είναι πολύ ζεστός.	The coffee is very hot.
+M4 · -ές	2	Θέλω τον καφέ μου σκέτο.	I want my coffee without sugar.
+M4 · -ές	3	Η τιμή του καφέ ανέβηκε.	The price of the coffee went up.
+M4 · -ές	4	Οι καφέδες ήρθαν γρήγορα.	The coffees came quickly.
+M4 · -ές	5	Πλήρωσα εγώ τους καφέδες.	I paid for the coffees.
+M4 · -ές	6	Η γεύση των καφέδων είναι διαφορετική.	The taste of the coffees is different.
+M4 · -ούς	1	Ο παππούς κοιμάται στην πολυθρόνα.	Grandad is asleep in the armchair.
+M4 · -ούς	2	Επισκέπτομαι τον παππού κάθε Κυριακή.	I visit my grandad every Sunday.
+M4 · -ούς	3	Το σπίτι του παππού είναι παλιό.	Grandad's house is old.
+M4 · -ούς	4	Οι παππούδες κάθονται στο πάρκο.	The grandfathers sit in the park.
+M4 · -ούς	5	Αγαπάω πολύ τους παππούδες μου.	I love my grandfathers very much.
+M4 · -ούς	6	Οι ιστορίες των παππούδων είναι ωραίες.	The grandfathers' stories are lovely.
+F1 · -α	1	Η ώρα είναι οχτώ και μισή.	The time is half past eight.
+F1 · -α	2	Ξέρεις την ώρα;	Do you know the time?
+F1 · -α	3	Η αλλαγή της ώρας είναι την Κυριακή.	The time change is on Sunday.
+F1 · -α	4	Οι ώρες περνούν αργά.	The hours go by slowly.
+F1 · -α	5	Μετράω τις ώρες μέχρι το Σάββατο.	I'm counting the hours until Saturday.
+F1 · -α	6	Ο αριθμός των ωρών είναι μεγάλος.	The number of hours is large.
+F2 · -η	1	Η νίκη ήταν εύκολη.	The victory was easy.
+F2 · -η	2	Γιορτάσαμε τη νίκη όλη νύχτα.	We celebrated the victory all night.
+F2 · -η	3	Η μέρα της νίκης είναι γιορτή.	Victory day is a holiday.
+F2 · -η	4	Οι νίκες τους ήταν πολλές.	Their victories were many.
+F2 · -η	5	Θυμάμαι τις νίκες μας.	I remember our victories.
+F2 · -η	6	Η σειρά των νικών σταμάτησε.	The run of victories came to an end.
+F3 · -η → -εις	1	Η πόλη είναι μεγάλη και θορυβώδης.	The city is big and noisy.
+F3 · -η → -εις	2	Ξέρω καλά την πόλη.	I know the city well.
+F3 · -η → -εις	3	Το κέντρο της πόλης είναι όμορφο.	The city centre is beautiful.
+F3 · -η → -εις	4	Οι πόλεις της Ελλάδας είναι μικρές.	The cities of Greece are small.
+F3 · -η → -εις	5	Επισκέφτηκα τις πόλεις της Κύπρου.	I visited the cities of Cyprus.
+F3 · -η → -εις	6	Τα ονόματα των πόλεων είναι αρχαία.	The names of the cities are ancient.
+F4 · -ού	1	Η αλεπού τρέχει στο δάσος.	The fox runs in the forest.
+F4 · -ού	2	Είδαμε την αλεπού το βράδυ.	We saw the fox in the evening.
+F4 · -ού	3	Η ουρά της αλεπούς είναι μεγάλη.	The fox's tail is long.
+F4 · -ού	4	Οι αλεπούδες βγαίνουν τη νύχτα.	Foxes come out at night.
+F4 · -ού	5	Φωτογράφισα τις αλεπούδες.	I photographed the foxes.
+F4 · -ού	6	Οι φωλιές των αλεπούδων είναι κρυμμένες.	The foxes' dens are hidden.
+N1 · -ο	1	Το βιβλίο είναι πάνω στο τραπέζι.	The book is on the table.
+N1 · -ο	2	Διαβάζω το βιβλίο κάθε βράδυ.	I read the book every evening.
+N1 · -ο	3	Ο τίτλος του βιβλίου είναι ελληνικός.	The title of the book is Greek.
+N1 · -ο	4	Τα βιβλία είναι ακριβά φέτος.	The books are expensive this year.
+N1 · -ο	5	Αγόρασα τα βιβλία χθές.	I bought the books yesterday.
+N1 · -ο	6	Οι σελίδες των βιβλίων είναι κίτρινες.	The pages of the books are yellow.
+N2 · -ι	1	Το παιδί παίζει στην αυλή.	The child is playing in the yard.
+N2 · -ι	2	Φωνάζω το παιδί για φαγητό.	I call the child for dinner.
+N2 · -ι	3	Τα παιχνίδια του παιδιού είναι εδώ.	The child's toys are here.
+N2 · -ι	4	Τα παιδιά τρέχουν στο πάρκο.	The children are running in the park.
+N2 · -ι	5	Πήρα τα παιδιά από το σχολείο.	I picked the children up from school.
+N2 · -ι	6	Η μητέρα των παιδιών δουλεύει.	The children's mother works.
+N3 · -μα	1	Το μάθημα αρχίζει στις εννιά.	The lesson starts at nine.
+N3 · -μα	2	Έχασα το μάθημα χθές.	I missed the lesson yesterday.
+N3 · -μα	3	Το θέμα του μαθήματος ήταν δύσκολο.	The topic of the lesson was hard.
+N3 · -μα	4	Τα μαθήματα τελειώνουν στις δύο.	The lessons finish at two.
+N3 · -μα	5	Ετοιμάζω τα μαθήματά μου.	I'm preparing my lessons.
+N3 · -μα	6	Το πρόγραμμα των μαθημάτων άλλαξε.	The timetable of the lessons changed.
+N4 · -ος	1	Το λάθος ήταν δικό μου.	The mistake was mine.
+N4 · -ος	2	Βρήκα το λάθος αμέσως.	I found the mistake at once.
+N4 · -ος	3	Η αιτία του λάθους ήταν η βιασύνη.	The cause of the mistake was haste.
+N4 · -ος	4	Τα λάθη είναι φυσιολογικά.	Mistakes are normal.
+N4 · -ος	5	Διόρθωσα όλα τα λάθη μου.	I corrected all my mistakes.
+N4 · -ος	6	Ο αριθμός των λαθών μειώθηκε.	The number of mistakes went down.

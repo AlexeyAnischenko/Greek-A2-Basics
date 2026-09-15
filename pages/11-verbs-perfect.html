@@ -145,6 +145,32 @@ header.top p{color:var(--muted); margin:0}
   td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
   tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
 }
+/* ---- example balloons on the master grid -------------------------------- */
+/* a cell with an example gets a small corner dot; the balloon itself is one
+   element reused for every cell, positioned by script. */
+td.hasex{position:relative;cursor:help}
+td.hasex::after{
+  content:"";position:absolute;top:4px;right:4px;width:5px;height:5px;
+  border-radius:50%;background:currentColor;opacity:.32;
+}
+td.hasex:hover::after{opacity:.75}
+.extip{
+  position:absolute;z-index:80;max-width:300px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:9px;background:var(--head);
+  color:var(--fg);box-shadow:0 8px 22px rgba(0,0,0,.28);
+  font-size:13.5px;line-height:1.45;pointer-events:none;
+}
+.extip .el{font-weight:600}
+.extip .en{margin-top:3px;color:var(--muted);font-size:12.5px}
+.extip::after{
+  content:"";position:absolute;left:50%;margin-left:-6px;bottom:-6px;
+  width:11px;height:11px;background:var(--head);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  transform:rotate(45deg);
+}
+.extip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
+/* paper has no hover: drop the marker so the grid prints clean */
+@media print{ td.hasex::after{display:none} .extip{display:none} }
 </style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>11 · Perfect Tense (Παρακείμενος)</h1>
 <h2>1. The invariable form — it never changes</h2>
 <p>Take the dependent (να-) stem from page 12 and add <strong>-ει</strong>.</p>
@@ -162,4 +188,4 @@ header.top p{color:var(--muted); margin:0}
 <h2>4. Negation &amp; pronoun placement</h2>
 <div class="tw"><table><thead><tr><th>Pattern</th><th>Example</th></tr></thead><tbody><tr><td><strong>δεν</strong> + έχω + invariable</td><td><strong>Δεν</strong> έχω φάει.</td></tr><tr><td>pronoun between δεν and έχω</td><td><strong>Δεν το</strong> έχω δει.</td></tr><tr><td>pronoun before έχω</td><td><strong>Του το</strong> έχω πει.</td></tr></tbody></table></div>
 <h2>5. A2 drill</h2>
-<div class="tw"><table><thead><tr><th>Say in Greek</th><th>Answer</th></tr></thead><tbody><tr><td>I have written</td><td>έχω γράψει</td></tr><tr><td>Have you eaten?</td><td>Έχεις φάει;</td></tr><tr><td>I haven&#x27;t seen him</td><td>Δεν τον έχω δει</td></tr><tr><td>Have you ever been to Greece?</td><td>Έχεις πάει ποτέ στην Ελλάδα;</td></tr><tr><td>We have decided</td><td>Έχουμε αποφασίσει</td></tr><tr><td>I&#x27;ve lived here 5 years</td><td>Μένω εδώ 5 χρόνια ⚠ present</td></tr><tr><td>Yesterday I went to the cinema</td><td>Χθες πήγα στο σινεμά ⚠ aorist</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>
+<div class="tw"><table><thead><tr><th>Say in Greek</th><th>Answer</th></tr></thead><tbody><tr><td>I have written</td><td>έχω γράψει</td></tr><tr><td>Have you eaten?</td><td>Έχεις φάει;</td></tr><tr><td>I haven&#x27;t seen him</td><td>Δεν τον έχω δει</td></tr><tr><td>Have you ever been to Greece?</td><td>Έχεις πάει ποτέ στην Ελλάδα;</td></tr><tr><td>We have decided</td><td>Έχουμε αποφασίσει</td></tr><tr><td>I&#x27;ve lived here 5 years</td><td>Μένω εδώ 5 χρόνια ⚠ present</td></tr><tr><td>Yesterday I went to the cinema</td><td>Χθες πήγα στο σινεμά ⚠ aorist</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script><script>(function(){var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;var tip=document.createElement("div");tip.className="extip";tip.hidden=true;document.body.appendChild(tip);function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}var el=mk("el"),en=mk("en"),timer=null,cur=null;function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}function show(td){cur=td;el.textContent=td.getAttribute("data-el")||"";en.textContent=td.getAttribute("data-en")||"";tip.hidden=false;tip.classList.remove("below");var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;var vw=document.documentElement.clientWidth;var left=window.pageXOffset+r.left+r.width/2-w/2;left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));var top=window.pageYOffset+r.top-h-10;if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}tip.style.left=left+"px";tip.style.top=top+"px";}function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}document.addEventListener("mouseover",function(e){var td=near(e);if(!td||td===cur)return;if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});document.addEventListener("mouseout",function(e){if(near(e))hide();});document.addEventListener("click",function(e){var td=near(e);if(!td){hide();return;}if(cur===td){hide();return;}if(timer)clearTimeout(timer);show(td);});window.addEventListener("scroll",hide,true);window.addEventListener("resize",hide);window.addEventListener("blur",hide);document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});})();</script></body></html>

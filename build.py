@@ -89,6 +89,30 @@ def gender_of(t):
     if re.search(r'\bN$', t): return 'n'
     return None
 
+# ---------------------------------------------------------------- examples
+# grammar/data/examples.tsv carries one example sentence per grid cell, keyed by
+# the row's label and the 1-based column index. Cells that match get a hover
+# balloon in the HTML. The file is optional: without it the tables render plain.
+def load_examples():
+    path = os.path.join(BASE, 'grammar', 'data', 'examples.tsv')
+    out = {}
+    if not os.path.isfile(path):
+        return out
+    for raw in io.open(path, encoding='utf-8'):
+        line = raw.rstrip()
+        if not line.strip() or line.lstrip().startswith('#'):
+            continue
+        parts = line.split('	')
+        if len(parts) < 4:
+            continue
+        label, col, el, en = parts[0].strip(), parts[1].strip(), parts[2].strip(), parts[3].strip()
+        if not col.isdigit():
+            continue
+        out[(label, int(col))] = (el, en)
+    return out
+
+EXAMPLES = load_examples()
+
 # ---------------------------------------------------------------- blocks
 SEP = re.compile(r'^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$')
 
@@ -129,10 +153,17 @@ def render_table(header, rows, last_gender):
         else:
             g_for = lambda ci: None
         out.append('<tr>')
+        label = plain(r[0]).split(' — ')[0].strip()
         for ci, c in enumerate(r):
             g = g_for(ci)
-            cls = ' class="%s"' % g if g else ''
-            out.append('<td%s>%s</td>' % (cls, inline(c)))
+            ex = EXAMPLES.get((label, ci))
+            classes = ([g] if g else []) + (['hasex'] if ex else [])
+            cls = ' class="%s"' % ' '.join(classes) if classes else ''
+            extra = ''
+            if ex:
+                extra = ' data-el="%s" data-en="%s"' % (
+                    html.escape(ex[0], True), html.escape(ex[1], True))
+            out.append('<td%s%s>%s</td>' % (cls, extra, inline(c)))
         out.append('</tr>')
     out.append('</tbody></table></div>')
     return ''.join(out)
@@ -354,6 +385,32 @@ header.top p{color:var(--muted); margin:0}
   td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
   tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
 }
+/* ---- example balloons on the master grid -------------------------------- */
+/* a cell with an example gets a small corner dot; the balloon itself is one
+   element reused for every cell, positioned by script. */
+td.hasex{position:relative;cursor:help}
+td.hasex::after{
+  content:"";position:absolute;top:4px;right:4px;width:5px;height:5px;
+  border-radius:50%;background:currentColor;opacity:.32;
+}
+td.hasex:hover::after{opacity:.75}
+.extip{
+  position:absolute;z-index:80;max-width:300px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:9px;background:var(--head);
+  color:var(--fg);box-shadow:0 8px 22px rgba(0,0,0,.28);
+  font-size:13.5px;line-height:1.45;pointer-events:none;
+}
+.extip .el{font-weight:600}
+.extip .en{margin-top:3px;color:var(--muted);font-size:12.5px}
+.extip::after{
+  content:"";position:absolute;left:50%;margin-left:-6px;bottom:-6px;
+  width:11px;height:11px;background:var(--head);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  transform:rotate(45deg);
+}
+.extip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
+/* paper has no hover: drop the marker so the grid prints clean */
+@media print{ td.hasex::after{display:none} .extip{display:none} }
 """
 
 # ------------------------------------------------------- theme switch pieces
@@ -390,6 +447,46 @@ THEME_JS = (
     '})();</script>'
 )
 
+
+# ----------------------------------------------------- example balloons
+# One reused balloon element. Hover (after a short delay) on the desktop,
+# tap to toggle on touch, and it never lingers over something it no longer
+# describes: scroll, resize, blur and Escape all dismiss it.
+EX_JS = (
+    '<script>(function(){'
+    'var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;'
+    'var tip=document.createElement("div");tip.className="extip";tip.hidden=true;'
+    'document.body.appendChild(tip);'
+    'function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}'
+    'var el=mk("el"),en=mk("en"),timer=null,cur=null;'
+    'function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}'
+    'function show(td){'
+    'cur=td;el.textContent=td.getAttribute("data-el")||"";'
+    'en.textContent=td.getAttribute("data-en")||"";'
+    'tip.hidden=false;tip.classList.remove("below");'
+    'var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;'
+    'var vw=document.documentElement.clientWidth;'
+    'var left=window.pageXOffset+r.left+r.width/2-w/2;'
+    'left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));'
+    'var top=window.pageYOffset+r.top-h-10;'
+    'if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}'
+    'tip.style.left=left+"px";tip.style.top=top+"px";}'
+    'function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}'
+    'document.addEventListener("mouseover",function(e){'
+    'var td=near(e);if(!td||td===cur)return;'
+    'if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});'
+    'document.addEventListener("mouseout",function(e){if(near(e))hide();});'
+    'document.addEventListener("click",function(e){'
+    'var td=near(e);'
+    'if(!td){hide();return;}'
+    'if(cur===td){hide();return;}'
+    'if(timer)clearTimeout(timer);show(td);});'
+    'window.addEventListener("scroll",hide,true);'
+    'window.addEventListener("resize",hide);'
+    'window.addEventListener("blur",hide);'
+    'document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});'
+    '})();</script>'
+)
 
 def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
@@ -431,7 +528,8 @@ def main():
            '<p>%d sheets · A2 scope · cover the right column and recite</p>%s</header>'
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
-           % (CSS, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body, THEME_JS))
+           % (CSS, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
+              THEME_JS + EX_JS))
 
     out_html = os.path.join(DIST, 'index.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
@@ -443,7 +541,7 @@ def main():
                 '<title>%s</title><style>%s</style>%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
                 '%s</body></html>' % (html.escape(s['title']), CSS, THEME_HEAD,
-                                      THEME_BTN, s['body'], THEME_JS))
+                                      THEME_BTN, s['body'], THEME_JS + EX_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
             stem = 'index-sheet'      # avoid creating pages/index.html
