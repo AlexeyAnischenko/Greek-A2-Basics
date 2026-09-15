@@ -1,0 +1,177 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>07 · Pronouns (Αντωνυμίες)</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>07 · Pronouns (Αντωνυμίες)</h1>
+<h2>1. Personal pronouns — master grid</h2>
+<div class="tw"><table><thead><tr><th>Person</th><th><strong>Nominative</strong> (subject)</th><th><strong>Accusative strong</strong> (emphatic / after preposition)</th><th><strong>Accusative weak</strong> (before verb)</th><th><strong>Genitive weak</strong> (= possessive)</th></tr></thead><tbody><tr><td>1st singular</td><td>εγώ</td><td>εμένα</td><td><strong>με</strong></td><td><strong>μου</strong></td></tr><tr><td>2nd singular</td><td>εσύ</td><td>εσένα</td><td><strong>σε</strong></td><td><strong>σου</strong></td></tr><tr><td class="m">3rd singular Masculine</td><td class="m">αυτός</td><td class="m">αυτόν</td><td class="m"><strong>τον</strong></td><td class="m"><strong>του</strong></td></tr><tr><td class="f">3rd singular Feminine</td><td class="f">αυτή</td><td class="f">αυτήν</td><td class="f"><strong>την</strong></td><td class="f"><strong>της</strong></td></tr><tr><td class="n">3rd singular Neuter</td><td class="n">αυτό</td><td class="n">αυτό</td><td class="n"><strong>το</strong></td><td class="n"><strong>του</strong></td></tr><tr><td>1st plural</td><td>εμείς</td><td>εμάς</td><td><strong>μας</strong></td><td><strong>μας</strong></td></tr><tr><td>2nd plural</td><td>εσείς</td><td>εσάς</td><td><strong>σας</strong></td><td><strong>σας</strong></td></tr><tr><td class="m">3rd plural Masculine</td><td class="m">αυτοί</td><td class="m">αυτούς</td><td class="m"><strong>τους</strong></td><td class="m"><strong>τους</strong></td></tr><tr><td class="f">3rd plural Feminine</td><td class="f">αυτές</td><td class="f">αυτές</td><td class="f"><strong>τις</strong></td><td class="f"><strong>τους</strong></td></tr><tr><td class="n">3rd plural Neuter</td><td class="n">αυτά</td><td class="n">αυτά</td><td class="n"><strong>τα</strong></td><td class="n"><strong>τους</strong></td></tr></tbody></table></div>
+<p><strong>Subject pronouns are normally omitted</strong> — the verb ending already shows the person. Use them only for emphasis or contrast: Εγώ πάω, εσύ μένεις.</p>
+<h2>2. Weak pronoun placement — the number one A2 error</h2>
+<div class="tw"><table><thead><tr><th>Situation</th><th>Position</th><th>Example</th></tr></thead><tbody><tr><td>Normal verb</td><td><strong>before</strong> the verb</td><td><strong>Τον</strong> βλέπω. — I see him.</td></tr><tr><td>With θα / να / δεν / μη</td><td>after the particle, before the verb</td><td>Θα <strong>σε</strong> δω. Δεν <strong>το</strong> ξέρω. Να <strong>μου</strong> πεις.</td></tr><tr><td><strong>Imperative (positive)</strong></td><td><strong>after</strong> the verb ⚠</td><td>Δώσε <strong>μου</strong> το! Πες <strong>μου</strong>!</td></tr><tr><td>Imperative (negative)</td><td>before (normal)</td><td>Μη <strong>μου</strong> το δίνεις!</td></tr><tr><td>Two objects</td><td><strong>genitive then accusative</strong></td><td><strong>Μου το</strong> έδωσε. — He gave it to me.</td></tr></tbody></table></div>
+<p><strong>Order when two weak pronouns meet: μου το, σου το, του το, μας τα, σας τις</strong> — genitive first.</p>
+<h2>3. Possessive — the weak genitive, placed AFTER the noun</h2>
+<div class="tw"><table><thead><tr><th>English</th><th>Greek</th></tr></thead><tbody><tr><td>my house</td><td>το σπίτι <strong>μου</strong></td></tr><tr><td>your book</td><td>το βιβλίο <strong>σου</strong></td></tr><tr><td>his / her / its car</td><td>το αυτοκίνητο <strong>του</strong> / <strong>της</strong> / <strong>του</strong></td></tr><tr><td>our friends</td><td>οι φίλοι <strong>μας</strong></td></tr><tr><td>your (plural) children</td><td>τα παιδιά <strong>σας</strong></td></tr><tr><td>their mother</td><td>η μητέρα <strong>τους</strong></td></tr></tbody></table></div>
+<p>⚠ The article stays: <strong>το</strong> σπίτι μου (not <s>σπίτι μου</s>). ⚠ With an adjective: <strong>το μεγάλο σπίτι μου</strong>.</p>
+<h3>Emphatic possessive — δικός μου</h3>
+<div class="tw"><table><thead><tr><th></th><th class="m">Masculine</th><th class="f">Feminine</th><th class="n">Neuter</th></tr></thead><tbody><tr><td>Singular</td><td class="m">ο δικός μου</td><td class="f">η δική μου</td><td class="n">το δικό μου</td></tr><tr><td>Plural</td><td class="m">οι δικοί μου</td><td class="f">οι δικές μου</td><td class="n">τα δικά μου</td></tr></tbody></table></div>
+<p>Αυτό είναι <strong>δικό μου</strong>. = This is mine. · Το <strong>δικό μου</strong> σπίτι = MY house.</p>
+<h2>4. Demonstratives — αυτός / εκείνος</h2>
+<div class="tw"><table><thead><tr><th></th><th>this (near)</th><th>that (far)</th></tr></thead><tbody><tr><td class="m">Masculine singular</td><td class="m">αυτ<strong>ός</strong></td><td class="m">εκείν<strong>ος</strong></td></tr><tr><td class="f">Feminine singular</td><td class="f">αυτ<strong>ή</strong></td><td class="f">εκείν<strong>η</strong></td></tr><tr><td class="n">Neuter singular</td><td class="n">αυτ<strong>ό</strong></td><td class="n">εκείν<strong>ο</strong></td></tr><tr><td class="m">Masculine plural</td><td class="m">αυτ<strong>οί</strong></td><td class="m">εκείν<strong>οι</strong></td></tr><tr><td class="f">Feminine plural</td><td class="f">αυτ<strong>ές</strong></td><td class="f">εκείν<strong>ες</strong></td></tr><tr><td class="n">Neuter plural</td><td class="n">αυτ<strong>ά</strong></td><td class="n">εκείν<strong>α</strong></td></tr></tbody></table></div>
+<p>⚠ <strong>Double article rule:</strong> when a demonstrative modifies a noun, the noun <strong>keeps its article</strong>: <strong>αυτό το</strong> βιβλίο (this book) · <strong>εκείνη η</strong> γυναίκα (that woman) · <strong>αυτά τα</strong> παιδιά</p>
+<p>Same for <strong>όλος</strong>: <strong>όλο το</strong> σπίτι (the whole house), <strong>όλοι οι</strong> άνθρωποι (all the people).</p>
+<p>Neuter αυτό / εκείνο on its own = &quot;this / that thing&quot;: Τι είναι <strong>αυτό</strong>;</p>
+<h2>5. Interrogatives (question words)</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th>Declines?</th></tr></thead><tbody><tr><td><strong>ποιος / ποια / ποιο</strong></td><td>who? which?</td><td>✔ → ποιον, ποιας, ποιους…</td></tr><tr><td><strong>τι</strong></td><td>what?</td><td>✘</td></tr><tr><td><strong>πού</strong></td><td>where?</td><td>✘</td></tr><tr><td><strong>πότε</strong></td><td>when?</td><td>✘</td></tr><tr><td><strong>πώς</strong></td><td>how?</td><td>✘</td></tr><tr><td><strong>γιατί</strong></td><td>why?</td><td>✘</td></tr><tr><td><strong>πόσος / πόση / πόσο</strong></td><td>how much?</td><td>✔</td></tr><tr><td><strong>πόσοι / πόσες / πόσα</strong></td><td>how many?</td><td>✔</td></tr><tr><td><strong>τίνος</strong></td><td>whose?</td><td>✘</td></tr></tbody></table></div>
+<p>Ποιον βλέπεις; (whom) · Τίνος είναι αυτό; (whose is this)</p>
+<h2>6. Relative pronoun — at A2 you need only που</h2>
+<p><strong>που</strong> is invariable and covers &quot;who, whom, which, that&quot;.</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>Ο άντρας <strong>που</strong> ήρθε.</td><td>The man who came.</td></tr><tr><td>Το βιβλίο <strong>που</strong> διάβασα.</td><td>The book that I read.</td></tr><tr><td>Η κοπέλα <strong>που</strong> γνώρισα.</td><td>The girl I met.</td></tr><tr><td>Χάρηκα <strong>που</strong> σε είδα.</td><td>I was glad to see you.</td></tr></tbody></table></div>
+<p>⚠ <strong>που</strong> (relative, no accent) vs <strong>πού</strong> (where?, with accent).</p>
+<h2>7. Indefinite pronouns (A2 set)</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th>Notes</th></tr></thead><tbody><tr><td><strong>κάποιος / κάποια / κάποιο</strong></td><td>someone, some</td><td>declines</td></tr><tr><td><strong>κάτι</strong></td><td>something</td><td>invariable</td></tr><tr><td><strong>κανένας / καμία / κανένα</strong></td><td>nobody / anybody</td><td>needs <strong>δεν</strong>: Δεν είδα <strong>κανέναν</strong>.</td></tr><tr><td><strong>τίποτα</strong></td><td>nothing / anything</td><td>Δεν θέλω <strong>τίποτα</strong>.</td></tr><tr><td><strong>όλος / όλη / όλο</strong></td><td>all, whole</td><td>+ article: όλο <strong>το</strong> σπίτι</td></tr><tr><td><strong>κάθε</strong></td><td>every</td><td>invariable: <strong>κάθε</strong> μέρα</td></tr><tr><td><strong>άλλος / άλλη / άλλο</strong></td><td>other, another</td><td></td></tr><tr><td><strong>μερικοί / μερικές / μερικά</strong></td><td>some (plural)</td><td></td></tr><tr><td><strong>ο ίδιος / η ίδια / το ίδιο</strong></td><td>the same</td><td></td></tr><tr><td><strong>μόνος μου / μόνη μου</strong></td><td>by myself, alone</td><td></td></tr></tbody></table></div>
+<p>⚠ Greek uses <strong>double negation</strong>: Δεν ξέρω <strong>τίποτα</strong>. Δεν ήρθε <strong>κανένας</strong>. Δεν πάω <strong>πουθενά</strong>. Δεν το κάνω <strong>ποτέ</strong>.</p>
+<h2>8. Drill</h2>
+<div class="tw"><table><thead><tr><th>Say in Greek</th><th>Answer</th></tr></thead><tbody><tr><td>I see him</td><td>Τον βλέπω</td></tr><tr><td>I&#x27;ll see you</td><td>Θα σε δω</td></tr><tr><td>Give me the book!</td><td>Δώσε μου το βιβλίο!</td></tr><tr><td>He gave it to me</td><td>Μου το έδωσε</td></tr><tr><td>my sister</td><td>η αδερφή μου</td></tr><tr><td>this book</td><td>αυτό το βιβλίο</td></tr><tr><td>that woman</td><td>εκείνη η γυναίκα</td></tr><tr><td>all the children</td><td>όλα τα παιδιά</td></tr><tr><td>Whose is it?</td><td>Τίνος είναι;</td></tr><tr><td>I don&#x27;t know anything</td><td>Δεν ξέρω τίποτα</td></tr><tr><td>the man that came</td><td>ο άντρας που ήρθε</td></tr><tr><td>It&#x27;s mine</td><td>Είναι δικό μου</td></tr><tr><td>every day</td><td>κάθε μέρα</td></tr><tr><td>nobody came</td><td>δεν ήρθε κανένας</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

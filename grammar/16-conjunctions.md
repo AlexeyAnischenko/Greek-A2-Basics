@@ -1,4 +1,4 @@
-# 15 · Conjunctions & Connectors (Σύνδεσμοι)
+# 16 · Conjunctions & Connectors (Σύνδεσμοι)
 
 ## 1. A2 core — joining two equal parts
 
@@ -27,7 +27,7 @@
 | **που** | that / which | Ο άντρας **που** ήρθε. Χάρηκα **που** σε είδα. |
 | **όπως** | as / the way | Κάνε **όπως** θέλεις. |
 
-### With να (subjunctive — see page 11)
+### With να (subjunctive — see page 12)
 
 | Greek | English | Example |
 |---|---|---|

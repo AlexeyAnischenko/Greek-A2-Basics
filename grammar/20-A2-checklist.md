@@ -1,11 +1,11 @@
-# 19 · A2 Self-Test Checklist
+# 20 · A2 Self-Test Checklist
 
 Mark each row: **✓** cold recall · **~** with hesitation · **✗** not yet.
 Re-test weekly. Anything not ✓ twice in a row goes back to daily drilling.
 
 Everything below is A2 scope.
 
-## Articles & nouns (pages 3–5)
+## Articles & nouns (pages 3–6)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -21,7 +21,7 @@ Everything below is A2 scope.
 | 10 | use the genitive for possession | |
 | 11 | use σε + accusative for "to someone" | |
 
-## Adjectives & comparison (pages 6–7)
+## Adjectives & comparison (pages 7–8)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -35,7 +35,7 @@ Everything below is A2 scope.
 | 19 | build adverbs (-ος → -α) and know καλός vs καλά | |
 | 20 | use τόσο… όσο | |
 
-## Pronouns (page 8)
+## Pronouns (page 9)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -50,7 +50,7 @@ Everything below is A2 scope.
 | 29 | do double negation: δεν… τίποτα / κανένας / πουθενά / ποτέ | |
 | 30 | use κάποιος, κάτι, κάθε, άλλος, μερικοί | |
 
-## Verbs — present (page 9)
+## Verbs — present (page 10)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -60,7 +60,7 @@ Everything below is A2 scope.
 | 34 | use the present for "I have lived here five years" | |
 | 35 | use the common passive-only verbs (έρχομαι, κάθομαι, θυμάμαι, φοβάμαι) | |
 
-## Verbs — past (pages 10, 15)
+## Verbs — past (pages 11, 16)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -73,7 +73,7 @@ Everything below is A2 scope.
 | 42 | form the passive aorist (-θηκα) | |
 | 43 | give the aorist of the 20 Tier-1 irregulars | |
 
-## Verbs — future, subjunctive, perfect (pages 11–12)
+## Verbs — future, subjunctive, perfect (pages 12–13)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -89,7 +89,7 @@ Everything below is A2 scope.
 | 53 | form the perfect: έχω + γράψει | |
 | 54 | know when Greek prefers the aorist over the perfect | |
 
-## Imperative & -μένος adjectives (pages 13–14)
+## Imperative & -μένος adjectives (pages 14–15)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -100,7 +100,7 @@ Everything below is A2 scope.
 | 59 | use the common -μένος words (κουρασμένος, παντρεμένος, κλειστός) | |
 | 60 | contrast κουράστηκα with είμαι κουρασμένος | |
 
-## Function words (pages 16–17, 19)
+## Function words (pages 17–18, 20)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -115,7 +115,7 @@ Everything below is A2 scope.
 | 69 | ask yes/no questions with intonation only | |
 | 70 | use the question words with correct accents | |
 
-## Numbers, time, dates (page 18)
+## Numbers, time, dates (page 19)
 
 | # | Can I… | ✓ |
 |---|---|---|
@@ -151,8 +151,8 @@ Everything below is A2 scope.
 | Week | Daily drill | Add |
 |---|---|---|
 | 1 | Articles, nouns (pages 3–4) | Alphabet review (page 2) |
-| 2 | Plurals, adjectives (pages 5–6) | keep pages 3–4 warm |
-| 3 | Present tense, both voices (page 9) | Comparison (page 7) |
-| 4 | Past tenses + Tier 1 irregulars (pages 10, 15) | Pronouns (page 8) |
-| 5 | Future & subjunctive (page 11) | Perfect, imperative (pages 12–13) |
-| 6 | Prepositions, conjunctions (pages 16–17) | Numbers (page 18); full checklist |
+| 2 | Plurals, adjectives (pages 6–7) | keep pages 3–4 warm |
+| 3 | Present tense, both voices (page 10) | Comparison (page 8) |
+| 4 | Past tenses + Tier 1 irregulars (pages 11, 16) | Pronouns (page 9) |
+| 5 | Future & subjunctive (page 12) | Perfect, imperative (pages 13–14) |
+| 6 | Prepositions, conjunctions (pages 17–18) | Numbers (page 19); full checklist |

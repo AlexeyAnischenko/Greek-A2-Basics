@@ -1,0 +1,172 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>20 · A2 Self-Test Checklist</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>20 · A2 Self-Test Checklist</h1>
+<p>Mark each row: <strong>✓</strong> cold recall · <strong>~</strong> with hesitation · <strong>✗</strong> not yet. Re-test weekly. Anything not ✓ twice in a row goes back to daily drilling.</p>
+<p>Everything below is A2 scope.</p>
+<h2>Articles &amp; nouns (pages 3–6)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>1</td><td>write the full definite-article grid from memory</td><td></td></tr><tr><td>2</td><td>decline ένας / μία / ένα in three cases</td><td></td></tr><tr><td>3</td><td>say when την becomes τη</td><td></td></tr><tr><td>4</td><td>decline ο άντρας, ο μαθητής, ο δρόμος</td><td></td></tr><tr><td>5</td><td>decline η ώρα, η νίκη, η πόλη</td><td></td></tr><tr><td>6</td><td>decline το βιβλίο, το παιδί, το μάθημα</td><td></td></tr><tr><td>7</td><td>predict the plural of a noun from its ending</td><td></td></tr><tr><td>8</td><td>spot -ση / -ξη / -ψη → -σεις / -ξεις / -ψεις</td><td></td></tr><tr><td>9</td><td>move the stress correctly in ανθρώπου / μαθημάτων</td><td></td></tr><tr><td>10</td><td>use the genitive for possession</td><td></td></tr><tr><td>11</td><td>use σε + accusative for &quot;to someone&quot;</td><td></td></tr></tbody></table></div>
+<h2>Adjectives &amp; comparison (pages 7–8)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>12</td><td>decline καλός in all forms</td><td></td></tr><tr><td>13</td><td>use the -ος / -α / -ο type (ωραίος, νέος)</td><td></td></tr><tr><td>14</td><td>decline πολύς / πολλή / πολύ</td><td></td></tr><tr><td>15</td><td>form comparatives with <strong>πιο</strong></td><td></td></tr><tr><td>16</td><td>recite καλός→καλύτερος, κακός→χειρότερος, μεγάλος→μεγαλύτερος, μικρός→μικρότερος</td><td></td></tr><tr><td>17</td><td>form the superlative with <strong>ο πιο</strong></td><td></td></tr><tr><td>18</td><td>use <strong>από</strong> for &quot;than&quot;</td><td></td></tr><tr><td>19</td><td>build adverbs (-ος → -α) and know καλός vs καλά</td><td></td></tr><tr><td>20</td><td>use τόσο… όσο</td><td></td></tr></tbody></table></div>
+<h2>Pronouns (page 9)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>21</td><td>recite the weak accusative set: με σε τον την το μας σας τους τις τα</td><td></td></tr><tr><td>22</td><td>recite the weak genitive set: μου σου του της μας σας τους</td><td></td></tr><tr><td>23</td><td>place weak pronouns before the verb, and after a positive imperative</td><td></td></tr><tr><td>24</td><td>order two pronouns correctly (μου το)</td><td></td></tr><tr><td>25</td><td>use possessives with the article kept (το σπίτι μου)</td><td></td></tr><tr><td>26</td><td>use δικός μου for emphasis</td><td></td></tr><tr><td>27</td><td>use the double article: αυτό το βιβλίο, όλα τα παιδιά</td><td></td></tr><tr><td>28</td><td>use <strong>που</strong> as the all-purpose relative</td><td></td></tr><tr><td>29</td><td>do double negation: δεν… τίποτα / κανένας / πουθενά / ποτέ</td><td></td></tr><tr><td>30</td><td>use κάποιος, κάτι, κάθε, άλλος, μερικοί</td><td></td></tr></tbody></table></div>
+<h2>Verbs — present (page 10)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>31</td><td>conjugate γράφω, αγαπάω, μπορώ in all six persons</td><td></td></tr><tr><td>32</td><td>conjugate είμαι and έχω</td><td></td></tr><tr><td>33</td><td>conjugate the passive: πλένομαι, κοιμάμαι, έρχομαι</td><td></td></tr><tr><td>34</td><td>use the present for &quot;I have lived here five years&quot;</td><td></td></tr><tr><td>35</td><td>use the common passive-only verbs (έρχομαι, κάθομαι, θυμάμαι, φοβάμαι)</td><td></td></tr></tbody></table></div>
+<h2>Verbs — past (pages 11, 16)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>36</td><td>explain the έ- augment rule</td><td></td></tr><tr><td>37</td><td>recite the aorist endings -α -ες -ε -αμε -ατε -αν</td><td></td></tr><tr><td>38</td><td>predict the aorist stem from the present (ψ / ξ / σ table)</td><td></td></tr><tr><td>39</td><td>form the imperfect for all three groups (-ούσα for B)</td><td></td></tr><tr><td>40</td><td>conjugate ήμουν and είχα</td><td></td></tr><tr><td>41</td><td>choose aorist vs imperfect correctly in a short story</td><td></td></tr><tr><td>42</td><td>form the passive aorist (-θηκα)</td><td></td></tr><tr><td>43</td><td>give the aorist of the 20 Tier-1 irregulars</td><td></td></tr></tbody></table></div>
+<h2>Verbs — future, subjunctive, perfect (pages 12–13)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>44</td><td>build the dependent (να-) form from the aorist</td><td></td></tr><tr><td>45</td><td>distinguish θα γράψω from θα γράφω</td><td></td></tr><tr><td>46</td><td>replace the English infinitive with να + verb</td><td></td></tr><tr><td>47</td><td>use πρέπει να / μπορώ να / θέλω να</td><td></td></tr><tr><td>48</td><td>choose present vs dependent after να by aspect</td><td></td></tr><tr><td>49</td><td>build the passive dependent (-θώ, -θείς, -θεί…)</td><td></td></tr><tr><td>50</td><td>use ας for &quot;let&#x27;s&quot;</td><td></td></tr><tr><td>51</td><td>build a real conditional: Αν έχω χρόνο, θα έρθω</td><td></td></tr><tr><td>52</td><td>use θα ήθελα / θα μπορούσες for politeness</td><td></td></tr><tr><td>53</td><td>form the perfect: έχω + γράψει</td><td></td></tr><tr><td>54</td><td>know when Greek prefers the aorist over the perfect</td><td></td></tr></tbody></table></div>
+<h2>Imperative &amp; -μένος adjectives (pages 14–15)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>55</td><td>give the imperative, 2nd singular and plural</td><td></td></tr><tr><td>56</td><td>recite the irregular imperatives (έλα, πες, δες, φάε, πάρε, δώσε)</td><td></td></tr><tr><td>57</td><td>negate a command with μη(ν) + subjunctive</td><td></td></tr><tr><td>58</td><td>place pronouns after a positive imperative</td><td></td></tr><tr><td>59</td><td>use the common -μένος words (κουρασμένος, παντρεμένος, κλειστός)</td><td></td></tr><tr><td>60</td><td>contrast κουράστηκα with είμαι κουρασμένος</td><td></td></tr></tbody></table></div>
+<h2>Function words (pages 17–18, 20)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>61</td><td>contract σε + article instantly (στον, στην, στο, στους, στις, στα)</td><td></td></tr><tr><td>62</td><td>choose σε vs από correctly</td><td></td></tr><tr><td>63</td><td>use place phrases: πάνω σε, κάτω από, δίπλα σε, απέναντι από</td><td></td></tr><tr><td>64</td><td>use strong pronouns after prepositions (για μένα)</td><td></td></tr><tr><td>65</td><td>distinguish που / πού and πως / πώς</td><td></td></tr><tr><td>66</td><td>use ότι, επειδή, όταν, αν, μόλις, για να, χωρίς να</td><td></td></tr><tr><td>67</td><td>report speech (Είπε ότι…, Μου είπε να…, Με ρώτησε αν…)</td><td></td></tr><tr><td>68</td><td>keep the slot order δεν / θα / να + pronoun + verb</td><td></td></tr><tr><td>69</td><td>ask yes/no questions with intonation only</td><td></td></tr><tr><td>70</td><td>use the question words with correct accents</td><td></td></tr></tbody></table></div>
+<h2>Numbers, time, dates (page 19)</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Can I…</th><th>✓</th></tr></thead><tbody><tr><td>71</td><td>count 1–1000</td><td></td></tr><tr><td>72</td><td>decline 1, 3, 4 and the hundreds</td><td></td></tr><tr><td>73</td><td>give ordinals 1st–20th</td><td></td></tr><tr><td>74</td><td>tell the time (και τέταρτο / και μισή / παρά δέκα)</td><td></td></tr><tr><td>75</td><td>say the days and use τη Δευτέρα</td><td></td></tr><tr><td>76</td><td>say the months in the genitive for dates</td><td></td></tr><tr><td>77</td><td>give my age with χρονών</td><td></td></tr></tbody></table></div>
+<h2>A2 communicative tasks — say each aloud, 30 seconds, no notes</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Task</th><th>✓</th></tr></thead><tbody><tr><td>78</td><td>Introduce myself: name, age, origin, job, languages, family</td><td></td></tr><tr><td>79</td><td>Describe my daily routine (present)</td><td></td></tr><tr><td>80</td><td>Describe last weekend (aorist + imperfect)</td><td></td></tr><tr><td>81</td><td>Describe my plans for next week (θα)</td><td></td></tr><tr><td>82</td><td>Order in a café or restaurant and ask for the bill</td><td></td></tr><tr><td>83</td><td>Ask for and give directions</td><td></td></tr><tr><td>84</td><td>Describe my home and neighbourhood</td><td></td></tr><tr><td>85</td><td>Make an appointment by phone</td><td></td></tr><tr><td>86</td><td>Compare two cities or two people</td><td></td></tr><tr><td>87</td><td>Explain a problem in a shop and ask for help</td><td></td></tr><tr><td>88</td><td>Talk about the weather and the seasons</td><td></td></tr><tr><td>89</td><td>Say what I like and dislike (μου αρέσει) and why</td><td></td></tr><tr><td>90</td><td>Tell a short story using όταν, μόλις, μετά, επειδή</td><td></td></tr><tr><td>91</td><td>Express obligation, ability and wish (πρέπει, μπορώ, θα ήθελα)</td><td></td></tr></tbody></table></div>
+<h2>Suggested 6-week rotation</h2>
+<div class="tw"><table><thead><tr><th>Week</th><th>Daily drill</th><th>Add</th></tr></thead><tbody><tr><td>1</td><td>Articles, nouns (pages 3–4)</td><td>Alphabet review (page 2)</td></tr><tr><td>2</td><td>Plurals, adjectives (pages 6–7)</td><td>keep pages 3–4 warm</td></tr><tr><td>3</td><td>Present tense, both voices (page 10)</td><td>Comparison (page 8)</td></tr><tr><td>4</td><td>Past tenses + Tier 1 irregulars (pages 11, 16)</td><td>Pronouns (page 9)</td></tr><tr><td>5</td><td>Future &amp; subjunctive (page 12)</td><td>Perfect, imperative (pages 13–14)</td></tr><tr><td>6</td><td>Prepositions, conjunctions (pages 17–18)</td><td>Numbers (page 19); full checklist</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

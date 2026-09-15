@@ -1,7 +1,7 @@
-# 12 · Adjectives from verbs — the -μένος words
+# 13 · Adjectives from verbs — the -μένος words
 
 Greek turns verbs into adjectives ending **-μένος / -μένη / -μένο**. They describe a **state**,
-they agree with their noun like any -ος / -η / -ο adjective (page 6, type A), and at A2 you
+they agree with their noun like any -ος / -η / -ο adjective (page 7, type A), and at A2 you
 simply learn them as **vocabulary**.
 
 ## 1. The words you must know

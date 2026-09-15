@@ -1,4 +1,4 @@
-# 06 · Pronouns (Αντωνυμίες)
+# 07 · Pronouns (Αντωνυμίες)
 
 ## 1. Personal pronouns — master grid
 

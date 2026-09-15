@@ -1,6 +1,6 @@
-# 11 · Imperative (Προστακτική)
+# 12 · Imperative (Προστακτική)
 
-Only the **2nd person** exists (singular + plural). Everything else uses **να** or **ας** (page 11).
+Only the **2nd person** exists (singular + plural). Everything else uses **να** or **ας** (page 12).
 
 ## 1. Two imperatives, two aspects
 

@@ -1,0 +1,162 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>04 · Plurals (Πληθυντικός) — fast lookup</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>04 · Plurals (Πληθυντικός) — fast lookup</h1>
+<h2>1. One-glance conversion table (nominative singular → nominative plural)</h2>
+<div class="tw"><table><thead><tr><th>Gender</th><th>Sg ending</th><th>Pl ending</th><th>Example</th></tr></thead><tbody><tr><td class="m">M</td><td class="m"><strong>-ας</strong></td><td class="m"><strong>-ες</strong></td><td class="m">ο άντρας → οι άντρες</td></tr><tr><td class="m">M</td><td class="m"><strong>-ης</strong></td><td class="m"><strong>-ες</strong></td><td class="m">ο μαθητής → οι μαθητές</td></tr><tr><td class="m">M</td><td class="m"><strong>-ος</strong></td><td class="m"><strong>-οι</strong></td><td class="m">ο δρόμος → οι δρόμοι</td></tr><tr><td class="m">M</td><td class="m"><strong>-ές</strong></td><td class="m"><strong>-έδες</strong></td><td class="m">ο καφές → οι καφέδες</td></tr><tr><td class="m">M</td><td class="m"><strong>-ούς</strong></td><td class="m"><strong>-ούδες</strong></td><td class="m">ο παππούς → οι παππούδες</td></tr><tr><td class="f">F</td><td class="f"><strong>-α</strong></td><td class="f"><strong>-ες</strong></td><td class="f">η ώρα → οι ώρες</td></tr><tr><td class="f">F</td><td class="f"><strong>-η</strong></td><td class="f"><strong>-ες</strong></td><td class="f">η νίκη → οι νίκες</td></tr><tr><td class="f">F</td><td class="f"><strong>-η</strong> (abstract)</td><td class="f"><strong>-εις</strong></td><td class="f">η πόλη → οι πόλεις</td></tr><tr><td class="f">F</td><td class="f"><strong>-ού</strong></td><td class="f"><strong>-ούδες</strong></td><td class="f">η αλεπού → οι αλεπούδες</td></tr><tr><td class="n">N</td><td class="n"><strong>-ο</strong></td><td class="n"><strong>-α</strong></td><td class="n">το βιβλίο → τα βιβλία</td></tr><tr><td class="n">N</td><td class="n"><strong>-ι</strong></td><td class="n"><strong>-ια</strong></td><td class="n">το παιδί → τα παιδιά</td></tr><tr><td class="n">N</td><td class="n"><strong>-μα</strong></td><td class="n"><strong>-ματα</strong></td><td class="n">το μάθημα → τα μαθήματα</td></tr><tr><td class="n">N</td><td class="n"><strong>-ος</strong></td><td class="n"><strong>-η</strong></td><td class="n">το λάθος → τα λάθη</td></tr></tbody></table></div>
+<h2>2. How do I know if -η is F2 (-ες) or F3 (-εις)?</h2>
+<div class="tw"><table><thead><tr><th>Type</th><th>Marker</th><th>Examples</th></tr></thead><tbody><tr><td><strong>-εις</strong> plural</td><td>abstract nouns, often from verbs; endings <strong>-ση, -ξη, -ψη, -μη</strong></td><td>η στάση→στάσεις, η τάξη→τάξεις, η σκέψη→σκέψεις, η δύναμη→δυνάμεις, η πόλη→πόλεις, η άσκηση→ασκήσεις</td></tr><tr><td><strong>-ες</strong> plural</td><td>concrete things &amp; people</td><td>η αδερφή→αδερφές, η ζάχαρη→ζάχαρες, η αγάπη→αγάπες, η νίκη→νίκες, η τέχνη→τέχνες</td></tr></tbody></table></div>
+<p><strong>Rule of thumb: if it ends in -ση / -ξη / -ψη, the plural is -σεις / -ξεις / -ψεις.</strong></p>
+<h2>3. Stress-shift plurals (the real trap)</h2>
+<p>Greek stress may only sit on one of the last three syllables. When the ending grows, the stress <strong>jumps right</strong>.</p>
+<div class="tw"><table><thead><tr><th>Singular</th><th>Genitive singular</th><th>Nominative plural</th><th>Genitive plural</th></tr></thead><tbody><tr><td>ο <strong>ά</strong>νθρωπος</td><td>του ανθρ<strong>ώ</strong>που</td><td>οι <strong>ά</strong>νθρωποι</td><td>των ανθρ<strong>ώ</strong>πων</td></tr><tr><td>ο <strong>δά</strong>σκαλος</td><td>του δασκ<strong>ά</strong>λου</td><td>οι <strong>δά</strong>σκαλοι</td><td>των δασκ<strong>ά</strong>λων</td></tr><tr><td>το <strong>αυ</strong>τοκίνητο</td><td>του αυτοκιν<strong>ή</strong>του</td><td>τα αυτοκ<strong>ί</strong>νητα</td><td>των αυτοκιν<strong>ή</strong>των</td></tr><tr><td>το <strong>μά</strong>θημα</td><td>του μαθ<strong>ή</strong>ματος</td><td>τα μαθ<strong>ή</strong>ματα</td><td>των μαθη<strong>μά</strong>των</td></tr><tr><td>το <strong>ό</strong>νομα</td><td>του ον<strong>ό</strong>ματος</td><td>τα ον<strong>ό</strong>ματα</td><td>των ονο<strong>μά</strong>των</td></tr><tr><td>η <strong>θά</strong>λασσα</td><td>της θ<strong>ά</strong>λασσας</td><td>οι θ<strong>ά</strong>λασσες</td><td>των θαλασσ<strong>ών</strong></td></tr></tbody></table></div>
+<h2>4. A few irregulars you will actually meet</h2>
+<div class="tw"><table><thead><tr><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td>το φως</td><td>τα φώτα</td></tr><tr><td>το βράδυ</td><td>τα βράδια</td></tr><tr><td>ο πατέρας</td><td>οι πατέρες</td></tr><tr><td>η μητέρα</td><td>οι μητέρες</td></tr><tr><td>τα Χριστούγεννα, τα γενέθλια, τα λεφτά</td><td>plural only — no singular</td></tr></tbody></table></div>
+<h2>5. Countable vs. mass</h2>
+<div class="tw"><table><thead><tr><th>Concept</th><th>Greek</th></tr></thead><tbody><tr><td>some (countable)</td><td><strong>μερικά</strong> βιβλία, <strong>κάποιοι</strong> άνθρωποι</td></tr><tr><td>some (mass)</td><td><strong>λίγο</strong> νερό, <strong>λίγη</strong> ζάχαρη</td></tr><tr><td>a lot of</td><td><strong>πολλά</strong> βιβλία / <strong>πολύ</strong> νερό</td></tr><tr><td>how many?</td><td><strong>Πόσα</strong> βιβλία; <strong>Πόσοι</strong> άνθρωποι;</td></tr><tr><td>how much?</td><td><strong>Πόσο</strong> νερό; <strong>Πόση</strong> ζάχαρη;</td></tr></tbody></table></div>
+<h2>6. Drill: give the plural</h2>
+<div class="tw"><table><thead><tr><th>Singular</th><th>Plural</th></tr></thead><tbody><tr><td>ο φίλος</td><td>οι φίλοι</td></tr><tr><td>η φίλη</td><td>οι φίλες</td></tr><tr><td>το παιδί</td><td>τα παιδιά</td></tr><tr><td>η στάση</td><td>οι στάσεις</td></tr><tr><td>το πρόβλημα</td><td>τα προβλήματα</td></tr><tr><td>ο καφές</td><td>οι καφέδες</td></tr><tr><td>το λάθος</td><td>τα λάθη</td></tr><tr><td>η αλεπού</td><td>οι αλεπούδες</td></tr><tr><td>ο μαθητής</td><td>οι μαθητές</td></tr><tr><td>το τραπέζι</td><td>τα τραπέζια</td></tr><tr><td>η δύναμη</td><td>οι δυνάμεις</td></tr><tr><td>ο άνθρωπος (genitive plural)</td><td>των ανθρώπων</td></tr><tr><td>η γυναίκα</td><td>οι γυναίκες</td></tr><tr><td>το σπίτι</td><td>τα σπίτια</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

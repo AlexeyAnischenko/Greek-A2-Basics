@@ -1,4 +1,4 @@
-# 09 · Future & Subjunctive (Μέλλοντας · Υποτακτική)
+# 10 · Future & Subjunctive (Μέλλοντας · Υποτακτική)
 
 ## 0. The big idea: Greek has no infinitive
 
@@ -11,7 +11,7 @@ That conjugated form is the **subjunctive (υποτακτική)**, built on the
 πρέπει να φύγουμε    = we must leave
 ```
 
-Everything here uses **the same two stems** you know from page 10:
+Everything here uses **the same two stems** you know from page 11:
 
 | Stem | Where it comes from | Used for |
 |---|---|---|

@@ -1,4 +1,4 @@
-# 07 · Present Tense (Ενεστώτας)
+# 08 · Present Tense (Ενεστώτας)
 
 Greek verbs are cited by their **1st person singular**: γράφ**ω** = "I write".
 The present covers both English "I write" and "I am writing".
@@ -62,7 +62,7 @@ The present covers both English "I write" and "I am writing".
 
 | Verb | Conjugation |
 |---|---|
-| **είμαι** (be) | είμαι, είσαι, είναι, είμαστε, είστε / είσαστε, είναι — **full sheet on page 20** |
+| **είμαι** (be) | είμαι, είσαι, είναι, είμαστε, είστε / είσαστε, είναι — **full sheet on page 21** |
 | **έχω** (have) | έχω, έχεις, έχει, έχουμε, έχετε, έχουν |
 | **τρώω** (eat) | τρώω, τρως, τρώει, τρώμε, τρώτε, τρών(ε) |
 | **λέω** (say) | λέω, λες, λέει, λέμε, λέτε, λένε |

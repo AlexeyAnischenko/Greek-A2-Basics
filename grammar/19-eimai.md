@@ -1,7 +1,7 @@
-# 18 · The verb είμαι (to be)
+# 19 · The verb είμαι (to be)
 
 The most common verb in Greek, and the one that behaves least like the others.
-Learn it as its own thing — the patterns on pages 9–12 mostly do **not** apply to it.
+Learn it as its own thing — the patterns on pages 10–13 mostly do **not** apply to it.
 
 ## What makes it different ⚠
 
@@ -37,7 +37,7 @@ Context tells you which: *Ο Γιάννης **είναι** εδώ* / *Τα πα�
 
 ⚠ The stress never moves: **εί**μαι, **εί**σαι, **εί**ναι, **εί**μαστε, **εί**στε.
 
-⚠ The endings look like the passive ones on page 9 (-μαι, -σαι, -ται) — that is not a
+⚠ The endings look like the passive ones on page 10 (-μαι, -σαι, -ται) — that is not a
 coincidence, but do not try to derive them. Just learn the six.
 
 ## 2. Past — "I was"
@@ -153,7 +153,7 @@ But for a **thing**, είναι is right: *Ο καφές **είναι** κρύο
 | **Πού είναι** η τουαλέτα; | Where is the toilet? |
 | **Τι είναι** αυτό; | What is this? |
 
-⚠ Questions are made by intonation only — the word order does not change (page 19).
+⚠ Questions are made by intonation only — the word order does not change (page 20).
 
 ## 10. The phrases you will use every day
 

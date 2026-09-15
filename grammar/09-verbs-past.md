@@ -1,4 +1,4 @@
-# 08 · Past Tenses — Aorist & Imperfect
+# 09 · Past Tenses — Aorist & Imperfect
 
 Greek has **two** simple past tenses. Choosing between them is the core A2 skill.
 
@@ -169,4 +169,4 @@ Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα,
 | τηλεφωνώ | τηλεφώνησα | έρχομαι | **ήρθα** ⚠ |
 | φοράω | φόρεσα | γίνομαι | **έγινα** ⚠ |
 
-→ Full irregular list on page 15.
+→ Full irregular list on page 16.

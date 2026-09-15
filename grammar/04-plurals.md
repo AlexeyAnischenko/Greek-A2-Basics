@@ -1,4 +1,4 @@
-# 03 · Plurals (Πληθυντικός) — fast lookup
+# 04 · Plurals (Πληθυντικός) — fast lookup
 
 ## 1. One-glance conversion table (nominative singular → nominative plural)
 

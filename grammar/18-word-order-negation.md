@@ -1,4 +1,4 @@
-# 17 · Word Order, Negation & Questions
+# 18 · Word Order, Negation & Questions
 
 ## 1. Basic order: subject–verb–object, but flexible
 
@@ -27,7 +27,7 @@ Order: **δεν / να / θα / ας / μη** → **weak pronouns** → **verb**
 **Two pronouns: genitive before accusative** — μου το, σου το, του τη, μας τα, σας τους.
 
 ⚠ The **only** exception: after a **positive imperative** the pronouns go **after** the verb
-(Δώσε **μου το**!) — see page 13.
+(Δώσε **μου το**!) — see page 14.
 
 ## 3. Negation
 
@@ -105,7 +105,7 @@ No auxiliary "do", no inversion.
 | **Τι ώρα** | **Τι ώρα** είναι; |
 
 ⚠ In questions these carry a **written accent**: πού, πώς, πότε. The same words **without** the
-accent are conjunctions or relatives: που, πως. (See page 17.)
+accent are conjunctions or relatives: που, πως. (See page 18.)
 
 ### Tags & fillers
 

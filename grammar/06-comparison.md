@@ -1,4 +1,4 @@
-# 05 · Comparison & Adverbs (Παραθετικά · Επιρρήματα)
+# 06 · Comparison & Adverbs (Παραθετικά · Επιρρήματα)
 
 ## 1. Comparative — at A2, use πιο
 

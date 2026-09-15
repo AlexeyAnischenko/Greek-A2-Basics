@@ -1,4 +1,4 @@
-# 13 · Irregular Verbs — the A2 master list
+# 14 · Irregular Verbs — the A2 master list
 
 Columns: **Present** · **Aorist** (1st singular past) · **Dependent** (να-form) · **Imperative** (2nd singular / plural).
 The dependent column is also what you need for **θα** (future) and, with **-ει**, for **έχω** (perfect).
@@ -7,7 +7,7 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 
 | Present | Meaning | Aorist | Dependent | Imperative |
 |---|---|---|---|---|
-| **είμαι** | be | ήμουν *(imperfect)* | να είμαι | να είσαι / να είστε *(page 20)* |
+| **είμαι** | be | ήμουν *(imperfect)* | να είμαι | να είσαι / να είστε *(page 21)* |
 | **έχω** | have | είχα *(imperfect)* | να έχω | να έχεις / να έχετε |
 | **πάω / πηγαίνω** | go | **πήγα** | να πάω | πήγαινε / πηγαίνετε |
 | **έρχομαι** | come | **ήρθα** | να έρθω | **έλα / ελάτε** |

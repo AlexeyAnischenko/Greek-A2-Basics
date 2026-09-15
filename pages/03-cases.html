@@ -1,0 +1,198 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>03 · The four cases (Πτώσεις) — what they actually do</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>03 · The four cases (Πτώσεις) — what they actually do</h1>
+<p>Greek marks a noun&#x27;s <strong>job in the sentence</strong> by changing its ending <em>and</em> its article. English does this with word order (&quot;the dog bites the man&quot;); Greek does it with endings, which is why Greek word order can move around freely without changing the meaning.</p>
+<p>The endings themselves are on page 4. This sheet is about <strong>what each case is for</strong> — what those four column headings actually mean, and which question word asks for which one.</p>
+<h2>Quick reference</h2>
+<div class="tw"><table><thead><tr><th>Case</th><th>Greek name</th><th>What it marks</th><th>Answers</th><th>Example</th></tr></thead><tbody><tr><td><strong>Nominative</strong></td><td>Ονομαστική</td><td>the <strong>subject</strong> — who or what does it</td><td>Ποιος; Τι;</td><td><strong>Ο Γιάννης</strong> διαβάζει. — <strong>John</strong> is reading.</td></tr><tr><td><strong>Accusative</strong></td><td>Αιτιατική</td><td>the <strong>direct object</strong>, and anything after a preposition</td><td>Ποιον; Τι;</td><td>Βλέπω <strong>τον Γιάννη</strong>. — I see <strong>John</strong>.</td></tr><tr><td><strong>Genitive</strong></td><td>Γενική</td><td><strong>possession</strong>, and the person something is given to</td><td>Τίνος;</td><td>Το σπίτι <strong>του Γιάννη</strong> — <strong>John&#x27;s</strong> house</td></tr><tr><td><strong>Vocative</strong></td><td>Κλητική</td><td><strong>calling</strong> someone</td><td>—</td><td><strong>Γιάννη</strong>, έλα! — <strong>John</strong>, come!</td></tr></tbody></table></div>
+<h2>The same name in all four</h2>
+<div class="tw"><table><thead><tr><th>Case</th><th>Form</th><th>In a sentence</th><th>English</th></tr></thead><tbody><tr><td>Nominative</td><td>ο Γιάνν<strong>ης</strong></td><td><strong>Ο Γιάννης</strong> ήρθε.</td><td>John came.</td></tr><tr><td>Accusative</td><td>τον Γιάνν<strong>η</strong></td><td>Είδα <strong>τον Γιάννη</strong>.</td><td>I saw John.</td></tr><tr><td>Genitive</td><td>του Γιάνν<strong>η</strong></td><td>Το αυτοκίνητο <strong>του Γιάννη</strong>.</td><td>John&#x27;s car.</td></tr><tr><td>Vocative</td><td>Γιάνν<strong>η</strong>!</td><td><strong>Γιάννη</strong>, πού είσαι;</td><td>John, where are you?</td></tr></tbody></table></div>
+<p>The same thing with a feminine noun:</p>
+<div class="tw"><table><thead><tr><th>Case</th><th>Form</th><th>In a sentence</th><th>English</th></tr></thead><tbody><tr><td>Nominative</td><td>η δασκάλ<strong>α</strong></td><td><strong>Η δασκάλα</strong> μιλάει.</td><td>The teacher is speaking.</td></tr><tr><td>Accusative</td><td>τη δασκάλ<strong>α</strong></td><td>Ρωτάω <strong>τη δασκάλα</strong>.</td><td>I ask the teacher.</td></tr><tr><td>Genitive</td><td>της δασκάλ<strong>ας</strong></td><td>Το βιβλίο <strong>της δασκάλας</strong>.</td><td>The teacher&#x27;s book.</td></tr><tr><td>Vocative</td><td>δασκάλ<strong>α</strong>!</td><td><strong>Δασκάλα</strong>, μια ερώτηση!</td><td>Teacher, a question!</td></tr></tbody></table></div>
+<h2>1 · Nominative — the doer</h2>
+<div class="tw"><table><thead><tr><th>Use</th><th>Example</th><th>English</th></tr></thead><tbody><tr><td>Subject of the verb</td><td><strong>Ο σκύλος</strong> τρώει.</td><td>The dog is eating.</td></tr><tr><td>Subject (plural)</td><td><strong>Τα παιδιά</strong> παίζουν.</td><td>The children are playing.</td></tr><tr><td>After <strong>είμαι</strong> ⚠</td><td>Ο πατέρας μου είναι <strong>γιατρός</strong>.</td><td>My father is a doctor.</td></tr><tr><td>After <strong>γίνομαι</strong> ⚠</td><td>Έγινε <strong>δάσκαλος</strong>.</td><td>He became a teacher.</td></tr></tbody></table></div>
+<p>⚠ This is the form dictionaries list. ⚠ After είμαι / γίνομαι the word <strong>stays nominative</strong> — both sides of the sentence are subjects, so nothing changes: Αυτός είναι <strong>ο Γιάννης</strong>.</p>
+<h2>2 · Accusative — the receiver, and after every preposition</h2>
+<div class="tw"><table><thead><tr><th>Use</th><th>Example</th><th>English</th></tr></thead><tbody><tr><td>Direct object</td><td>Αγόρασα <strong>ένα βιβλίο</strong>.</td><td>I bought a book.</td></tr><tr><td>Direct object</td><td>Περιμένω <strong>τον αδερφό μου</strong>.</td><td>I&#x27;m waiting for my brother.</td></tr><tr><td>After <strong>σε</strong></td><td>Πάω <strong>στο σχολείο</strong>.</td><td>I go to school.</td></tr><tr><td>After <strong>από</strong></td><td>Ήρθα <strong>από τη δουλειά</strong>.</td><td>I came from work.</td></tr><tr><td>After <strong>με</strong></td><td>Μιλάω <strong>με τη Μαρία</strong>.</td><td>I&#x27;m talking to Maria.</td></tr><tr><td>After <strong>για</strong></td><td>Είναι <strong>για σένα</strong>.</td><td>It&#x27;s for you.</td></tr><tr><td>How long</td><td>Έμεινα <strong>τρεις μέρες</strong>.</td><td>I stayed three days.</td></tr></tbody></table></div>
+<p>⚠ <strong>Every</strong> common preposition takes the accusative — σε, από, με, για, χωρίς, μέχρι, προς, μετά, πριν, κατά. There is nothing to choose: after a preposition, accusative.</p>
+<p>⚠ Some Greek verbs take a plain accusative where English needs a preposition:</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th></tr></thead><tbody><tr><td>περιμένω <strong>τον Γιάννη</strong></td><td>wait <strong>for</strong> John</td></tr><tr><td>ψάχνω <strong>τα κλειδιά μου</strong></td><td>look <strong>for</strong> my keys</td></tr><tr><td>κοιτάζω <strong>τη θάλασσα</strong></td><td>look <strong>at</strong> the sea</td></tr><tr><td>πληρώνω <strong>τον λογαριασμό</strong></td><td>pay <strong>for</strong> the bill</td></tr></tbody></table></div>
+<h2>3 · Genitive — &quot;of&quot;, &quot;&#x27;s&quot;, and &quot;to someone&quot;</h2>
+<div class="tw"><table><thead><tr><th>Use</th><th>Example</th><th>English</th></tr></thead><tbody><tr><td>Possession</td><td>Το σπίτι <strong>του Γιάννη</strong></td><td>John&#x27;s house</td></tr><tr><td>Possession</td><td>Η πόρτα <strong>του σπιτιού</strong></td><td>the door of the house</td></tr><tr><td>Possession (plural)</td><td>Η μητέρα <strong>των παιδιών</strong></td><td>the children&#x27;s mother</td></tr><tr><td>Indirect object</td><td>Δίνω <strong>του Γιάννη</strong> ένα δώρο.</td><td>I give John a present.</td></tr><tr><td>Possessive pronoun</td><td>το σπίτι <strong>μου</strong></td><td>my house</td></tr></tbody></table></div>
+<p>⚠ Greek has <strong>no dative case</strong>. &quot;To / for someone&quot; is either the genitive <strong>or</strong> σε + accusative, and in everyday speech <strong>σε + accusative wins</strong>:</p>
+<div class="tw"><table><thead><tr><th>Genitive</th><th>σε + accusative (more common)</th></tr></thead><tbody><tr><td>Δίνω <strong>της Μαρίας</strong> το βιβλίο.</td><td>Δίνω το βιβλίο <strong>στη Μαρία</strong>.</td></tr><tr><td>Λέω <strong>του παιδιού</strong> την αλήθεια.</td><td>Λέω την αλήθεια <strong>στο παιδί</strong>.</td></tr></tbody></table></div>
+<p>⚠ But with <strong>weak pronouns</strong> the genitive is the normal choice: <strong>Μου</strong> έδωσε το βιβλίο (he gave <strong>me</strong> the book). Those little words — μου, σου, του, της, μας, σας, τους — <em>are</em> the genitive.</p>
+<p>⚠ Word order: the genitive comes <strong>after</strong> the thing owned — το σπίτι του Γιάννη, never the reverse.</p>
+<h2>4 · Vocative — calling someone</h2>
+<p>Used only when you speak <strong>to</strong> a person directly. It never takes an article.</p>
+<div class="tw"><table><thead><tr><th>Nominative</th><th>Vocative</th><th>Note</th></tr></thead><tbody><tr><td>ο Γιάννης</td><td><strong>Γιάννη!</strong></td><td>-ης → -η</td></tr><tr><td>ο Πέτρος</td><td><strong>Πέτρο!</strong></td><td>names in -ος → -ο</td></tr><tr><td>ο κύριος</td><td><strong>Κύριε!</strong></td><td>common nouns in -ος → -ε</td></tr><tr><td>ο φίλος</td><td><strong>Φίλε!</strong></td><td></td></tr><tr><td>ο γιατρός</td><td><strong>Γιατρέ!</strong></td><td></td></tr><tr><td>η Μαρία</td><td><strong>Μαρία!</strong></td><td>feminine unchanged</td></tr><tr><td>το παιδί</td><td><strong>Παιδί!</strong></td><td>neuter unchanged</td></tr><tr><td>τα παιδιά</td><td><strong>Παιδιά!</strong></td><td>very common</td></tr></tbody></table></div>
+<p>⚠ Never put the article in front: <strong>Γιάννη</strong>, έλα! — not <s>Ο Γιάννη, έλα!</s></p>
+<h2>5 · Which question word asks for which case</h2>
+<p>The useful trick: <strong>the answer comes back in the same case as the question word.</strong> Ask with a nominative and you get a nominative back — so the question tells you which ending to use.</p>
+<div class="tw"><table><thead><tr><th>English</th><th>Greek</th><th>Case it asks for</th><th>Question</th><th>Answer</th></tr></thead><tbody><tr><td>who?</td><td><strong>Ποιος;</strong></td><td><strong>Nominative</strong></td><td>Ποιος μιλάει;</td><td><strong>Ο Γιάννης.</strong></td></tr><tr><td>whom?</td><td><strong>Ποιον;</strong></td><td><strong>Accusative</strong></td><td>Ποιον βλέπεις;</td><td><strong>Τον Γιάννη.</strong></td></tr><tr><td>whose?</td><td><strong>Τίνος;</strong> / <strong>Ποιανού;</strong></td><td><strong>Genitive</strong></td><td>Τίνος είναι αυτό;</td><td><strong>Του Γιάννη.</strong></td></tr><tr><td>what? (the doer)</td><td><strong>Τι;</strong></td><td><strong>Nominative</strong></td><td>Τι έγινε;</td><td><strong>Ένα λάθος.</strong></td></tr><tr><td>what? (the receiver)</td><td><strong>Τι;</strong></td><td><strong>Accusative</strong></td><td>Τι θέλεις;</td><td><strong>Έναν καφέ.</strong></td></tr><tr><td>to whom?</td><td><strong>Σε ποιον;</strong></td><td><strong>Accusative</strong> (after σε)</td><td>Σε ποιον το έδωσες;</td><td><strong>Στη Μαρία.</strong></td></tr><tr><td>with whom?</td><td><strong>Με ποιον;</strong></td><td><strong>Accusative</strong> (after με)</td><td>Με ποιον ήρθες;</td><td><strong>Με τον αδερφό μου.</strong></td></tr><tr><td>about whom / what?</td><td><strong>Για ποιον;</strong> / <strong>Για τι;</strong></td><td><strong>Accusative</strong> (after για)</td><td>Για ποιον μιλάς;</td><td><strong>Για τον δάσκαλο.</strong></td></tr><tr><td>where from?</td><td><strong>Από πού;</strong></td><td><strong>Accusative</strong> (after από)</td><td>Από πού είσαι;</td><td><strong>Από την Κύπρο.</strong></td></tr></tbody></table></div>
+<p>⚠ <strong>Τι</strong> never changes shape, but its <strong>job</strong> does. Compare <em>Τι έγινε;</em> (subject — nominative) with <em>Τι θέλεις;</em> (object — accusative). Only the role differs, not the word.</p>
+<p>⚠ There is <strong>no vocative question word</strong>. You cannot ask someone into being called — the vocative is only used when you address them directly.</p>
+<h2>6 · The question words that are not about case</h2>
+<p>These ask about circumstances rather than about a noun&#x27;s job, so no case is involved in the <strong>question</strong>. Their <strong>answers</strong> usually still use a preposition + accusative.</p>
+<div class="tw"><table><thead><tr><th>English</th><th>Greek</th><th>Typical answer</th></tr></thead><tbody><tr><td>where?</td><td><strong>Πού;</strong></td><td><strong>Στην</strong> Αθήνα. (σε + accusative)</td></tr><tr><td>where to?</td><td><strong>Πού;</strong></td><td><strong>Στο</strong> σχολείο.</td></tr><tr><td>when?</td><td><strong>Πότε;</strong></td><td>Αύριο. / <strong>Στις</strong> οχτώ.</td></tr><tr><td>how?</td><td><strong>Πώς;</strong></td><td>Καλά. / <strong>Με</strong> το λεωφορείο.</td></tr><tr><td>why?</td><td><strong>Γιατί;</strong></td><td>Επειδή ήμουν άρρωστος.</td></tr><tr><td>how much?</td><td><strong>Πόσο;</strong></td><td>Δέκα ευρώ.</td></tr><tr><td>how many?</td><td><strong>Πόσα;</strong></td><td>Δύο παιδιά.</td></tr></tbody></table></div>
+<p>⚠ In questions these carry a <strong>written accent</strong>: πού, πότε, πώς. The same words <em>without</em> the accent are conjunctions and relatives — που, πως (page 18).</p>
+<h2>7 · ποιος — the question word that declines</h2>
+<p>Because it asks about a noun, it takes that noun&#x27;s <strong>case, gender and number</strong>.</p>
+<div class="tw"><table><thead><tr><th></th><th class="m">Masculine</th><th class="f">Feminine</th><th class="n">Neuter</th></tr></thead><tbody><tr><td>Nominative</td><td class="m">ποι<strong>ος</strong></td><td class="f">ποι<strong>α</strong></td><td class="n">ποι<strong>ο</strong></td></tr><tr><td>Accusative</td><td class="m">ποι<strong>ον</strong></td><td class="f">ποι<strong>α</strong></td><td class="n">ποι<strong>ο</strong></td></tr><tr><td>Genitive</td><td class="m">ποιαν<strong>ού</strong></td><td class="f">ποιαν<strong>ής</strong></td><td class="n">ποιαν<strong>ού</strong></td></tr><tr><td>Nominative plural</td><td class="m">ποι<strong>οι</strong></td><td class="f">ποι<strong>ες</strong></td><td class="n">ποι<strong>α</strong></td></tr><tr><td>Accusative plural</td><td class="m">ποι<strong>ους</strong></td><td class="f">ποι<strong>ες</strong></td><td class="n">ποι<strong>α</strong></td></tr><tr><td>Genitive plural</td><td class="m">ποιαν<strong>ών</strong></td><td class="f">ποιαν<strong>ών</strong></td><td class="n">ποιαν<strong>ών</strong></td></tr></tbody></table></div>
+<p>If a noun follows, ποιος agrees with it:</p>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th></th></tr></thead><tbody><tr><td><strong>Ποια</strong> ώρα;</td><td>What time?</td><td>feminine, because ώρα is feminine</td></tr><tr><td><strong>Ποιο</strong> βιβλίο θέλεις;</td><td>Which book do you want?</td><td>neuter</td></tr><tr><td><strong>Ποιον</strong> άντρα είδες;</td><td>Which man did you see?</td><td>masculine accusative</td></tr><tr><td><strong>Ποιοι</strong> ήρθαν;</td><td>Which ones came?</td><td>masculine plural</td></tr></tbody></table></div>
+<p>⚠ <strong>Τίνος</strong> is the short, slightly more formal way of saying <strong>ποιανού</strong>: <em>Τίνος είναι;</em> = <em>Ποιανού είναι;</em></p>
+<h2>8 · Drill — answer in the case the question asks for</h2>
+<div class="tw"><table><thead><tr><th>Question</th><th>Answer</th><th>Case</th></tr></thead><tbody><tr><td>Ποιος ήρθε;</td><td>Ο δάσκαλος.</td><td>nominative</td></tr><tr><td>Ποιον ρώτησες;</td><td>Τον δάσκαλο.</td><td>accusative</td></tr><tr><td>Τίνος είναι η τσάντα;</td><td>Της δασκάλας.</td><td>genitive</td></tr><tr><td>Με ποιον μιλάς;</td><td>Με τον δάσκαλο.</td><td>accusative, after με</td></tr><tr><td>Σε ποιον το έδωσες;</td><td>Στα παιδιά.</td><td>accusative, after σε</td></tr><tr><td>Τι διαβάζεις;</td><td>Ένα βιβλίο.</td><td>accusative</td></tr><tr><td>Τι συνέβη;</td><td>Ένα ατύχημα.</td><td>nominative</td></tr><tr><td>Από πού είσαι;</td><td>Από τη Ρωσία.</td><td>accusative, after από</td></tr><tr><td>Πού μένεις;</td><td>Στη Λεμεσό.</td><td>accusative, after σε</td></tr><tr><td>Πότε φεύγεις;</td><td>Την Παρασκευή.</td><td>—</td></tr><tr><td>Γιατί άργησες;</td><td>Επειδή είχε κίνηση.</td><td>—</td></tr></tbody></table></div>
+<h2>Why the endings matter: word order can move</h2>
+<div class="tw"><table><thead><tr><th>Greek</th><th>English</th><th></th></tr></thead><tbody><tr><td><strong>Ο Γιάννης</strong> βλέπει <strong>τη Μαρία</strong>.</td><td>John sees Maria.</td><td>neutral order</td></tr><tr><td><strong>Τη Μαρία</strong> βλέπει <strong>ο Γιάννης</strong>.</td><td>John sees <strong>Maria</strong>.</td><td>same meaning, Maria emphasised</td></tr></tbody></table></div>
+<p><strong>ο Γιάννης</strong> is nominative and <strong>τη Μαρία</strong> accusative, so you always know who is doing the seeing — no matter which one comes first. In English, swapping the two would reverse the meaning.</p>
+<h2>Which case do I need?</h2>
+<div class="tw"><table><thead><tr><th>Ask yourself</th><th>Case</th></tr></thead><tbody><tr><td>Is it doing the action?</td><td><strong>Nominative</strong></td></tr><tr><td>Does it come after είμαι / γίνομαι?</td><td><strong>Nominative</strong></td></tr><tr><td>Is it receiving the action directly?</td><td><strong>Accusative</strong></td></tr><tr><td>Is there a preposition in front of it?</td><td><strong>Accusative</strong>, always</td></tr><tr><td>Does it mean &quot;of…&quot; or &quot;…&#x27;s&quot;?</td><td><strong>Genitive</strong></td></tr><tr><td>Is it the person given / told something?</td><td><strong>Genitive</strong>, or σε + accusative</td></tr><tr><td>Am I calling this person?</td><td><strong>Vocative</strong></td></tr></tbody></table></div>
+<h2>Drill — spot the case</h2>
+<div class="tw"><table><thead><tr><th>Which case, and why?</th><th>Answer</th></tr></thead><tbody><tr><td>Βλέπω <strong>τον γιατρό</strong>.</td><td>accusative — direct object</td></tr><tr><td><strong>Ο γιατρός</strong> ήρθε.</td><td>nominative — subject</td></tr><tr><td>Το γραφείο <strong>του γιατρού</strong>.</td><td>genitive — possession</td></tr><tr><td><strong>Γιατρέ</strong>, πονάω!</td><td>vocative — calling him</td></tr><tr><td>Πάω <strong>στον γιατρό</strong>.</td><td>accusative — after σε</td></tr><tr><td>Η Άννα είναι <strong>δασκάλα</strong>.</td><td>nominative — after είμαι</td></tr><tr><td>Έδωσα <strong>της Άννας</strong> το βιβλίο.</td><td>genitive — indirect object</td></tr><tr><td>Μείναμε <strong>δύο μέρες</strong>.</td><td>accusative — how long</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

@@ -1,8 +1,8 @@
-# 10 · Perfect Tense (Παρακείμενος)
+# 11 · Perfect Tense (Παρακείμενος)
 
 ## 1. The invariable form — it never changes
 
-Take the dependent (να-) stem from page 11 and add **-ει**.
+Take the dependent (να-) stem from page 12 and add **-ει**.
 
 | Verb | Dependent (να-form) | Invariable form |
 |---|---|---|

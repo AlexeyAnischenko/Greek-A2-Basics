@@ -1,0 +1,183 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>09 · Past Tenses — Aorist &amp; Imperfect</title><style>
+:root{
+  /* must advertise dark support at all times: Chrome's force-dark feature
+     inverts any page whose root resolves to light-only, which black-holed
+     the Light setting. The pinned themes below use the `only` keyword,
+     which is the explicit opt-out. */
+  color-scheme:light dark;
+  --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+  --head:#f4f6f8; --accent:#0b6ea8;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --warn:#b54708;
+  --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+  --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+}
+
+/* dark palette: applied when the system asks for it and the reader has not
+   pinned light, or when the toggle pins dark */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+    --head:#1d2329; --accent:#7cbcea;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --warn:#f0a066;
+    --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+    --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:only dark;
+  --bg:#14171a; --fg:#e6e8ea; --h3:#cdd6de; --muted:#9aa6b2; --line:#2b3238;
+  --head:#1d2329; --accent:#7cbcea;
+  --m-bg:#17314f; --m-fg:#d3e4ff;
+  --f-bg:#2f2450; --f-fg:#e8dcff;
+  --n-bg:#16351f; --n-fg:#cfeeda;
+  --warn:#f0a066;
+  --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
+  --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
+}
+
+:root[data-theme="light"]{ color-scheme:only light; }
+
+.theme-toggle{
+  position:fixed; top:12px; right:14px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.theme-toggle .ico{font-size:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+.wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+nav.toc{
+  position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
+  overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
+}
+nav.toc h2{margin:0 0 10px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:22px}
+nav.toc li{margin:3px 0; font-size:14px}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+main{flex:1 1 auto; min-width:0}
+section.sheet{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:34px}
+section.sheet:last-child{border-bottom:0}
+h1{font-size:27px; line-height:1.2; margin:6px 0 16px; letter-spacing:-.01em}
+h2{font-size:20px; margin:28px 0 10px; padding-top:4px}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--h3)}
+h4{font-size:15px; margin:18px 0 6px; color:var(--muted)}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 22px; padding:0}
+li{margin:3px 0}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+code{background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:.9em;
+     font-family:"Cascadia Mono",Consolas,monospace}
+pre{background:var(--pre-bg); border:1px solid var(--line); border-left:3px solid var(--accent);
+    padding:11px 13px; border-radius:6px; overflow-x:auto; font-size:13.5px;
+    font-family:"Cascadia Mono",Consolas,monospace; line-height:1.5}
+blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
+           background:var(--quote-bg); color:var(--muted)}
+.tw{overflow-x:auto; margin:12px 0 16px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+thead th{background:var(--head); font-weight:600; white-space:nowrap}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
+td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
+td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
+th.m,th.f,th.n{font-weight:700}
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; font-size:13px}
+.legend span{padding:3px 9px; border-radius:5px; border:1px solid var(--line)}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+header.top{max-width:1280px; margin:0 auto; padding:26px 20px 0}
+header.top h1{font-size:31px; margin:0 0 4px}
+header.top p{color:var(--muted); margin:0}
+
+@media (max-width:900px){
+  .wrap{flex-direction:column; gap:14px}
+  nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+@media print{
+  /* the PDF must not inherit a dark choice */
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --bg:#ffffff; --fg:#1a1d21; --h3:#243040; --muted:#5b6470; --line:#dfe3e8;
+    --head:#f4f6f8; --accent:#0b6ea8;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
+    --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
+  }
+  .theme-toggle{display:none !important}
+  @page{size:A4; margin:13mm 11mm}
+  body{font-size:10.5pt; background:#fff}
+  .wrap{display:block; padding:0; max-width:none}
+  nav.toc{display:none}
+  header.top{padding:0 0 8pt}
+  section.sheet{break-before:page; page-break-before:always;
+                border-bottom:0; margin:0; padding:0}
+  section.sheet:first-of-type{break-before:auto; page-break-before:auto}
+  h1{font-size:17pt; margin:0 0 8pt}
+  h2{font-size:12.5pt; margin:12pt 0 5pt; break-after:avoid; page-break-after:avoid}
+  h3{font-size:11pt; margin:9pt 0 4pt; break-after:avoid; page-break-after:avoid}
+  table{font-size:8.6pt; width:100%}
+  th,td{padding:2.6pt 4pt}
+  thead{display:table-header-group}
+  tr,img{break-inside:avoid; page-break-inside:avoid}
+  .tw{overflow:visible}
+  a{color:inherit; text-decoration:none}
+  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+}
+</style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>09 · Past Tenses — Aorist &amp; Imperfect</h1>
+<p>Greek has <strong>two</strong> simple past tenses. Choosing between them is the core A2 skill.</p>
+<div class="tw"><table><thead><tr><th>Tense</th><th>Greek name</th><th>Meaning</th><th>Test question</th></tr></thead><tbody><tr><td><strong>Aorist</strong></td><td>Αόριστος</td><td>happened <strong>once / completed</strong></td><td>&quot;What happened?&quot;</td></tr><tr><td><strong>Imperfect</strong></td><td>Παρατατικός</td><td><strong>was happening / used to</strong></td><td>&quot;What was going on?&quot;</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>Aorist</th><th>Imperfect</th></tr></thead><tbody><tr><td><strong>Έγραψα</strong> ένα γράμμα. — I wrote a letter.</td><td><strong>Έγραφα</strong> ένα γράμμα. — I was writing a letter.</td></tr><tr><td><strong>Πήγα</strong> στην Αθήνα. — I went to Athens.</td><td><strong>Πήγαινα</strong> συχνά στην Αθήνα. — I used to go often.</td></tr><tr><td>Χθες <strong>δούλεψα</strong> 8 ώρες.</td><td>Τότε <strong>δούλευα</strong> σε τράπεζα.</td></tr><tr><td><strong>Είδα</strong> τη Μαρία.</td><td><strong>Έβλεπα</strong> τηλεόραση όταν ήρθε.</td></tr></tbody></table></div>
+<p><strong>Signal words:</strong> aorist ← χθες, πέρσι, ξαφνικά, μια μέρα, δύο φορές, στις 5 · imperfect ← κάθε μέρα, συνήθως, πάντα, συχνά, τότε, όταν ήμουν μικρός</p>
+<h2>1. THE AUGMENT RULE (why &quot;έ-&quot; appears)</h2>
+<p>Past-tense stress must fall on the <strong>3rd syllable from the end</strong>. If the word is too short, prefix <strong>έ-</strong>.</p>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>Form</th><th>Why</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td><strong>έ</strong>γραψα</td><td>γρα-ψα = only 2 syllables → add έ-</td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td><strong>έ</strong>γραψες</td><td>same</td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td><strong>έ</strong>γραψε</td><td>same</td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td>γράψαμε</td><td>3 syllables already → no έ-</td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td>γράψατε</td><td>3 syllables → no έ-</td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td><strong>έ</strong>γραψαν <em>or</em> γράψα<strong>νε</strong></td><td>either add έ- or add -νε</td></tr></tbody></table></div>
+<p>Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα, αγόρασα.</p>
+<h2>2. AORIST — ACTIVE</h2>
+<h3>Endings (identical for all groups — only the <strong>stem</strong> changes)</h3>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>Ending</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td><strong>-α</strong></td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td><strong>-ες</strong></td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td><strong>-ε</strong></td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td><strong>-αμε</strong></td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td><strong>-ατε</strong></td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td><strong>-αν / -ανε</strong></td></tr></tbody></table></div>
+<h3>Example: γράφω → aorist stem <strong>γραψ-</strong></h3>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>Form</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td>έγραψ<strong>α</strong></td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td>έγραψ<strong>ες</strong></td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td>έγραψ<strong>ε</strong></td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td>γράψ<strong>αμε</strong></td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td>γράψ<strong>ατε</strong></td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td>έγραψ<strong>αν</strong> / γράψ<strong>ανε</strong></td></tr></tbody></table></div>
+<h3>Aorist stem formation — sound table ⚠ THE key table</h3>
+<div class="tw"><table><thead><tr><th>Present ends in</th><th>Aorist stem</th><th>Examples</th></tr></thead><tbody><tr><td><strong>-π, -β, -φ, -πτ, -φτ, -εύ</strong></td><td><strong>-ψ</strong></td><td>γράφω→<strong>έγραψα</strong>, κόβω→<strong>έκοψα</strong>, κρύβω→<strong>έκρυψα</strong>, ανάβω→<strong>άναψα</strong>, δουλεύω→<strong>δούλεψα</strong>, μαγειρεύω→<strong>μαγείρεψα</strong>, χορεύω→<strong>χόρεψα</strong></td></tr><tr><td><strong>-κ, -γ, -χ, -χν, -σκ, -ζ (some)</strong></td><td><strong>-ξ</strong></td><td>ανοίγω→<strong>άνοιξα</strong>, τρέχω→<strong>έτρεξα</strong>, ψάχνω→<strong>έψαξα</strong>, διώχνω→<strong>έδιωξα</strong>, παίζω→<strong>έπαιξα</strong>, αλλάζω→<strong>άλλαξα</strong>, κοιτάζω→<strong>κοίταξα</strong></td></tr><tr><td><strong>-ζ, -τ, -θ, -δ, -ν (some), -σ</strong></td><td><strong>-σ</strong></td><td>διαβάζω→<strong>διάβασα</strong>, αγοράζω→<strong>αγόρασα</strong>, νομίζω→<strong>νόμισα</strong>, γνωρίζω→<strong>γνώρισα</strong>, αρχίζω→<strong>άρχισα</strong>, κλείνω→<strong>έκλεισα</strong>, σβήνω→<strong>έσβησα</strong></td></tr><tr><td><strong>-ώνω</strong></td><td><strong>-ωσ</strong></td><td>πληρώνω→<strong>πλήρωσα</strong>, τελειώνω→<strong>τελείωσα</strong>, σηκώνω→<strong>σήκωσα</strong></td></tr><tr><td><strong>-αίνω</strong></td><td>mostly irregular</td><td>ανεβαίνω→<strong>ανέβηκα</strong>, καταλαβαίνω→<strong>κατάλαβα</strong>, μαθαίνω→<strong>έμαθα</strong>, πηγαίνω→<strong>πήγα</strong></td></tr><tr><td><strong>B1 -άω</strong></td><td><strong>-ησ</strong></td><td>αγαπάω→<strong>αγάπησα</strong>, μιλάω→<strong>μίλησα</strong>, ρωτάω→<strong>ρώτησα</strong>, σταματάω→<strong>σταμάτησα</strong></td></tr><tr><td><strong>B1 -άω</strong> (subset)</td><td><strong>-ασ</strong></td><td>γελάω→<strong>γέλασα</strong>, περνάω→<strong>πέρασα</strong>, χαλάω→<strong>χάλασα</strong>, πεινάω→<strong>πείνασα</strong>, διψάω→<strong>δίψασα</strong>, κρεμάω→<strong>κρέμασα</strong></td></tr><tr><td><strong>B1 -άω</strong> (subset)</td><td><strong>-εσ</strong></td><td>φοράω→<strong>φόρεσα</strong>, χωράω→<strong>χώρεσα</strong></td></tr><tr><td><strong>B2 -ώ</strong></td><td><strong>-ησ</strong></td><td>τηλεφωνώ→<strong>τηλεφώνησα</strong>, οδηγώ→<strong>οδήγησα</strong>, ευχαριστώ→<strong>ευχαρίστησα</strong>, προτιμώ→<strong>προτίμησα</strong>, ζω→<strong>έζησα</strong></td></tr><tr><td><strong>B2 -ώ</strong> (subset)</td><td><strong>-εσ</strong></td><td>μπορώ→<strong>μπόρεσα</strong>, καλώ→<strong>κάλεσα</strong>, παρακαλώ→<strong>παρακάλεσα</strong>, συγχωρώ→<strong>συγχώρεσα</strong></td></tr></tbody></table></div>
+<h2>3. IMPERFECT — ACTIVE</h2>
+<h3>Group A: present stem + -α, -ες, -ε, -αμε, -ατε, -αν</h3>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>γράφω</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td>έγραφ<strong>α</strong></td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td>έγραφ<strong>ες</strong></td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td>έγραφ<strong>ε</strong></td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td>γράφ<strong>αμε</strong></td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td>γράφ<strong>ατε</strong></td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td>έγραφ<strong>αν</strong> / γράφ<strong>ανε</strong></td></tr></tbody></table></div>
+<p>⚠ The only difference from the aorist is the <strong>stem</strong>: έγρα<strong>φ</strong>α (imperfect) vs έγρα<strong>ψ</strong>α (aorist).</p>
+<h3>Groups B1 / B2: insert <strong>-ούσ-</strong></h3>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>αγαπάω</th><th>μπορώ</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td>αγαπ<strong>ούσα</strong></td><td>μπορ<strong>ούσα</strong></td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td>αγαπ<strong>ούσες</strong></td><td>μπορ<strong>ούσες</strong></td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td>αγαπ<strong>ούσε</strong></td><td>μπορ<strong>ούσε</strong></td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td>αγαπ<strong>ούσαμε</strong></td><td>μπορ<strong>ούσαμε</strong></td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td>αγαπ<strong>ούσατε</strong></td><td>μπορ<strong>ούσατε</strong></td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td>αγαπ<strong>ούσαν</strong></td><td>μπορ<strong>ούσαν</strong></td></tr></tbody></table></div>
+<p>✦ Many group-A verbs also allow -ούσα. Irregulars: λέω→<strong>έλεγα</strong>, ακούω→<strong>άκουγα</strong>, τρώω→<strong>έτρωγα</strong>, πάω→<strong>πήγαινα</strong>, ξέρω→<strong>ήξερα</strong>.</p>
+<h3>⚠ Irregular imperfects to memorise</h3>
+<div class="tw"><table><thead><tr><th>Verb</th><th>Imperfect</th></tr></thead><tbody><tr><td><strong>είμαι</strong></td><td>ήμουν, ήσουν, ήταν, ήμασταν, ήσασταν, ήταν</td></tr><tr><td><strong>έχω</strong></td><td>είχα, είχες, είχε, είχαμε, είχατε, είχαν</td></tr><tr><td><strong>πάω</strong></td><td>πήγαινα</td></tr><tr><td><strong>λέω</strong></td><td>έλεγα</td></tr><tr><td><strong>τρώω</strong></td><td>έτρωγα</td></tr><tr><td><strong>ξέρω</strong></td><td>ήξερα (⚠ no aorist exists)</td></tr><tr><td><strong>θέλω</strong></td><td>ήθελα</td></tr><tr><td><strong>πίνω</strong></td><td>έπινα</td></tr><tr><td><strong>ακούω</strong></td><td>άκουγα</td></tr></tbody></table></div>
+<h2>4. AORIST — PASSIVE</h2>
+<h3>Endings</h3>
+<div class="tw"><table><thead><tr><th>Pronoun</th><th>Person</th><th>Ending</th></tr></thead><tbody><tr><td><strong>εγώ</strong></td><td>1st singular</td><td><strong>-θηκα</strong></td></tr><tr><td><strong>εσύ</strong></td><td>2nd singular</td><td><strong>-θηκες</strong></td></tr><tr><td><strong>αυτός / αυτή / αυτό</strong></td><td>3rd singular</td><td><strong>-θηκε</strong></td></tr><tr><td><strong>εμείς</strong></td><td>1st plural</td><td><strong>-θήκαμε</strong></td></tr><tr><td><strong>εσείς</strong></td><td>2nd plural</td><td><strong>-θήκατε</strong></td></tr><tr><td><strong>αυτοί / αυτές / αυτά</strong></td><td>3rd plural</td><td><strong>-θηκαν</strong></td></tr></tbody></table></div>
+<p>⚠ Note the <strong>stress shift</strong> to -θή- in the 1st and 2nd plural.</p>
+<h3>Passive-aorist stem table</h3>
+<div class="tw"><table><thead><tr><th>Present passive</th><th>Aorist passive</th><th>Examples</th></tr></thead><tbody><tr><td>from -φ / -β / -π</td><td><strong>-φτηκα / -πηκα</strong></td><td>γράφομαι→<strong>γράφτηκα</strong>, κρύβομαι→<strong>κρύφτηκα</strong>, κόβομαι→<strong>κόπηκα</strong></td></tr><tr><td>from -κ / -γ / -χ</td><td><strong>-χτηκα</strong></td><td>ανοίγομαι→<strong>ανοίχτηκα</strong>, διώχνομαι→<strong>διώχτηκα</strong></td></tr><tr><td>from -ζ / -σ</td><td><strong>-στηκα</strong></td><td>αγοράζομαι→<strong>αγοράστηκα</strong>, γνωρίζομαι→<strong>γνωρίστηκα</strong></td></tr><tr><td>from -ν / -θ</td><td><strong>-θηκα</strong></td><td>πλένομαι→<strong>πλύθηκα</strong>, πληρώνομαι→<strong>πληρώθηκα</strong>, σηκώνομαι→<strong>σηκώθηκα</strong></td></tr><tr><td>-ιέμαι / -άμαι (B1/B2)</td><td><strong>-ήθηκα</strong></td><td>αγαπιέμαι→<strong>αγαπήθηκα</strong>, κοιμάμαι→<strong>κοιμήθηκα</strong>, φοβάμαι→<strong>φοβήθηκα</strong>, θυμάμαι→<strong>θυμήθηκα</strong></td></tr></tbody></table></div>
+<h3>The passive-form verbs you&#x27;ll use daily</h3>
+<div class="tw"><table><thead><tr><th>Verb</th><th>Aorist</th></tr></thead><tbody><tr><td><strong>έρχομαι</strong> (come)</td><td><strong>ήρθα</strong>, ήρθες, ήρθε, ήρθαμε, ήρθατε, ήρθαν ⚠ active endings</td></tr><tr><td><strong>γίνομαι</strong> (become)</td><td><strong>έγινα</strong>, έγινες, έγινε, γίναμε, γίνατε, έγιναν ⚠ active endings</td></tr><tr><td><strong>κάθομαι</strong> (sit)</td><td><strong>κάθισα</strong> ⚠ active endings</td></tr><tr><td><strong>σκέφτομαι</strong> (think)</td><td><strong>σκέφτηκα</strong></td></tr><tr><td><strong>χρειάζομαι</strong> (need)</td><td><strong>χρειάστηκα</strong></td></tr><tr><td><strong>φαίνομαι</strong> (seem)</td><td><strong>φάνηκα</strong></td></tr><tr><td><strong>βρίσκομαι</strong> (be located)</td><td><strong>βρέθηκα</strong></td></tr><tr><td><strong>δέχομαι</strong> (accept)</td><td><strong>δέχτηκα</strong></td></tr><tr><td><strong>εργάζομαι</strong> (work)</td><td><strong>εργάστηκα</strong></td></tr><tr><td><strong>αισθάνομαι</strong> (feel)</td><td><strong>αισθάνθηκα</strong></td></tr></tbody></table></div>
+<h2>5. Drill grid — give the aorist 1st singular</h2>
+<div class="tw"><table><thead><tr><th>Present</th><th>Aorist</th><th>Present</th><th>Aorist</th></tr></thead><tbody><tr><td>γράφω</td><td>έγραψα</td><td>βλέπω</td><td><strong>είδα</strong> ⚠</td></tr><tr><td>διαβάζω</td><td>διάβασα</td><td>λέω</td><td><strong>είπα</strong> ⚠</td></tr><tr><td>δουλεύω</td><td>δούλεψα</td><td>πάω</td><td><strong>πήγα</strong> ⚠</td></tr><tr><td>ανοίγω</td><td>άνοιξα</td><td>τρώω</td><td><strong>έφαγα</strong> ⚠</td></tr><tr><td>κλείνω</td><td>έκλεισα</td><td>πίνω</td><td><strong>ήπια</strong> ⚠</td></tr><tr><td>πληρώνω</td><td>πλήρωσα</td><td>παίρνω</td><td><strong>πήρα</strong> ⚠</td></tr><tr><td>μιλάω</td><td>μίλησα</td><td>δίνω</td><td><strong>έδωσα</strong> ⚠</td></tr><tr><td>ρωτάω</td><td>ρώτησα</td><td>μπαίνω</td><td><strong>μπήκα</strong> ⚠</td></tr><tr><td>περνάω</td><td>πέρασα</td><td>βγαίνω</td><td><strong>βγήκα</strong> ⚠</td></tr><tr><td>μπορώ</td><td>μπόρεσα</td><td>βρίσκω</td><td><strong>βρήκα</strong> ⚠</td></tr><tr><td>τηλεφωνώ</td><td>τηλεφώνησα</td><td>έρχομαι</td><td><strong>ήρθα</strong> ⚠</td></tr><tr><td>φοράω</td><td>φόρεσα</td><td>γίνομαι</td><td><strong>έγινα</strong> ⚠</td></tr></tbody></table></div>
+<p>→ Full irregular list on page 16.</p></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

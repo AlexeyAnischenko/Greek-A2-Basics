@@ -1,4 +1,4 @@
-# 04 · Adjectives (Επίθετα)
+# 05 · Adjectives (Επίθετα)
 
 **Rule:** the adjective agrees with its noun in **gender + case + number**, and goes **before** the noun.
 ο καλός φίλος · τη μεγάλη πόλη · των ωραίων παιδιών
