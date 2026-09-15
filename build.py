@@ -488,6 +488,23 @@ EX_JS = (
     '})();</script>'
 )
 
+# ----------------------------------------------------- plain-text copy
+# Ctrl+C anywhere on the page yields plain text only. Preventing the default
+# means the clipboard is filled solely from what we set here, so the text/html
+# flavour never gets written and paste targets cannot pick up the table markup,
+# colours or fonts. Chrome's own selection serialiser already separates table
+# cells with tabs and rows with newlines, which is what a spreadsheet wants.
+COPY_JS = (
+    '<script>(function(){'
+    'document.addEventListener("copy",function(e){'
+    'var s=window.getSelection();if(!s||s.isCollapsed)return;'
+    'var t=s.toString();if(!t)return;'
+    'var cd=e.clipboardData||window.clipboardData;if(!cd)return;'
+    'try{cd.setData("text/plain",t);}catch(err){return;}'
+    'e.preventDefault();});'
+    '})();</script>'
+)
+
 def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
 
@@ -529,7 +546,7 @@ def main():
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
            % (CSS, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
-              THEME_JS + EX_JS))
+              THEME_JS + EX_JS + COPY_JS))
 
     out_html = os.path.join(DIST, 'index.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
@@ -541,7 +558,7 @@ def main():
                 '<title>%s</title><style>%s</style>%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
                 '%s</body></html>' % (html.escape(s['title']), CSS, THEME_HEAD,
-                                      THEME_BTN, s['body'], THEME_JS + EX_JS))
+                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
             stem = 'index-sheet'      # avoid creating pages/index.html
