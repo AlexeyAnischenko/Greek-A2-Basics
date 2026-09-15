@@ -769,6 +769,7 @@ def main():
     print('pages  : %d files in %s' % (len(sheets), PAGES))
 
     make_pdf(out_html)
+    make_grid_sheet()
     return out_html
 
 
@@ -806,6 +807,147 @@ def make_pdf(out_html):
         return out_pdf
     print('pdf    : not produced')
     return None
+
+
+# ------------------------------------------------- printable one-page grid
+# master-grid.pdf: the master grid alone, grouped by case, sized to one A4
+# page so it can be printed and pinned up. The toggle cannot come to paper,
+# so the printed sheet commits to the case grouping.
+GRID_SHEET_CSS = """
+@page{size:A4 portrait; margin:11mm 10mm}
+:root{color-scheme:only light}
+*{box-sizing:border-box}
+body{margin:0; background:#fff; color:#12161a;
+  font:12pt/1.45 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact}
+h1{font-size:20pt; margin:0 0 2mm; letter-spacing:-.01em}
+.sub{font-size:10.5pt; color:#5b6470; margin:0 0 5mm}
+table{border-collapse:collapse; width:100%; font-size:13pt; table-layout:fixed}
+th,td{border:.5pt solid #b9c1c9; padding:4.5pt 6pt; text-align:left; vertical-align:middle}
+thead th{background:#eef1f4; font-weight:700}
+thead th.grp{text-align:center; letter-spacing:.05em; font-size:13.5pt}
+td.m{background:#dbeafe; color:#12243d}
+td.f{background:#ede0ff; color:#2b1741}
+td.n{background:#dcfce7; color:#12301f}
+.cell2{display:flex; align-items:center; justify-content:space-between; gap:7pt}
+.arts{display:flex; flex-direction:column; align-items:flex-start; line-height:1.2}
+.end{white-space:nowrap; font-weight:700}
+.notes{margin:5mm 0 0; font-size:10pt; color:#3d4650; line-height:1.45}
+.notes b{color:#12161a}
+.legend{display:flex; gap:5mm; font-size:10pt; margin:0 0 4mm}
+.legend span{padding:1pt 5pt; border:.4pt solid #b9c1c9; border-radius:2pt}
+.legend .m{background:#dbeafe} .legend .f{background:#ede0ff} .legend .n{background:#dcfce7}
+"""
+
+
+def find_master_grid(md):
+    """Pull the master grid out of a sheet's markdown: (header, rows)."""
+    lines = md.replace('\r\n', '\n').split('\n')
+    for i, line in enumerate(lines):
+        if not (is_row(line) and i + 1 < len(lines) and SEP.match(lines[i + 1])):
+            continue
+        header = split_row(line)
+        if not is_master_grid(header):
+            continue
+        rows, j = [], i + 2
+        while j < len(lines) and is_row(lines[j]):
+            rows.append(split_row(lines[j]))
+            j += 1
+        return header, rows
+    return None, None
+
+
+def render_print_grid(header, rows, order, outer, inner):
+    """One grid with the columns in `order`, banded by `outer` over `inner`."""
+    cap = lambda t: t[:1].upper() + t[1:]
+    groups = []
+    for l in outer:
+        if groups and groups[-1][0] == l:
+            groups[-1][1] += 1
+        else:
+            groups.append([l, 1])
+    out = ['<table><thead><tr>']
+    out.append(''.join('<th colspan="%d" class="grp">%s</th>'
+                       % (n, html.escape(cap(l))) for l, n in groups))
+    out.append('</tr><tr>')
+    out.append(''.join('<th>%s</th>' % html.escape(cap(l)) for l in inner))
+    out.append('</tr></thead><tbody>')
+    for r in rows:
+        g = gender_of(plain(r[0]))
+        cls = ' class="%s"' % g if g else ''
+        out.append('<tr>')
+        for i in order:
+            cell = r[i + 1] if i + 1 < len(r) else ''
+            out.append('<td%s>%s</td>' % (cls, split_cell(cell) or inline(cell)))
+        out.append('</tr>')
+    out.append('</tbody></table>')
+    return ''.join(out)
+
+
+def make_grid_sheet():
+    src = os.path.join(BASE, 'grammar', '02-nouns.md')
+    if not os.path.isfile(src):
+        print('grid   : skipped - no 02-nouns.md')
+        return None
+    header, rows = find_master_grid(io.open(src, encoding='utf-8').read())
+    if not header:
+        print('grid   : skipped - master grid not found')
+        return None
+
+    cols = [plain(h).strip() for h in header[1:]]
+    cases, nums = [], []
+    for c in cols:
+        case, num = c.rsplit(' ', 1) if ' ' in c else (c, '')
+        cases.append(case)
+        nums.append(num)
+    order = by_case_order(cases)
+
+    legend = ('<div class="legend"><span class="m">masculine</span>'
+              '<span class="f">feminine</span><span class="n">neuter</span></div>')
+    notes = (
+        '<div class="notes">'
+        '<b>Each cell:</b> the definite article, the indefinite one under it, '
+        'and the ending on the right. &nbsp; '
+        '<b>No indefinite article in the plural</b> &mdash; Greek drops it: '
+        '<i>&#914;&#955;&#941;&#960;&#969; &#960;&#945;&#953;&#948;&#953;&#940;.</i> &nbsp; '
+        '<b>&#964;&#959;&#957; / &#964;&#951;&#957;</b> lose the <b>-&#957;</b> before some '
+        'consonants, but masculine <b>&#964;&#959;&#957;</b> is kept in writing: it is what '
+        'separates <i>&#964;&#959;&#957; &#948;&#961;&#972;&#956;&#959;</i> from '
+        '<i>&#964;&#959; &#948;&#961;&#972;&#956;&#959;</i>. &nbsp; '
+        '<b>Vocative</b> is not here &mdash; it is only for calling someone.'
+        '</div>')
+
+    doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
+           '<title>Greek A2 - noun endings, master grid</title>'
+           '<style>%s</style></head><body>'
+           '<h1>Greek A2 &middot; Noun endings &mdash; master grid</h1>'
+           '<p class="sub">Article and ending for every A2 declension, grouped by case.</p>'
+           '%s%s%s</body></html>'
+           % (GRID_SHEET_CSS, legend,
+              render_print_grid(header, rows, order,
+                                [cases[i] for i in order], [nums[i] for i in order]),
+              notes))
+    out_html = os.path.join(DIST, 'master-grid.html')
+    io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
+
+    exe = next((p for p in CHROME_CANDIDATES if os.path.isfile(p)), None)
+    if not exe:
+        print('grid   : %s  (pdf skipped - no Chrome)' % out_html)
+        return out_html
+    out_pdf = os.path.join(DIST, 'master-grid.pdf')
+    cmd = [exe, '--headless=new', '--disable-gpu', '--no-first-run',
+           '--no-default-browser-check', '--no-pdf-header-footer',
+           '--print-to-pdf=' + out_pdf,
+           'file:///' + out_html.replace(os.sep, '/')]
+    try:
+        subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                       timeout=120, check=False)
+    except Exception as e:
+        print('grid   : pdf failed (%s)' % e)
+        return out_html
+    if os.path.isfile(out_pdf):
+        print('grid   : %s  (%.0f KB)' % (out_pdf, os.path.getsize(out_pdf) / 1024.0))
+    return out_pdf
 
 if __name__ == '__main__':
     main()

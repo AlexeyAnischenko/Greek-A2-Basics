@@ -7,9 +7,10 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 
 | | |
 |---|---|
-| 📖 **Online (all 20 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
+| 📖 **Online (all 22 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
 | 📄 **PDF (68 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
 | ⌨ **Greek keyboard** | https://alexeyanischenko.github.io/Greek-A2-Basics/keyboard.html |
+| 🖨 **Noun endings, one page to print** | https://alexeyanischenko.github.io/Greek-A2-Basics/master-grid.pdf |
 
 The online version has a light/dark theme switch and a contents sidebar. The PDF is always light,
 one sheet per page break, with repeating table headers.
