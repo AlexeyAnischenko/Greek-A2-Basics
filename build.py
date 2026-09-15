@@ -126,6 +126,32 @@ def is_row(l):
     s = l.strip()
     return s.startswith('|') and s.endswith('|') and s.count('|') >= 2
 
+# ---------------------------------------------------------------- grid cells
+# The master grid reads better when the articles line up down the left edge and
+# the ending sits at the right: what goes in front of the word and what goes on
+# the end are then each in one vertical line, which is what you are memorising.
+# Only that one table is reshaped - identified by its header - so the per-type
+# tables further down keep their ordinary cells.
+SPLIT_CELL = re.compile(r'^(.*?)\s*(\*\*-[^*]+\*\*)$')
+
+def is_master_grid(header):
+    if not header or plain(header[0]).strip() != 'Type':
+        return False
+    return any(plain(h).strip() == 'Nominative singular' for h in header)
+
+def split_cell(cell):
+    """'ο / ένας **-ας**' -> articles stacked left, ending right. None if it does
+    not have that shape, so an odd cell just renders normally."""
+    m = SPLIT_CELL.match(cell.strip())
+    if not m:
+        return None
+    arts = [a.strip() for a in m.group(1).split('/') if a.strip()]
+    if not arts:
+        return None
+    return ('<span class="cell2"><span class="arts">%s</span>'
+            '<span class="end">%s</span></span>'
+            % (''.join('<span>%s</span>' % inline(a) for a in arts), inline(m.group(2))))
+
 def render_table(header, rows, last_gender):
     ncol = len(header)
     col_g = [gender_of(plain(h)) for h in header]
@@ -136,6 +162,8 @@ def render_table(header, rows, last_gender):
         for r in rows:
             row_g.append(gender_of(plain(r[0])) if r else None)
     any_row = any(row_g)
+
+    grid = is_master_grid(header)
 
     out = ['<div class="tw"><table>', '<thead><tr>']
     for i, h in enumerate(header):
@@ -163,7 +191,10 @@ def render_table(header, rows, last_gender):
             if ex:
                 extra = ' data-el="%s" data-en="%s"' % (
                     html.escape(ex[0], True), html.escape(ex[1], True))
-            out.append('<td%s%s>%s</td>' % (cls, extra, inline(c)))
+            body = None
+            if grid and ci > 0:
+                body = split_cell(c)
+            out.append('<td%s%s>%s</td>' % (cls, extra, body or inline(c)))
         out.append('</tr>')
     out.append('</tbody></table></div>')
     return ''.join(out)
@@ -411,6 +442,11 @@ td.hasex:hover::after{opacity:.75}
 .extip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
 /* paper has no hover: drop the marker so the grid prints clean */
 @media print{ td.hasex::after{display:none} .extip{display:none} }
+/* master-grid cells: the articles stack down the left, the ending is pinned
+   right, so prefix and suffix each read as one vertical column */
+td .cell2{display:flex;align-items:center;justify-content:space-between;gap:10px}
+td .cell2 .arts{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
+td .cell2 .end{white-space:nowrap;text-align:right}
 """
 
 # ------------------------------------------------------- theme switch pieces
@@ -489,19 +525,46 @@ EX_JS = (
 )
 
 # ----------------------------------------------------- plain-text copy
-# Ctrl+C anywhere on the page yields plain text only. Preventing the default
-# means the clipboard is filled solely from what we set here, so the text/html
-# flavour never gets written and paste targets cannot pick up the table markup,
-# colours or fonts. Chrome's own selection serialiser already separates table
-# cells with tabs and rows with newlines, which is what a spreadsheet wants.
+# Ctrl+C anywhere yields plain text only: cancelling the event means the
+# clipboard is filled solely from what we set, so the text/html flavour is
+# never written and paste targets cannot pick up the table markup.
+#
+# Selections inside a table are rebuilt cell by cell rather than handed to the
+# browser's serialiser. The master grid stacks its articles, and the serialiser
+# turns every stacked line into a newline, which would leave a copied row as a
+# column of fragments. Rebuilding keeps one row per line and one tab per cell,
+# so a copied table still pastes into a spreadsheet as a grid.
 COPY_JS = (
     '<script>(function(){'
-    'document.addEventListener("copy",function(e){'
-    'var s=window.getSelection();if(!s||s.isCollapsed)return;'
-    'var t=s.toString();if(!t)return;'
-    'var cd=e.clipboardData||window.clipboardData;if(!cd)return;'
+    'function cellText(td){'
+    'var c=td.querySelector(".cell2");'
+    'if(c){var a=[].map.call(c.querySelectorAll(".arts span"),function(s){'
+    'return s.textContent.trim();});'
+    'var e=c.querySelector(".end");'
+    'return a.join(" / ")+(e?" "+e.textContent.trim():"");}'
+    r'return td.textContent.replace(/\s+/g," ").trim();}'
+    'document.addEventListener("copy",function(ev){'
+    'var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;'
+    'var cd=ev.clipboardData||window.clipboardData;if(!cd)return;'
+    'var r=s.getRangeAt(0);'
+    'var el=r.commonAncestorContainer;'
+    'if(el.nodeType!==1)el=el.parentElement;'
+    'var table=el&&el.closest?el.closest("table"):null;'
+    'var t;'
+    'if(table){'
+    'var cell=el.closest("td,th");'
+    'if(cell&&cell.contains(r.startContainer)&&cell.contains(r.endContainer)){'
+    r't=s.toString().replace(/\s*\n\s*/g," ").trim();}'
+    'else{var out=[];'
+    '[].forEach.call(table.querySelectorAll("tr"),function(tr){'
+    'if(!s.containsNode(tr,true))return;'
+    'var cells=[].filter.call(tr.children,function(c){return s.containsNode(c,true);});'
+    r'out.push(cells.map(cellText).join("\t"));});'
+    r't=out.join("\n");}}'
+    'else{t=s.toString();}'
+    'if(!t)return;'
     'try{cd.setData("text/plain",t);}catch(err){return;}'
-    'e.preventDefault();});'
+    'ev.preventDefault();});'
     '})();</script>'
 )
 
