@@ -12,6 +12,42 @@ Quick heuristic (about 85% reliable):
 | -α, -η, -ού | feminine | η ώρα, η νίκη, η αλεπού |
 | -ο, -ι, -μα | neuter | το βιβλίο, το παιδί, το μάθημα |
 
+## Master grid — every article and ending in one table
+
+Article **and** ending, all three cases, singular and plural, in one place. Each type is expanded
+with full examples further down the page. Rows are colour-banded: **masculine** light blue,
+**feminine** light purple, **neuter** light green.
+
+| Type | Nominative singular | Accusative singular | Genitive singular | Nominative plural | Accusative plural | Genitive plural |
+|---|---|---|---|---|---|---|
+| **M1 · -ας** — ο άντρας | ο **-ας** | τον **-α** | του **-α** | οι **-ες** | τους **-ες** | των **-ών** |
+| **M2 · -ης** — ο μαθητής | ο **-ής** | τον **-ή** | του **-ή** | οι **-ές** | τους **-ές** | των **-ών** |
+| **M3 · -ος** — ο δρόμος | ο **-ος** | τον **-ο** | του **-ου** | οι **-οι** | τους **-ους** | των **-ων** |
+| **M4 · -ές** — ο καφές | ο **-ές** | τον **-έ** | του **-έ** | οι **-έδες** | τους **-έδες** | των **-έδων** |
+| **M4 · -ούς** — ο παππούς | ο **-ούς** | τον **-ού** | του **-ού** | οι **-ούδες** | τους **-ούδες** | των **-ούδων** |
+| **F1 · -α** — η ώρα | η **-α** | την **-α** | της **-ας** | οι **-ες** | τις **-ες** | των **-ών** |
+| **F2 · -η** — η νίκη | η **-η** | τη(ν) **-η** | της **-ης** | οι **-ες** | τις **-ες** | των **-ών** |
+| **F3 · -η → -εις** — η πόλη | η **-η** | την **-η** | της **-ης** | οι **-εις** | τις **-εις** | των **-εων** |
+| **F4 · -ού** — η αλεπού | η **-ού** | την **-ού** | της **-ούς** | οι **-ούδες** | τις **-ούδες** | των **-ούδων** |
+| **N1 · -ο** — το βιβλίο | το **-ο** | το **-ο** | του **-ου** | τα **-α** | τα **-α** | των **-ων** |
+| **N2 · -ι** — το παιδί | το **-ί** | το **-ί** | του **-ιού** | τα **-ιά** | τα **-ιά** | των **-ιών** |
+| **N3 · -μα** — το μάθημα | το **-μα** | το **-μα** | του **-ματος** | τα **-ματα** | τα **-ματα** | των **-μάτων** |
+| **N4 · -ος** — το λάθος | το **-ος** | το **-ος** | του **-ους** | τα **-η** | τα **-η** | των **-ών** |
+
+What the grid shows at a glance:
+
+| Pattern | Where it holds |
+|---|---|
+| Accusative singular = nominative **minus the final -ς** | every masculine type |
+| Nominative = accusative, always | every neuter type, singular **and** plural |
+| The singular changes only the **article** | F1, F2, F3 — nominative and accusative keep the same ending |
+| Genitive plural is **-ων / -ών** | everywhere except F3 (**-εων**) and the -δ- types (**-δων**) |
+| Genitive singular is where the genders differ most | M **-α / -ή / -ου**, F **-ας / -ης**, N **-ου / -ιού / -ματος** |
+
+⚠ Vocative is left out on purpose — it is only for calling someone, and it is in the per-type
+tables below. ⚠ **τον** and **την** drop the **-ν** before some consonants (page 3); masculine
+**τον** is kept in writing because it is what separates τον δρόμο from το δρόμο.
+
 ## MASCULINE
 
 ### M1 · -ας (ο άντρας — man) ✦ also: ο πατέρας, ο μήνας, ο χειμώνας
