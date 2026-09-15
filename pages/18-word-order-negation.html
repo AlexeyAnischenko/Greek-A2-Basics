@@ -62,6 +62,9 @@ body{
   font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
 }
 .wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+/* the sheet column must be allowed to be narrower than its widest table,
+   or a wide table stretches the page instead of scrolling inside .tw */
+.wrap > main{flex:1 1 auto; min-width:0; width:100%}
 nav.toc{
   position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
   overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
@@ -108,8 +111,42 @@ header.top h1{font-size:31px; margin:0 0 4px}
 header.top p{color:var(--muted); margin:0}
 
 @media (max-width:900px){
-  .wrap{flex-direction:column; gap:14px}
+  /* stacked: align-items must stretch, otherwise flex-start sizes the column
+     to its content and the page itself scrolls sideways */
+  .wrap{flex-direction:column; gap:14px; align-items:stretch}
   nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+/* ---- phones ------------------------------------------------------------- */
+/* Wide tables are the whole problem on a small screen: they cannot shrink past
+   their content, so instead of squeezing the page they get their own scroller
+   that runs edge to edge. Everything else just steps down a size. */
+@media (max-width:560px){
+  body{font-size:15px}
+  .wrap{padding:14px 12px 56px; gap:12px}
+  header.top{padding:18px 12px 0}
+  header.top h1{font-size:22px; line-height:1.25}
+  header.top p{font-size:13px}
+  h1{font-size:20px; margin:4px 0 12px}
+  h2{font-size:17px; margin:22px 0 8px}
+  h3{font-size:15px; margin:16px 0 6px}
+  h4{font-size:14px}
+  nav.toc{padding:11px 13px}
+  nav.toc li{font-size:13.5px}
+  /* full-bleed scroller: the negative margin exactly cancels .wrap's padding */
+  .tw{margin-left:-12px; margin-right:-12px; padding-left:12px; padding-right:12px;
+      -webkit-overflow-scrolling:touch}
+  table{font-size:13px}
+  th,td{padding:5px 7px}
+  table.grid{font-size:12.5px}
+  table.grid th,table.grid td{padding:3px 6px}
+  table.grid .cell2{gap:7px}
+  pre{font-size:12.5px; padding:9px 11px}
+  .theme-toggle{top:8px; right:8px; padding:6px 9px; font-size:12px}
+  .theme-toggle .lbl{display:none}
+  .legend{font-size:12px}
+  /* the balloon must never be wider than the screen */
+  .extip{max-width:calc(100vw - 20px); font-size:13px}
 }
 
 @media print{
@@ -170,12 +207,25 @@ td.hasex:hover::after{opacity:.75}
 }
 .extip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
 /* paper has no hover: drop the marker so the grid prints clean */
-@media print{ td.hasex::after{display:none} .extip{display:none} }
+@media print{ td.hasex::after{display:none} .extip{display:none} .gridtog{display:none} }
 /* master-grid cells: the articles stack down the left, the ending is pinned
    right, so prefix and suffix each read as one vertical column */
 td .cell2{display:flex;align-items:center;justify-content:space-between;gap:10px}
 td .cell2 .arts{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
 td .cell2 .end{white-space:nowrap;text-align:right}
+/* master grid: no type column, a Singular/Plural band over the case names, and
+   cells sized to their content instead of stretched across the page */
+table.grid{width:auto; font-size:13.5px}
+table.grid th,table.grid td{padding:4px 8px}
+table.grid thead th.grp{text-align:center; letter-spacing:.04em}
+table.grid .cell2{gap:9px}
+.gridwrap{margin:12px 0 16px}
+.gridwrap .tw{margin:6px 0 0}
+.gridtog{font:inherit; font-size:12.5px; line-height:1; padding:6px 11px; border-radius:999px;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line); cursor:pointer}
+.gridtog:hover{border-color:var(--accent)}
+.gridtog:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+table.grid tr[hidden]{display:none}
 </style><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><div class="wrap"><main><section class="sheet"><h1>18 · Word Order, Negation &amp; Questions</h1>
 <h2>1. Basic order: subject–verb–object, but flexible</h2>
 <p>Case endings carry the meaning, so the order can move for emphasis.</p>
@@ -213,4 +263,4 @@ td .cell2 .end{white-space:nowrap;text-align:right}
 <h2>7. Emphasis toolkit (A2)</h2>
 <div class="tw"><table><thead><tr><th>Device</th><th>Example</th></tr></thead><tbody><tr><td>Add the subject pronoun</td><td><strong>Εγώ</strong> δεν το είπα!</td></tr><tr><td>Front the object</td><td><strong>Αυτό</strong> θέλω!</td></tr><tr><td><strong>και</strong> = &quot;even / too&quot;</td><td>Ήρθε <strong>και</strong> ο Γιάννης.</td></tr><tr><td><strong>μόνο</strong></td><td><strong>Μόνο</strong> εσύ ξέρεις.</td></tr></tbody></table></div>
 <h2>8. Drill</h2>
-<div class="tw"><table><thead><tr><th>Prompt</th><th>Answer</th></tr></thead><tbody><tr><td>I don&#x27;t know it</td><td>Δεν το ξέρω</td></tr><tr><td>I&#x27;ll tell you it</td><td>Θα σου το πω</td></tr><tr><td>Don&#x27;t tell me!</td><td>Μη μου λες!</td></tr><tr><td>I haven&#x27;t seen him</td><td>Δεν τον έχω δει</td></tr><tr><td>Nobody came</td><td>Κανένας δεν ήρθε / Δεν ήρθε κανένας</td></tr><tr><td>I never eat meat</td><td>Δεν τρώω ποτέ κρέας</td></tr><tr><td>Where are you from?</td><td>Από πού είσαι;</td></tr><tr><td>Whose is this?</td><td>Τίνος είναι αυτό;</td></tr><tr><td>this big house of mine</td><td>αυτό το μεγάλο σπίτι μου</td></tr><tr><td>There are many problems</td><td>Υπάρχουν πολλά προβλήματα</td></tr><tr><td>Give it to me!</td><td>Δώσε μού το!</td></tr><tr><td>I want you not to go</td><td>Θέλω να μην πας</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script><script>(function(){var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;var tip=document.createElement("div");tip.className="extip";tip.hidden=true;document.body.appendChild(tip);function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}var el=mk("el"),en=mk("en"),timer=null,cur=null;function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}function show(td){cur=td;el.textContent=td.getAttribute("data-el")||"";en.textContent=td.getAttribute("data-en")||"";tip.hidden=false;tip.classList.remove("below");var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;var vw=document.documentElement.clientWidth;var left=window.pageXOffset+r.left+r.width/2-w/2;left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));var top=window.pageYOffset+r.top-h-10;if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}tip.style.left=left+"px";tip.style.top=top+"px";}function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}document.addEventListener("mouseover",function(e){var td=near(e);if(!td||td===cur)return;if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});document.addEventListener("mouseout",function(e){if(near(e))hide();});document.addEventListener("click",function(e){var td=near(e);if(!td){hide();return;}if(cur===td){hide();return;}if(timer)clearTimeout(timer);show(td);});window.addEventListener("scroll",hide,true);window.addEventListener("resize",hide);window.addEventListener("blur",hide);document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});})();</script><script>(function(){function cellText(td){var c=td.querySelector(".cell2");if(c){var a=[].map.call(c.querySelectorAll(".arts span"),function(s){return s.textContent.trim();});var e=c.querySelector(".end");return a.join(" / ")+(e?" "+e.textContent.trim():"");}return td.textContent.replace(/\s+/g," ").trim();}document.addEventListener("copy",function(ev){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;var cd=ev.clipboardData||window.clipboardData;if(!cd)return;var r=s.getRangeAt(0);var el=r.commonAncestorContainer;if(el.nodeType!==1)el=el.parentElement;var table=el&&el.closest?el.closest("table"):null;var t;if(table){var cell=el.closest("td,th");if(cell&&cell.contains(r.startContainer)&&cell.contains(r.endContainer)){t=s.toString().replace(/\s*\n\s*/g," ").trim();}else{var out=[];[].forEach.call(table.querySelectorAll("tr"),function(tr){if(!s.containsNode(tr,true))return;var cells=[].filter.call(tr.children,function(c){return s.containsNode(c,true);});out.push(cells.map(cellText).join("\t"));});t=out.join("\n");}}else{t=s.toString();}if(!t)return;try{cd.setData("text/plain",t);}catch(err){return;}ev.preventDefault();});})();</script></body></html>
+<div class="tw"><table><thead><tr><th>Prompt</th><th>Answer</th></tr></thead><tbody><tr><td>I don&#x27;t know it</td><td>Δεν το ξέρω</td></tr><tr><td>I&#x27;ll tell you it</td><td>Θα σου το πω</td></tr><tr><td>Don&#x27;t tell me!</td><td>Μη μου λες!</td></tr><tr><td>I haven&#x27;t seen him</td><td>Δεν τον έχω δει</td></tr><tr><td>Nobody came</td><td>Κανένας δεν ήρθε / Δεν ήρθε κανένας</td></tr><tr><td>I never eat meat</td><td>Δεν τρώω ποτέ κρέας</td></tr><tr><td>Where are you from?</td><td>Από πού είσαι;</td></tr><tr><td>Whose is this?</td><td>Τίνος είναι αυτό;</td></tr><tr><td>this big house of mine</td><td>αυτό το μεγάλο σπίτι μου</td></tr><tr><td>There are many problems</td><td>Υπάρχουν πολλά προβλήματα</td></tr><tr><td>Give it to me!</td><td>Δώσε μού το!</td></tr><tr><td>I want you not to go</td><td>Θέλω να μην πας</td></tr></tbody></table></div></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script><script>(function(){var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;var tip=document.createElement("div");tip.className="extip";tip.hidden=true;document.body.appendChild(tip);function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}var el=mk("el"),en=mk("en"),timer=null,cur=null;function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}function show(td){cur=td;el.textContent=td.getAttribute("data-el")||"";en.textContent=td.getAttribute("data-en")||"";tip.hidden=false;tip.classList.remove("below");var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;var vw=document.documentElement.clientWidth;var left=window.pageXOffset+r.left+r.width/2-w/2;left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));var top=window.pageYOffset+r.top-h-10;if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}tip.style.left=left+"px";tip.style.top=top+"px";}function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}document.addEventListener("mouseover",function(e){var td=near(e);if(!td||td===cur)return;if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});document.addEventListener("mouseout",function(e){if(near(e))hide();});document.addEventListener("click",function(e){var td=near(e);if(!td){hide();return;}if(cur===td){hide();return;}if(timer)clearTimeout(timer);show(td);});window.addEventListener("scroll",hide,true);window.addEventListener("resize",hide);window.addEventListener("blur",hide);document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});})();</script><script>(function(){function cellText(td){var c=td.querySelector(".cell2");if(c){var a=[].map.call(c.querySelectorAll(".arts span"),function(s){return s.textContent.trim();});var e=c.querySelector(".end");return a.join(" / ")+(e?" "+e.textContent.trim():"");}return td.textContent.replace(/\s+/g," ").trim();}document.addEventListener("copy",function(ev){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;var cd=ev.clipboardData||window.clipboardData;if(!cd)return;var r=s.getRangeAt(0);var el=r.commonAncestorContainer;if(el.nodeType!==1)el=el.parentElement;var table=el&&el.closest?el.closest("table"):null;var t;if(table){var cell=el.closest("td,th");if(cell&&cell.contains(r.startContainer)&&cell.contains(r.endContainer)){t=s.toString().replace(/\s*\n\s*/g," ").trim();}else{var out=[];[].forEach.call(table.querySelectorAll("tr"),function(tr){if(!s.containsNode(tr,true))return;var cells=[].filter.call(tr.children,function(c){return s.containsNode(c,true);});out.push(cells.map(cellText).join("\t"));});t=out.join("\n");}}else{t=s.toString();}if(!t)return;try{cd.setData("text/plain",t);}catch(err){return;}ev.preventDefault();});})();</script><script>(function(){var t=document.querySelector("table.grid");if(!t||!t.tBodies.length)return;var btn=document.querySelector(".gridtog");if(!btn)return;var order=(t.getAttribute("data-order")||"").split(",").map(Number);if(!order.length||order.some(isNaN))return;var rows=[].slice.call(t.tBodies[0].rows);var orig=rows.map(function(r){return [].slice.call(r.cells);});var flat=orig.length?orig[0].map(function(_,i){return i;}):[];var mode="number";function apply(m){mode=m;var ord=(m==="case")?order:flat;rows.forEach(function(r,i){ord.forEach(function(ci){if(orig[i][ci])r.appendChild(orig[i][ci]);});});[].forEach.call(t.querySelectorAll("tr.h-number"),function(tr){tr.hidden=(m!=="number");});[].forEach.call(t.querySelectorAll("tr.h-case"),function(tr){tr.hidden=(m!=="case");});btn.textContent=(m==="number")?"Group by case":"Group by number";btn.setAttribute("aria-label",(m==="number")?"Columns grouped by number. Switch to grouping by case.":"Columns grouped by case. Switch to grouping by number.");try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}apply(saved==="case"?"case":"number");btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});})();</script></body></html>

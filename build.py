@@ -152,6 +152,48 @@ def split_cell(cell):
             '<span class="end">%s</span></span>'
             % (''.join('<span>%s</span>' % inline(a) for a in arts), inline(m.group(2))))
 
+def by_case_order(cases):
+    """Column indices regrouped so each case's numbers sit together:
+    Nom-sg Nom-pl Acc-sg Acc-pl Gen-sg Gen-pl."""
+    seen = []
+    for c in cases:
+        if c not in seen:
+            seen.append(c)
+    return [i for c in seen for i, cc in enumerate(cases) if cc == c]
+
+def grid_header(header):
+    """Both heads for the master grid, two rows each: grouped by number
+    (Singular / Plural over the cases) and grouped by case (Nominative /
+    Accusative / Genitive over the numbers). The inactive pair ships hidden and
+    the toggle button swaps them, so neither layout costs a second table."""
+    cap = lambda t: t[:1].upper() + t[1:]
+    cols = [plain(h).strip() for h in header[1:]]
+    cases, nums = [], []
+    for c in cols:
+        case, num = c.rsplit(' ', 1) if ' ' in c else (c, '')
+        cases.append(case)
+        nums.append(num)
+
+    def band(labels):
+        groups = []
+        for l in labels:
+            if groups and groups[-1][0] == l:
+                groups[-1][1] += 1
+            else:
+                groups.append([l, 1])
+        return ''.join('<th colspan="%d" class="grp">%s</th>'
+                       % (n, html.escape(cap(l))) for l, n in groups)
+
+    def names(labels):
+        return ''.join('<th>%s</th>' % html.escape(cap(l)) for l in labels)
+
+    order = by_case_order(cases)
+    return (('<tr class="h-number">%s</tr><tr class="h-number">%s</tr>'
+             '<tr class="h-case" hidden>%s</tr><tr class="h-case" hidden>%s</tr>')
+            % (band(nums), names(cases),
+               band([cases[i] for i in order]), names([nums[i] for i in order])),
+            ','.join(str(i) for i in order))
+
 def render_table(header, rows, last_gender):
     ncol = len(header)
     col_g = [gender_of(plain(h)) for h in header]
@@ -165,11 +207,20 @@ def render_table(header, rows, last_gender):
 
     grid = is_master_grid(header)
 
-    out = ['<div class="tw"><table>', '<thead><tr>']
-    for i, h in enumerate(header):
-        cls = ' class="%s"' % col_g[i] if any_col and col_g[i] else ''
-        out.append('<th%s>%s</th>' % (cls, inline(h)))
-    out.append('</tr></thead><tbody>')
+    if grid:
+        head, order = grid_header(header)
+        out = ['<div class="gridwrap">',
+               '<button class="gridtog" type="button">Group by case</button>',
+               '<div class="tw"><table class="grid" data-order="%s">' % order,
+               '<thead>%s</thead><tbody>' % head]
+    else:
+        out = ['<div class="tw"><table>']
+    if not grid:
+        out.append('<thead><tr>')
+        for i, h in enumerate(header):
+            cls = ' class="%s"' % col_g[i] if any_col and col_g[i] else ''
+            out.append('<th%s>%s</th>' % (cls, inline(h)))
+        out.append('</tr></thead><tbody>')
     for ri, r in enumerate(rows):
         r = (r + [''] * ncol)[:ncol]
         if any_col:
@@ -183,6 +234,8 @@ def render_table(header, rows, last_gender):
         out.append('<tr>')
         label = plain(r[0]).split(' — ')[0].strip()
         for ci, c in enumerate(r):
+            if grid and ci == 0:
+                continue
             g = g_for(ci)
             ex = EXAMPLES.get((label, ci))
             classes = ([g] if g else []) + (['hasex'] if ex else [])
@@ -196,7 +249,7 @@ def render_table(header, rows, last_gender):
                 body = split_cell(c)
             out.append('<td%s%s>%s</td>' % (cls, extra, body or inline(c)))
         out.append('</tr>')
-    out.append('</tbody></table></div>')
+    out.append('</tbody></table></div>' + ('</div>' if grid else ''))
     return ''.join(out)
 
 def md_to_html(md):
@@ -333,6 +386,9 @@ body{
   font:16px/1.55 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
 }
 .wrap{display:flex; align-items:flex-start; gap:28px; max-width:1280px; margin:0 auto; padding:24px 20px 80px}
+/* the sheet column must be allowed to be narrower than its widest table,
+   or a wide table stretches the page instead of scrolling inside .tw */
+.wrap > main{flex:1 1 auto; min-width:0; width:100%}
 nav.toc{
   position:sticky; top:16px; flex:0 0 250px; max-height:calc(100vh - 40px);
   overflow:auto; border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--toc-bg);
@@ -379,8 +435,42 @@ header.top h1{font-size:31px; margin:0 0 4px}
 header.top p{color:var(--muted); margin:0}
 
 @media (max-width:900px){
-  .wrap{flex-direction:column; gap:14px}
+  /* stacked: align-items must stretch, otherwise flex-start sizes the column
+     to its content and the page itself scrolls sideways */
+  .wrap{flex-direction:column; gap:14px; align-items:stretch}
   nav.toc{position:static; width:100%; flex:none; max-height:none}
+}
+
+/* ---- phones ------------------------------------------------------------- */
+/* Wide tables are the whole problem on a small screen: they cannot shrink past
+   their content, so instead of squeezing the page they get their own scroller
+   that runs edge to edge. Everything else just steps down a size. */
+@media (max-width:560px){
+  body{font-size:15px}
+  .wrap{padding:14px 12px 56px; gap:12px}
+  header.top{padding:18px 12px 0}
+  header.top h1{font-size:22px; line-height:1.25}
+  header.top p{font-size:13px}
+  h1{font-size:20px; margin:4px 0 12px}
+  h2{font-size:17px; margin:22px 0 8px}
+  h3{font-size:15px; margin:16px 0 6px}
+  h4{font-size:14px}
+  nav.toc{padding:11px 13px}
+  nav.toc li{font-size:13.5px}
+  /* full-bleed scroller: the negative margin exactly cancels .wrap's padding */
+  .tw{margin-left:-12px; margin-right:-12px; padding-left:12px; padding-right:12px;
+      -webkit-overflow-scrolling:touch}
+  table{font-size:13px}
+  th,td{padding:5px 7px}
+  table.grid{font-size:12.5px}
+  table.grid th,table.grid td{padding:3px 6px}
+  table.grid .cell2{gap:7px}
+  pre{font-size:12.5px; padding:9px 11px}
+  .theme-toggle{top:8px; right:8px; padding:6px 9px; font-size:12px}
+  .theme-toggle .lbl{display:none}
+  .legend{font-size:12px}
+  /* the balloon must never be wider than the screen */
+  .extip{max-width:calc(100vw - 20px); font-size:13px}
 }
 
 @media print{
@@ -441,12 +531,25 @@ td.hasex:hover::after{opacity:.75}
 }
 .extip.below::after{bottom:auto;top:-6px;transform:rotate(225deg)}
 /* paper has no hover: drop the marker so the grid prints clean */
-@media print{ td.hasex::after{display:none} .extip{display:none} }
+@media print{ td.hasex::after{display:none} .extip{display:none} .gridtog{display:none} }
 /* master-grid cells: the articles stack down the left, the ending is pinned
    right, so prefix and suffix each read as one vertical column */
 td .cell2{display:flex;align-items:center;justify-content:space-between;gap:10px}
 td .cell2 .arts{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
 td .cell2 .end{white-space:nowrap;text-align:right}
+/* master grid: no type column, a Singular/Plural band over the case names, and
+   cells sized to their content instead of stretched across the page */
+table.grid{width:auto; font-size:13.5px}
+table.grid th,table.grid td{padding:4px 8px}
+table.grid thead th.grp{text-align:center; letter-spacing:.04em}
+table.grid .cell2{gap:9px}
+.gridwrap{margin:12px 0 16px}
+.gridwrap .tw{margin:6px 0 0}
+.gridtog{font:inherit; font-size:12.5px; line-height:1; padding:6px 11px; border-radius:999px;
+  background:var(--btn-bg); color:var(--fg); border:1px solid var(--line); cursor:pointer}
+.gridtog:hover{border-color:var(--accent)}
+.gridtog:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+table.grid tr[hidden]{display:none}
 """
 
 # ------------------------------------------------------- theme switch pieces
@@ -568,6 +671,40 @@ COPY_JS = (
     '})();</script>'
 )
 
+# ----------------------------------------------------- grid grouping toggle
+# The same six columns read two ways: by number (Singular | Plural over the
+# cases) or by case (Nominative | Accusative | Genitive over the numbers).
+# Both heads are already in the table; the body cells are moved with
+# appendChild, which reorders without re-rendering, so the balloons and their
+# data attributes travel with their own cells. The choice is remembered.
+GRID_JS = (
+    '<script>(function(){'
+    'var t=document.querySelector("table.grid");if(!t||!t.tBodies.length)return;'
+    'var btn=document.querySelector(".gridtog");if(!btn)return;'
+    'var order=(t.getAttribute("data-order")||"").split(",").map(Number);'
+    'if(!order.length||order.some(isNaN))return;'
+    'var rows=[].slice.call(t.tBodies[0].rows);'
+    'var orig=rows.map(function(r){return [].slice.call(r.cells);});'
+    'var flat=orig.length?orig[0].map(function(_,i){return i;}):[];'
+    'var mode="number";'
+    'function apply(m){'
+    'mode=m;'
+    'var ord=(m==="case")?order:flat;'
+    'rows.forEach(function(r,i){ord.forEach(function(ci){'
+    'if(orig[i][ci])r.appendChild(orig[i][ci]);});});'
+    '[].forEach.call(t.querySelectorAll("tr.h-number"),function(tr){tr.hidden=(m!=="number");});'
+    '[].forEach.call(t.querySelectorAll("tr.h-case"),function(tr){tr.hidden=(m!=="case");});'
+    'btn.textContent=(m==="number")?"Group by case":"Group by number";'
+    'btn.setAttribute("aria-label",(m==="number")'
+    '?"Columns grouped by number. Switch to grouping by case."'
+    ':"Columns grouped by case. Switch to grouping by number.");'
+    'try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}'
+    'var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}'
+    'apply(saved==="case"?"case":"number");'
+    'btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});'
+    '})();</script>'
+)
+
 def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
 
@@ -609,7 +746,7 @@ def main():
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
            % (CSS, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
-              THEME_JS + EX_JS + COPY_JS))
+              THEME_JS + EX_JS + COPY_JS + GRID_JS))
 
     out_html = os.path.join(DIST, 'index.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
@@ -621,7 +758,7 @@ def main():
                 '<title>%s</title><style>%s</style>%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
                 '%s</body></html>' % (html.escape(s['title']), CSS, THEME_HEAD,
-                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS))
+                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS + GRID_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
             stem = 'index-sheet'      # avoid creating pages/index.html
