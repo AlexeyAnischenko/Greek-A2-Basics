@@ -554,6 +554,20 @@ table.grid tr[hidden]{display:none}
 
 # ------------------------------------------------------- theme switch pieces
 # Runs before first paint so a pinned dark choice does not flash white.
+# ------------------------------------------------------------ favicon
+# Inline SVG so the pages stay self-contained and no extra file has to be
+# served. The grammar sheets get a Greek alpha on blue; the keyboard page
+# (hand-written, not generated here) carries its own purple keyboard mark, so
+# the two are told apart by both shape and colour in a row of tabs.
+FAVICON = (
+    '<link rel="icon" href="data:image/svg+xml,'
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
+    "<rect width='64' height='64' rx='13' fill='%230b6ea8'/>"
+    "<text x='32' y='48' text-anchor='middle' font-family='Georgia,serif'"
+    " font-size='46' fill='%23ffffff'>&#945;</text>"
+    '</svg>">'
+)
+
 THEME_HEAD = (
     '<script>(function(){try{var t=localStorage.getItem("greek-a2-theme");'
     'if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}'
@@ -739,13 +753,13 @@ def main():
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
            '<meta name="viewport" content="width=device-width,initial-scale=1">'
            '<meta name="color-scheme" content="light dark">'
-           '<title>Greek A2 — Grammar Drill Sheets</title><style>%s</style>%s</head><body>'
+           '<title>Greek A2 — Grammar Drill Sheets</title><style>%s</style>%s%s</head><body>'
            '%s'
            '<header class="top"><h1>Greek A2 — Grammar Drill Sheets</h1>'
            '<p>%d sheets · A2 scope · cover the right column and recite</p>%s</header>'
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
-           % (CSS, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
+           % (CSS, FAVICON, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
               THEME_JS + EX_JS + COPY_JS + GRID_JS))
 
     out_html = os.path.join(DIST, 'index.html')
@@ -755,9 +769,9 @@ def main():
         page = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
                 '<meta name="viewport" content="width=device-width,initial-scale=1">'
                 '<meta name="color-scheme" content="light dark">'
-                '<title>%s</title><style>%s</style>%s</head><body>'
+                '<title>%s</title><style>%s</style>%s%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
-                '%s</body></html>' % (html.escape(s['title']), CSS, THEME_HEAD,
+                '%s</body></html>' % (html.escape(s['title']), CSS, FAVICON, THEME_HEAD,
                                       THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS + GRID_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
@@ -918,12 +932,12 @@ def make_grid_sheet():
         '</div>')
 
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
-           '<title>Greek A2 - noun endings, master grid</title>'
+           '<title>Greek A2 - noun endings, master grid</title>%s'
            '<style>%s</style></head><body>'
            '<h1>Greek A2 &middot; Noun endings &mdash; master grid</h1>'
            '<p class="sub">Article and ending for every A2 declension, grouped by case.</p>'
            '%s%s%s</body></html>'
-           % (GRID_SHEET_CSS, legend,
+           % (FAVICON, GRID_SHEET_CSS, legend,
               render_print_grid(header, rows, order,
                                 [cases[i] for i in order], [nums[i] for i in order]),
               notes))
