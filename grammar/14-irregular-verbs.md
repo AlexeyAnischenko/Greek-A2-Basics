@@ -3,7 +3,7 @@
 Columns: **Present** · **Aorist** (1st singular past) · **Dependent** (να-form) · **Imperative** (2nd singular / plural).
 The dependent column is also what you need for **θα** (future) and, with **-ει**, for **έχω** (perfect).
 
-⚠ **°** marks a verb that is **not in the KLIK A2 wordlist**. The pattern is real Greek, but if you are drilling for the exam, do these last — 21 of the 107 verbs below are in this class.
+⚠ Every verb below is in the **KLIK A2 wordlist**. Twenty-one that used to be here are not, and have been removed: τυχαίνω, σέρνω, δέρνω, κρίνω, πιάνω, διώχνω, κλαίω, φταίω, γελάω, διψάω, γερνάω, κρεμάω, χωράω, τραβάω, φυλάω, συγχωρώ, στέκομαι, σηκώνομαι, δέχομαι, υπόσχομαι, εργάζομαι. They are real Greek — look one up if you meet it, but none of them is A2 vocabulary.
 
 ## Tier 1 — the 20 you cannot avoid
 
@@ -43,7 +43,6 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 | προλαβαίνω | be in time | **πρόλαβα** | να προλάβω | πρόλαβε / προλάβετε |
 | επαναλαμβάνω | repeat | **επανέλαβα** | να επαναλάβω | — |
 | περιλαμβάνω | include | **περιέλαβα** | να περιλάβω | — |
-| τυχαίνω° | happen to | **έτυχε** *(3rd singular)* | να τύχει | — |
 
 ## Tier 3 — -νω / -ρνω stem changes
 
@@ -57,13 +56,9 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 | ξεπλένω | rinse | **ξέπλυνα** | να ξεπλύνω | ξέπλυνε / ξεπλύντε |
 | παραγγέλνω | order | **παρήγγειλα** | να παραγγείλω | παράγγειλε / παραγγείλτε |
 | περιμένω | wait | **περίμενα** | να περιμένω | περίμενε / περιμένετε |
-| σέρνω° | drag | **έσυρα** | να σύρω | — |
-| δέρνω° | beat | **έδειρα** | να δείρω | — |
-| κρίνω° | judge | **έκρινα** | να κρίνω | — |
 | αφήνω | leave / let | **άφησα** | να αφήσω | **άσε / άστε** |
 | σβήνω | erase / turn off | **έσβησα** | να σβήσω | σβήσε / σβήστε |
 | φτάνω | arrive | **έφτασα** | να φτάσω | φτάσε / φτάστε |
-| πιάνω° | catch | **έπιασα** | να πιάσω | πιάσε / πιάστε |
 | χάνω | lose | **έχασα** | να χάσω | — |
 
 ## Tier 4 — -χνω / -χω / -ζω / -πτω
@@ -72,7 +67,6 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 |---|---|---|---|---|
 | δείχνω | show | **έδειξα** | να δείξω | δείξε / δείξτε |
 | ρίχνω | throw | **έριξα** | να ρίξω | ρίξε / ρίξτε |
-| διώχνω° | chase away | **έδιωξα** | να διώξω | — |
 | ψάχνω | search | **έψαξα** | να ψάξω | ψάξε / ψάξτε |
 | φτιάχνω | make / fix | **έφτιαξα** | να φτιάξω | φτιάξε / φτιάξτε |
 | διαλέγω | choose | **διάλεξα** | να διαλέξω | διάλεξε / διαλέξτε |
@@ -84,9 +78,7 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 | προσέχω | be careful | **πρόσεξα** | να προσέξω | πρόσεχε / προσέξτε |
 | υπάρχω | exist | **υπήρξα** | να υπάρξω | — |
 | πέφτω | fall | **έπεσα** | να πέσω | πέσε / πέστε |
-| κλαίω° | cry | **έκλαψα** | να κλάψω | κλάψε / κλάψτε |
 | καίω | burn | **έκαψα** | να κάψω | — |
-| φταίω° | be at fault | **έφταιξα** | να φταίξω | — |
 | παίζω | play | **έπαιξα** | να παίξω | παίξε / παίξτε |
 | αλλάζω | change | **άλλαξα** | να αλλάξω | άλλαξε / αλλάξτε |
 | κοιτάζω / κοιτάω | look | **κοίταξα** | να κοιτάξω | **κοίτα** / κοιτάξτε |
@@ -99,17 +91,10 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 |---|---|---|---|
 | ξεχνάω | forget | **ξέχασα** | να ξεχάσω |
 | περνάω | pass / spend | **πέρασα** | να περάσω |
-| γελάω° | laugh | **γέλασα** | να γελάσω |
 | χαλάω | break / spoil | **χάλασα** | να χαλάσω |
 | πεινάω | be hungry | **πείνασα** | να πεινάσω |
-| διψάω° | be thirsty | **δίψασα** | να διψάσω |
-| γερνάω° | grow old | **γέρασα** | να γεράσω |
-| κρεμάω° | hang | **κρέμασα** | να κρεμάσω |
 | φοράω | wear | **φόρεσα** | να φορέσω |
-| χωράω° | fit | **χώρεσα** | να χωρέσω |
 | πετάω | fly / throw | **πέταξα** | να πετάξω |
-| τραβάω° | pull | **τράβηξα** | να τραβήξω |
-| φυλάω° | guard / keep | **φύλαξα** | να φυλάξω |
 | χαιρετάω | greet | **χαιρέτησα** | να χαιρετήσω |
 
 ## Tier 6 — B2 (-ώ) with -εσα aorist
@@ -119,7 +104,6 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 | μπορώ | can | **μπόρεσα** | να μπορέσω |
 | καλώ | invite / call | **κάλεσα** | να καλέσω |
 | παρακαλώ | beg / please | **παρακάλεσα** | να παρακαλέσω |
-| συγχωρώ° | forgive | **συγχώρεσα** | να συγχωρέσω |
 | ζω | live | **έζησα** | να ζήσω |
 
 ## Tier 7 — passive-form (deponent) verbs
@@ -137,12 +121,7 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 | χρειάζομαι | need | χρειάστηκα | να χρειαστώ | — |
 | φαίνομαι | seem | φάνηκα | να φανώ | — |
 | βρίσκομαι | be located | βρέθηκα | να βρεθώ | — |
-| στέκομαι° | stand | στάθηκα | να σταθώ | στάσου / σταθείτε |
-| σηκώνομαι° | get up | σηκώθηκα | να σηκωθώ | σήκω / σηκωθείτε |
-| δέχομαι° | accept | δέχτηκα | να δεχτώ | — |
 | αισθάνομαι | feel | αισθάνθηκα | να αισθανθώ | — |
-| υπόσχομαι° | promise | υποσχέθηκα | να υποσχεθώ | — |
-| εργάζομαι° | work | εργάστηκα | να εργαστώ | — |
 | ντύνομαι | get dressed | ντύθηκα | να ντυθώ | ντύσου / ντυθείτε |
 | πλένομαι | wash oneself | πλύθηκα | να πλυθώ | πλύσου / πλυθείτε |
 | ετοιμάζομαι | get ready | ετοιμάστηκα | να ετοιμαστώ | ετοιμάσου / ετοιμαστείτε |

@@ -45,16 +45,16 @@ The present covers both English "I write" and "I am writing".
 | θέλω (want) | απαντάω (answer) | αργώ (be late) |
 | έχω (have) | περνάω (pass) | ευχαριστώ (thank) |
 | ξέρω (know) | ξεχνάω (forget) | συμφωνώ (agree) |
-| παίρνω (take) | γελάω (laugh) | προτιμώ (prefer) |
+| παίρνω (take) | ξυπνάω (wake up) | προτιμώ (prefer) |
 | φέρνω (bring) | κρατάω (hold) | συζητώ (discuss) |
 | βλέπω (see) | πεινάω (be hungry) | οδηγώ (drive) |
-| ακούω (hear) | διψάω (be thirsty) | συναντώ (meet) |
+| ακούω (hear) | περπατάω (walk) | συναντώ (meet) |
 | τρώω ⚠ (eat) | χαλάω (break / spoil) | ζω ⚠ (live) |
 | πίνω (drink) | φοράω (wear) | παρακαλώ (please / beg) |
 | ανοίγω (open) | σταματάω (stop) | βοηθώ (help) |
 | κλείνω (close) | χτυπάω (hit / knock) | εξηγώ (explain) |
-| δουλεύω (work) | πετάω (fly / throw) | μετρώ (count) |
-| αγοράζω (buy) | κοιτάω (look) | συγχωρώ (forgive) |
+| δουλεύω (work) | πετάω (fly / throw) | επικοινωνώ (communicate) |
+| αγοράζω (buy) | κοιτάω (look) | ακολουθώ (follow) |
 | πληρώνω (pay) | βοηθάω (= βοηθώ) | προσπαθώ (try) |
 | στέλνω (send) | γεννάω (give birth) | χρησιμοποιώ (use) |
 
@@ -99,7 +99,7 @@ Used for the reflexive ("I wash myself") and for many verbs that are
 | **εσείς** | 2nd plural | **-εστε** | **-ιέστε** | **-άστε** |
 | **αυτοί / αυτές / αυτά** | 3rd plural | **-ονται** | **-ιούνται** | **-ούνται** |
 
-### High-frequency passive-form verbs (no active exists)
+### High-frequency verbs that live in the passive form
 
 | Verb | Meaning | Verb | Meaning |
 |---|---|---|---|
@@ -108,10 +108,10 @@ Used for the reflexive ("I wash myself") and for many verbs that are
 | **γίνομαι** | become | **χρειάζομαι** | need |
 | **κοιμάμαι** | sleep | **φοβάμαι** | be afraid |
 | **θυμάμαι** | remember | **λυπάμαι** | be sorry |
-| **αισθάνομαι** | feel | **εργάζομαι** | work |
-| **ντρέπομαι** | be shy / ashamed | **δέχομαι** | accept |
+| **αισθάνομαι** | feel | **ονειρεύομαι** | dream |
+| **επισκέπτομαι** | visit | **χαίρομαι** | be glad |
 | **βρίσκομαι** | be located | **φαίνομαι** | seem |
-| **σηκώνομαι** | get up | **ετοιμάζομαι** | get ready |
+| **ξεκουράζομαι** | rest | **ετοιμάζομαι** | get ready |
 
 ⚠ **φοβάμαι, θυμάμαι, λυπάμαι** conjugate like **κοιμάμαι** (B2 passive).
 ⚠ **έρχομαι**: έρχομαι, έρχεσαι, έρχεται, ερχόμαστε, έρχεστε, έρχονται.

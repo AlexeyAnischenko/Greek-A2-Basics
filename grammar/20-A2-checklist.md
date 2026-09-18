@@ -19,7 +19,7 @@ Where a pattern on these pages earns its place, and where it does not:
 | **Plural-only** nouns (τα Χριστούγεννα, οι διακοπές…) | ~30 | learn them as plurals |
 | Adjective **A -ος/-η/-ο** + **B -ος/-α/-ο** | 191 of 195 | these two are the whole story |
 | Adjective **C -ύς/-ιά/-ύ** | **1** (ελαφρύς) | recognise, do not drill |
-| Irregular verbs marked **°** on page 16 | 21 of 107 | last, if at all |
+| ~~21 irregular verbs on page 16~~ | **0** | **removed** — σέρνω, δέρνω, κρίνω, γερνάω, χωράω, συγχωρώ, υπόσχομαι and 14 more are not A2 vocabulary |
 | ~~Noun type **F -ού** (η αλεπού)~~ | **0** | **removed from these pages** |
 | ~~Adjective **-ης/-ης/-ες** (διεθνής)~~ | **0** | never taught here — correctly so |
 
