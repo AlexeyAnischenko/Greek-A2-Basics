@@ -12,20 +12,28 @@
 | F | **-α** | **-ες** | η ώρα → οι ώρες |
 | F | **-η** | **-ες** | η νίκη → οι νίκες |
 | F | **-η** (abstract) | **-εις** | η πόλη → οι πόλεις |
-| F | **-ού** | **-ούδες** | η αλεπού → οι αλεπούδες |
+| F | **-ος** | **-οι** | η είσοδος → οι είσοδοι |
 | N | **-ο** | **-α** | το βιβλίο → τα βιβλία |
 | N | **-ι** | **-ια** | το παιδί → τα παιδιά |
 | N | **-μα** | **-ματα** | το μάθημα → τα μαθήματα |
 | N | **-ος** | **-η** | το λάθος → τα λάθη |
+| N | **-ον** | **-οντα** | το προϊόν → τα προϊόντα |
+| N | *loanword* | **unchanged** | το γκαράζ → τα γκαράζ |
+
+⚠ The **-ού → -ούδες** row (η αλεπού) is gone: no noun in the KLIK A2 list uses it. The one
+feminine you will meet with a -δες plural is **η γιαγιά → οι γιαγιάδες**.
 
 ## 2. How do I know if -η is F2 (-ες) or F3 (-εις)?
 
 | Type | Marker | Examples |
 |---|---|---|
-| **-εις** plural | abstract nouns, often from verbs; endings **-ση, -ξη, -ψη, -μη** | η στάση→στάσεις, η τάξη→τάξεις, η σκέψη→σκέψεις, η δύναμη→δυνάμεις, η πόλη→πόλεις, η άσκηση→ασκήσεις |
+| **-εις** plural | abstract nouns, often from verbs; endings **-ση, -ξη, -ψη** | η στάση→στάσεις, η τάξη→τάξεις, η σκέψη→σκέψεις, η άσκηση→ασκήσεις, η απόφαση→αποφάσεις |
 | **-ες** plural | concrete things & people | η αδερφή→αδερφές, η ζάχαρη→ζάχαρες, η αγάπη→αγάπες, η νίκη→νίκες, η τέχνη→τέχνες |
 
-**Rule of thumb: if it ends in -ση / -ξη / -ψη, the plural is -σεις / -ξεις / -ψεις.**
+**Rule of thumb: if it ends in -ση / -ξη / -ψη, the plural is -σεις / -ξεις / -ψεις.** It pays off
+59 times in the A2 wordlist — the third-biggest feminine group. ⚠ **η πόλη → οι πόλεις** is the
+one A2 word that takes -εις without the -ση/-ξη/-ψη marker; the -μη words that textbooks cite
+(η δύναμη, η μνήμη) are not in the A2 list at all.
 
 ## 3. Stress-shift plurals (the real trap)
 
@@ -46,9 +54,20 @@ Greek stress may only sit on one of the last three syllables. When the ending gr
 |---|---|
 | το φως | τα φώτα |
 | το βράδυ | τα βράδια |
+| το γάλα | τα γάλατα |
+| το κρέας | τα κρέατα |
 | ο πατέρας | οι πατέρες |
 | η μητέρα | οι μητέρες |
-| τα Χριστούγεννα, τα γενέθλια, τα λεφτά | plural only — no singular |
+
+### Plural-only nouns — about 30 of them at A2, so learn them as plurals
+
+τα Χριστούγεννα · τα γενέθλια · οι διακοπές · τα λεφτά / τα χρήματα · οι εξετάσεις · οι εκπτώσεις ·
+τα μαλλιά · τα γυαλιά · οι ειδήσεις · τα νέα · οι γονείς · οι σπουδές · τα ψώνια · τα μακαρόνια ·
+τα δημητριακά · τα συγχαρητήρια · τα συλλυπητήρια · τα εγκαίνια · τα κάλαντα · οι Απόκριες ·
+τα Μαθηματικά · οι πρώτες βοήθειες · τα λόγια
+
+They take a **plural verb and plural adjectives**: Τα μαλλιά σου **είναι ωραία**. Οι διακοπές
+**τελείωσαν**.
 
 ## 5. Countable vs. mass
 
@@ -71,10 +90,10 @@ Greek stress may only sit on one of the last three syllables. When the ending gr
 | το πρόβλημα | τα προβλήματα |
 | ο καφές | οι καφέδες |
 | το λάθος | τα λάθη |
-| η αλεπού | οι αλεπούδες |
+| η έξοδος | οι έξοδοι |
 | ο μαθητής | οι μαθητές |
 | το τραπέζι | τα τραπέζια |
-| η δύναμη | οι δυνάμεις |
+| το προϊόν | τα προϊόντα |
 | ο άνθρωπος (genitive plural) | των ανθρώπων |
 | η γυναίκα | οι γυναίκες |
 | το σπίτι | τα σπίτια |

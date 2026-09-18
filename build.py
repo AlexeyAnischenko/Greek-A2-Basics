@@ -832,23 +832,23 @@ GRID_SHEET_CSS = """
 :root{color-scheme:only light}
 *{box-sizing:border-box}
 body{margin:0; background:#fff; color:#12161a;
-  font:12pt/1.45 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  font:11.5pt/1.42 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
   -webkit-print-color-adjust:exact; print-color-adjust:exact}
-h1{font-size:20pt; margin:0 0 2mm; letter-spacing:-.01em}
-.sub{font-size:10.5pt; color:#5b6470; margin:0 0 5mm}
-table{border-collapse:collapse; width:100%; font-size:13pt; table-layout:fixed}
-th,td{border:.5pt solid #b9c1c9; padding:4.5pt 6pt; text-align:left; vertical-align:middle}
+h1{font-size:18pt; margin:0 0 1.5mm; letter-spacing:-.01em}
+.sub{font-size:10pt; color:#5b6470; margin:0 0 4mm}
+table{border-collapse:collapse; width:100%; font-size:12.6pt; table-layout:fixed}
+th,td{border:.5pt solid #b9c1c9; padding:4.2pt 6pt; text-align:left; vertical-align:middle}
 thead th{background:#eef1f4; font-weight:700}
-thead th.grp{text-align:center; letter-spacing:.05em; font-size:13.5pt}
+thead th.grp{text-align:center; letter-spacing:.05em; font-size:12pt}
 td.m{background:#dbeafe; color:#12243d}
 td.f{background:#ede0ff; color:#2b1741}
 td.n{background:#dcfce7; color:#12301f}
 .cell2{display:flex; align-items:center; justify-content:space-between; gap:7pt}
 .arts{display:flex; flex-direction:column; align-items:flex-start; line-height:1.2}
 .end{white-space:nowrap; font-weight:700}
-.notes{margin:5mm 0 0; font-size:10pt; color:#3d4650; line-height:1.45}
+.notes{margin:4mm 0 0; font-size:9.2pt; color:#3d4650; line-height:1.45}
 .notes b{color:#12161a}
-.legend{display:flex; gap:5mm; font-size:10pt; margin:0 0 4mm}
+.legend{display:flex; gap:5mm; font-size:9.2pt; margin:0 0 3mm}
 .legend span{padding:1pt 5pt; border:.4pt solid #b9c1c9; border-radius:2pt}
 .legend .m{background:#dbeafe} .legend .f{background:#ede0ff} .legend .n{background:#dcfce7}
 """

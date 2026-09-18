@@ -3,7 +3,16 @@
 **Rule:** the adjective agrees with its noun in **gender + case + number**, and goes **before** the noun.
 ο καλός φίλος · τη μεγάλη πόλη · των ωραίων παιδιών
 
-At A2 you need **two and a half** patterns: type A, type B, and a handful of type C words.
+At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wordlist:
+
+| Type | A2 adjectives | Verdict |
+|---|---|---|
+| **A · -ος / -η / -ο** (καλός, όμορφος) | **167** | the pattern — 86% of them |
+| **B · -ος / -α / -ο** (ωραίος) | **24** | learn it, it is only the feminine that differs |
+| **C · -ύς / -ιά / -ύ** (πλατύς) | **1** — ελαφρύς | one word. Recognise it, do not drill it |
+| **-ός / -ιά / -ό** (γλυκός) | **3** | γλυκός, ξανθός, Κρητικός |
+| **-ης / -ης / -ες** (διεθνής) | **0** | not an A2 type — not taught on this page |
+| **D · πολύς** | grammar word | irregular and unavoidable |
 
 ## A · Type -ος / -η / -ο (καλός — good) ← the main one
 
@@ -39,16 +48,23 @@ At A2 you need **two and a half** patterns: type A, type B, and a handful of typ
 
 The difference from type A is **only the feminine**: -α / -ας instead of -η / -ής.
 
-## C · Type -ύς / -ιά / -ύ (πλατύς — wide)
+## C · Type -ύς / -ιά / -ύ (ελαφρύς — light) — **one word at A2**
 
-Only a few words, but they are common: **μακρύς** (long), **βαθύς** (deep), **βαρύς** (heavy),
-**φαρδύς** (wide), **ελαφρύς** (light). Learn these as a small closed set.
+⚠ **ελαφρύς** is the only adjective of this type in the A2 wordlist. The textbook favourites
+(πλατύς, μακρύς, βαθύς, βαρύς, φαρδύς) are **not on it** — recognise the shape, spend your time
+elsewhere.
 
 | | Masculine singular | Feminine singular | Neuter singular | Masculine plural | Feminine plural | Neuter plural |
 |---|---|---|---|---|---|---|
-| Nominative | πλατ**ύς** | πλατ**ιά** | πλατ**ύ** | πλατ**ιοί** | πλατ**ιές** | πλατ**ιά** |
-| Accusative | πλατ**ύ** | πλατ**ιά** | πλατ**ύ** | πλατ**ιούς** | πλατ**ιές** | πλατ**ιά** |
-| Genitive | πλατ**ιού** | πλατ**ιάς** | πλατ**ιού** | πλατ**ιών** | πλατ**ιών** | πλατ**ιών** |
+| Nominative | ελαφρ**ύς** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιοί** | ελαφρ**ιές** | ελαφρ**ιά** |
+| Accusative | ελαφρ**ύ** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιούς** | ελαφρ**ιές** | ελαφρ**ιά** |
+| Genitive | ελαφρ**ιού** | ελαφρ**ιάς** | ελαφρ**ιού** | ελαφρ**ιών** | ελαφρ**ιών** | ελαφρ**ιών** |
+
+### The one you will actually meet instead: -ός / -ιά / -ό
+
+**γλυκός** (sweet) → γλυκός / γλυκ**ιά** / γλυκό, plural γλυκοί / γλυκ**ιές** / γλυκά.
+Same feminine **-ιά**, but the masculine and neuter stay in type A. Also **ξανθός** (blond,
+feminine ξανθή *or* ξανθιά) and **Κρητικός**.
 
 ## D · πολύς (much / many) — irregular but essential ⚠
 

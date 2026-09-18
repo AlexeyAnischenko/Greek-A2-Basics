@@ -5,6 +5,27 @@ Re-test weekly. Anything not ✓ twice in a row goes back to daily drilling.
 
 Everything below is A2 scope.
 
+## What the A2 wordlist actually demands — measured, not guessed
+
+Every one of the 1,607 entries in the **KLIK A2 glossary** was sorted by its inflection class.
+Where a pattern on these pages earns its place, and where it does not:
+
+| Pattern | A2 words | Do |
+|---|---|---|
+| Noun types **F1 -α, N1 -ο, N2 -ι, M3 -ος, F2 -η, F3 -ση/-ξη/-ψη, N3 -μα** | 670 of 792 | drill all six cases cold |
+| Noun types **M1 -ας, M2 -ης** | 37 | drill; half the -ης words are not stressed on the ending |
+| Noun types **N4 -ος, M4 -ές, F4 -ος, N5 -ον** | 23 | learn the actual words, skip the paradigm |
+| **Invariable loanwords** (το γκαράζ, το ραντεβού…) | 24 | just the article and agreement |
+| **Plural-only** nouns (τα Χριστούγεννα, οι διακοπές…) | ~30 | learn them as plurals |
+| Adjective **A -ος/-η/-ο** + **B -ος/-α/-ο** | 191 of 195 | these two are the whole story |
+| Adjective **C -ύς/-ιά/-ύ** | **1** (ελαφρύς) | recognise, do not drill |
+| Irregular verbs marked **°** on page 16 | 21 of 107 | last, if at all |
+| ~~Noun type **F -ού** (η αλεπού)~~ | **0** | **removed from these pages** |
+| ~~Adjective **-ης/-ης/-ες** (διεθνής)~~ | **0** | never taught here — correctly so |
+
+⚠ Function words are exempt from this count: πιο, καλύτερος, εκατό, χίλια and the like are missing
+from the glossary because the book teaches them as grammar, not as vocabulary. Their pages stay.
+
 ## Articles & nouns (pages 3–6)
 
 | # | Can I… | ✓ |

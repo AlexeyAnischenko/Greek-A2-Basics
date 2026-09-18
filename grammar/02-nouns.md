@@ -9,8 +9,11 @@ Quick heuristic (about 85% reliable):
 | Ending | Usually | Example |
 |---|---|---|
 | -ος, -ας, -ης, -ες, -ους | masculine | ο δρόμος, ο άντρας, ο μαθητής, ο καφές, ο παππούς |
-| -α, -η, -ού | feminine | η ώρα, η νίκη, η αλεπού |
+| -α, -η | feminine | η ώρα, η νίκη |
 | -ο, -ι, -μα | neuter | το βιβλίο, το παιδί, το μάθημα |
+
+⚠ The one systematic exception: a handful of **-ος words are feminine** — η οδός, η είσοδος, η
+έξοδος. Only the article tells you (see F4 below).
 
 ## Master grid — every article and ending in one table
 
@@ -28,11 +31,12 @@ with full examples further down the page. Rows are colour-banded: **masculine** 
 | **F1 · -α** — η ώρα | η / μια **-α** | την / μια **-α** | της / μιας **-ας** | οι **-ες** | τις **-ες** | των **-ών** |
 | **F2 · -η** — η νίκη | η / μια **-η** | τη(ν) / μια **-η** | της / μιας **-ης** | οι **-ες** | τις **-ες** | των **-ών** |
 | **F3 · -η → -εις** — η πόλη | η / μια **-η** | την / μια **-η** | της / μιας **-ης** | οι **-εις** | τις **-εις** | των **-εων** |
-| **F4 · -ού** — η αλεπού | η / μια **-ού** | την / μια **-ού** | της / μιας **-ούς** | οι **-ούδες** | τις **-ούδες** | των **-ούδων** |
+| **F4 · -ος** — η είσοδος | η / μια **-ος** | την / μια **-ο** | της / μιας **-ου** | οι **-οι** | τις **-ους** | των **-ων** |
 | **N1 · -ο** — το βιβλίο | το / ένα **-ο** | το / ένα **-ο** | του / ενός **-ου** | τα **-α** | τα **-α** | των **-ων** |
 | **N2 · -ι** — το παιδί | το / ένα **-ί** | το / ένα **-ί** | του / ενός **-ιού** | τα **-ιά** | τα **-ιά** | των **-ιών** |
 | **N3 · -μα** — το μάθημα | το / ένα **-μα** | το / ένα **-μα** | του / ενός **-ματος** | τα **-ματα** | τα **-ματα** | των **-μάτων** |
 | **N4 · -ος** — το λάθος | το / ένα **-ος** | το / ένα **-ος** | του / ενός **-ους** | τα **-η** | τα **-η** | των **-ών** |
+| **N5 · -ον** — το μέλλον | το / ένα **-ον** | το / ένα **-ον** | του / ενός **-οντος** | τα **-οντα** | τα **-οντα** | των **-όντων** |
 
 What the grid shows at a glance:
 
@@ -49,6 +53,55 @@ What the grid shows at a glance:
 tables below. ⚠ **τον** and **την** drop the **-ν** before some consonants (page 3); masculine
 **τον** is kept in writing because it is what separates τον δρόμο from το δρόμο.
 
+## How much of the A2 wordlist each type actually carries ⚠ read before you drill
+
+Every noun in the **KLIK A2 glossary** (1,607 entries → **792 common nouns**, proper names
+excluded) was sorted into the rows above. Seven types carry 85% of them; the rest are worth
+minutes, not hours.
+
+| Type | A2 nouns | What that means for you |
+|---|---|---|
+| **F1 · -α** | 172 | drill to automatic |
+| **N1 · -ο** | 151 | drill to automatic |
+| **N2 · -ι** | 94 | drill to automatic |
+| **M3 · -ος** | 89 | drill to automatic |
+| **F2 · -η** | 66 | drill to automatic |
+| **F3 · -ση/-ξη/-ψη** | 59 | drill to automatic — bigger than it looks |
+| **N3 · -μα** | 39 | drill to automatic |
+| **M2 · -ης** | 20 | ten stressed (μαθητής), ten not (πελάτης) — same letters |
+| **M1 · -ας** | 17 | one paradigm, no surprises |
+| **N4 · -ος** | 8 | λάθος, μέρος, δάσος, είδος, έτος, τέλος, άγχος |
+| **M4 · -άς/-ές/-ούς** | 6 | καφές, καναπές, μεζές, λεκές, μπαμπάς, παππούς — memorise the six words, skip the paradigm |
+| **F4 · -ος** | 5 | είσοδος, έξοδος, οδός, ηθοποιός, πανσέληνος |
+| **N5 · -ον** | 4 | μέλλον, περιβάλλον, ενδιαφέρον, προϊόν |
+| *(invariable loans)* | **24** | no endings at all — see below |
+| *(plural-only)* | ~30 | no singular at all — see page 6 |
+| ~~F · -ού (η αλεπού)~~ | **0** | **not an A2 type** — no word in the list uses it; η γιαγιά → οι γιαγιάδες is the only -δες feminine you meet |
+
+⚠ **Two caveats.** The glossary is the KLIK A2 book's own word list, so "0" means *this book never
+asks for it*, not that the pattern is extinct. And it counts **lemmas, not frequency** — M1 has 17
+words but two of them (ο άντρας, ο μήνας) turn up constantly.
+
+### Invariable loanwords — 24 of them, more than N4 and F4 combined
+
+They take the article and never change: **το** ασανσέρ, **το** γκαράζ, **το** μπαρ, **το** πάρκιγκ,
+**το** ραντεβού, **το** φεστιβάλ, **το** στιλ, **το** κασκόλ, **το** μπουφάν, **το** τένις,
+**το** ευρώ, **το** κέικ, **το** σαμπουάν, **το** χολ, **το** ντοκιμαντέρ, **το** ρεσιτάλ,
+**το** αξεσουάρ, **το** χαμάμ, **η** ροκ, **η** τζαζ, **ο** κλόουν…
+
+> Μένω δίπλα στο **γκαράζ**. — Τα δύο **γκαράζ** είναι κλειστά. — Η πόρτα του **γκαράζ**.
+
+The only work they give you is the **article and the number agreement around them**:
+τα δύο γκαράζ **είναι κλειστά**.
+
+### Three neuters that look regular and are not
+
+| | Singular | Genitive sg | Plural | Genitive pl |
+|---|---|---|---|---|
+| milk | το γάλα | του γάλα**τος** | τα γάλα**τα** | των γαλά**των** |
+| meat | το κρέας | του κρέα**τος** | τα κρέα**τα** | των κρεά**των** |
+| evening | το βράδυ | του βραδ**ιού** | τα βράδ**ια** | των βραδ**ιών** |
+
 ## MASCULINE
 
 ### M1 · -ας (ο άντρας — man) ✦ also: ο πατέρας, ο μήνας, ο χειμώνας
@@ -60,7 +113,7 @@ tables below. ⚠ **τον** and **την** drop the **-ν** before some consona
 | Genitive | του άντρ**α** | των αντρ**ών** |
 | Vocative | άντρ**α**! | άντρ**ες**! |
 
-### M2 · -ης (ο μαθητής — pupil) ✦ also: ο εργάτης, ο πολίτης, ο κλέφτης
+### M2 · -ης (ο μαθητής — pupil) ✦ also: ο πωλητής, ο νικητής, ο υπολογιστής
 
 | | Singular | Plural |
 |---|---|---|
@@ -68,6 +121,11 @@ tables below. ⚠ **τον** and **την** drop the **-ν** before some consona
 | Accusative | τον μαθητ**ή** | τους μαθητ**ές** |
 | Genitive | του μαθητ**ή** | των μαθητ**ών** |
 | Vocative | μαθητ**ή**! | μαθητ**ές**! |
+
+⚠ **Half the A2 -ης nouns are not stressed on the ending** — ο πελάτης, ο πολίτης, ο κλέφτης,
+ο χάρτης, ο πλανήτης, ο καθρέφτης, ο καλλιτέχνης, ο σκηνοθέτης. Same letters, the stress simply
+stays put: ο πελάτ**ης** → τον πελάτ**η**, οι πελάτ**ες**, των πελατ**ών** *(the genitive plural
+does pull it to the end)*.
 
 ### M3 · -ος (ο δρόμος — street) ✦ also: ο άνθρωπος, ο φίλος, ο ουρανός, ο γιατρός
 
@@ -91,7 +149,8 @@ tables below. ⚠ **τον** and **την** drop the **-ν** before some consona
 | Nominative / Accusative plural | οι / τους καφ**έδες** | οι / τους παππ**ούδες** |
 | Genitive plural | των καφ**έδων** | των παππ**ούδων** |
 
-✦ also: ο μπακλαβάς→μπακλαβάδες, ο ψαράς→ψαράδες
+✦ The whole A2 membership of this type is **six words**: ο καφές, ο καναπές, ο μεζές, ο λεκές,
+ο μπαμπάς (→ μπαμπάδες), ο παππούς. Learn the six, not the paradigm.
 
 ## FEMININE
 
@@ -122,12 +181,23 @@ tables below. ⚠ **τον** and **την** drop the **-ν** before some consona
 | Accusative | την πόλ**η** | τις πόλ**εις** |
 | Genitive | της πόλ**ης** | των πόλ**εων** |
 
-### F4 · -ού (η αλεπού — fox) ✦ also: η γιαγιά (→γιαγιάδες), η μαϊμού
+### F4 · -ος feminine (η είσοδος — entrance) ⚠ the article is the only clue
+
+✦ the full A2 set: η είσοδος, η έξοδος, η οδός, η ηθοποιός, η πανσέληνος
+
+It declines exactly like **M3 · -ος** — only the articles are feminine:
 
 | | Singular | Plural |
 |---|---|---|
-| Nominative / Accusative | η / την αλεπ**ού** | οι / τις αλεπ**ούδες** |
-| Genitive | της αλεπ**ούς** | των αλεπ**ούδων** |
+| Nominative | η είσοδ**ος** | οι είσοδ**οι** |
+| Accusative | την είσοδ**ο** | τις εισόδ**ους** |
+| Genitive | της εισόδ**ου** | των εισόδ**ων** |
+
+> Η **έξοδος** είναι εκεί. — Βγαίνουμε από την **έξοδο**. — Μένω στην **οδό** Ερμού.
+
+⚠ **Dropped from this page:** the old *F · -ού* type (η αλεπού, η μαϊμού). **No noun in the KLIK
+A2 list belongs to it.** The only -δες feminine you actually meet is **η γιαγιά → οι γιαγιάδες**,
+and that is one word to remember, not a declension to learn.
 
 ## NEUTER
 
@@ -160,14 +230,27 @@ Insert **-ματ-**:
 
 ⚠ The stress moves right in every form except the nominative / accusative singular.
 
-### N4 · -ος neuter (το λάθος — mistake) — only a few words, but common
+### N4 · -ος neuter (το λάθος — mistake) — eight words at A2, but common ones
 
-✦ also: το μέρος, το δάσος, το κράτος, το έθνος
+✦ the A2 set: το λάθος, το μέρος, το δάσος, το είδος, το έτος, το τέλος, το άγχος
 
 | | Singular | Plural |
 |---|---|---|
 | Nominative / Accusative | το λάθ**ος** | τα λάθ**η** |
 | Genitive | του λάθ**ους** | των λαθ**ών** |
+
+### N5 · -ον (το μέλλον — future) — four words, all of them A2 exam words
+
+✦ the A2 set: το μέλλον, το περιβάλλον, το ενδιαφέρον, το προϊόν
+
+Insert **-οντ-**, exactly as N3 inserts **-ματ-**:
+
+| | Singular | Plural |
+|---|---|---|
+| Nominative / Accusative | το μέλλ**ον** | τα μέλλ**οντα** |
+| Genitive | του μέλλ**οντος** | των μελλ**όντων** |
+
+> Το **περιβάλλον** μάς αφορά όλους. — Η προστασία του **περιβάλλοντος**. — Ελληνικά **προϊόντα**.
 
 ## Master ending grid (write from memory in 3 minutes)
 

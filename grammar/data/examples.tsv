@@ -49,12 +49,6 @@ F3 · -η → -εις	3	Το κέντρο της πόλης είναι όμορ�
 F3 · -η → -εις	4	Οι πόλεις της Ελλάδας είναι μικρές.	The cities of Greece are small.
 F3 · -η → -εις	5	Επισκέφτηκα τις πόλεις της Κύπρου.	I visited the cities of Cyprus.
 F3 · -η → -εις	6	Τα ονόματα των πόλεων είναι αρχαία.	The names of the cities are ancient.
-F4 · -ού	1	Η αλεπού τρέχει στο δάσος.	The fox runs in the forest.
-F4 · -ού	2	Είδαμε την αλεπού το βράδυ.	We saw the fox in the evening.
-F4 · -ού	3	Η ουρά της αλεπούς είναι μεγάλη.	The fox's tail is long.
-F4 · -ού	4	Οι αλεπούδες βγαίνουν τη νύχτα.	Foxes come out at night.
-F4 · -ού	5	Φωτογράφισα τις αλεπούδες.	I photographed the foxes.
-F4 · -ού	6	Οι φωλιές των αλεπούδων είναι κρυμμένες.	The foxes' dens are hidden.
 N1 · -ο	1	Το βιβλίο είναι πάνω στο τραπέζι.	The book is on the table.
 N1 · -ο	2	Διαβάζω το βιβλίο κάθε βράδυ.	I read the book every evening.
 N1 · -ο	3	Ο τίτλος του βιβλίου είναι ελληνικός.	The title of the book is Greek.
@@ -79,3 +73,15 @@ N4 · -ος	3	Η αιτία του λάθους ήταν η βιασύνη.	The 
 N4 · -ος	4	Τα λάθη είναι φυσιολογικά.	Mistakes are normal.
 N4 · -ος	5	Διόρθωσα όλα τα λάθη μου.	I corrected all my mistakes.
 N4 · -ος	6	Ο αριθμός των λαθών μειώθηκε.	The number of mistakes went down.
+F4 · -ος	1	Η είσοδος του κτιρίου είναι κλειστή.	The building's entrance is closed.
+F4 · -ος	2	Βρήκαμε την είσοδο εύκολα.	We found the entrance easily.
+F4 · -ος	3	Η πόρτα της εισόδου είναι βαριά.	The entrance door is heavy.
+F4 · -ος	4	Οι είσοδοι του σταδίου ανοίγουν στις έξι.	The stadium entrances open at six.
+F4 · -ος	5	Κλείνουν τις εισόδους μετά τις δέκα.	They close the entrances after ten.
+F4 · -ος	6	Ο φωτισμός των εισόδων είναι καλός.	The lighting at the entrances is good.
+N5 · -ον	1	Το μέλλον ανήκει στους νέους.	The future belongs to the young.
+N5 · -ον	2	Σκέφτομαι συχνά το μέλλον.	I often think about the future.
+N5 · -ον	3	Τα σχέδια του μέλλοντος είναι ασαφή.	The plans for the future are vague.
+N5 · -ον	4	Τα ελληνικά προϊόντα είναι νόστιμα.	Greek products are tasty.
+N5 · -ον	5	Αγοράζω μόνο φρέσκα προϊόντα.	I only buy fresh products.
+N5 · -ον	6	Η τιμή των προϊόντων ανέβηκε.	The price of the products went up.
