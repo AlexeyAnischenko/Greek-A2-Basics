@@ -16,45 +16,50 @@ At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wo
 
 ## Master grid — every adjective ending in one table
 
-Every A2 adjective type, all three cases, both numbers, in one place. Read a row left to right and
-you have the full agreement set; read a column top to bottom and you have one gender's endings.
-Columns are colour-banded: **masculine** light blue, **feminine** light purple, **neuter** light green.
+Same shape as the noun grid on page 4: **one row per type and gender**, the three cases across the
+top, each split into singular and plural. The cell holds the **ending**; hover it (or tap it) for a
+sentence that uses exactly that form. Rows are colour-banded: **masculine** light blue,
+**feminine** light purple, **neuter** light green.
 
-| Type | Case | Masculine singular | Feminine singular | Neuter singular | Masculine plural | Feminine plural | Neuter plural |
-|---|---|---|---|---|---|---|---|
-| **A · -ος / -η / -ο** — καλός | Nominative | καλ**ός** | καλ**ή** | καλ**ό** | καλ**οί** | καλ**ές** | καλ**ά** |
-| **A · -ος / -η / -ο** — καλός | Accusative | καλ**ό** | καλ**ή** | καλ**ό** | καλ**ούς** | καλ**ές** | καλ**ά** |
-| **A · -ος / -η / -ο** — καλός | Genitive | καλ**ού** | καλ**ής** | καλ**ού** | καλ**ών** | καλ**ών** | καλ**ών** |
-| **A · -ος / -η / -ο** — καλός | Vocative | καλ**έ** | καλ**ή** | καλ**ό** | καλ**οί** | καλ**ές** | καλ**ά** |
-| **B · -ος / -α / -ο** — ωραίος | Nominative | ωραί**ος** | ωραί**α** | ωραί**ο** | ωραί**οι** | ωραί**ες** | ωραί**α** |
-| **B · -ος / -α / -ο** — ωραίος | Accusative | ωραί**ο** | ωραί**α** | ωραί**ο** | ωραί**ους** | ωραί**ες** | ωραί**α** |
-| **B · -ος / -α / -ο** — ωραίος | Genitive | ωραί**ου** | ωραί**ας** | ωραί**ου** | ωραί**ων** | ωραί**ων** | ωραί**ων** |
-| **-ός / -ιά / -ό** — γλυκός | Nominative | γλυκ**ός** | γλυκ**ιά** | γλυκ**ό** | γλυκ**οί** | γλυκ**ιές** | γλυκ**ά** |
-| **-ός / -ιά / -ό** — γλυκός | Accusative | γλυκ**ό** | γλυκ**ιά** | γλυκ**ό** | γλυκ**ούς** | γλυκ**ιές** | γλυκ**ά** |
-| **-ός / -ιά / -ό** — γλυκός | Genitive | γλυκ**ού** | γλυκ**ιάς** | γλυκ**ού** | γλυκ**ών** | γλυκ**ών** | γλυκ**ών** |
-| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Nominative | ελαφρ**ύς** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιοί** | ελαφρ**ιές** | ελαφρ**ιά** |
-| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Accusative | ελαφρ**ύ** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιούς** | ελαφρ**ιές** | ελαφρ**ιά** |
-| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Genitive | ελαφρ**ιού** | ελαφρ**ιάς** | ελαφρ**ιού** | ελαφρ**ιών** | ελαφρ**ιών** | ελαφρ**ιών** |
-| **D · πολύς** — irregular | Nominative | πολ**ύς** | πολλ**ή** | πολ**ύ** | πολλ**οί** | πολλ**ές** | πολλ**ά** |
-| **D · πολύς** — irregular | Accusative | πολ**ύ** | πολλ**ή** | πολ**ύ** | πολλ**ούς** | πολλ**ές** | πολλ**ά** |
-| **D · πολύς** — irregular | Genitive | πολλ**ού** | πολλ**ής** | πολλ**ού** | πολλ**ών** | πολλ**ών** | πολλ**ών** |
-| **Invariable loans** — μπλε | all cases | μπλε | μπλε | μπλε | μπλε | μπλε | μπλε |
+| Type & gender | Nominative singular | Accusative singular | Genitive singular | Nominative plural | Accusative plural | Genitive plural |
+|---|---|---|---|---|---|---|
+| **A · -ος / -η / -ο** καλός — Masculine | **-ός** | **-ό** | **-ού** | **-οί** | **-ούς** | **-ών** |
+| **A · -ος / -η / -ο** καλή — Feminine | **-ή** | **-ή** | **-ής** | **-ές** | **-ές** | **-ών** |
+| **A · -ος / -η / -ο** καλό — Neuter | **-ό** | **-ό** | **-ού** | **-ά** | **-ά** | **-ών** |
+| **B · -ος / -α / -ο** ωραίος — Masculine | **-ος** | **-ο** | **-ου** | **-οι** | **-ους** | **-ων** |
+| **B · -ος / -α / -ο** ωραία — Feminine | **-α** | **-α** | **-ας** | **-ες** | **-ες** | **-ων** |
+| **B · -ος / -α / -ο** ωραίο — Neuter | **-ο** | **-ο** | **-ου** | **-α** | **-α** | **-ων** |
+| **-ός / -ιά / -ό** γλυκιά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
+| **C · -ύς / -ιά / -ύ** ελαφρύς — Masculine | **-ύς** | **-ύ** | **-ιού** | **-ιοί** | **-ιούς** | **-ιών** |
+| **C · -ύς / -ιά / -ύ** ελαφριά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
+| **C · -ύς / -ιά / -ύ** ελαφρύ — Neuter | **-ύ** | **-ύ** | **-ιού** | **-ιά** | **-ιά** | **-ιών** |
+| **D · πολύς** πολύς — Masculine | πολ**ύς** | πολ**ύ** | πολλ**ού** | πολλ**οί** | πολλ**ούς** | πολλ**ών** |
+| **D · πολύς** πολλή — Feminine | πολλ**ή** | πολλ**ή** | πολλ**ής** | πολλ**ές** | πολλ**ές** | πολλ**ών** |
+| **D · πολύς** πολύ — Neuter | πολ**ύ** | πολ**ύ** | πολλ**ού** | πολλ**ά** | πολλ**ά** | πολλ**ών** |
+| **Invariable** μπλε, γκρι, καφέ, ροζ — all genders | μπλε | μπλε | μπλε | μπλε | μπλε | μπλε |
+
+⚠ **The accent in the cell is the one the row's word carries, not part of the type.** καλός is
+end-stressed, so its endings show the accent; όμορφος is stem-stressed and keeps its stress
+throughout — όμορφ**ος**, όμορφ**η**, όμορφ**ου**, όμορφ**ων**. Adjective stress never moves.
+
+⚠ **γλυκός has only one row** because only its feminine is different. Its masculine and neuter are
+plain type A: γλυκός / γλυκό / γλυκού / γλυκοί / γλυκούς / γλυκών. Same for ξανθός and Κρητικός.
 
 What the grid shows at a glance:
 
 | Pattern | Where it holds |
 |---|---|
-| The **neuter** singular and plural never change between nominative and accusative | every type — same as the neuter nouns |
-| The **genitive plural is -ων / -ών** in all three genders | every type, no exceptions |
-| The **feminine singular** is the same in nominative and accusative | every type — only the article moves |
+| The **neuter** never changes between nominative and accusative | every type, singular **and** plural — same as the neuter nouns |
+| The **feminine singular** never changes between nominative and accusative | every type — only the article moves |
 | Masculine accusative singular = nominative **minus the final -ς** | every type |
-| A and B differ **only in the feminine** | -η / -ης / -ες vs -α / -ας / -ες |
-| Masculine and neuter of γλυκός are plain type A | only its feminine (-ιά / -ιάς / -ιές) is different |
-| Vocative = nominative, except masculine singular **-ος → -ε** | καλέ, ωραίε, γλυκέ — ελαφρύς and πολύς have no everyday vocative |
-| Invariable colours never agree | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — one form for all 18 cells |
+| **Genitive plural is -ων / -ών** | every type, all three genders — one ending to remember |
+| Rows 1 and 4 are identical, and so are rows 3 and 6 | that is the point: **A and B differ only in the feminine** |
+| Masculine and neuter genitive singular are the same cell | -ού / -ου / -ιού, in every type |
+| The feminine plural is **-ες / -ές / -ιές** in all three cases but the genitive | it is the genitive that breaks the pattern, not the accusative |
+| One row never changes at all | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — no ending, no agreement |
 
-⚠ **The whole of A2 is the first two blocks.** 191 of the 195 adjectives in the KLIK A2 wordlist
-are type A or type B; γλυκός/ξανθός/Κρητικός are 3 more, and ελαφρύς is the last one. Types C and D
+⚠ **The whole of A2 is the first six rows.** 191 of the 195 adjectives in the KLIK A2 wordlist are
+type A or type B; γλυκός, ξανθός and Κρητικός are 3 more, and ελαφρύς is the last one. Types C and D
 are in the grid so you can recognise them, not so you can drill them.
 
 ## A · Type -ος / -η / -ο (καλός — good) ← the main one

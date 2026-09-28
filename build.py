@@ -134,10 +134,14 @@ def is_row(l):
 # tables further down keep their ordinary cells.
 SPLIT_CELL = re.compile(r'^(.*?)\s*(\*\*-[^*]+\*\*)$')
 
-def is_master_grid(header):
-    if not header or plain(header[0]).strip() != 'Type':
-        return False
-    return any(plain(h).strip() == 'Nominative singular' for h in header)
+def grid_kind(header):
+    """'noun', 'adj' or None. Both are case x number grids; they differ in
+    whether the row-label column survives (see the module note above)."""
+    if not header:
+        return None
+    if not any(plain(h).strip() == 'Nominative singular' for h in header):
+        return None
+    return {'Type': 'noun', 'Type & gender': 'adj'}.get(plain(header[0]).strip())
 
 def split_cell(cell):
     """'ο / ένας **-ας**' -> articles stacked left, ending right. None if it does
@@ -161,7 +165,7 @@ def by_case_order(cases):
             seen.append(c)
     return [i for c in seen for i, cc in enumerate(cases) if cc == c]
 
-def grid_header(header):
+def grid_header(header, label=None):
     """Both heads for the master grid, two rows each: grouped by number
     (Singular / Plural over the cases) and grouped by case (Nominative /
     Accusative / Genitive over the numbers). The inactive pair ships hidden and
@@ -188,11 +192,15 @@ def grid_header(header):
         return ''.join('<th>%s</th>' % html.escape(cap(l)) for l in labels)
 
     order = by_case_order(cases)
-    return (('<tr class="h-number">%s</tr><tr class="h-number">%s</tr>'
-             '<tr class="h-case" hidden>%s</tr><tr class="h-case" hidden>%s</tr>')
-            % (band(nums), names(cases),
-               band([cases[i] for i in order]), names([nums[i] for i in order])),
-            ','.join(str(i) for i in order))
+    # A kept label column is cell 0 of every row, so the toggle's column order
+    # has to name it first and shift the case columns up by one.
+    lead = '<th rowspan="2" class="rowlab">%s</th>' % inline(label) if label else ''
+    cells = [0] + [i + 1 for i in order] if label else order
+    return (('<tr class="h-number">%s%s</tr><tr class="h-number">%s</tr>'
+             '<tr class="h-case" hidden>%s%s</tr><tr class="h-case" hidden>%s</tr>')
+            % (lead, band(nums), names(cases),
+               lead, band([cases[i] for i in order]), names([nums[i] for i in order])),
+            ','.join(str(i) for i in cells))
 
 def render_table(header, rows, last_gender):
     ncol = len(header)
@@ -205,13 +213,15 @@ def render_table(header, rows, last_gender):
             row_g.append(gender_of(plain(r[0])) if r else None)
     any_row = any(row_g)
 
-    grid = is_master_grid(header)
+    grid = grid_kind(header)
 
     if grid:
-        head, order = grid_header(header)
+        head, order = grid_header(
+            header, plain(header[0]).strip() if grid == 'adj' else None)
         out = ['<div class="gridwrap">',
                '<button class="gridtog" type="button">Group by case</button>',
-               '<div class="tw"><table class="grid" data-order="%s">' % order,
+               '<div class="tw"><table class="grid grid-%s" data-order="%s">'
+               % (grid, order),
                '<thead>%s</thead><tbody>' % head]
     else:
         out = ['<div class="tw"><table>']
@@ -234,7 +244,7 @@ def render_table(header, rows, last_gender):
         out.append('<tr>')
         label = plain(r[0]).split(' — ')[0].strip()
         for ci, c in enumerate(r):
-            if grid and ci == 0:
+            if grid == 'noun' and ci == 0:
                 continue
             g = g_for(ci)
             ex = EXAMPLES.get((label, ci))
@@ -543,6 +553,10 @@ table.grid{width:auto; font-size:13.5px}
 table.grid th,table.grid td{padding:4px 8px}
 table.grid thead th.grp{text-align:center; letter-spacing:.04em}
 table.grid .cell2{gap:9px}
+/* the adjective grid keeps its row label: type A masculine and type B masculine
+   have the same six endings, so the cells alone would not say which row is which */
+table.grid-adj th.rowlab{text-align:left}
+table.grid-adj tbody td:first-child{font-size:12.5px; line-height:1.34; max-width:15em}
 .gridwrap{margin:12px 0 16px}
 .gridwrap .tw{margin:6px 0 0}
 .gridtog{font:inherit; font-size:12.5px; line-height:1; padding:6px 11px; border-radius:999px;
@@ -693,8 +707,9 @@ COPY_JS = (
 # data attributes travel with their own cells. The choice is remembered.
 GRID_JS = (
     '<script>(function(){'
-    'var t=document.querySelector("table.grid");if(!t||!t.tBodies.length)return;'
-    'var btn=document.querySelector(".gridtog");if(!btn)return;'
+    '[].forEach.call(document.querySelectorAll(".gridwrap"),function(wrap){'
+    'var t=wrap.querySelector("table.grid");if(!t||!t.tBodies.length)return;'
+    'var btn=wrap.querySelector(".gridtog");if(!btn)return;'
     'var order=(t.getAttribute("data-order")||"").split(",").map(Number);'
     'if(!order.length||order.some(isNaN))return;'
     'var rows=[].slice.call(t.tBodies[0].rows);'
@@ -716,6 +731,7 @@ GRID_JS = (
     'var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}'
     'apply(saved==="case"?"case":"number");'
     'btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});'
+    '});'
     '})();</script>'
 )
 
@@ -859,14 +875,14 @@ td.n{background:#dcfce7; color:#12301f}
 """
 
 
-def find_master_grid(md):
-    """Pull the master grid out of a sheet's markdown: (header, rows)."""
+def find_master_grid(md, kind='noun'):
+    """Pull a master grid out of a sheet's markdown: (header, rows)."""
     lines = md.replace('\r\n', '\n').split('\n')
     for i, line in enumerate(lines):
         if not (is_row(line) and i + 1 < len(lines) and SEP.match(lines[i + 1])):
             continue
         header = split_row(line)
-        if not is_master_grid(header):
+        if grid_kind(header) != kind:
             continue
         rows, j = [], i + 2
         while j < len(lines) and is_row(lines[j]):
@@ -876,8 +892,10 @@ def find_master_grid(md):
     return None, None
 
 
-def render_print_grid(header, rows, order, outer, inner):
-    """One grid with the columns in `order`, banded by `outer` over `inner`."""
+def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False):
+    """One grid with the columns in `order`, banded by `outer` over `inner`.
+    `label` keeps the row-label column (the noun grid drops it); `balloons` adds
+    the example-sentence markers, which only make sense on a screen."""
     cap = lambda t: t[:1].upper() + t[1:]
     groups = []
     for l in outer:
@@ -886,6 +904,8 @@ def render_print_grid(header, rows, order, outer, inner):
         else:
             groups.append([l, 1])
     out = ['<table><thead><tr>']
+    if label:
+        out.append('<th rowspan="2" class="rowlab">%s</th>' % inline(label))
     out.append(''.join('<th colspan="%d" class="grp">%s</th>'
                        % (n, html.escape(cap(l))) for l, n in groups))
     out.append('</tr><tr>')
@@ -895,9 +915,18 @@ def render_print_grid(header, rows, order, outer, inner):
         g = gender_of(plain(r[0]))
         cls = ' class="%s"' % g if g else ''
         out.append('<tr>')
+        if label:
+            out.append('<td class="rowlab%s">%s</td>' % (' ' + g if g else '', inline(r[0])))
+        key = plain(r[0]).split(' \u2014 ')[0].strip()
         for i in order:
             cell = r[i + 1] if i + 1 < len(r) else ''
-            out.append('<td%s>%s</td>' % (cls, split_cell(cell) or inline(cell)))
+            ex = EXAMPLES.get((key, i + 1)) if balloons else None
+            attrs = cls
+            if ex:
+                attrs = ' class="%s"' % ' '.join(filter(None, [g, 'hasex']))
+                attrs += ' data-el="%s" data-en="%s"' % (html.escape(ex[0], True),
+                                                         html.escape(ex[1], True))
+            out.append('<td%s>%s</td>' % (attrs, split_cell(cell) or inline(cell)))
         out.append('</tr>')
     out.append('</tbody></table>')
     return ''.join(out)
@@ -984,6 +1013,27 @@ td:first-child,th:first-child{width:19%; font-size:10pt}
 thead th{font-size:10.5pt}
 thead th.m{background:#cfe3fd} thead th.f{background:#e4d3fb} thead th.n{background:#cdf3dc}
 .glance td:first-child{width:38%}
+/* the row label the noun grid does without */
+th.rowlab{text-align:left}
+td.rowlab{font-size:9.8pt; line-height:1.3}
+/* hover balloons: same markup as the sheets, with the palette spelled out
+   because this page does not load the main stylesheet's custom properties */
+:root{--line:#b9c1c9; --head:#eef1f4; --fg:#12161a; --muted:#5b6470}
+td.hasex{position:relative; cursor:help}
+td.hasex::after{content:""; position:absolute; top:3px; right:3px; width:4px; height:4px;
+  border-radius:50%; background:currentColor; opacity:.32}
+td.hasex:hover::after{opacity:.75}
+.extip{position:absolute; z-index:80; max-width:300px; padding:9px 12px;
+  border:1px solid var(--line); border-radius:9px; background:var(--head); color:var(--fg);
+  box-shadow:0 8px 22px rgba(0,0,0,.28); font-size:12px; line-height:1.45; pointer-events:none}
+.extip .el{font-weight:600}
+.extip .en{margin-top:3px; color:var(--muted); font-size:11px}
+.extip::after{content:""; position:absolute; left:50%; margin-left:-6px; bottom:-6px;
+  width:11px; height:11px; background:var(--head);
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  transform:rotate(45deg)}
+.extip.below::after{bottom:auto; top:-6px; transform:rotate(225deg)}
+@media print{td.hasex::after{display:none} .extip{display:none}}
 """
 
 
@@ -1056,13 +1106,13 @@ def split_number_header(header):
     return inner, band, col_g
 
 
-def grid_page(title, sub, blocks, legend='', notes=''):
+def grid_page(title, sub, blocks, legend='', notes='', scripts=''):
     return ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>%s</title>%s<style>%s%s</style></head><body>'
-            '<h1>%s</h1><p class="sub">%s</p>%s%s%s</body></html>'
+            '<h1>%s</h1><p class="sub">%s</p>%s%s%s%s</body></html>'
             % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON,
-               GRID_SHEET_CSS, EXTRA_GRID_CSS, title, sub, legend, blocks, notes))
+               GRID_SHEET_CSS, EXTRA_GRID_CSS, title, sub, legend, blocks, notes, scripts))
 
 
 LEGEND = ('<div class="legend"><span class="m">masculine</span>'
@@ -1070,27 +1120,41 @@ LEGEND = ('<div class="legend"><span class="m">masculine</span>'
 
 
 def make_adjective_grid():
-    """adjective-grid.html: every adjective type x case x gender x number."""
+    """adjective-grid.html: the same grid as the noun one, grouped by case, with
+    the row-label column kept and an example balloon on every cell."""
     src = os.path.join(BASE, 'grammar', '05-adjectives.md')
     if not os.path.isfile(src):
         print('adj    : skipped - no 05-adjectives.md')
         return None
     md = io.open(src, encoding='utf-8').read()
-    header, rows = find_table_after(md, '## Master grid')
-    glance_h, glance_r = find_table_after(md, '## Master grid', skip=1)
+    header, rows = find_master_grid(md, 'adj')
     if not header:
         print('adj    : skipped - master grid not found')
         return None
-    inner, band, col_g = split_number_header(header)
+    glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
 
-    blocks = render_band_grid(inner, rows, band, col_g)
+    cols = [plain(h).strip() for h in header[1:]]
+    cases, nums = [], []
+    for c in cols:
+        case, num = c.rsplit(' ', 1) if ' ' in c else (c, '')
+        cases.append(case)
+        nums.append(num)
+    order = by_case_order(cases)
+
+    blocks = render_print_grid(header, rows, order,
+                               [cases[i] for i in order], [nums[i] for i in order],
+                               label=plain(header[0]).strip(), balloons=True)
     if glance_h:
         blocks += ('<h2>What the grid shows at a glance</h2>'
                    + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
     notes = ('<div class="notes">'
-             '<b>191 of the 195</b> adjectives in the A2 wordlist are type <b>A</b> or '
-             '<b>B</b> &mdash; the first seven rows are the whole exam. &nbsp; '
-             '<b>A and B differ only in the feminine.</b> &nbsp; '
+             '<b>Hover or tap any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>The accent shown is the row word\u2019s</b>, not the type\u2019s: '
+             '&#954;&#945;&#955;&#972;&#962; is end-stressed, '
+             '&#972;&#956;&#959;&#961;&#966;&#959;&#962; is not, and adjective stress '
+             'never moves. &nbsp; '
+             '<b>Rows 1 and 4 are identical, and so are rows 3 and 6</b> &mdash; '
+             'A and B differ only in the feminine. &nbsp; '
              '<b>Genitive plural is -&#969;&#957; / -&#974;&#957;</b> in all three genders, '
              'every type. &nbsp; '
              '<b>&#956;&#960;&#955;&#949;, &#947;&#954;&#961;&#953;, &#954;&#945;&#966;&#941;, '
@@ -1098,8 +1162,8 @@ def make_adjective_grid():
              '&#956;&#969;&#946;</b> never agree with anything.'
              '</div>')
     doc = grid_page('Greek A2 &middot; Adjective endings &mdash; master grid',
-                    'Every A2 adjective type, all three cases, both numbers.',
-                    blocks, LEGEND, notes)
+                    'Every A2 adjective type and gender, all three cases, both numbers.',
+                    blocks, LEGEND, notes, EX_JS)
     out = os.path.join(DIST, 'adjective-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('adj    : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
