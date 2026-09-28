@@ -11,69 +11,81 @@ The present covers both English "I write" and "I am writing".
 | **B1** | **-άω / -ώ** | on the **ending** | αγαπ**άω** / αγαπ**ώ** |
 | **B2** | **-ώ** (never -άω) | on the **ending** | μπορ**ώ** |
 
-## Master grid — every tense, all six persons ⚠ the overview for pages 10–13
+## Master grid — every ending, every tense ⚠ the overview for pages 10–13
 
-One row per tense, one column per person. The three singular columns and the three plural columns
-are the two halves you keep mixing up, so they are banded apart. The tenses themselves are taught
-on **page 11** (past), **page 12** (future & να) and **page 13** (perfect) — this grid is for
-reciting, not for learning them the first time.
+Same shape as the noun grid on page 4 and the adjective grid on page 7: **one row per tense and
+group**, the three persons across the top, each split into singular and plural. The cell holds the
+**ending** — the stem that goes in front of it is named in the row label, and **θα / να / έχω** are
+printed in the cell because they are separate words you have to say. Hover a cell (or tap it) for a
+sentence that uses exactly that form.
+
+Rows are banded and grouped by tense family: **present** amber, **past** rose, **future and
+subjunctive** cyan. The tenses themselves are taught on **page 11** (past), **page 12**
+(future & να) and **page 13** (perfect) — this grid is for reciting, not for meeting them
+the first time.
+
+**εγώ** 1 sg · **εσύ** 2 sg · **αυτός / αυτή / αυτό** 3 sg · **εμείς** 1 pl · **εσείς** 2 pl · **αυτοί / αυτές / αυτά** 3 pl
 
 ### Active voice
 
-| Tense | εγώ | εσύ | αυτός / αυτή / αυτό | εμείς | εσείς | αυτοί / αυτές / αυτά |
+| Tense & group | 1st singular | 2nd singular | 3rd singular | 1st plural | 2nd plural | 3rd plural |
 |---|---|---|---|---|---|---|
-| **Present · A** — γράφω | γράφ**ω** | γράφ**εις** | γράφ**ει** | γράφ**ουμε** | γράφ**ετε** | γράφ**ουν(ε)** |
-| **Present · B1** — αγαπάω | αγαπ**άω / -ώ** | αγαπ**άς** | αγαπ**άει / -ά** | αγαπ**άμε / -ούμε** | αγαπ**άτε** | αγαπ**άνε / -ούν** |
-| **Present · B2** — μπορώ | μπορ**ώ** | μπορ**είς** | μπορ**εί** | μπορ**ούμε** | μπορ**είτε** | μπορ**ούν(ε)** |
-| **Imperfect · A** — was writing | **έ**γραφ**α** | **έ**γραφ**ες** | **έ**γραφ**ε** | γράφ**αμε** | γράφ**ατε** | **έ**γραφ**αν** / γράφ**ανε** |
-| **Imperfect · B1 / B2** — insert -ούσ- | αγαπ**ούσα** | αγαπ**ούσες** | αγαπ**ούσε** | αγαπ**ούσαμε** | αγαπ**ούσατε** | αγαπ**ούσαν** |
-| **Aorist · A** — wrote | **έ**γραψ**α** | **έ**γραψ**ες** | **έ**γραψ**ε** | γράψ**αμε** | γράψ**ατε** | **έ**γραψ**αν** / γράψ**ανε** |
-| **Aorist · B1** — loved | αγάπησ**α** | αγάπησ**ες** | αγάπησ**ε** | αγαπήσ**αμε** | αγαπήσ**ατε** | αγάπησ**αν** |
-| **Aorist · B2** — could | μπόρεσ**α** | μπόρεσ**ες** | μπόρεσ**ε** | μπορέσ**αμε** | μπορέσ**ατε** | μπόρεσ**αν** |
-| **Future simple** — θα + dependent | θα γράψ**ω** | θα γράψ**εις** | θα γράψ**ει** | θα γράψ**ουμε** | θα γράψ**ετε** | θα γράψ**ουν** |
-| **Future continuous** — θα + present | θα γράφ**ω** | θα γράφ**εις** | θα γράφ**ει** | θα γράφ**ουμε** | θα γράφ**ετε** | θα γράφ**ουν** |
-| **Subjunctive** — να + dependent | να γράψ**ω** | να γράψ**εις** | να γράψ**ει** | να γράψ**ουμε** | να γράψ**ετε** | να γράψ**ουν** |
-| **Perfect** — έχω + frozen -ει | **έχω** γράψει | **έχεις** γράψει | **έχει** γράψει | **έχουμε** γράψει | **έχετε** γράψει | **έχουν** γράψει |
+| **Present · A** γράφω · stem γράφ- | **-ω** | **-εις** | **-ει** | **-ουμε** | **-ετε** | **-ουν(ε)** |
+| **Present · B1** αγαπάω · stem αγαπ- | **-άω / -ώ** | **-άς** | **-άει / -ά** | **-άμε / -ούμε** | **-άτε** | **-άνε / -ούν** |
+| **Present · B2** μπορώ · stem μπορ- | **-ώ** | **-είς** | **-εί** | **-ούμε** | **-είτε** | **-ούν(ε)** |
+| **Imperfect · A** έγραφα · stem (έ)γραφ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
+| **Imperfect · B1 / B2** αγαπούσα · stem + -ούσ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν** |
+| **Aorist · A** έγραψα · stem (έ)γραψ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
+| **Aorist · B1** αγάπησα · stem αγαπησ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν** |
+| **Aorist · B2** μπόρεσα · stem μπορεσ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν** |
+| **Perfect** έχω γράψει · frozen -ει | **έχω** γράψει | **έχεις** γράψει | **έχει** γράψει | **έχουμε** γράψει | **έχετε** γράψει | **έχουν** γράψει |
+| **Future simple** θα γράψω · θα + dependent stem | θα **-ω** | θα **-εις** | θα **-ει** | θα **-ουμε** | θα **-ετε** | θα **-ουν** |
+| **Future continuous** θα γράφω · θα + present stem | θα **-ω** | θα **-εις** | θα **-ει** | θα **-ουμε** | θα **-ετε** | θα **-ουν** |
+| **Subjunctive** να γράψω · να + dependent stem | να **-ω** | να **-εις** | να **-ει** | να **-ουμε** | να **-ετε** | να **-ουν** |
 
 ### Passive / mediopassive voice
 
-| Tense | εγώ | εσύ | αυτός / αυτή / αυτό | εμείς | εσείς | αυτοί / αυτές / αυτά |
+| Tense & group | 1st singular | 2nd singular | 3rd singular | 1st plural | 2nd plural | 3rd plural |
 |---|---|---|---|---|---|---|
-| **Present · A** — πλένομαι | πλέν**ομαι** | πλέν**εσαι** | πλέν**εται** | πλεν**όμαστε** | πλέν**εστε** | πλέν**ονται** |
-| **Present · B1** — αγαπιέμαι | αγαπ**ιέμαι** | αγαπ**ιέσαι** | αγαπ**ιέται** | αγαπ**ιόμαστε** | αγαπ**ιέστε** | αγαπ**ιούνται** |
-| **Present · B2** — κοιμάμαι | κοιμ**άμαι** | κοιμ**άσαι** | κοιμ**άται** | κοιμ**όμαστε** | κοιμ**άστε** | κοιμ**ούνται** |
-| **Imperfect · A** — πλενόμουν | πλεν**όμουν** | πλεν**όσουν** | πλεν**όταν** | πλεν**όμασταν** | πλεν**όσασταν** | πλέν**ονταν** |
-| **Imperfect · B2** — κοιμόμουν | κοιμ**όμουν** | κοιμ**όσουν** | κοιμ**όταν** | κοιμ**όμασταν** | κοιμ**όσασταν** | κοιμ**όνταν** |
-| **Aorist** — -θηκα | πλύ**θηκα** | πλύ**θηκες** | πλύ**θηκε** | πλυ**θήκαμε** ⚠ | πλυ**θήκατε** ⚠ | πλύ**θηκαν** |
-| **Aorist · B2** — κοιμήθηκα | κοιμή**θηκα** | κοιμή**θηκες** | κοιμή**θηκε** | κοιμη**θήκαμε** ⚠ | κοιμη**θήκατε** ⚠ | κοιμή**θηκαν** |
-| **Future / subjunctive** — θα / να + -θώ | (θα) πλυ**θώ** | (θα) πλυ**θείς** | (θα) πλυ**θεί** | (θα) πλυ**θούμε** | (θα) πλυ**θείτε** | (θα) πλυ**θούν** |
-| **Perfect** — έχω + frozen -θεί | **έχω** πλυθεί | **έχεις** πλυθεί | **έχει** πλυθεί | **έχουμε** πλυθεί | **έχετε** πλυθεί | **έχουν** πλυθεί |
-| **έρχομαι** present ⚠ | έρχ**ομαι** | έρχ**εσαι** | έρχ**εται** | ερχ**όμαστε** | έρχ**εστε** | έρχ**ονται** |
-| **έρχομαι** imperfect ⚠ | ερχ**όμουν** | ερχ**όσουν** | ερχ**όταν** | ερχ**όμασταν** | ερχ**όσασταν** | έρχ**ονταν** |
+| **Present · A** πλένομαι · stem πλεν- | **-ομαι** | **-εσαι** | **-εται** | **-όμαστε** | **-εστε** | **-ονται** |
+| **Present · B1** αγαπιέμαι · stem αγαπ- | **-ιέμαι** | **-ιέσαι** | **-ιέται** | **-ιόμαστε** | **-ιέστε** | **-ιούνται** |
+| **Present · B2** κοιμάμαι · stem κοιμ- | **-άμαι** | **-άσαι** | **-άται** | **-όμαστε** | **-άστε** | **-ούνται** |
+| **έρχομαι** present ⚠ irregular | έρχ**ομαι** | έρχ**εσαι** | έρχ**εται** | ερχ**όμαστε** | έρχ**εστε** | έρχ**ονται** |
+| **Imperfect · A** πλενόμουν · stem πλεν- | **-όμουν** | **-όσουν** | **-όταν** | **-όμασταν** | **-όσασταν** | **-ονταν** |
+| **Imperfect · B2** κοιμόμουν · stem κοιμ- | **-όμουν** | **-όσουν** | **-όταν** | **-όμασταν** | **-όσασταν** | **-όνταν** |
+| **έρχομαι** imperfect ⚠ irregular | ερχ**όμουν** | ερχ**όσουν** | ερχ**όταν** | ερχ**όμασταν** | ερχ**όσασταν** | έρχ**ονταν** |
+| **Aorist · A** πλύθηκα · stem πλυ- | **-θηκα** | **-θηκες** | **-θηκε** | **-θήκαμε** ⚠ | **-θήκατε** ⚠ | **-θηκαν** |
+| **Aorist · B2** κοιμήθηκα · stem κοιμη- | **-θηκα** | **-θηκες** | **-θηκε** | **-θήκαμε** ⚠ | **-θήκατε** ⚠ | **-θηκαν** |
 | **έρχομαι** aorist ⚠ active endings | ήρθ**α** | ήρθ**ες** | ήρθ**ε** | ήρθ**αμε** | ήρθ**ατε** | ήρθ**αν** |
+| **Perfect** έχω πλυθεί · frozen -θεί | **έχω** πλυθεί | **έχεις** πλυθεί | **έχει** πλυθεί | **έχουμε** πλυθεί | **έχετε** πλυθεί | **έχουν** πλυθεί |
+| **Future / subjunctive** θα / να πλυθώ | θα / να **-θώ** | θα / να **-θείς** | θα / να **-θεί** | θα / να **-θούμε** | θα / να **-θείτε** | θα / να **-θούν** |
 
-### The two verbs with no dependent stem — είμαι and έχω
+### είμαι and έχω — the two with no dependent stem
 
-| Tense | εγώ | εσύ | αυτός / αυτή / αυτό | εμείς | εσείς | αυτοί / αυτές / αυτά |
+They have no aorist, so one past each and one future each. The cells here are whole words, not
+endings: there is nothing to strip off.
+
+| Tense & group | 1st singular | 2nd singular | 3rd singular | 1st plural | 2nd plural | 3rd plural |
 |---|---|---|---|---|---|---|
 | **είμαι** present | είμαι | είσαι | είναι | είμαστε | είστε / είσαστε | είναι |
-| **είμαι** past ⚠ only one past | ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν |
-| **είμαι** future | θα είμαι | θα είσαι | θα είναι | θα είμαστε | θα είστε | θα είναι |
 | **έχω** present | έχω | έχεις | έχει | έχουμε | έχετε | έχουν |
-| **έχω** past ⚠ only one past | είχα | είχες | είχε | είχαμε | είχατε | είχαν |
+| **είμαι** past ⚠ one past only | ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν |
+| **έχω** past ⚠ one past only | είχα | είχες | είχε | είχαμε | είχατε | είχαν |
+| **είμαι** future | θα είμαι | θα είσαι | θα είναι | θα είμαστε | θα είστε | θα είναι |
 | **έχω** future | θα έχω | θα έχεις | θα έχει | θα έχουμε | θα έχετε | θα έχουν |
 
 What the grid shows at a glance:
 
 | Pattern | Where it holds |
 |---|---|
-| **Past endings are one set**: -α, -ες, -ε, -αμε, -ατε, -αν | aorist **and** imperfect, all three groups — only the stem differs |
-| **Future = θα + a present-shaped ending** | -ω, -εις, -ει, -ουμε, -ετε, -ουν, on either stem |
+| The whole rose band is **one set of endings**: -α, -ες, -ε, -αμε, -ατε, -αν | aorist **and** imperfect, all three groups — only the stem in the label changes |
+| The whole cyan band is **one set of endings**: -ω, -εις, -ει, -ουμε, -ετε, -ουν | θα and να take present-tense endings, on either stem |
+| So there are really **two ending sets to learn**, not six | plus the passive ones, and everything else is stems |
 | θα + dependent vs θα + present | the only difference is aspect: once (θα γράψω) vs repeatedly (θα γράφω) |
 | **Never an έ- augment after θα or να** | θα γράψω, not ~~θα έγραψα~~ — the augment belongs to the past alone |
 | The **1st and 2nd plural lose the έ-** | γράψαμε, γράψατε — three syllables already carry the stress |
 | The perfect conjugates **only έχω** | the second word is frozen: έχω / έχεις / έχει γράψει |
-| Passive 1st plural is **-όμαστε**, past **-όμασταν** | the one ending you will reach for wrongly |
+| Passive 1st plural is **-όμαστε** now, **-όμασταν** in the past | the one ending you will reach for wrongly |
 | Passive aorist shifts the stress in the plural | πλύθηκα but πλυ**θή**καμε ⚠ |
 | **είμαι / έχω** have no aorist and no dependent | one past each (ήμουν, είχα), one future each (θα είμαι, θα έχω) |
 

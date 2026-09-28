@@ -16,25 +16,26 @@ At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wo
 
 ## Master grid — every adjective ending in one table
 
-Same shape as the noun grid on page 4: **one row per type and gender**, the three cases across the
-top, each split into singular and plural. The cell holds the **ending**; hover it (or tap it) for a
+Same shape as the noun grid on page 4: **one row per type and gender, grouped by gender**
+(all the masculines, then the feminines, then the neuters), the three cases across the top,
+each split into singular and plural. The cell holds the **ending**; hover it (or tap it) for a
 sentence that uses exactly that form. Rows are colour-banded: **masculine** light blue,
 **feminine** light purple, **neuter** light green.
 
 | Type & gender | Nominative singular | Accusative singular | Genitive singular | Nominative plural | Accusative plural | Genitive plural |
 |---|---|---|---|---|---|---|
 | **A · -ος / -η / -ο** καλός — Masculine | **-ός** | **-ό** | **-ού** | **-οί** | **-ούς** | **-ών** |
-| **A · -ος / -η / -ο** καλή — Feminine | **-ή** | **-ή** | **-ής** | **-ές** | **-ές** | **-ών** |
-| **A · -ος / -η / -ο** καλό — Neuter | **-ό** | **-ό** | **-ού** | **-ά** | **-ά** | **-ών** |
 | **B · -ος / -α / -ο** ωραίος — Masculine | **-ος** | **-ο** | **-ου** | **-οι** | **-ους** | **-ων** |
-| **B · -ος / -α / -ο** ωραία — Feminine | **-α** | **-α** | **-ας** | **-ες** | **-ες** | **-ων** |
-| **B · -ος / -α / -ο** ωραίο — Neuter | **-ο** | **-ο** | **-ου** | **-α** | **-α** | **-ων** |
-| **-ός / -ιά / -ό** γλυκιά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
 | **C · -ύς / -ιά / -ύ** ελαφρύς — Masculine | **-ύς** | **-ύ** | **-ιού** | **-ιοί** | **-ιούς** | **-ιών** |
-| **C · -ύς / -ιά / -ύ** ελαφριά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
-| **C · -ύς / -ιά / -ύ** ελαφρύ — Neuter | **-ύ** | **-ύ** | **-ιού** | **-ιά** | **-ιά** | **-ιών** |
 | **D · πολύς** πολύς — Masculine | πολ**ύς** | πολ**ύ** | πολλ**ού** | πολλ**οί** | πολλ**ούς** | πολλ**ών** |
+| **A · -ος / -η / -ο** καλή — Feminine | **-ή** | **-ή** | **-ής** | **-ές** | **-ές** | **-ών** |
+| **B · -ος / -α / -ο** ωραία — Feminine | **-α** | **-α** | **-ας** | **-ες** | **-ες** | **-ων** |
+| **-ός / -ιά / -ό** γλυκιά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
+| **C · -ύς / -ιά / -ύ** ελαφριά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
 | **D · πολύς** πολλή — Feminine | πολλ**ή** | πολλ**ή** | πολλ**ής** | πολλ**ές** | πολλ**ές** | πολλ**ών** |
+| **A · -ος / -η / -ο** καλό — Neuter | **-ό** | **-ό** | **-ού** | **-ά** | **-ά** | **-ών** |
+| **B · -ος / -α / -ο** ωραίο — Neuter | **-ο** | **-ο** | **-ου** | **-α** | **-α** | **-ων** |
+| **C · -ύς / -ιά / -ύ** ελαφρύ — Neuter | **-ύ** | **-ύ** | **-ιού** | **-ιά** | **-ιά** | **-ιών** |
 | **D · πολύς** πολύ — Neuter | πολ**ύ** | πολ**ύ** | πολλ**ού** | πολλ**ά** | πολλ**ά** | πολλ**ών** |
 | **Invariable** μπλε, γκρι, καφέ, ροζ — all genders | μπλε | μπλε | μπλε | μπλε | μπλε | μπλε |
 
@@ -53,12 +54,12 @@ What the grid shows at a glance:
 | The **feminine singular** never changes between nominative and accusative | every type — only the article moves |
 | Masculine accusative singular = nominative **minus the final -ς** | every type |
 | **Genitive plural is -ων / -ών** | every type, all three genders — one ending to remember |
-| Rows 1 and 4 are identical, and so are rows 3 and 6 | that is the point: **A and B differ only in the feminine** |
+| The two top rows are identical, and so are the two top neuter rows | that is the point: **A and B differ only in the feminine** |
 | Masculine and neuter genitive singular are the same cell | -ού / -ου / -ιού, in every type |
 | The feminine plural is **-ες / -ές / -ιές** in all three cases but the genitive | it is the genitive that breaks the pattern, not the accusative |
 | One row never changes at all | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — no ending, no agreement |
 
-⚠ **The whole of A2 is the first six rows.** 191 of the 195 adjectives in the KLIK A2 wordlist are
+⚠ **The whole of A2 is the A and B rows — the first two of each gender.** 191 of the 195 adjectives in the KLIK A2 wordlist are
 type A or type B; γλυκός, ξανθός and Κρητικός are 3 more, and ελαφρύς is the last one. Types C and D
 are in the grid so you can recognise them, not so you can drill them.
 

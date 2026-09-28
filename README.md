@@ -13,6 +13,7 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 | 🖨 **Noun endings, one page to print** | https://alexeyanischenko.github.io/Greek-A2-Basics/master-grid.pdf |
 | ▦ **Adjective endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/adjective-grid.html |
 | ▦ **Verb endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/verb-grid.html |
+| ▦ **Nouns and adjectives, one grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/mega-grid.html |
 
 The online version has a light/dark theme switch and a contents sidebar. The PDF is always light,
 one sheet per page break, with repeating table headers.
@@ -49,7 +50,15 @@ Individual sheets are in [`pages/`](pages/).
 ## Colour coding
 
 Gender-marked rows and columns are banded: **masculine = blue**, **feminine = purple**,
-**neuter = green**.
+**neuter = green**. The verb grid has no gender to band, so it bands the **tense family**
+instead: **present = amber**, **past = rose**, **future and να = cyan**.
+
+## The master grids
+
+Four generated one-table pages, all built the same way: a row-label column on the left, two
+grouping levels across the top with a button that swaps them, colour bands down the rows, the
+ending in the cell, and a hover balloon on every cell with a sentence that uses that exact form.
+The balloon text lives in `grammar/data/examples.tsv`, keyed by row label and column number.
 
 ## Building it yourself
 
@@ -78,8 +87,9 @@ Only Python (stdlib) is needed; Chrome or Edge is used for the PDF step and is s
 | `pages/*.html` | One standalone file per sheet |
 | `greek-a2.pdf` | 70-page A4 print, one sheet per page break, colour bands preserved |
 | `master-grid.html` / `.pdf` | the noun grid alone, one A4 page, grouped by case |
-| `adjective-grid.html` | the adjective grid alone: every type, case, gender and number |
-| `verb-grid.html` | the verb grid alone: every tense × all six persons, active and passive |
+| `adjective-grid.html` | the adjective grid: type × gender down the side, case × number across, banded by gender |
+| `verb-grid.html` | the verb grid: tense × group down the side, person × number across, banded by tense family |
+| `mega-grid.html` | the noun and adjective grids merged, gender band by gender band |
 
 The build needs only Python (stdlib) plus Chrome or Edge for the PDF step; if neither is
 found the HTML is still written and the PDF step is skipped.

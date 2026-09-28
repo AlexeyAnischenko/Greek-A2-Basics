@@ -65,6 +65,27 @@ def plain(text):
     return t.strip()
 
 # ---------------------------------------------------------------- gender
+def tense_of(t):
+    """'pr' / 'pa' / 'fu' from a verb row's label. Past is tested first so
+    'Perfect' does not read as present, and future before present so
+    'Future continuous - θα + present' lands in the future band."""
+    if not t:
+        return None
+    if re.search(r'\b(aorist|imperfect|perfect|past)\b', t, re.I):
+        return 'pa'
+    if re.search(r'\b(future|subjunctive)\b', t, re.I):
+        return 'fu'
+    if re.search(r'\bpresent\b', t, re.I):
+        return 'pr'
+    return None
+
+
+def band_of(kind, text):
+    """Which colour band a row carries: gender for nouns and adjectives, tense
+    family for verbs."""
+    return tense_of(text) if kind == 'verb' else gender_of(text)
+
+
 def gender_of(t):
     if not t:
         return None
@@ -139,9 +160,14 @@ def grid_kind(header):
     whether the row-label column survives (see the module note above)."""
     if not header:
         return None
-    if not any(plain(h).strip() == 'Nominative singular' for h in header):
+    kind = {'Type': 'noun', 'Type & gender': 'adj',
+            'Tense & group': 'verb'}.get(plain(header[0]).strip())
+    # every data column must read '<group> <number>' for the band/toggle to work
+    if not kind or len(header) < 5:
         return None
-    return {'Type': 'noun', 'Type & gender': 'adj'}.get(plain(header[0]).strip())
+    if not all(' ' in plain(h).strip() for h in header[1:]):
+        return None
+    return kind
 
 def split_cell(cell):
     """'ο / ένας **-ας**' -> articles stacked left, ending right. None if it does
@@ -207,21 +233,22 @@ def render_table(header, rows, last_gender):
     col_g = [gender_of(plain(h)) for h in header]
     any_col = any(col_g)
 
+    grid = grid_kind(header)
+
     row_g = []
     if not any_col:
         for r in rows:
-            row_g.append(gender_of(plain(r[0])) if r else None)
+            row_g.append(band_of(grid, plain(r[0])) if r else None)
     any_row = any(row_g)
-
-    grid = grid_kind(header)
 
     if grid:
         head, order = grid_header(
-            header, plain(header[0]).strip() if grid == 'adj' else None)
+            header, plain(header[0]).strip() if grid != 'noun' else None)
         out = ['<div class="gridwrap">',
                '<button class="gridtog" type="button">Group by case</button>',
-               '<div class="tw"><table class="grid grid-%s" data-order="%s">'
-               % (grid, order),
+               '<div class="tw"><table class="grid grid-%s" data-grp="%s" '
+               'data-order="%s">'
+               % (grid, 'person' if grid == 'verb' else 'case', order),
                '<thead>%s</thead><tbody>' % head]
     else:
         out = ['<div class="tw"><table>']
@@ -345,6 +372,9 @@ CSS = """
   --f-bg:#ede0ff; --f-fg:#2b1741;
   --n-bg:#dcfce7; --n-fg:#12301f;
   --warn:#b54708;
+  --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+  --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+  --fu-bg:#cffafe; --fu-fg:#0a3340;
   --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
   --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
 }
@@ -360,6 +390,9 @@ CSS = """
     --f-bg:#2f2450; --f-fg:#e8dcff;
     --n-bg:#16351f; --n-fg:#cfeeda;
     --warn:#f0a066;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
     --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
     --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
   }
@@ -372,6 +405,9 @@ CSS = """
   --f-bg:#2f2450; --f-fg:#e8dcff;
   --n-bg:#16351f; --n-fg:#cfeeda;
   --warn:#f0a066;
+  --pr-bg:#3d3308; --pr-fg:#fbeec2;
+  --pa-bg:#40202b; --pa-fg:#ffdbe3;
+  --fu-bg:#0c3440; --fu-fg:#c7f1fa;
   --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
   --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
 }
@@ -430,7 +466,13 @@ blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
 table{border-collapse:collapse; width:100%; font-size:14.5px}
 th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
 thead th{background:var(--head); font-weight:600; white-space:nowrap}
-tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n):not(.pr):not(.pa):not(.fu){background:var(--zebra)}
+td.pr,th.pr{background:var(--pr-bg); color:var(--pr-fg)}
+td.pa,th.pa{background:var(--pa-bg); color:var(--pa-fg)}
+td.fu,th.fu{background:var(--fu-bg); color:var(--fu-fg)}
+.legend .pr{background:var(--pr-bg); color:var(--pr-fg)}
+.legend .pa{background:var(--pa-bg); color:var(--pa-fg)}
+.legend .fu{background:var(--fu-bg); color:var(--fu-fg)}
 td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
 td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
 td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
@@ -492,6 +534,9 @@ header.top p{color:var(--muted); margin:0}
     --m-bg:#dbeafe; --m-fg:#12243d;
     --f-bg:#ede0ff; --f-fg:#2b1741;
     --n-bg:#dcfce7; --n-fg:#12301f;
+    --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+    --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+    --fu-bg:#cffafe; --fu-fg:#0a3340;
     --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
     --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
   }
@@ -513,8 +558,9 @@ header.top p{color:var(--muted); margin:0}
   tr,img{break-inside:avoid; page-break-inside:avoid}
   .tw{overflow:visible}
   a{color:inherit; text-decoration:none}
-  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
-  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+  td.m,th.m,td.f,th.f,td.n,th.n,td.pr,td.pa,td.fu{-webkit-print-color-adjust:exact;
+    print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n):not(.pr):not(.pa):not(.fu){background:transparent}
 }
 /* ---- example balloons on the master grid -------------------------------- */
 /* a cell with an example gets a small corner dot; the balloon itself is one
@@ -555,8 +601,9 @@ table.grid thead th.grp{text-align:center; letter-spacing:.04em}
 table.grid .cell2{gap:9px}
 /* the adjective grid keeps its row label: type A masculine and type B masculine
    have the same six endings, so the cells alone would not say which row is which */
-table.grid-adj th.rowlab{text-align:left}
-table.grid-adj tbody td:first-child{font-size:12.5px; line-height:1.34; max-width:15em}
+table.grid-adj th.rowlab,table.grid-verb th.rowlab{text-align:left}
+table.grid-adj tbody td:first-child,table.grid-verb tbody td:first-child{
+  font-size:12.5px; line-height:1.34; max-width:15em}
 .gridwrap{margin:12px 0 16px}
 .gridwrap .tw{margin:6px 0 0}
 .gridtog{font:inherit; font-size:12.5px; line-height:1; padding:6px 11px; border-radius:999px;
@@ -710,6 +757,7 @@ GRID_JS = (
     '[].forEach.call(document.querySelectorAll(".gridwrap"),function(wrap){'
     'var t=wrap.querySelector("table.grid");if(!t||!t.tBodies.length)return;'
     'var btn=wrap.querySelector(".gridtog");if(!btn)return;'
+    'var grp=t.getAttribute("data-grp")||"case";'
     'var order=(t.getAttribute("data-order")||"").split(",").map(Number);'
     'if(!order.length||order.some(isNaN))return;'
     'var rows=[].slice.call(t.tBodies[0].rows);'
@@ -723,10 +771,10 @@ GRID_JS = (
     'if(orig[i][ci])r.appendChild(orig[i][ci]);});});'
     '[].forEach.call(t.querySelectorAll("tr.h-number"),function(tr){tr.hidden=(m!=="number");});'
     '[].forEach.call(t.querySelectorAll("tr.h-case"),function(tr){tr.hidden=(m!=="case");});'
-    'btn.textContent=(m==="number")?"Group by case":"Group by number";'
+    'btn.textContent=(m==="number")?("Group by "+grp):"Group by number";'
     'btn.setAttribute("aria-label",(m==="number")'
-    '?"Columns grouped by number. Switch to grouping by case."'
-    ':"Columns grouped by case. Switch to grouping by number.");'
+    '?("Columns grouped by number. Switch to grouping by "+grp+".")'
+    ':("Columns grouped by "+grp+". Switch to grouping by number."));'
     'try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}'
     'var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}'
     'apply(saved==="case"?"case":"number");'
@@ -805,6 +853,7 @@ def main():
     make_grid_sheet()
     make_adjective_grid()
     make_verb_grid()
+    make_mega_grid()
     return out_html
 
 
@@ -864,6 +913,9 @@ thead th.grp{text-align:center; letter-spacing:.05em; font-size:12pt}
 td.m{background:#dbeafe; color:#12243d}
 td.f{background:#ede0ff; color:#2b1741}
 td.n{background:#dcfce7; color:#12301f}
+td.pr{background:#fef3c7; color:#3d2c06}
+td.pa{background:#ffe4e6; color:#4a1020}
+td.fu{background:#cffafe; color:#0a3340}
 .cell2{display:flex; align-items:center; justify-content:space-between; gap:7pt}
 .arts{display:flex; flex-direction:column; align-items:flex-start; line-height:1.2}
 .end{white-space:nowrap; font-weight:700}
@@ -872,6 +924,8 @@ td.n{background:#dcfce7; color:#12301f}
 .legend{display:flex; gap:5mm; font-size:9.2pt; margin:0 0 3mm}
 .legend span{padding:1pt 5pt; border:.4pt solid #b9c1c9; border-radius:2pt}
 .legend .m{background:#dbeafe} .legend .f{background:#ede0ff} .legend .n{background:#dcfce7}
+.legend .pr{background:#fef3c7} .legend .pa{background:#ffe4e6} .legend .fu{background:#cffafe}
+.legend.people{display:block; font-size:9pt; color:#3d4650; margin:0 0 3mm}
 """
 
 
@@ -892,7 +946,8 @@ def find_master_grid(md, kind='noun'):
     return None, None
 
 
-def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False):
+def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False,
+                      kind='noun', keys=None, bands=None):
     """One grid with the columns in `order`, banded by `outer` over `inner`.
     `label` keeps the row-label column (the noun grid drops it); `balloons` adds
     the example-sentence markers, which only make sense on a screen."""
@@ -911,13 +966,13 @@ def render_print_grid(header, rows, order, outer, inner, label=None, balloons=Fa
     out.append('</tr><tr>')
     out.append(''.join('<th>%s</th>' % html.escape(cap(l)) for l in inner))
     out.append('</tr></thead><tbody>')
-    for r in rows:
-        g = gender_of(plain(r[0]))
+    for ri, r in enumerate(rows):
+        g = bands[ri] if bands else band_of(kind, plain(r[0]))
         cls = ' class="%s"' % g if g else ''
         out.append('<tr>')
         if label:
             out.append('<td class="rowlab%s">%s</td>' % (' ' + g if g else '', inline(r[0])))
-        key = plain(r[0]).split(' \u2014 ')[0].strip()
+        key = keys[ri] if keys else plain(r[0]).split(' \u2014 ')[0].strip()
         for i in order:
             cell = r[i + 1] if i + 1 < len(r) else ''
             ex = EXAMPLES.get((key, i + 1)) if balloons else None
@@ -1153,8 +1208,8 @@ def make_adjective_grid():
              '&#954;&#945;&#955;&#972;&#962; is end-stressed, '
              '&#972;&#956;&#959;&#961;&#966;&#959;&#962; is not, and adjective stress '
              'never moves. &nbsp; '
-             '<b>Rows 1 and 4 are identical, and so are rows 3 and 6</b> &mdash; '
-             'A and B differ only in the feminine. &nbsp; '
+             '<b>The two top rows are identical, and so are the two top neuter '
+             'rows</b> &mdash; A and B differ only in the feminine. &nbsp; '
              '<b>Genitive plural is -&#969;&#957; / -&#974;&#957;</b> in all three genders, '
              'every type. &nbsp; '
              '<b>&#956;&#960;&#955;&#949;, &#947;&#954;&#961;&#953;, &#954;&#945;&#966;&#941;, '
@@ -1170,11 +1225,35 @@ def make_adjective_grid():
     return out
 
 
-VERB_BAND = ['', 'Singular', 'Singular', 'Singular', 'Plural', 'Plural', 'Plural']
+PERSON_LEGEND = (
+    '<div class="legend people"><b>\u03b5\u03b3\u03ce</b> 1 sg &middot; '
+    '<b>\u03b5\u03c3\u03cd</b> 2 sg &middot; '
+    '<b>\u03b1\u03c5\u03c4\u03cc\u03c2 / \u03b1\u03c5\u03c4\u03ae / '
+    '\u03b1\u03c5\u03c4\u03cc</b> 3 sg &middot; '
+    '<b>\u03b5\u03bc\u03b5\u03af\u03c2</b> 1 pl &middot; '
+    '<b>\u03b5\u03c3\u03b5\u03af\u03c2</b> 2 pl &middot; '
+    '<b>\u03b1\u03c5\u03c4\u03bf\u03af / \u03b1\u03c5\u03c4\u03ad\u03c2 / '
+    '\u03b1\u03c5\u03c4\u03ac</b> 3 pl</div>')
+
+TENSE_LEGEND = ('<div class="legend"><span class="pr">present</span>'
+                '<span class="pa">past</span><span class="fu">future &amp; \u03bd\u03b1</span>'
+                '</div>')
+
+
+def case_order_of(header):
+    """(order, outer labels, inner labels) for a '<group> <number>' header."""
+    cols = [plain(h).strip() for h in header[1:]]
+    outer, inner = [], []
+    for c in cols:
+        a, b = c.rsplit(' ', 1) if ' ' in c else (c, '')
+        outer.append(a)
+        inner.append(b)
+    order = by_case_order(outer)
+    return order, [outer[i] for i in order], [inner[i] for i in order]
 
 
 def make_verb_grid():
-    """verb-grid.html: present / past / future / perfect x all six persons."""
+    """verb-grid.html: tense x group down the side, person x number across."""
     src = os.path.join(BASE, 'grammar', '08-verbs-present.md')
     if not os.path.isfile(src):
         print('verb   : skipped - no 08-verbs-present.md')
@@ -1182,37 +1261,110 @@ def make_verb_grid():
     md = io.open(src, encoding='utf-8').read()
     sections = [('Active voice', '### Active voice'),
                 ('Passive / mediopassive voice', '### Passive / mediopassive voice'),
-                ('The two verbs with no dependent stem &mdash; είμαι and έχω',
-                 '### The two verbs with no dependent stem')]
+                ('\u03b5\u03af\u03bc\u03b1\u03b9 and \u03ad\u03c7\u03c9 '
+                 '&mdash; the two with no dependent stem',
+                 '### \u03b5\u03af\u03bc\u03b1\u03b9 and \u03ad\u03c7\u03c9')]
     blocks = []
     for heading, marker in sections:
         header, rows = find_table_after(md, marker)
-        if not header:
-            print('verb   : skipped - %s not found' % marker)
+        if not header or grid_kind(header) != 'verb':
+            print('verb   : skipped - %s is not a verb grid' % marker)
             return None
-        inner = [plain(h).strip() for h in header]
+        order, outer, inner = case_order_of(header)
         blocks.append('<h2>%s</h2>%s'
-                      % (heading, render_band_grid(inner, rows, VERB_BAND)))
+                      % (heading,
+                         render_print_grid(header, rows, order, outer, inner,
+                                           label=plain(header[0]).strip(),
+                                           balloons=True, kind='verb')))
     glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
     if glance_h:
         blocks.append('<h2>What the grid shows at a glance</h2>'
                       + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
     notes = ('<div class="notes">'
-             '<b>One set of past endings</b> &mdash; -&#945;, -&#949;&#962;, -&#949;, '
-             '-&#945;&#956;&#949;, -&#945;&#964;&#949;, -&#945;&#957; &mdash; serves the aorist '
-             '<i>and</i> the imperfect; only the stem changes. &nbsp; '
-             '<b>&#952;&#945; and &#957;&#945; never take the &#941;- augment.</b> &nbsp; '
-             '<b>The perfect conjugates only &#941;&#967;&#969;</b>; the second word is frozen. '
-             '&nbsp; <b>Passive 1st plural</b> is the ending to watch: '
-             '-&#972;&#956;&#945;&#963;&#964;&#949; now, -&#972;&#956;&#945;&#963;&#964;&#945;&#957; '
-             'in the past.'
+             '<b>Hover or tap any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>The stem is in the row label</b>, the ending is in the cell, and '
+             '<b>\u03b8\u03b1 / \u03bd\u03b1 / \u03ad\u03c7\u03c9</b> are printed because '
+             'they are separate words. &nbsp; '
+             '<b>The whole rose band shares one set of endings</b> and so does the whole cyan '
+             'band &mdash; two sets to learn, and everything else is stems. &nbsp; '
+             '<b>Never an \u03ad- augment after \u03b8\u03b1 or \u03bd\u03b1.</b>'
              '</div>')
     doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',
-                    'Present, past, future and perfect &mdash; all six persons, both voices.',
-                    ''.join(blocks), '', notes)
+                    'Present, past and future &mdash; every A2 group, '
+                    'all six persons, both voices.',
+                    ''.join(blocks), TENSE_LEGEND + PERSON_LEGEND, notes, EX_JS)
     out = os.path.join(DIST, 'verb-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
+    return out
+
+
+def make_mega_grid():
+    """mega-grid.html: the noun rows and the adjective rows in one table, both
+    ordered by gender, so a whole phrase can be read off one colour band - the
+    article and the noun ending from a NOUN row, the adjective ending from an
+    ADJ row of the same colour."""
+    nsrc = os.path.join(BASE, 'grammar', '02-nouns.md')
+    asrc = os.path.join(BASE, 'grammar', '05-adjectives.md')
+    if not (os.path.isfile(nsrc) and os.path.isfile(asrc)):
+        print('mega   : skipped - sources missing')
+        return None
+    nh, nrows = find_master_grid(io.open(nsrc, encoding='utf-8').read(), 'noun')
+    ah, arows = find_master_grid(io.open(asrc, encoding='utf-8').read(), 'adj')
+    if not nh or not ah:
+        print('mega   : skipped - a master grid is missing')
+        return None
+
+    # relabelling the rows would break the band and the example lookup, both of
+    # which read the label, so collect all three explicitly
+    merged, keys, bands = [], [], []
+
+    def take(rows, tag, want):
+        for r in rows:
+            g = gender_of(plain(r[0]))
+            if g != want:
+                continue
+            merged.append(['**%s** %s' % (tag, r[0])] + list(r[1:]))
+            keys.append(plain(r[0]).split(' \u2014 ')[0].strip())
+            bands.append(g)
+
+    for g in ('m', 'f', 'n'):
+        take(nrows, 'NOUN', g)
+        take(arows, 'ADJ', g)
+    take(arows, 'ADJ', None)                    # the invariable colours
+
+    order, outer, inner = case_order_of(nh)
+    grid = render_print_grid(nh, merged, order, outer, inner,
+                             label='Noun type / adjective type', balloons=True,
+                             keys=keys, bands=bands)
+    notes = (
+        '<div class="notes">'
+        '<b>How to read it:</b> pick the gender band, take the article and the noun ending '
+        'from a <b>NOUN</b> row and the adjective ending from an <b>ADJ</b> row of the same '
+        'colour &mdash; '
+        '<i>\u03c4\u03bf\u03c5 \u03ba\u03b1\u03bb\u03bf\u03cd '
+        '\u03c6\u03af\u03bb\u03bf\u03c5</i>, '
+        '<i>\u03c4\u03b9\u03c2 \u03ba\u03b1\u03bb\u03ad\u03c2 '
+        '\u03ce\u03c1\u03b5\u03c2</i>, '
+        '<i>\u03c4\u03c9\u03bd \u03ba\u03b1\u03bb\u03ce\u03bd '
+        '\u03c0\u03b1\u03b9\u03b4\u03b9\u03ce\u03bd</i>. &nbsp; '
+        '<b>Only the noun rows carry an article</b> &mdash; the adjective borrows the '
+        'noun\u2019s. &nbsp; '
+        '<b>Hover or tap any cell</b> for a sentence using that exact form. &nbsp; '
+        '<b>The two endings rarely match.</b> \u03c4\u03bf\u03c5 \u03ba\u03b1\u03bb'
+        '\u03bf\u03cd \u03c6\u03af\u03bb\u03bf\u03c5 happens to rhyme; '
+        '\u03c4\u03b7\u03c2 \u03ba\u03b1\u03bb\u03ae\u03c2 '
+        '\u03ce\u03c1\u03b1\u03c2 does not. What has to agree is gender, case and '
+        'number &mdash; never the letters.'
+        '</div>')
+    doc = grid_page('Greek A2 &middot; Nouns and adjectives &mdash; one grid',
+                    'Every declension and every adjective type, side by side, '
+                    'banded by gender.',
+                    grid, LEGEND, notes, EX_JS)
+    out = os.path.join(DIST, 'mega-grid.html')
+    io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('mega   : %s  (%.1f KB, %d rows)'
+          % (out, os.path.getsize(out) / 1024.0, len(merged)))
     return out
 
 

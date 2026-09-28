@@ -11,6 +11,9 @@
   --f-bg:#ede0ff; --f-fg:#2b1741;
   --n-bg:#dcfce7; --n-fg:#12301f;
   --warn:#b54708;
+  --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+  --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+  --fu-bg:#cffafe; --fu-fg:#0a3340;
   --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
   --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
 }
@@ -26,6 +29,9 @@
     --f-bg:#2f2450; --f-fg:#e8dcff;
     --n-bg:#16351f; --n-fg:#cfeeda;
     --warn:#f0a066;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
     --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
     --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
   }
@@ -38,6 +44,9 @@
   --f-bg:#2f2450; --f-fg:#e8dcff;
   --n-bg:#16351f; --n-fg:#cfeeda;
   --warn:#f0a066;
+  --pr-bg:#3d3308; --pr-fg:#fbeec2;
+  --pa-bg:#40202b; --pa-fg:#ffdbe3;
+  --fu-bg:#0c3440; --fu-fg:#c7f1fa;
   --toc-bg:#181c20; --zebra:#181c20; --code-bg:#22282e;
   --pre-bg:#1a1f24; --quote-bg:#191f25; --btn-bg:#1f252b;
 }
@@ -96,7 +105,13 @@ blockquote{margin:12px 0; padding:8px 14px; border-left:3px solid var(--accent);
 table{border-collapse:collapse; width:100%; font-size:14.5px}
 th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
 thead th{background:var(--head); font-weight:600; white-space:nowrap}
-tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:var(--zebra)}
+tbody tr:nth-child(even) td:not(.m):not(.f):not(.n):not(.pr):not(.pa):not(.fu){background:var(--zebra)}
+td.pr,th.pr{background:var(--pr-bg); color:var(--pr-fg)}
+td.pa,th.pa{background:var(--pa-bg); color:var(--pa-fg)}
+td.fu,th.fu{background:var(--fu-bg); color:var(--fu-fg)}
+.legend .pr{background:var(--pr-bg); color:var(--pr-fg)}
+.legend .pa{background:var(--pa-bg); color:var(--pa-fg)}
+.legend .fu{background:var(--fu-bg); color:var(--fu-fg)}
 td.m,th.m{background:var(--m-bg); color:var(--m-fg)}
 td.f,th.f{background:var(--f-bg); color:var(--f-fg)}
 td.n,th.n{background:var(--n-bg); color:var(--n-fg)}
@@ -158,6 +173,9 @@ header.top p{color:var(--muted); margin:0}
     --m-bg:#dbeafe; --m-fg:#12243d;
     --f-bg:#ede0ff; --f-fg:#2b1741;
     --n-bg:#dcfce7; --n-fg:#12301f;
+    --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+    --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+    --fu-bg:#cffafe; --fu-fg:#0a3340;
     --toc-bg:#fbfcfd; --zebra:#fafbfc; --code-bg:#f2f4f7;
     --pre-bg:#f7f9fb; --quote-bg:#f7fbfd; --btn-bg:#f4f6f8;
   }
@@ -179,8 +197,9 @@ header.top p{color:var(--muted); margin:0}
   tr,img{break-inside:avoid; page-break-inside:avoid}
   .tw{overflow:visible}
   a{color:inherit; text-decoration:none}
-  td.m,th.m,td.f,th.f,td.n,th.n{-webkit-print-color-adjust:exact; print-color-adjust:exact}
-  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n){background:transparent}
+  td.m,th.m,td.f,th.f,td.n,th.n,td.pr,td.pa,td.fu{-webkit-print-color-adjust:exact;
+    print-color-adjust:exact}
+  tbody tr:nth-child(even) td:not(.m):not(.f):not(.n):not(.pr):not(.pa):not(.fu){background:transparent}
 }
 /* ---- example balloons on the master grid -------------------------------- */
 /* a cell with an example gets a small corner dot; the balloon itself is one
@@ -221,8 +240,9 @@ table.grid thead th.grp{text-align:center; letter-spacing:.04em}
 table.grid .cell2{gap:9px}
 /* the adjective grid keeps its row label: type A masculine and type B masculine
    have the same six endings, so the cells alone would not say which row is which */
-table.grid-adj th.rowlab{text-align:left}
-table.grid-adj tbody td:first-child{font-size:12.5px; line-height:1.34; max-width:15em}
+table.grid-adj th.rowlab,table.grid-verb th.rowlab{text-align:left}
+table.grid-adj tbody td:first-child,table.grid-verb tbody td:first-child{
+  font-size:12.5px; line-height:1.34; max-width:15em}
 .gridwrap{margin:12px 0 16px}
 .gridwrap .tw{margin:6px 0 0}
 .gridtog{font:inherit; font-size:12.5px; line-height:1; padding:6px 11px; border-radius:999px;
@@ -265,4 +285,4 @@ table.grid tr[hidden]{display:none}
 <div class="tw"><table><thead><tr><th>Verb</th><th>Aorist</th></tr></thead><tbody><tr><td><strong>έρχομαι</strong> (come)</td><td><strong>ήρθα</strong>, ήρθες, ήρθε, ήρθαμε, ήρθατε, ήρθαν ⚠ active endings</td></tr><tr><td><strong>γίνομαι</strong> (become)</td><td><strong>έγινα</strong>, έγινες, έγινε, γίναμε, γίνατε, έγιναν ⚠ active endings</td></tr><tr><td><strong>κάθομαι</strong> (sit)</td><td><strong>κάθισα</strong> ⚠ active endings</td></tr><tr><td><strong>σκέφτομαι</strong> (think)</td><td><strong>σκέφτηκα</strong></td></tr><tr><td><strong>χρειάζομαι</strong> (need)</td><td><strong>χρειάστηκα</strong></td></tr><tr><td><strong>φαίνομαι</strong> (seem)</td><td><strong>φάνηκα</strong></td></tr><tr><td><strong>βρίσκομαι</strong> (be located)</td><td><strong>βρέθηκα</strong></td></tr><tr><td><strong>επισκέπτομαι</strong> (visit)</td><td><strong>επισκέφτηκα</strong></td></tr><tr><td><strong>χαίρομαι</strong> (be glad)</td><td><strong>χάρηκα</strong></td></tr><tr><td><strong>αισθάνομαι</strong> (feel)</td><td><strong>αισθάνθηκα</strong></td></tr></tbody></table></div>
 <h2>5. Drill grid — give the aorist 1st singular</h2>
 <div class="tw"><table><thead><tr><th>Present</th><th>Aorist</th><th>Present</th><th>Aorist</th></tr></thead><tbody><tr><td>γράφω</td><td>έγραψα</td><td>βλέπω</td><td><strong>είδα</strong> ⚠</td></tr><tr><td>διαβάζω</td><td>διάβασα</td><td>λέω</td><td><strong>είπα</strong> ⚠</td></tr><tr><td>δουλεύω</td><td>δούλεψα</td><td>πάω</td><td><strong>πήγα</strong> ⚠</td></tr><tr><td>ανοίγω</td><td>άνοιξα</td><td>τρώω</td><td><strong>έφαγα</strong> ⚠</td></tr><tr><td>κλείνω</td><td>έκλεισα</td><td>πίνω</td><td><strong>ήπια</strong> ⚠</td></tr><tr><td>πληρώνω</td><td>πλήρωσα</td><td>παίρνω</td><td><strong>πήρα</strong> ⚠</td></tr><tr><td>μιλάω</td><td>μίλησα</td><td>δίνω</td><td><strong>έδωσα</strong> ⚠</td></tr><tr><td>ρωτάω</td><td>ρώτησα</td><td>μπαίνω</td><td><strong>μπήκα</strong> ⚠</td></tr><tr><td>περνάω</td><td>πέρασα</td><td>βγαίνω</td><td><strong>βγήκα</strong> ⚠</td></tr><tr><td>μπορώ</td><td>μπόρεσα</td><td>βρίσκω</td><td><strong>βρήκα</strong> ⚠</td></tr><tr><td>τηλεφωνώ</td><td>τηλεφώνησα</td><td>έρχομαι</td><td><strong>ήρθα</strong> ⚠</td></tr><tr><td>φοράω</td><td>φόρεσα</td><td>γίνομαι</td><td><strong>έγινα</strong> ⚠</td></tr></tbody></table></div>
-<p>→ Full irregular list on page 16.</p></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script><script>(function(){var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;var tip=document.createElement("div");tip.className="extip";tip.hidden=true;document.body.appendChild(tip);function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}var el=mk("el"),en=mk("en"),timer=null,cur=null;function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}function show(td){cur=td;el.textContent=td.getAttribute("data-el")||"";en.textContent=td.getAttribute("data-en")||"";tip.hidden=false;tip.classList.remove("below");var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;var vw=document.documentElement.clientWidth;var left=window.pageXOffset+r.left+r.width/2-w/2;left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));var top=window.pageYOffset+r.top-h-10;if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}tip.style.left=left+"px";tip.style.top=top+"px";}function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}document.addEventListener("mouseover",function(e){var td=near(e);if(!td||td===cur)return;if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});document.addEventListener("mouseout",function(e){if(near(e))hide();});document.addEventListener("click",function(e){var td=near(e);if(!td){hide();return;}if(cur===td){hide();return;}if(timer)clearTimeout(timer);show(td);});window.addEventListener("scroll",hide,true);window.addEventListener("resize",hide);window.addEventListener("blur",hide);document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});})();</script><script>(function(){function cellText(td){var c=td.querySelector(".cell2");if(c){var a=[].map.call(c.querySelectorAll(".arts span"),function(s){return s.textContent.trim();});var e=c.querySelector(".end");return a.join(" / ")+(e?" "+e.textContent.trim():"");}return td.textContent.replace(/\s+/g," ").trim();}document.addEventListener("copy",function(ev){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;var cd=ev.clipboardData||window.clipboardData;if(!cd)return;var r=s.getRangeAt(0);var el=r.commonAncestorContainer;if(el.nodeType!==1)el=el.parentElement;var table=el&&el.closest?el.closest("table"):null;var t;if(table){var cell=el.closest("td,th");if(cell&&cell.contains(r.startContainer)&&cell.contains(r.endContainer)){t=s.toString().replace(/\s*\n\s*/g," ").trim();}else{var out=[];[].forEach.call(table.querySelectorAll("tr"),function(tr){if(!s.containsNode(tr,true))return;var cells=[].filter.call(tr.children,function(c){return s.containsNode(c,true);});out.push(cells.map(cellText).join("\t"));});t=out.join("\n");}}else{t=s.toString();}if(!t)return;try{cd.setData("text/plain",t);}catch(err){return;}ev.preventDefault();});})();</script><script>(function(){[].forEach.call(document.querySelectorAll(".gridwrap"),function(wrap){var t=wrap.querySelector("table.grid");if(!t||!t.tBodies.length)return;var btn=wrap.querySelector(".gridtog");if(!btn)return;var order=(t.getAttribute("data-order")||"").split(",").map(Number);if(!order.length||order.some(isNaN))return;var rows=[].slice.call(t.tBodies[0].rows);var orig=rows.map(function(r){return [].slice.call(r.cells);});var flat=orig.length?orig[0].map(function(_,i){return i;}):[];var mode="number";function apply(m){mode=m;var ord=(m==="case")?order:flat;rows.forEach(function(r,i){ord.forEach(function(ci){if(orig[i][ci])r.appendChild(orig[i][ci]);});});[].forEach.call(t.querySelectorAll("tr.h-number"),function(tr){tr.hidden=(m!=="number");});[].forEach.call(t.querySelectorAll("tr.h-case"),function(tr){tr.hidden=(m!=="case");});btn.textContent=(m==="number")?"Group by case":"Group by number";btn.setAttribute("aria-label",(m==="number")?"Columns grouped by number. Switch to grouping by case.":"Columns grouped by case. Switch to grouping by number.");try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}apply(saved==="case"?"case":"number");btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});});})();</script></body></html>
+<p>→ Full irregular list on page 16.</p></section></main></div><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script><script>(function(){var cells=document.querySelectorAll("td.hasex");if(!cells.length)return;var tip=document.createElement("div");tip.className="extip";tip.hidden=true;document.body.appendChild(tip);function mk(c){var d=document.createElement("div");d.className=c;tip.appendChild(d);return d;}var el=mk("el"),en=mk("en"),timer=null,cur=null;function hide(){if(timer){clearTimeout(timer);timer=null;}tip.hidden=true;cur=null;}function show(td){cur=td;el.textContent=td.getAttribute("data-el")||"";en.textContent=td.getAttribute("data-en")||"";tip.hidden=false;tip.classList.remove("below");var r=td.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;var vw=document.documentElement.clientWidth;var left=window.pageXOffset+r.left+r.width/2-w/2;left=Math.max(window.pageXOffset+8,Math.min(left,window.pageXOffset+vw-w-8));var top=window.pageYOffset+r.top-h-10;if(top<window.pageYOffset+4){top=window.pageYOffset+r.bottom+10;tip.classList.add("below");}tip.style.left=left+"px";tip.style.top=top+"px";}function near(e){return e.target&&e.target.closest?e.target.closest("td.hasex"):null;}document.addEventListener("mouseover",function(e){var td=near(e);if(!td||td===cur)return;if(timer)clearTimeout(timer);timer=setTimeout(function(){show(td);},250);});document.addEventListener("mouseout",function(e){if(near(e))hide();});document.addEventListener("click",function(e){var td=near(e);if(!td){hide();return;}if(cur===td){hide();return;}if(timer)clearTimeout(timer);show(td);});window.addEventListener("scroll",hide,true);window.addEventListener("resize",hide);window.addEventListener("blur",hide);document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});})();</script><script>(function(){function cellText(td){var c=td.querySelector(".cell2");if(c){var a=[].map.call(c.querySelectorAll(".arts span"),function(s){return s.textContent.trim();});var e=c.querySelector(".end");return a.join(" / ")+(e?" "+e.textContent.trim():"");}return td.textContent.replace(/\s+/g," ").trim();}document.addEventListener("copy",function(ev){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;var cd=ev.clipboardData||window.clipboardData;if(!cd)return;var r=s.getRangeAt(0);var el=r.commonAncestorContainer;if(el.nodeType!==1)el=el.parentElement;var table=el&&el.closest?el.closest("table"):null;var t;if(table){var cell=el.closest("td,th");if(cell&&cell.contains(r.startContainer)&&cell.contains(r.endContainer)){t=s.toString().replace(/\s*\n\s*/g," ").trim();}else{var out=[];[].forEach.call(table.querySelectorAll("tr"),function(tr){if(!s.containsNode(tr,true))return;var cells=[].filter.call(tr.children,function(c){return s.containsNode(c,true);});out.push(cells.map(cellText).join("\t"));});t=out.join("\n");}}else{t=s.toString();}if(!t)return;try{cd.setData("text/plain",t);}catch(err){return;}ev.preventDefault();});})();</script><script>(function(){[].forEach.call(document.querySelectorAll(".gridwrap"),function(wrap){var t=wrap.querySelector("table.grid");if(!t||!t.tBodies.length)return;var btn=wrap.querySelector(".gridtog");if(!btn)return;var grp=t.getAttribute("data-grp")||"case";var order=(t.getAttribute("data-order")||"").split(",").map(Number);if(!order.length||order.some(isNaN))return;var rows=[].slice.call(t.tBodies[0].rows);var orig=rows.map(function(r){return [].slice.call(r.cells);});var flat=orig.length?orig[0].map(function(_,i){return i;}):[];var mode="number";function apply(m){mode=m;var ord=(m==="case")?order:flat;rows.forEach(function(r,i){ord.forEach(function(ci){if(orig[i][ci])r.appendChild(orig[i][ci]);});});[].forEach.call(t.querySelectorAll("tr.h-number"),function(tr){tr.hidden=(m!=="number");});[].forEach.call(t.querySelectorAll("tr.h-case"),function(tr){tr.hidden=(m!=="case");});btn.textContent=(m==="number")?("Group by "+grp):"Group by number";btn.setAttribute("aria-label",(m==="number")?("Columns grouped by number. Switch to grouping by "+grp+"."):("Columns grouped by "+grp+". Switch to grouping by number."));try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}apply(saved==="case"?"case":"number");btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});});})();</script></body></html>
