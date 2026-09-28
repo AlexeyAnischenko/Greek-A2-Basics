@@ -11,6 +11,8 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 | 📄 **PDF (70 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
 | ⌨ **Greek keyboard** | https://alexeyanischenko.github.io/Greek-A2-Basics/keyboard.html |
 | 🖨 **Noun endings, one page to print** | https://alexeyanischenko.github.io/Greek-A2-Basics/master-grid.pdf |
+| ▦ **Adjective endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/adjective-grid.html |
+| ▦ **Verb endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/verb-grid.html |
 
 The online version has a light/dark theme switch and a contents sidebar. The PDF is always light,
 one sheet per page break, with repeating table headers.
@@ -54,7 +56,8 @@ Gender-marked rows and columns are banded: **masculine = blue**, **feminine = pu
 The HTML and PDF are generated from the markdown in this repo:
 
 ```
-python build.py
+python build.py            # HTML + both PDFs
+python build.py --no-pdf   # HTML only, skips the Chrome print step
 ```
 
 | Source | |
@@ -75,6 +78,8 @@ Only Python (stdlib) is needed; Chrome or Edge is used for the PDF step and is s
 | `pages/*.html` | One standalone file per sheet |
 | `greek-a2.pdf` | 70-page A4 print, one sheet per page break, colour bands preserved |
 | `master-grid.html` / `.pdf` | the noun grid alone, one A4 page, grouped by case |
+| `adjective-grid.html` | the adjective grid alone: every type, case, gender and number |
+| `verb-grid.html` | the verb grid alone: every tense × all six persons, active and passive |
 
 The build needs only Python (stdlib) plus Chrome or Edge for the PDF step; if neither is
 found the HTML is still written and the PDF step is skipped.

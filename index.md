@@ -13,6 +13,9 @@ not here, you do not need it yet.
 | | |
 |---|---|
 | ⌨ **[Greek keyboard](keyboard.html)** | Type Greek with accents and copy it out — for filling in online homework |
+| ▦ **[Noun endings — master grid](master-grid.html)** | Article and ending for every A2 declension, one page |
+| ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × gender × number, one page |
+| ▦ **[Verb endings — master grid](verb-grid.html)** | Present, past, future, perfect × all six persons, both voices |
 
 ## How to drill
 

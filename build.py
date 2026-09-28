@@ -782,8 +782,13 @@ def main():
     print('html   : %s  (%.1f KB)' % (out_html, os.path.getsize(out_html) / 1024.0))
     print('pages  : %d files in %s' % (len(sheets), PAGES))
 
-    make_pdf(out_html)
+    if '--no-pdf' in sys.argv:
+        print('pdf    : skipped (--no-pdf)')
+    else:
+        make_pdf(out_html)
     make_grid_sheet()
+    make_adjective_grid()
+    make_verb_grid()
     return out_html
 
 
@@ -944,6 +949,9 @@ def make_grid_sheet():
     out_html = os.path.join(DIST, 'master-grid.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
 
+    if '--no-pdf' in sys.argv:
+        print('grid   : %s  (pdf skipped - --no-pdf)' % out_html)
+        return out_html
     exe = next((p for p in CHROME_CANDIDATES if os.path.isfile(p)), None)
     if not exe:
         print('grid   : %s  (pdf skipped - no Chrome)' % out_html)
@@ -962,6 +970,187 @@ def make_grid_sheet():
     if os.path.isfile(out_pdf):
         print('grid   : %s  (%.0f KB)' % (out_pdf, os.path.getsize(out_pdf) / 1024.0))
     return out_pdf
+
+# ------------------------------------------------- the other two master grids
+# adjective-grid.html and verb-grid.html: the same treatment the noun grid gets,
+# for the two paradigm sets that are just as big. HTML only - these are wider
+# and longer than one A4 page, so there is no print sibling to keep on one page.
+EXTRA_GRID_CSS = """
+h2{font-size:12.5pt; margin:6mm 0 2mm; letter-spacing:-.01em}
+h2:first-of-type{margin-top:0}
+table{font-size:10.8pt; margin:0 0 2mm}
+th,td{padding:3.4pt 5pt}
+td:first-child,th:first-child{width:19%; font-size:10pt}
+thead th{font-size:10.5pt}
+thead th.m{background:#cfe3fd} thead th.f{background:#e4d3fb} thead th.n{background:#cdf3dc}
+.glance td:first-child{width:38%}
+"""
+
+
+def find_table_after(md, marker, skip=0):
+    """The (skip+1)-th markdown table starting after the line holding `marker`."""
+    lines = md.replace('\r\n', '\n').split('\n')
+    start = next((i for i, l in enumerate(lines) if marker in l), None)
+    if start is None:
+        return None, None
+    found, i = 0, start + 1
+    while i < len(lines):
+        if is_row(lines[i]) and i + 1 < len(lines) and SEP.match(lines[i + 1]):
+            header = split_row(lines[i])
+            rows, j = [], i + 2
+            while j < len(lines) and is_row(lines[j]):
+                rows.append(split_row(lines[j]))
+                j += 1
+            if found == skip:
+                return header, rows
+            found, i = found + 1, j
+            continue
+        i += 1
+    return None, None
+
+
+def render_band_grid(inner, rows, band=None, col_g=None, cls=''):
+    """One table: `inner` are the column labels (column 0 labels the row), `band`
+    an optional row of outer labels above them (equal neighbours merge), `col_g`
+    the gender colour per column."""
+    out = ['<table%s><thead>' % (' class="%s"' % cls if cls else '')]
+    if band:
+        groups = []
+        for l in band:
+            if groups and groups[-1][0] == l:
+                groups[-1][1] += 1
+            else:
+                groups.append([l, 1])
+        out.append('<tr>%s</tr>' % ''.join(
+            '<th colspan="%d" class="grp">%s</th>' % (n, html.escape(l))
+            for l, n in groups))
+    out.append('<tr>%s</tr>' % ''.join(
+        '<th%s>%s</th>' % (' class="%s"' % col_g[i] if col_g and col_g[i] else '', inline(l))
+        for i, l in enumerate(inner)))
+    out.append('</thead><tbody>')
+    for r in rows:
+        out.append('<tr>')
+        for i in range(len(inner)):
+            g = col_g[i] if col_g else None
+            out.append('<td%s>%s</td>'
+                       % (' class="%s"' % g if g else '', inline(r[i] if i < len(r) else '')))
+        out.append('</tr>')
+    out.append('</tbody></table>')
+    return ''.join(out)
+
+
+def split_number_header(header):
+    """'Masculine singular' -> label 'Masculine' under a 'Singular' band."""
+    inner, band, col_g = [], [], []
+    for h in header:
+        p = plain(h).strip()
+        g = gender_of(p)
+        if g and ' ' in p:
+            base, num = p.rsplit(' ', 1)
+            inner.append(base)
+            band.append(num[:1].upper() + num[1:])
+        else:
+            inner.append(p)
+            band.append('')
+        col_g.append(g)
+    return inner, band, col_g
+
+
+def grid_page(title, sub, blocks, legend='', notes=''):
+    return ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<title>%s</title>%s<style>%s%s</style></head><body>'
+            '<h1>%s</h1><p class="sub">%s</p>%s%s%s</body></html>'
+            % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON,
+               GRID_SHEET_CSS, EXTRA_GRID_CSS, title, sub, legend, blocks, notes))
+
+
+LEGEND = ('<div class="legend"><span class="m">masculine</span>'
+          '<span class="f">feminine</span><span class="n">neuter</span></div>')
+
+
+def make_adjective_grid():
+    """adjective-grid.html: every adjective type x case x gender x number."""
+    src = os.path.join(BASE, 'grammar', '05-adjectives.md')
+    if not os.path.isfile(src):
+        print('adj    : skipped - no 05-adjectives.md')
+        return None
+    md = io.open(src, encoding='utf-8').read()
+    header, rows = find_table_after(md, '## Master grid')
+    glance_h, glance_r = find_table_after(md, '## Master grid', skip=1)
+    if not header:
+        print('adj    : skipped - master grid not found')
+        return None
+    inner, band, col_g = split_number_header(header)
+
+    blocks = render_band_grid(inner, rows, band, col_g)
+    if glance_h:
+        blocks += ('<h2>What the grid shows at a glance</h2>'
+                   + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
+    notes = ('<div class="notes">'
+             '<b>191 of the 195</b> adjectives in the A2 wordlist are type <b>A</b> or '
+             '<b>B</b> &mdash; the first seven rows are the whole exam. &nbsp; '
+             '<b>A and B differ only in the feminine.</b> &nbsp; '
+             '<b>Genitive plural is -&#969;&#957; / -&#974;&#957;</b> in all three genders, '
+             'every type. &nbsp; '
+             '<b>&#956;&#960;&#955;&#949;, &#947;&#954;&#961;&#953;, &#954;&#945;&#966;&#941;, '
+             '&#961;&#959;&#950;, &#960;&#959;&#961;&#964;&#959;&#954;&#945;&#955;&#943;, '
+             '&#956;&#969;&#946;</b> never agree with anything.'
+             '</div>')
+    doc = grid_page('Greek A2 &middot; Adjective endings &mdash; master grid',
+                    'Every A2 adjective type, all three cases, both numbers.',
+                    blocks, LEGEND, notes)
+    out = os.path.join(DIST, 'adjective-grid.html')
+    io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('adj    : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
+    return out
+
+
+VERB_BAND = ['', 'Singular', 'Singular', 'Singular', 'Plural', 'Plural', 'Plural']
+
+
+def make_verb_grid():
+    """verb-grid.html: present / past / future / perfect x all six persons."""
+    src = os.path.join(BASE, 'grammar', '08-verbs-present.md')
+    if not os.path.isfile(src):
+        print('verb   : skipped - no 08-verbs-present.md')
+        return None
+    md = io.open(src, encoding='utf-8').read()
+    sections = [('Active voice', '### Active voice'),
+                ('Passive / mediopassive voice', '### Passive / mediopassive voice'),
+                ('The two verbs with no dependent stem &mdash; είμαι and έχω',
+                 '### The two verbs with no dependent stem')]
+    blocks = []
+    for heading, marker in sections:
+        header, rows = find_table_after(md, marker)
+        if not header:
+            print('verb   : skipped - %s not found' % marker)
+            return None
+        inner = [plain(h).strip() for h in header]
+        blocks.append('<h2>%s</h2>%s'
+                      % (heading, render_band_grid(inner, rows, VERB_BAND)))
+    glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
+    if glance_h:
+        blocks.append('<h2>What the grid shows at a glance</h2>'
+                      + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
+    notes = ('<div class="notes">'
+             '<b>One set of past endings</b> &mdash; -&#945;, -&#949;&#962;, -&#949;, '
+             '-&#945;&#956;&#949;, -&#945;&#964;&#949;, -&#945;&#957; &mdash; serves the aorist '
+             '<i>and</i> the imperfect; only the stem changes. &nbsp; '
+             '<b>&#952;&#945; and &#957;&#945; never take the &#941;- augment.</b> &nbsp; '
+             '<b>The perfect conjugates only &#941;&#967;&#969;</b>; the second word is frozen. '
+             '&nbsp; <b>Passive 1st plural</b> is the ending to watch: '
+             '-&#972;&#956;&#945;&#963;&#964;&#949; now, -&#972;&#956;&#945;&#963;&#964;&#945;&#957; '
+             'in the past.'
+             '</div>')
+    doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',
+                    'Present, past, future and perfect &mdash; all six persons, both voices.',
+                    ''.join(blocks), '', notes)
+    out = os.path.join(DIST, 'verb-grid.html')
+    io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
+    return out
+
 
 if __name__ == '__main__':
     main()

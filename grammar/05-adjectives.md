@@ -14,6 +14,49 @@ At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wo
 | **-ης / -ης / -ες** (διεθνής) | **0** | not an A2 type — not taught on this page |
 | **D · πολύς** | grammar word | irregular and unavoidable |
 
+## Master grid — every adjective ending in one table
+
+Every A2 adjective type, all three cases, both numbers, in one place. Read a row left to right and
+you have the full agreement set; read a column top to bottom and you have one gender's endings.
+Columns are colour-banded: **masculine** light blue, **feminine** light purple, **neuter** light green.
+
+| Type | Case | Masculine singular | Feminine singular | Neuter singular | Masculine plural | Feminine plural | Neuter plural |
+|---|---|---|---|---|---|---|---|
+| **A · -ος / -η / -ο** — καλός | Nominative | καλ**ός** | καλ**ή** | καλ**ό** | καλ**οί** | καλ**ές** | καλ**ά** |
+| **A · -ος / -η / -ο** — καλός | Accusative | καλ**ό** | καλ**ή** | καλ**ό** | καλ**ούς** | καλ**ές** | καλ**ά** |
+| **A · -ος / -η / -ο** — καλός | Genitive | καλ**ού** | καλ**ής** | καλ**ού** | καλ**ών** | καλ**ών** | καλ**ών** |
+| **A · -ος / -η / -ο** — καλός | Vocative | καλ**έ** | καλ**ή** | καλ**ό** | καλ**οί** | καλ**ές** | καλ**ά** |
+| **B · -ος / -α / -ο** — ωραίος | Nominative | ωραί**ος** | ωραί**α** | ωραί**ο** | ωραί**οι** | ωραί**ες** | ωραί**α** |
+| **B · -ος / -α / -ο** — ωραίος | Accusative | ωραί**ο** | ωραί**α** | ωραί**ο** | ωραί**ους** | ωραί**ες** | ωραί**α** |
+| **B · -ος / -α / -ο** — ωραίος | Genitive | ωραί**ου** | ωραί**ας** | ωραί**ου** | ωραί**ων** | ωραί**ων** | ωραί**ων** |
+| **-ός / -ιά / -ό** — γλυκός | Nominative | γλυκ**ός** | γλυκ**ιά** | γλυκ**ό** | γλυκ**οί** | γλυκ**ιές** | γλυκ**ά** |
+| **-ός / -ιά / -ό** — γλυκός | Accusative | γλυκ**ό** | γλυκ**ιά** | γλυκ**ό** | γλυκ**ούς** | γλυκ**ιές** | γλυκ**ά** |
+| **-ός / -ιά / -ό** — γλυκός | Genitive | γλυκ**ού** | γλυκ**ιάς** | γλυκ**ού** | γλυκ**ών** | γλυκ**ών** | γλυκ**ών** |
+| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Nominative | ελαφρ**ύς** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιοί** | ελαφρ**ιές** | ελαφρ**ιά** |
+| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Accusative | ελαφρ**ύ** | ελαφρ**ιά** | ελαφρ**ύ** | ελαφρ**ιούς** | ελαφρ**ιές** | ελαφρ**ιά** |
+| **C · -ύς / -ιά / -ύ** — ελαφρύς ⚠ | Genitive | ελαφρ**ιού** | ελαφρ**ιάς** | ελαφρ**ιού** | ελαφρ**ιών** | ελαφρ**ιών** | ελαφρ**ιών** |
+| **D · πολύς** — irregular | Nominative | πολ**ύς** | πολλ**ή** | πολ**ύ** | πολλ**οί** | πολλ**ές** | πολλ**ά** |
+| **D · πολύς** — irregular | Accusative | πολ**ύ** | πολλ**ή** | πολ**ύ** | πολλ**ούς** | πολλ**ές** | πολλ**ά** |
+| **D · πολύς** — irregular | Genitive | πολλ**ού** | πολλ**ής** | πολλ**ού** | πολλ**ών** | πολλ**ών** | πολλ**ών** |
+| **Invariable loans** — μπλε | all cases | μπλε | μπλε | μπλε | μπλε | μπλε | μπλε |
+
+What the grid shows at a glance:
+
+| Pattern | Where it holds |
+|---|---|
+| The **neuter** singular and plural never change between nominative and accusative | every type — same as the neuter nouns |
+| The **genitive plural is -ων / -ών** in all three genders | every type, no exceptions |
+| The **feminine singular** is the same in nominative and accusative | every type — only the article moves |
+| Masculine accusative singular = nominative **minus the final -ς** | every type |
+| A and B differ **only in the feminine** | -η / -ης / -ες vs -α / -ας / -ες |
+| Masculine and neuter of γλυκός are plain type A | only its feminine (-ιά / -ιάς / -ιές) is different |
+| Vocative = nominative, except masculine singular **-ος → -ε** | καλέ, ωραίε, γλυκέ — ελαφρύς and πολύς have no everyday vocative |
+| Invariable colours never agree | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — one form for all 18 cells |
+
+⚠ **The whole of A2 is the first two blocks.** 191 of the 195 adjectives in the KLIK A2 wordlist
+are type A or type B; γλυκός/ξανθός/Κρητικός are 3 more, and ελαφρύς is the last one. Types C and D
+are in the grid so you can recognise them, not so you can drill them.
+
 ## A · Type -ος / -η / -ο (καλός — good) ← the main one
 
 ✦ also: μεγάλος, μικρός, κακός, ακριβός, φτηνός, ψηλός, όμορφος, δύσκολος, εύκολος
