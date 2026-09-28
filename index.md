@@ -16,7 +16,7 @@ not here, you do not need it yet.
 | ▦ **[Noun endings — master grid](master-grid.html)** | Article and ending for every A2 declension, banded by gender |
 | ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × number, banded by gender, example on every cell |
 | ▦ **[Verb endings — master grid](verb-grid.html)** | Present · past · future × all six persons, banded by tense, example on every cell |
-| ▦ **[Nouns **and** adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |
+| ▦ **[Nouns and adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |
 
 ## How to drill
 

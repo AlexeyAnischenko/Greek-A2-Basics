@@ -1,32 +1,74 @@
 <!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Greek A2  Adjective endings  master grid</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='13' fill='%230b6ea8'/><text x='32' y='48' text-anchor='middle' font-family='Georgia,serif' font-size='46' fill='%23ffffff'>&#945;</text></svg>"><style>
 @page{size:A4 portrait; margin:11mm 10mm}
-:root{color-scheme:only light}
+/* The band colours are the sheets’ own, as custom properties so the page can
+   follow the theme. Pinned light they left masculine (#12243d) and feminine
+   (#2b1741) reading as plain black next to a visibly green neuter. */
+:root{
+  color-scheme:light dark;
+  --pg:#fff; --ink:#12161a; --sub:#5b6470; --rule:#b9c1c9; --band:#eef1f4; --note:#3d4650;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+  --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+  --fu-bg:#cffafe; --fu-fg:#0a3340;
+}
+@media screen and (prefers-color-scheme:dark){
+  :root{
+    --pg:#14171a; --ink:#e6e8ea; --sub:#9aa6b2; --rule:#2b3238; --band:#1d2329;
+    --note:#9aa6b2;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
+  }
+}
 *{box-sizing:border-box}
-body{margin:0; background:#fff; color:#12161a;
+body{margin:0; background:var(--pg); color:var(--ink);
   font:11.5pt/1.42 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
   -webkit-print-color-adjust:exact; print-color-adjust:exact}
 h1{font-size:18pt; margin:0 0 1.5mm; letter-spacing:-.01em}
-.sub{font-size:10pt; color:#5b6470; margin:0 0 4mm}
+.sub{font-size:10pt; color:var(--sub); margin:0 0 4mm}
 table{border-collapse:collapse; width:100%; font-size:12.6pt; table-layout:fixed}
-th,td{border:.5pt solid #b9c1c9; padding:4.2pt 6pt; text-align:left; vertical-align:middle}
-thead th{background:#eef1f4; font-weight:700}
+th,td{border:.5pt solid var(--rule); padding:4.2pt 6pt; text-align:left; vertical-align:middle}
+thead th{background:var(--band); font-weight:700}
 thead th.grp{text-align:center; letter-spacing:.05em; font-size:12pt}
-td.m{background:#dbeafe; color:#12243d}
-td.f{background:#ede0ff; color:#2b1741}
-td.n{background:#dcfce7; color:#12301f}
-td.pr{background:#fef3c7; color:#3d2c06}
-td.pa{background:#ffe4e6; color:#4a1020}
-td.fu{background:#cffafe; color:#0a3340}
+td.m{background:var(--m-bg); color:var(--m-fg)}
+td.f{background:var(--f-bg); color:var(--f-fg)}
+td.n{background:var(--n-bg); color:var(--n-fg)}
+td.pr{background:var(--pr-bg); color:var(--pr-fg)}
+td.pa{background:var(--pa-bg); color:var(--pa-fg)}
+td.fu{background:var(--fu-bg); color:var(--fu-fg)}
 .cell2{display:flex; align-items:center; justify-content:space-between; gap:7pt}
 .arts{display:flex; flex-direction:column; align-items:flex-start; line-height:1.2}
 .end{white-space:nowrap; font-weight:700}
-.notes{margin:4mm 0 0; font-size:9.2pt; color:#3d4650; line-height:1.45}
-.notes b{color:#12161a}
+.notes{margin:4mm 0 0; font-size:9.2pt; color:var(--note); line-height:1.45}
+.notes b{color:var(--ink)}
 .legend{display:flex; gap:5mm; font-size:9.2pt; margin:0 0 3mm}
-.legend span{padding:1pt 5pt; border:.4pt solid #b9c1c9; border-radius:2pt}
-.legend .m{background:#dbeafe} .legend .f{background:#ede0ff} .legend .n{background:#dcfce7}
-.legend .pr{background:#fef3c7} .legend .pa{background:#ffe4e6} .legend .fu{background:#cffafe}
-.legend.people{display:block; font-size:9pt; color:#3d4650; margin:0 0 3mm}
+.legend span{padding:1pt 5pt; border:.4pt solid var(--rule); border-radius:2pt}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+.legend .pr{background:var(--pr-bg); color:var(--pr-fg)}
+.legend .pa{background:var(--pa-bg); color:var(--pa-fg)}
+.legend .fu{background:var(--fu-bg); color:var(--fu-fg)}
+.legend.people{display:block; font-size:9pt; color:var(--note); margin:0 0 3mm}
+/* Paper is always light. Headless Chrome reports prefers-color-scheme: dark, so
+   without this master-grid.pdf would print on a near-black page. */
+@media print{
+  :root{
+    color-scheme:only light;
+    --pg:#fff; --ink:#12161a; --sub:#5b6470; --rule:#b9c1c9; --band:#eef1f4; --note:#3d4650;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+    --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+    --fu-bg:#cffafe; --fu-fg:#0a3340;
+  }
+}
 
 h2{font-size:12.5pt; margin:6mm 0 2mm; letter-spacing:-.01em}
 h2:first-of-type{margin-top:0}
@@ -34,14 +76,16 @@ table{font-size:10.8pt; margin:0 0 2mm}
 th,td{padding:3.4pt 5pt}
 td:first-child,th:first-child{width:19%; font-size:10pt}
 thead th{font-size:10.5pt}
-thead th.m{background:#cfe3fd} thead th.f{background:#e4d3fb} thead th.n{background:#cdf3dc}
+thead th.m{background:var(--m-bg); color:var(--m-fg)}
+thead th.f{background:var(--f-bg); color:var(--f-fg)}
+thead th.n{background:var(--n-bg); color:var(--n-fg)}
 .glance td:first-child{width:38%}
 /* the row label the noun grid does without */
 th.rowlab{text-align:left}
 td.rowlab{font-size:9.8pt; line-height:1.3}
 /* hover balloons: same markup as the sheets, with the palette spelled out
    because this page does not load the main stylesheet's custom properties */
-:root{--line:#b9c1c9; --head:#eef1f4; --fg:#12161a; --muted:#5b6470}
+:root{--line:var(--rule); --head:var(--band); --fg:var(--ink); --muted:var(--sub)}
 td.hasex{position:relative; cursor:help}
 td.hasex::after{content:""; position:absolute; top:3px; right:3px; width:4px; height:4px;
   border-radius:50%; background:currentColor; opacity:.32}
