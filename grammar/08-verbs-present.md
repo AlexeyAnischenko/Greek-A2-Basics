@@ -24,8 +24,6 @@ subjunctive** cyan. The tenses themselves are taught on **page 11** (past), **pa
 (future & να) and **page 13** (perfect) — this grid is for reciting, not for meeting them
 the first time.
 
-**εγώ** 1 sg · **εσύ** 2 sg · **αυτός / αυτή / αυτό** 3 sg · **εμείς** 1 pl · **εσείς** 2 pl · **αυτοί / αυτές / αυτά** 3 pl
-
 ### Active voice
 
 | Tense & group | 1st singular | 2nd singular | 3rd singular | 1st plural | 2nd plural | 3rd plural |

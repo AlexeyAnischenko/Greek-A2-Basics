@@ -191,7 +191,29 @@ def by_case_order(cases):
             seen.append(c)
     return [i for c in seen for i, cc in enumerate(cases) if cc == c]
 
-def grid_header(header, label=None):
+PRONOUNS = {
+    ('1st', 'singular'): u'\u03b5\u03b3\u03ce',
+    ('2nd', 'singular'): u'\u03b5\u03c3\u03cd',
+    ('3rd', 'singular'): u'\u03b1\u03c5\u03c4\u03cc\u03c2 / -\u03ae / -\u03cc',
+    ('1st', 'plural'): u'\u03b5\u03bc\u03b5\u03af\u03c2',
+    ('2nd', 'plural'): u'\u03b5\u03c3\u03b5\u03af\u03c2',
+    ('3rd', 'plural'): u'\u03b1\u03c5\u03c4\u03bf\u03af / -\u03ad\u03c2 / -\u03ac',
+}
+
+
+def column_notes(header):
+    """One pronoun per data column, or None if this is not a person grid. Keyed
+    by the whole '<person> <number>' cell, because neither half alone decides
+    it: 1st singular is εγώ, 1st plural is εμείς."""
+    out = []
+    for h in header[1:]:
+        p = plain(h).strip().lower()
+        a, b = p.rsplit(' ', 1) if ' ' in p else (p, '')
+        out.append(PRONOUNS.get((a, b)))
+    return out if any(out) else None
+
+
+def grid_header(header, label=None, ann=None):
     """Both heads for the master grid, two rows each: grouped by number
     (Singular / Plural over the cases) and grouped by case (Nominative /
     Accusative / Genitive over the numbers). The inactive pair ships hidden and
@@ -214,8 +236,14 @@ def grid_header(header, label=None):
         return ''.join('<th colspan="%d" class="grp">%s</th>'
                        % (n, html.escape(cap(l))) for l, n in groups)
 
-    def names(labels):
-        return ''.join('<th>%s</th>' % html.escape(cap(l)) for l in labels)
+    def names(labels, idx):
+        out = []
+        for l, i in zip(labels, idx):
+            note = ann[i] if ann and i < len(ann) and ann[i] else ''
+            out.append('<th>%s%s</th>'
+                       % (html.escape(cap(l)),
+                          '<span class="pron">%s</span>' % html.escape(note) if note else ''))
+        return ''.join(out)
 
     order = by_case_order(cases)
     # A kept label column is cell 0 of every row, so the toggle's column order
@@ -224,8 +252,9 @@ def grid_header(header, label=None):
     cells = [0] + [i + 1 for i in order] if label else order
     return (('<tr class="h-number">%s%s</tr><tr class="h-number">%s</tr>'
              '<tr class="h-case" hidden>%s%s</tr><tr class="h-case" hidden>%s</tr>')
-            % (lead, band(nums), names(cases),
-               lead, band([cases[i] for i in order]), names([nums[i] for i in order])),
+            % (lead, band(nums), names(cases, range(len(cases))),
+               lead, band([cases[i] for i in order]),
+               names([nums[i] for i in order], order)),
             ','.join(str(i) for i in cells))
 
 def render_table(header, rows, last_gender):
@@ -243,7 +272,8 @@ def render_table(header, rows, last_gender):
 
     if grid:
         head, order = grid_header(
-            header, plain(header[0]).strip() if grid != 'noun' else None)
+            header, plain(header[0]).strip() if grid != 'noun' else None,
+            ann=column_notes(header))
         out = ['<div class="gridwrap">',
                '<button class="gridtog" type="button">Group by case</button>',
                '<div class="tw"><table class="grid grid-%s" data-grp="%s" '
@@ -598,6 +628,9 @@ td .cell2 .end{white-space:nowrap;text-align:right}
 table.grid{width:auto; font-size:13.5px}
 table.grid th,table.grid td{padding:4px 8px}
 table.grid thead th.grp{text-align:center; letter-spacing:.04em}
+/* the pronoun under a person heading: which εγώ / εμείς that column means */
+table.grid thead th .pron{display:block; font-weight:400; font-size:11.5px; opacity:.72;
+  letter-spacing:0; white-space:nowrap}
 table.grid .cell2{gap:9px}
 /* the adjective grid keeps its row label: type A masculine and type B masculine
    have the same six endings, so the cells alone would not say which row is which */
@@ -934,6 +967,7 @@ table{border-collapse:collapse; width:100%; font-size:12.6pt; table-layout:fixed
 th,td{border:.5pt solid var(--rule); padding:4.2pt 6pt; text-align:left; vertical-align:middle}
 thead th{background:var(--band); font-weight:700}
 thead th.grp{text-align:center; letter-spacing:.05em; font-size:12pt}
+thead th .pron{display:block; font-weight:400; font-size:8.6pt; opacity:.72; white-space:nowrap}
 td.m{background:var(--m-bg); color:var(--m-fg)}
 td.f{background:var(--f-bg); color:var(--f-fg)}
 td.n{background:var(--n-bg); color:var(--n-fg)}
@@ -989,7 +1023,7 @@ def find_master_grid(md, kind='noun'):
 
 
 def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False,
-                      kind='noun', keys=None, bands=None):
+                      kind='noun', keys=None, bands=None, ann=None):
     """One grid with the columns in `order`, banded by `outer` over `inner`.
     `label` keeps the row-label column (the noun grid drops it); `balloons` adds
     the example-sentence markers, which only make sense on a screen."""
@@ -1006,7 +1040,11 @@ def render_print_grid(header, rows, order, outer, inner, label=None, balloons=Fa
     out.append(''.join('<th colspan="%d" class="grp">%s</th>'
                        % (n, html.escape(cap(l))) for l, n in groups))
     out.append('</tr><tr>')
-    out.append(''.join('<th>%s</th>' % html.escape(cap(l)) for l in inner))
+    out.append(''.join(
+        '<th>%s%s</th>'
+        % (html.escape(cap(l)),
+           '<span class="pron">%s</span>' % html.escape(ann[i]) if ann and ann[i] else '')
+        for i, l in enumerate(inner)))
     out.append('</tr></thead><tbody>')
     for ri, r in enumerate(rows):
         g = bands[ri] if bands else band_of(kind, plain(r[0]))
@@ -1315,11 +1353,14 @@ def make_verb_grid():
             print('verb   : skipped - %s is not a verb grid' % marker)
             return None
         order, outer, inner = case_order_of(header)
+        notes = column_notes(header)
         blocks.append('<h2>%s</h2>%s'
                       % (heading,
                          render_print_grid(header, rows, order, outer, inner,
                                            label=plain(header[0]).strip(),
-                                           balloons=True, kind='verb')))
+                                           balloons=True, kind='verb',
+                                           ann=[notes[i] for i in order]
+                                           if notes else None)))
     glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
     if glance_h:
         blocks.append('<h2>What the grid shows at a glance</h2>'
@@ -1336,7 +1377,7 @@ def make_verb_grid():
     doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',
                     'Present, past and future &mdash; every A2 group, '
                     'all six persons, both voices.',
-                    ''.join(blocks), TENSE_LEGEND + PERSON_LEGEND, notes, EX_JS)
+                    ''.join(blocks), TENSE_LEGEND, notes, EX_JS)
     out = os.path.join(DIST, 'verb-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
