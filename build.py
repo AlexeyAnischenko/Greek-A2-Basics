@@ -1023,7 +1023,7 @@ def find_master_grid(md, kind='noun'):
 
 
 def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False,
-                      kind='noun', keys=None, bands=None, ann=None):
+                      kind='noun', keys=None, bands=None, ann=None, rowsort=None):
     """One grid with the columns in `order`, banded by `outer` over `inner`.
     `label` keeps the row-label column (the noun grid drops it); `balloons` adds
     the example-sentence markers, which only make sense on a screen."""
@@ -1049,7 +1049,11 @@ def render_print_grid(header, rows, order, outer, inner, label=None, balloons=Fa
     for ri, r in enumerate(rows):
         g = bands[ri] if bands else band_of(kind, plain(r[0]))
         cls = ' class="%s"' % g if g else ''
-        out.append('<tr>')
+        # two orderings written onto the row; the toggle only has to sort
+        tr = '<tr>'
+        if rowsort:
+            tr = '<tr data-g="%d" data-t="%d">' % (ri, rowsort[ri])
+        out.append(tr)
         if label:
             out.append('<td class="rowlab%s">%s</td>' % (' ' + g if g else '', inline(r[0])))
         key = keys[ri] if keys else plain(r[0]).split(' \u2014 ')[0].strip()
@@ -1150,6 +1154,10 @@ thead th.m{background:var(--m-bg); color:var(--m-fg)}
 thead th.f{background:var(--f-bg); color:var(--f-fg)}
 thead th.n{background:var(--n-bg); color:var(--n-fg)}
 .glance td:first-child{width:38%}
+.rowtog{font:inherit; font-size:9.5pt; padding:3pt 9pt; border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 3mm}
+.rowtog:hover{border-color:var(--ink)}
+@media print{.rowtog{display:none}}
 /* the row label the noun grid does without */
 th.rowlab{text-align:left}
 td.rowlab{font-size:9.8pt; line-height:1.3}
@@ -1252,6 +1260,38 @@ def grid_page(title, sub, blocks, legend='', notes='', scripts=''):
                GRID_SHEET_CSS, EXTRA_GRID_CSS, title, sub, legend, blocks, notes, scripts))
 
 
+# The toggle itself. The rows carry both orderings, so this only sorts and
+# re-appends them; nothing is rebuilt and the balloons keep working because the
+# cells are moved, not recreated.
+ROW_TOGGLE = (
+    '<button class="rowtog" id="rowtog" type="button">Group rows by type '
+    '(A / B / C / D)</button>')
+
+ROW_TOGGLE_JS = (
+    '<script>(function(){'
+    'var btn=document.getElementById("rowtog");if(!btn)return;'
+    'var body=document.querySelector("table tbody");if(!body)return;'
+    'var rows=[].slice.call(body.rows);'
+    'if(!rows.length||!rows[0].hasAttribute("data-g"))return;'
+    'var mode="gender";'
+    'function apply(m){'
+    'mode=m;'
+    'var key=(m==="type")?"data-t":"data-g";'
+    'rows.slice().sort(function(a,b){'
+    'return (+a.getAttribute(key))-(+b.getAttribute(key));'
+    '}).forEach(function(r){body.appendChild(r);});'
+    'btn.textContent=(m==="gender")?"Group rows by type (A / B / C / D)"'
+    ':"Group rows by gender";'
+    'btn.setAttribute("aria-label",(m==="gender")'
+    '?"Rows grouped by gender. Switch to grouping by type."'
+    ':"Rows grouped by type. Switch to grouping by gender.");'
+    'try{localStorage.setItem("greek-a2-adjrows",m);}catch(e){}}'
+    'var saved=null;try{saved=localStorage.getItem("greek-a2-adjrows");}catch(e){}'
+    'apply(saved==="type"?"type":"gender");'
+    'btn.addEventListener("click",function(){'
+    'apply(mode==="gender"?"type":"gender");});'
+    '})();</script>')
+
 LEGEND = ('<div class="legend"><span class="m">masculine</span>'
           '<span class="f">feminine</span><span class="n">neuter</span></div>')
 
@@ -1278,9 +1318,36 @@ def make_adjective_grid():
         nums.append(num)
     order = by_case_order(cases)
 
-    blocks = render_print_grid(header, rows, order,
-                               [cases[i] for i in order], [nums[i] for i in order],
-                               label=plain(header[0]).strip(), balloons=True)
+    # The type is the bold run at the front of each row label - "**A · -ος /
+    # -η / -ο** καλός — Masculine" - and the gender is the word at the end. A
+    # and B and C and D sort first and in order; the γλυκός row and the
+    # invariable colours are not lettered types, so they go after D.
+    GENDERS = (u'Masculine', u'Feminine', u'Neuter')
+
+    def row_rank(cell):
+        m = re.match(r'\s*\*\*(.+?)\*\*', cell)
+        tname = m.group(1).strip() if m else ''
+        letter = tname[:1]
+        # a lettered type sorts by its letter; the -ός / -ιά / -ό row is a real
+        # ending pattern so it follows them, and the invariable colours - which
+        # have no endings at all - come last
+        trank = ('ABCD'.index(letter) if letter in 'ABCD'
+                 else 4 if tname.startswith(u'-') else 5)
+        label_plain = plain(cell).rstrip()
+        grank = next((i for i, g in enumerate(GENDERS)
+                      if label_plain.endswith(g)), len(GENDERS))
+        return (trank, grank, tname)
+
+    ranked = sorted(range(len(rows)), key=lambda i: row_rank(rows[i][0]))
+    rowsort = [0] * len(rows)
+    for place, ri in enumerate(ranked):
+        rowsort[ri] = place
+
+    blocks = (ROW_TOGGLE
+              + render_print_grid(header, rows, order,
+                                  [cases[i] for i in order], [nums[i] for i in order],
+                                  label=plain(header[0]).strip(), balloons=True,
+                                  rowsort=rowsort))
     if glance_h:
         blocks += ('<h2>What the grid shows at a glance</h2>'
                    + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
@@ -1300,7 +1367,7 @@ def make_adjective_grid():
              '</div>')
     doc = grid_page('Greek A2 &middot; Adjective endings &mdash; master grid',
                     'Every A2 adjective type and gender, all three cases, both numbers.',
-                    blocks, LEGEND, notes, EX_JS)
+                    blocks, LEGEND, notes, EX_JS + ROW_TOGGLE_JS)
     out = os.path.join(DIST, 'adjective-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('adj    : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))

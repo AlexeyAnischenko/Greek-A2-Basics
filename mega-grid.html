@@ -81,6 +81,10 @@ thead th.m{background:var(--m-bg); color:var(--m-fg)}
 thead th.f{background:var(--f-bg); color:var(--f-fg)}
 thead th.n{background:var(--n-bg); color:var(--n-fg)}
 .glance td:first-child{width:38%}
+.rowtog{font:inherit; font-size:9.5pt; padding:3pt 9pt; border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 3mm}
+.rowtog:hover{border-color:var(--ink)}
+@media print{.rowtog{display:none}}
 /* the row label the noun grid does without */
 th.rowlab{text-align:left}
 td.rowlab{font-size:9.8pt; line-height:1.3}
