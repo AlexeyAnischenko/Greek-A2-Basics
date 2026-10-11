@@ -1336,7 +1336,11 @@ def make_adjective_grid():
         label_plain = plain(cell).rstrip()
         grank = next((i for i, g in enumerate(GENDERS)
                       if label_plain.endswith(g)), len(GENDERS))
-        return (trank, grank, tname)
+        # tname before grank: the unlettered types share a trank, so sorting on
+        # the gender first would deal their rows out alternately - γλυκιά would
+        # land between ζηλιάρης and ζηλιάρικο. Within A/B/C/D tname is constant,
+        # so this only changes the rows it has to.
+        return (trank, tname, grank)
 
     ranked = sorted(range(len(rows)), key=lambda i: row_rank(rows[i][0]))
     rowsort = [0] * len(rows)

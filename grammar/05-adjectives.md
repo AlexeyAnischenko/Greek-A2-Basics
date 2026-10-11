@@ -11,6 +11,7 @@ At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wo
 | **B · -ος / -α / -ο** (ωραίος) | **24** | learn it, it is only the feminine that differs |
 | **C · -ύς / -ιά / -ύ** (πλατύς) | **1** — ελαφρύς | one word. Recognise it, do not drill it |
 | **-ός / -ιά / -ό** (γλυκός) | **3** | γλυκός, ξανθός, Κρητικός |
+| **-ης / -α / -ικο** (ζηλιάρης) | **0** in the wordlist | spoken Greek, not the syllabus — recognise it, that is all |
 | **-ης / -ης / -ες** (διεθνής) | **0** | not an A2 type — not taught on this page |
 | **D · πολύς** | grammar word | irregular and unavoidable |
 
@@ -27,21 +28,27 @@ sentence that uses exactly that form. Rows are colour-banded: **masculine** ligh
 | **A · -ος / -η / -ο** καλός — Masculine | **-ός** | **-ό** | **-ού** | **-οί** | **-ούς** | **-ών** |
 | **B · -ος / -α / -ο** ωραίος — Masculine | **-ος** | **-ο** | **-ου** | **-οι** | **-ους** | **-ων** |
 | **C · -ύς / -ιά / -ύ** ελαφρύς — Masculine | **-ύς** | **-ύ** | **-ιού** | **-ιοί** | **-ιούς** | **-ιών** |
+| **-ης / -α / -ικο** ζηλιάρης — Masculine | **-ης** | **-η** | **-η** | **-ηδες** | **-ηδες** | **-ηδων** |
 | **D · πολύς** πολύς — Masculine | πολ**ύς** | πολ**ύ** | πολλ**ού** | πολλ**οί** | πολλ**ούς** | πολλ**ών** |
 | **A · -ος / -η / -ο** καλή — Feminine | **-ή** | **-ή** | **-ής** | **-ές** | **-ές** | **-ών** |
 | **B · -ος / -α / -ο** ωραία — Feminine | **-α** | **-α** | **-ας** | **-ες** | **-ες** | **-ων** |
 | **-ός / -ιά / -ό** γλυκιά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
 | **C · -ύς / -ιά / -ύ** ελαφριά — Feminine | **-ιά** | **-ιά** | **-ιάς** | **-ιές** | **-ιές** | **-ιών** |
+| **-ης / -α / -ικο** ζηλιάρα — Feminine | **-α** | **-α** | **-ας** | **-ες** | **-ες** | **-ων** |
 | **D · πολύς** πολλή — Feminine | πολλ**ή** | πολλ**ή** | πολλ**ής** | πολλ**ές** | πολλ**ές** | πολλ**ών** |
 | **A · -ος / -η / -ο** καλό — Neuter | **-ό** | **-ό** | **-ού** | **-ά** | **-ά** | **-ών** |
 | **B · -ος / -α / -ο** ωραίο — Neuter | **-ο** | **-ο** | **-ου** | **-α** | **-α** | **-ων** |
 | **C · -ύς / -ιά / -ύ** ελαφρύ — Neuter | **-ύ** | **-ύ** | **-ιού** | **-ιά** | **-ιά** | **-ιών** |
+| **-ης / -α / -ικο** ζηλιάρικο — Neuter | **-ικο** | **-ικο** | **-ικου** | **-ικα** | **-ικα** | **-ικων** |
 | **D · πολύς** πολύ — Neuter | πολ**ύ** | πολ**ύ** | πολλ**ού** | πολλ**ά** | πολλ**ά** | πολλ**ών** |
 | **Invariable** μπλε, γκρι, καφέ, ροζ — all genders | μπλε | μπλε | μπλε | μπλε | μπλε | μπλε |
 
 ⚠ **The accent in the cell is the one the row's word carries, not part of the type.** καλός is
 end-stressed, so its endings show the accent; όμορφος is stem-stressed and keeps its stress
 throughout — όμορφ**ος**, όμορφ**η**, όμορφ**ου**, όμορφ**ων**. Adjective stress never moves.
+
+⚠ **ζηλιάρης is the only type whose masculine plural is not in -οι.** It takes the **-ηδες** of the masculine nouns in -ης (ο μανάβης → οι μανάβηδες), its feminine is exactly type B, and its neuter inserts **-ικ-** before the ending. No adjective of this
+type is in the KLIK wordlist or in the 2015–2018 exam papers — it is here to be recognised, not drilled.
 
 ⚠ **γλυκός has only one row** because only its feminine is different. Its masculine and neuter are
 plain type A: γλυκός / γλυκό / γλυκού / γλυκοί / γλυκούς / γλυκών. Same for ξανθός and Κρητικός.
@@ -57,6 +64,7 @@ What the grid shows at a glance:
 | The two top rows are identical, and so are the two top neuter rows | that is the point: **A and B differ only in the feminine** |
 | Masculine and neuter genitive singular are the same cell | -ού / -ου / -ιού, in every type |
 | The feminine plural is **-ες / -ές / -ιές** in all three cases but the genitive | it is the genitive that breaks the pattern, not the accusative |
+| ζηλιάρα and ωραία are the same word-shape | the **-ης / -α / -ικο** feminine is type B’s feminine, ending for ending |
 | One row never changes at all | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — no ending, no agreement |
 
 ⚠ **The whole of A2 is the A and B rows — the first two of each gender.** 191 of the 195 adjectives in the KLIK A2 wordlist are
@@ -114,6 +122,35 @@ elsewhere.
 **γλυκός** (sweet) → γλυκός / γλυκ**ιά** / γλυκό, plural γλυκοί / γλυκ**ιές** / γλυκά.
 Same feminine **-ιά**, but the masculine and neuter stay in type A. Also **ξανθός** (blond,
 feminine ξανθή *or* ξανθιά) and **Κρητικός**.
+
+### The one the books skip: -ης / -α / -ικο
+
+**ζηλιάρης** (jealous) → ζηλιάρης / ζηλιάρ**α** / ζηλιάρ**ικο**, plural ζηλιάρ**ηδες** /
+ζηλιάρ**ες** / ζηλιάρ**ικα**. The stress never moves off ζηλιά-.
+
+| | Masculine | Feminine | Neuter |
+|---|---|---|---|
+| Nominative singular | ζηλιάρ**ης** | ζηλιάρ**α** | ζηλιάρ**ικο** |
+| Accusative singular | ζηλιάρ**η** | ζηλιάρ**α** | ζηλιάρ**ικο** |
+| Genitive singular | ζηλιάρ**η** | ζηλιάρ**ας** | ζηλιάρ**ικου** |
+| Nominative plural | ζηλιάρ**ηδες** | ζηλιάρ**ες** | ζηλιάρ**ικα** |
+| Accusative plural | ζηλιάρ**ηδες** | ζηλιάρ**ες** | ζηλιάρ**ικα** |
+| Genitive plural | ζηλιάρ**ηδων** | ζηλιάρ**ων** | ζηλιάρ**ικων** |
+
+These are the character adjectives — they describe what someone is *like*, so they turn up in
+speech far more than in a coursebook. The productive group is **-ιάρης**:
+
+| Greek | English | | Greek | English |
+|---|---|---|---|---|
+| ζηλιάρης | jealous | | γκρινιάρης | grumpy, whiny |
+| τεμπέλης | lazy | | κλαψιάρης | cry-baby |
+| πεισματάρης | stubborn | | παραπονιάρης | always complaining |
+| φοβητσιάρης | easily frightened | | γλυκούλης | sweet (affectionate) |
+
+⚠ **The masculine looks like a noun and behaves like one.** ζηλιάρης declines exactly like
+ο μανάβης; -ιάρης words are in fact used as nouns just as often (είναι ζηλιάρης = he is a
+jealous one). The neuter **-ικο** is the giveaway that it is an adjective: a noun in -ης has no
+neuter at all.
 
 ## D · πολύς (much / many) — irregular but essential ⚠
 
