@@ -779,6 +779,92 @@ COPY_JS = (
     '})();</script>'
 )
 
+# ----------------------------------------------------- click a cell to copy
+# A grid is something you copy out of - an ending into a notebook, an article
+# into a sentence you are writing - so a click on a cell puts exactly that cell
+# on the clipboard as plain text, with no table markup behind it.
+#
+# In the noun grid a cell holds two articles stacked over an ending, and each of
+# those is a separate thing to want: the click target decides, so clicking "του"
+# copies του and clicking the ending next to it copies the ending. Clicking the
+# cell anywhere else copies the whole cell, the same text COPY_JS would produce
+# for a Ctrl+C.
+#
+# navigator.clipboard needs a secure context; the textarea fallback covers a
+# page opened straight off disk. A drag that selected text is left alone - that
+# is a selection the reader made on purpose, not a click.
+TAP_CSS = """
+table.grid td,table.pgrid td{cursor:copy}
+table.grid td.rowlab,table.pgrid td.rowlab{cursor:default}
+table.grid td.copied,table.pgrid td.copied,
+.cell2 .arts span.copied,.cell2 .end.copied{
+  outline:2px solid #2f7fe0;outline-offset:-2px;border-radius:3px}
+.cptoast{position:fixed;left:50%;bottom:18px;z-index:9999;max-width:90vw;
+  transform:translateX(-50%) translateY(8px);
+  background:#111c2e;color:#eaf1ff;border:1px solid #2c4160;
+  padding:7px 13px;border-radius:7px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;pointer-events:none;opacity:0;
+  font:600 13px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);transition:opacity .13s,transform .13s}
+.cptoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media print{.cptoast{display:none}
+  table.grid td,table.pgrid td{cursor:auto}
+  table.grid td.copied,table.pgrid td.copied{outline:none}}
+"""
+
+TAP_JS = (
+    '<script>(function(){'
+    'var SEL="table.grid td, table.pgrid td",toast=null,ttimer=null,ftimer=null,flashed=null;'
+    'function note(node,msg){'
+    'if(!toast){toast=document.createElement("div");toast.className="cptoast";'
+    'document.body.appendChild(toast);}'
+    'toast.textContent=msg;toast.classList.add("on");'
+    'if(ttimer)clearTimeout(ttimer);'
+    'ttimer=setTimeout(function(){toast.classList.remove("on");},1100);'
+    'if(ftimer){clearTimeout(ftimer);}'
+    'if(flashed)flashed.classList.remove("copied");'
+    'flashed=node;if(node){node.classList.add("copied");'
+    'ftimer=setTimeout(function(){if(flashed)flashed.classList.remove("copied");'
+    'flashed=null;},550);}}'
+    'function fallback(t){'
+    'var ta=document.createElement("textarea");ta.value=t;'
+    'ta.setAttribute("readonly","");'
+    'ta.style.cssText="position:fixed;top:-1000px;left:0;opacity:0";'
+    'document.body.appendChild(ta);ta.select();'
+    'try{ta.setSelectionRange(0,t.length);}catch(e){}'
+    'var ok=false;try{ok=document.execCommand("copy");}catch(e2){}'
+    'document.body.removeChild(ta);return ok;}'
+    'function put(t,node){'
+    'var done=function(ok){note(node,ok?"Copied  "+t:"Could not copy  "+t);};'
+    'if(navigator.clipboard&&navigator.clipboard.writeText){'
+    'navigator.clipboard.writeText(t).then(function(){done(true);},'
+    'function(){done(fallback(t));});}'
+    'else{done(fallback(t));}}'
+    # the click target picks the part: one article, the ending, or the whole cell
+    'function part(e,td){'
+    'var n=e.target;'
+    'if(n&&n.closest){'
+    'var a=n.closest(".arts span");if(a)return [a.textContent,a];'
+    'var d=n.closest(".end");if(d)return [d.textContent,d];}'
+    'var c=td.querySelector(".cell2");'
+    'if(c){var arts=[].map.call(c.querySelectorAll(".arts span"),function(s){'
+    'return s.textContent.trim();});'
+    'var end=c.querySelector(".end");'
+    'return [arts.join(" / ")+(end?" "+end.textContent.trim():""),td];}'
+    'return [td.textContent,td];}'
+    'document.addEventListener("click",function(e){'
+    'var td=e.target&&e.target.closest?e.target.closest(SEL):null;'
+    'if(!td||td.classList.contains("rowlab"))return;'
+    'var s=window.getSelection();'
+    'if(s&&!s.isCollapsed&&String(s).trim())return;'
+    'var got=part(e,td);'
+    r'var t=(got[0]||"").replace(/\s+/g," ").trim();'
+    'if(!t)return;'
+    'put(t,got[1]);});'
+    '})();</script>'
+)
+
+
 # ----------------------------------------------------- grid grouping toggle
 # The same six columns read two ways: by number (Singular | Plural over the
 # cases) or by case (Nominative | Accusative | Genitive over the numbers).
@@ -850,14 +936,15 @@ def main():
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
            '<meta name="viewport" content="width=device-width,initial-scale=1">'
            '<meta name="color-scheme" content="light dark">'
-           '<title>Greek A2 — Grammar Drill Sheets</title><style>%s</style>%s%s</head><body>'
+           '<title>Greek A2 — Grammar Drill Sheets</title><style>%s%s</style>%s%s'
+           '</head><body>'
            '%s'
            '<header class="top"><h1>Greek A2 — Grammar Drill Sheets</h1>'
            '<p>%d sheets · A2 scope · cover the right column and recite</p>%s</header>'
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
-           % (CSS, FAVICON, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
-              THEME_JS + EX_JS + COPY_JS + GRID_JS))
+           % (CSS, TAP_CSS, FAVICON, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
+              THEME_JS + EX_JS + COPY_JS + GRID_JS + TAP_JS))
 
     out_html = os.path.join(DIST, 'index.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
@@ -866,10 +953,10 @@ def main():
         page = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
                 '<meta name="viewport" content="width=device-width,initial-scale=1">'
                 '<meta name="color-scheme" content="light dark">'
-                '<title>%s</title><style>%s</style>%s%s</head><body>'
+                '<title>%s</title><style>%s%s</style>%s%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
-                '%s</body></html>' % (html.escape(s['title']), CSS, FAVICON, THEME_HEAD,
-                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS + GRID_JS))
+                '%s</body></html>' % (html.escape(s['title']), CSS, TAP_CSS, FAVICON, THEME_HEAD,
+                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS + GRID_JS + TAP_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
             stem = 'index-sheet'      # avoid creating pages/index.html
@@ -1034,7 +1121,7 @@ def render_print_grid(header, rows, order, outer, inner, label=None, balloons=Fa
             groups[-1][1] += 1
         else:
             groups.append([l, 1])
-    out = ['<table><thead><tr>']
+    out = ['<table class="pgrid"><thead><tr>']
     if label:
         out.append('<th rowspan="2" class="rowlab">%s</th>' % inline(label))
     out.append(''.join('<th colspan="%d" class="grp">%s</th>'
@@ -1101,19 +1188,20 @@ def make_grid_sheet():
         'consonants, but masculine <b>&#964;&#959;&#957;</b> is kept in writing: it is what '
         'separates <i>&#964;&#959;&#957; &#948;&#961;&#972;&#956;&#959;</i> from '
         '<i>&#964;&#959; &#948;&#961;&#972;&#956;&#959;</i>. &nbsp; '
-        '<b>Vocative</b> is not here &mdash; it is only for calling someone.'
+        '<b>Vocative</b> is not here &mdash; it is only for calling someone. &nbsp; '
+        '<b>Click any cell to copy it</b> as plain text — in the noun grid, click one article or the ending to take just that. &nbsp; '
         '</div>')
 
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
            '<title>Greek A2 - noun endings, master grid</title>%s'
-           '<style>%s</style></head><body>'
+           '<style>%s%s</style></head><body>'
            '<h1>Greek A2 &middot; Noun endings &mdash; master grid</h1>'
            '<p class="sub">Article and ending for every A2 declension, grouped by case.</p>'
-           '%s%s%s</body></html>'
-           % (FAVICON, GRID_SHEET_CSS, legend,
+           '%s%s%s%s</body></html>'
+           % (FAVICON, GRID_SHEET_CSS, TAP_CSS, legend,
               render_print_grid(header, rows, order,
                                 [cases[i] for i in order], [nums[i] for i in order]),
-              notes))
+              notes, TAP_JS))
     out_html = os.path.join(DIST, 'master-grid.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
 
@@ -1254,10 +1342,11 @@ def split_number_header(header):
 def grid_page(title, sub, blocks, legend='', notes='', scripts=''):
     return ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>%s</title>%s<style>%s%s</style></head><body>'
+            '<title>%s</title>%s<style>%s%s%s</style></head><body>'
             '<h1>%s</h1><p class="sub">%s</p>%s%s%s%s</body></html>'
             % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON,
-               GRID_SHEET_CSS, EXTRA_GRID_CSS, title, sub, legend, blocks, notes, scripts))
+               GRID_SHEET_CSS, EXTRA_GRID_CSS, TAP_CSS, title, sub, legend, blocks,
+               notes, scripts))
 
 
 # The toggle itself. The rows carry both orderings, so this only sorts and
@@ -1356,7 +1445,8 @@ def make_adjective_grid():
         blocks += ('<h2>What the grid shows at a glance</h2>'
                    + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
     notes = ('<div class="notes">'
-             '<b>Hover or tap any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>Hover any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>Click any cell to copy it</b> as plain text — in the noun grid, click one article or the ending to take just that. &nbsp; '
              '<b>The accent shown is the row word\u2019s</b>, not the type\u2019s: '
              '&#954;&#945;&#955;&#972;&#962; is end-stressed, '
              '&#972;&#956;&#959;&#961;&#966;&#959;&#962; is not, and adjective stress '
@@ -1371,7 +1461,7 @@ def make_adjective_grid():
              '</div>')
     doc = grid_page('Greek A2 &middot; Adjective endings &mdash; master grid',
                     'Every A2 adjective type and gender, all three cases, both numbers.',
-                    blocks, LEGEND, notes, EX_JS + ROW_TOGGLE_JS)
+                    blocks, LEGEND, notes, EX_JS + ROW_TOGGLE_JS + TAP_JS)
     out = os.path.join(DIST, 'adjective-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('adj    : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
@@ -1437,7 +1527,8 @@ def make_verb_grid():
         blocks.append('<h2>What the grid shows at a glance</h2>'
                       + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
     notes = ('<div class="notes">'
-             '<b>Hover or tap any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>Hover any cell</b> for a sentence that uses that exact form. &nbsp; '
+             '<b>Click any cell to copy it</b> as plain text — in the noun grid, click one article or the ending to take just that. &nbsp; '
              '<b>The stem is in the row label</b>, the ending is in the cell, and '
              '<b>\u03b8\u03b1 / \u03bd\u03b1 / \u03ad\u03c7\u03c9</b> are printed because '
              'they are separate words. &nbsp; '
@@ -1448,7 +1539,7 @@ def make_verb_grid():
     doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',
                     'Present, past and future &mdash; every A2 group, '
                     'all six persons, both voices.',
-                    ''.join(blocks), TENSE_LEGEND, notes, EX_JS)
+                    ''.join(blocks), TENSE_LEGEND, notes, EX_JS + TAP_JS)
     out = os.path.join(DIST, 'verb-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
@@ -1506,7 +1597,8 @@ def make_mega_grid():
         '\u03c0\u03b1\u03b9\u03b4\u03b9\u03ce\u03bd</i>. &nbsp; '
         '<b>Only the noun rows carry an article</b> &mdash; the adjective borrows the '
         'noun\u2019s. &nbsp; '
-        '<b>Hover or tap any cell</b> for a sentence using that exact form. &nbsp; '
+        '<b>Hover any cell</b> for a sentence using that exact form. &nbsp; '
+        '<b>Click any cell to copy it</b> as plain text — in the noun grid, click one article or the ending to take just that. &nbsp; '
         '<b>The two endings rarely match.</b> \u03c4\u03bf\u03c5 \u03ba\u03b1\u03bb'
         '\u03bf\u03cd \u03c6\u03af\u03bb\u03bf\u03c5 happens to rhyme; '
         '\u03c4\u03b7\u03c2 \u03ba\u03b1\u03bb\u03ae\u03c2 '
@@ -1516,7 +1608,7 @@ def make_mega_grid():
     doc = grid_page('Greek A2 &middot; Nouns and adjectives &mdash; one grid',
                     'Every declension and every adjective type, side by side, '
                     'banded by gender.',
-                    grid, LEGEND, notes, EX_JS)
+                    grid, LEGEND, notes, EX_JS + TAP_JS)
     out = os.path.join(DIST, 'mega-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('mega   : %s  (%.1f KB, %d rows)'
