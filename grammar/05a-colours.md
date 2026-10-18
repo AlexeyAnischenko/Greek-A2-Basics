@@ -26,6 +26,7 @@ Sort every colour you meet into one of three boxes.
 | grey | γκρίζ**ος** | γκρίζ**α** ⚠ | γκρίζ**ο** | **B** |
 | silver | ασημένι**ος** | ασημένι**α** ⚠ | ασημένι**ο** | **B** |
 | gold, golden | χρυσ**ός** | χρυσ**ή** | χρυσ**ό** | A |
+| bronze, copper | χάλκιν**ος** | χάλκιν**η** | χάλκιν**ο** | A |
 | brown (hair, eyes) | κασταν**ός** | κασταν**ή** | κασταν**ό** | A |
 | blond | ξανθ**ός** | ξανθ**ιά** / ξανθ**ή** ⚠ | ξανθ**ό** | -ός/-ιά/-ό |
 | dark-haired | μελαχριν**ός** | μελαχριν**ή** | μελαχριν**ό** | A |
@@ -63,6 +64,7 @@ why these are easy to say and easy to mis-hear.
 | θαλασσ**ί** | sea blue | θαλασσής / θαλασσιά / θαλασσί |
 | βυσσιν**ί** | cherry, maroon | βυσσινής / βυσσινιά / βυσσινί |
 | σταχτ**ί** | ash grey | σταχτής / σταχτιά / σταχτί |
+| ασημ**ί** | silver | ασημής / ασημιά / ασημί |
 | χρυσαφ**ί** | golden | χρυσαφής / χρυσαφιά / χρυσαφί |
 
 These are the **neuter** of an old -ής / -ιά / -ί adjective. The masculine and feminine exist but
@@ -71,7 +73,40 @@ are rare, and at A2 everyone uses the -ί form for everything: *μια πορτ�
 
 ⚠ **η πορτοκαλιά** is the orange **tree**, not the colour. Same for η βυσσινιά (sour-cherry tree).
 
-## 4 · Light and dark
+## 4 · Metals and medals
+
+The three metal words are ordinary adjectives, and each means **both** "made of it" and
+"the colour of it".
+
+| | Masculine | Feminine | Neuter | The metal itself |
+|---|---|---|---|---|
+| gold | χρυσ**ός** | χρυσ**ή** | χρυσ**ό** | ο χρυσ**ός** |
+| silver | ασημέν**ιος** | ασημέν**ια** | ασημέν**ιο** | το ασήμ**ι** |
+| bronze | χάλκιν**ος** | χάλκιν**η** | χάλκιν**ο** | ο χαλκ**ός** |
+
+**το μετάλλιο** is **neuter**, so the medal colour is always the neuter form:
+
+| Greek | English |
+|---|---|
+| το **χρυσό** μετάλλιο | the gold medal |
+| το **ασημένιο** μετάλλιο | the silver medal |
+| το **χάλκινο** μετάλλιο | the bronze medal |
+| Πήρε το **χρυσό**. | He/She took the gold. |
+| Κέρδισε δύο **χρυσά** μετάλλια. | He/She won two gold medals. |
+| η **χρυσή** Ολυμπιονίκης | the gold-medal-winning athlete (f) |
+
+⚠ **χάλκινος** comes from **ο χαλκός** — *copper*. Greek uses the same word for bronze, and the
+medal is always **χάλκινο**. The separate word **μπρούντζινος** (ο μπρούντζος) exists for the
+material — a bronze statue is *ένα μπρούντζινο άγαλμα* — but never for the medal.
+
+⚠ For the **colour** on its own, not the metal, use the invariable box-3 forms: **ασημί** and
+**χρυσαφί**. *ένα ασημί αυτοκίνητο* (a silver car) — but *ένα ασημένιο δαχτυλίδι* (a ring made
+of silver).
+
+✦ **-ινος / -ένιος = "made of"** — a live pattern: ξύλ**ινος** (wooden), γυάλ**ινος** (glass),
+πέτρ**ινος** (stone), μάλλ**ινος** (woollen), χάλκ**ινος**, ασημ**ένιος**. All plain type A or B.
+
+## 5 · Light and dark
 
 | Pattern | Use it when | Example |
 |---|---|---|
@@ -83,7 +118,7 @@ are rare, and at A2 everyone uses the -ί form for everything: *μια πορτ�
 With an invariable colour, ανοιχτό and σκούρο stay in the neuter too — the whole phrase is frozen.
 With a compound, it is one ordinary type-A adjective and declines normally.
 
-## 5 · Asking and answering
+## 6 · Asking and answering
 
 **Τι χρώμα είναι …;** / **Τι χρώμα έχει …;** — What colour is …?
 
@@ -97,7 +132,7 @@ The answer agrees with **the noun**, not with the word χρώμα:
 | Τι χρώμα είναι **τα μάτια** της; | Είναι γαλάζι**α**. |
 | Τι χρώμα είναι **η πόρτα**; | Είναι **μπλε**. ← no change, ever |
 
-## 6 · The colour as a noun
+## 7 · The colour as a noun
 
 **το χρώμα**, τα χρώμα**τα** — neuter, the -μα declension (page 4).
 
@@ -110,7 +145,7 @@ The answer agrees with **the noun**, not with the word χρώμα:
 
 The neuter singular with **το** in front is how you name a colour on its own.
 
-## 7 · People
+## 8 · People
 
 | | |
 |---|---|
@@ -122,7 +157,7 @@ The neuter singular with **το** in front is how you name a colour on its own.
 ⚠ Hair and eyes are **plural neuter** in Greek, so the colour is too: *Έχει καστανά μάτια*, never
 *καστανό μάτια*.
 
-## 8 · Set phrases
+## 9 · Set phrases
 
 | Greek | English |
 |---|---|
@@ -134,7 +169,7 @@ The neuter singular with **το** in front is how you name a colour on its own.
 | τα **μαύρα** | black clothes (mourning) |
 | βλέπω τα πράγματα **μαύρα** | I see things black = I'm pessimistic |
 
-## 9 · Drill
+## 10 · Drill
 
 | Say in Greek | Answer |
 |---|---|
@@ -152,6 +187,9 @@ The neuter singular with **το** in front is how you name a colour on its own.
 | My favourite colour is green. | Το αγαπημένο μου χρώμα είναι το πράσινο. |
 | the grey walls | οι γκρίζοι τοίχοι / οι γκρι τοίχοι |
 | an orange T-shirt | ένα πορτοκαλί μπλουζάκι |
+| the gold medal | το χρυσό μετάλλιο |
+| the silver medal | το ασημένιο μετάλλιο |
+| the bronze medal | το χάλκινο μετάλλιο |
 
 ✦ Colours are also listed as plain vocabulary at the end of page 7, **Adjectives**, with the
 adjective types they belong to.
