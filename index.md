@@ -7,6 +7,8 @@ Scope is **A2 only**. Anything that belongs to B1 has been left out on purpose, 
 not here, you do not need it yet.
 
 > Mirror of the Preply canvas (22 pages). Page numbers below are canvas pages.
+> Two sheets marked **7a** and **19a** are web-only — the canvas cannot take an
+> inserted page, so they live here next to the topic they belong to.
 
 ## Tools
 
@@ -36,6 +38,7 @@ not here, you do not need it yet.
 | **5** | grammar/03-cases.md | **The four cases** | What each case is for, and which question word asks for it |
 | **6** | grammar/04-plurals.md | Plurals | Singular → plural cheat table, stress shifts |
 | **7** | grammar/05-adjectives.md | Adjectives | Types A / B / C, πολύς, colours |
+| **7a** | grammar/05a-colours.md | **Colours** | The three kinds of colour word — which agree, which never change |
 | **8** | grammar/06-comparison.md | Comparison | πιο / ο πιο, the four irregulars, adverbs |
 | **9** | grammar/07-pronouns.md | Pronouns | Personal (strong / weak), possessive, demonstrative, που |
 | **10** | grammar/08-verbs-present.md | Verbs — present | Active + passive, groups A / B1 / B2 |
@@ -48,6 +51,7 @@ not here, you do not need it yet.
 | **17** | grammar/15-prepositions.md | Prepositions | σε / από / με / για + article contractions |
 | **18** | grammar/16-conjunctions.md | Conjunctions | και, αλλά, όταν, επειδή, αν, που… |
 | **19** | grammar/17-numbers-time.md | Numbers & time | Numbers, clock, dates, days, months |
+| **19a** | grammar/17a-ordinals.md | **Ordinals** | 1st–50th, the tens that are irregular, 1ος / 2η / 3ο |
 | **20** | grammar/18-word-order-negation.md | Word order & negation | δεν / μη, questions, pronoun placement |
 | **21** | grammar/19-eimai.md | **The verb είμαι** | to be — every form in one place |
 | **22** | grammar/20-A2-checklist.md | A2 checklist | Self-test grid — the last page |

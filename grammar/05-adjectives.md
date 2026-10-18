@@ -206,6 +206,9 @@ Compare: **πολύ** νερό (much water) · **πολλά** νερά (many wat
 
 ⚠ **μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ** never change form: το μπλε αυτοκίνητο, τα μπλε αυτοκίνητα.
 
+✦ Colours have a sheet of their own — all three kinds, light and dark, hair and eyes, and
+what to answer to *Τι χρώμα είναι;* — on **page 7a**.
+
 ## Drill: put in the right form
 
 | Prompt | Answer |

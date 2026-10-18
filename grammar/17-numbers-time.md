@@ -91,6 +91,9 @@ Only **1, 3, 4**, the **hundreds** and **1000** change form. Everything else is 
 
 Ο **πρώτος** όροφος. Η **δεύτερη** φορά. Στις **τρεις** Μαΐου.
 
+✦ Ordinals in full — **1st to 50th**, the six tens whose ordinal is not built from the
+cardinal (σαράντα → **τεσσαρακοστός**), compounds, and the 1ος / 2η / 3ο writing — are on **page 19a**.
+
 ## 4. Fractions & quantities
 
 | Greek | English |
