@@ -909,7 +909,7 @@ def first_h1(md, fallback):
     m = re.search(r'^#\s+(.*)$', md, re.M)
     return plain(m.group(1)) if m else fallback
 
-def build_area(root, title, sub, tag):
+def build_area(root, title, sub, tag, legend=True):
     """Render one area of the site: its index.md plus its grammar/*.md sheets.
 
     The A2 material lives at the repo root and publishes to /index.html and
@@ -934,8 +934,11 @@ def build_area(root, title, sub, tag):
                        'id': slug(os.path.splitext(name)[0]),
                        'body': md_to_html(md)})
 
+    # the gender bands are an A2 grid device; an area that does not use them
+    # should not print a key to them
     legend = ('<div class="legend"><span class="m">masculine</span>'
-              '<span class="f">feminine</span><span class="n">neuter</span></div>')
+              '<span class="f">feminine</span>'
+              '<span class="n">neuter</span></div>') if legend else ''
 
     toc = ''.join('<li><a href="#%s">%s</a></li>' % (s['id'], html.escape(s['title']))
                   for s in sheets)
@@ -987,7 +990,7 @@ def main():
     build_area(
         os.path.join(BASE, 'b1'), 'Greek B1 \u2014 what the level adds',
         '%d sheets \u00b7 only the grammar B1 adds on top of A2',
-        'b1')
+        'b1', legend=False)
 
     if '--no-pdf' in sys.argv:
         print('pdf    : skipped (--no-pdf)')
