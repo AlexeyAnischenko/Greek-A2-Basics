@@ -7,9 +7,8 @@ Scope is **A2 only**. Anything that belongs to B1 has been left out on purpose, 
 not here, you do not need it yet — and when you do, it is next door:
 **[Greek B1 — what the level adds](b1/index.html)**, built the same way from the KLIK B1 book.
 
-> Mirror of the Preply canvas (22 pages). Page numbers below are canvas pages.
-> Two sheets marked **7a** and **19a** are web-only — the canvas cannot take an
-> inserted page, so they live here next to the topic they belong to.
+> Numbered left to right in teaching order. The two marked **7a** and **19a** were
+> added later and sit next to the topic they extend rather than at the end.
 
 ## Tools
 
@@ -29,7 +28,7 @@ not here, you do not need it yet — and when you do, it is next door:
 3. When a table is 100% cold-recall twice in a row, move it to the "monthly" pile.
 4. Verbs: always drill **all six persons in one breath** — γράφω-γράφεις-γράφει-γράφουμε-γράφετε-γράφουν.
 
-## Contents — one canvas page per topic
+## Contents — one sheet per topic
 
 | Page | File | Topic | Contents |
 |---|---|---|---|
@@ -70,7 +69,7 @@ not here, you do not need it yet — and when you do, it is next door:
 | ⚠ | irregular, or a common trap |
 | ✦ | more words that follow the same pattern |
 
-In the canvas, gender-marked rows and columns are colour-banded: **masculine = light blue**,
+Gender-marked rows and columns are colour-banded: **masculine = light blue**,
 **feminine = light purple**, **neuter = light green**.
 
 ⚠ Note: **B1 / B2** in the verb tables means *verb conjugation group*, not language level.
