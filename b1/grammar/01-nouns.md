@@ -1,6 +1,6 @@
 # B1·01 · Ισοσύλλαβα & ανισοσύλλαβα ουσιαστικά
 
-*KLIK B1, Ενότητα 1 — Γραμματική σσ. 33–35 and σσ. 46–49.*
+*Ενότητα 1 — Γραμματική, both slots.*
 
 **A2 had** the noun declensions one by one — M1 -ας, M2 -ης, F1 -α, N1 -ο and the rest,
 with the plural of each.
@@ -18,7 +18,7 @@ out: the **genitive plural**, which is where the stress moves.
 
 The ανισοσύλλαβα gain **-δ-** (ψαρά**δ**ες) or, in the neuter, **-τ-** (γεύμα**τ**α).
 
-## 2 · Ισοσύλλαβα — masculine (σ. 34)
+## 2 · Ισοσύλλαβα — masculine
 
 | -ας | ο χαρακτήρας | ο άντρας | ο παράγοντας |
 |---|---|---|---|
@@ -44,7 +44,7 @@ The ανισοσύλλαβα gain **-δ-** (ψαρά**δ**ες) or, in the neute
 ⚠ **ο συγγενής → οι συγγενείς**, not *συγγενήδες and not *συγγενές. It is the one
 masculine in the table with a learned plural.
 
-## 3 · Ισοσύλλαβα — feminine (σ. 34)
+## 3 · Ισοσύλλαβα — feminine
 
 | -α / -ά | η καρδιά | η γυναίκα | η εικόνα | η οικογένεια | η ικανότητα |
 |---|---|---|---|---|---|
@@ -64,7 +64,7 @@ masculine in the table with a learned plural.
 ⚠ **-ση / -ξη / -ψη → -σεις / -ξεις / -ψεις**, genitive plural **-σεων / -ξεων / -ψεων**.
 This is the F3 type from A2 page 4, now with its genitive plural filled in.
 
-## 4 · Ισοσύλλαβα — neuter (σ. 35)
+## 4 · Ισοσύλλαβα — neuter
 
 | -ό / -ο | το μυστικό | το άρθρο | το πρόσωπο | το χαμόγελο |
 |---|---|---|---|---|
@@ -78,7 +78,7 @@ This is the F3 type from A2 page 4, now with its genitive plural filled in.
 | τα | μαλλιά | φρύδια | | τα | **βάρη** ⚠ |
 | **των** | μαλλιών | **φρυδιών** ← | | **των** | **βαρών** ← |
 
-## 5 · Ανισοσύλλαβα — masculine (σ. 47–48)
+## 5 · Ανισοσύλλαβα — masculine
 
 | | ονομαστική | γενική | αιτιατική |
 |---|---|---|---|
@@ -102,7 +102,7 @@ This is the F3 type from A2 page 4, now with its genitive plural filled in.
 ✦ The **-ηδες** plural is the one the adjective type **-ης / -α / -ικο** borrows:
 ο μανάβης → οι μανάβηδες, so ζηλιάρης → οι ζηλιάρηδες (A2 page 7).
 
-## 6 · Ανισοσύλλαβα — feminine (σ. 48)
+## 6 · Ανισοσύλλαβα — feminine
 
 | | ονομαστική | γενική | αιτιατική |
 |---|---|---|---|
@@ -116,7 +116,7 @@ This is the F3 type from A2 page 4, now with its genitive plural filled in.
 ⚠ **της αλεπούς** — the genitive singular keeps the **-ς**. η γιαγιά does too (της γιαγιάς),
 but the -ού type is the one that looks wrong and is right.
 
-## 7 · ⚠ The final -ν, printed as a rule (σ. 48)
+## 7 · ⚠ The final -ν, printed as a rule
 
 The book makes this a boxed Προσοχή next to τη γιαγιά / την αλεπού:
 
@@ -125,7 +125,7 @@ The book makes this a boxed Προσοχή next to τη γιαγιά / την α
 | **τη** γιαγιά | drops the -ν | β, γ, δ, ζ, θ, λ, μ, ν, ρ, σ, φ, χ |
 | **την** αλεπού | keeps the -ν | κ, π, τ, μπ, ντ, γκ, τζ, τσ, ψ, ξ **or a vowel** |
 
-## 8 · Ανισοσύλλαβα — neuter (σ. 49)
+## 8 · Ανισοσύλλαβα — neuter
 
 | | ονομαστική | γενική | αιτιατική |
 |---|---|---|---|
@@ -143,7 +143,7 @@ The book makes this a boxed Προσοχή next to τη γιαγιά / την α
 ⚠ **γάλα has no genitive plural.** And its genitive singular keeps an optional learned
 **-κτ-**: του γάλα**κτος**.
 
-## 9 · Three lists A2 never gave you (σ. 35)
+## 9 · Three lists A2 never gave you
 
 ### Ουσιαστικά χωρίς πληθυντικό — no plural
 

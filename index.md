@@ -5,7 +5,7 @@ No prose explanation longer than a line. Every ending you need is in a cell.
 
 Scope is **A2 only**. Anything that belongs to B1 has been left out on purpose, so if a rule is
 not here, you do not need it yet — and when you do, it is next door:
-**[Greek B1 — what the level adds](b1/index.html)**, built the same way from the KLIK B1 book.
+**[Greek B1 — what the level adds](b1/index.html)**, built the same way, from the B1 course material.
 
 > Numbered left to right in teaching order. The two marked **7a** and **19a** were
 > added later and sit next to the topic they extend rather than at the end.
@@ -19,7 +19,7 @@ not here, you do not need it yet — and when you do, it is next door:
 | ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × number, banded by gender, example on every cell |
 | ▦ **[Verb endings — master grid](verb-grid.html)** | Present · past · future × all six persons, banded by tense, example on every cell |
 | ▦ **[Nouns and adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |
-| ⬆ **[Greek B1 — what the level adds](b1/index.html)** | The next level, delta only — every block traced to a page of KLIK B1 |
+| ⬆ **[Greek B1 — what the level adds](b1/index.html)** | The next level, delta only — what B1 adds on top of these sheets |
 
 ## How to drill
 

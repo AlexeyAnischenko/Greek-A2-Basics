@@ -7,7 +7,7 @@ Everything below is A2 scope.
 
 ## What the A2 wordlist actually demands — measured, not guessed
 
-Every one of the 1,607 entries in the **KLIK A2 glossary** was sorted by its inflection class.
+Every one of the 1,607 entries in the **A2 glossary** was sorted by its inflection class.
 Where a pattern on these pages earns its place, and where it does not:
 
 | Pattern | A2 words | Do |

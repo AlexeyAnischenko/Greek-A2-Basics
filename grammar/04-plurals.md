@@ -20,7 +20,7 @@
 | N | **-ον** | **-οντα** | το προϊόν → τα προϊόντα |
 | N | *loanword* | **unchanged** | το γκαράζ → τα γκαράζ |
 
-⚠ The **-ού → -ούδες** row (η αλεπού) is gone: no noun in the KLIK A2 list uses it. The one
+⚠ The **-ού → -ούδες** row (η αλεπού) is gone: no noun in the A2 list uses it. The one
 feminine you will meet with a -δες plural is **η γιαγιά → οι γιαγιάδες**.
 
 ## 2. How do I know if -η is F2 (-ες) or F3 (-εις)?

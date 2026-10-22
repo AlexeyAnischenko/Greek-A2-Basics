@@ -1,6 +1,6 @@
 # B1·02 · Άρθρο & αριθμοί
 
-*KLIK B1, Ενότητα 2 — Γραμματική σ. 68 (αριθμοί) and σσ. 70–71 (άρθρο).*
+*Ενότητα 2 — Γραμματική, both slots.*
 
 **A2 had** the article's **forms** — ο/η/το, του/της/του, τον/την/το, and ένας/μία/ένα —
 and numbers as far as χίλια.
@@ -9,7 +9,7 @@ and numbers as far as χίλια.
 at all**. The book gives it as one long three-column table, αόριστο / οριστικό / χωρίς
 άρθρο, running over two pages. Nothing in the A2 area covers this.
 
-## 1 · Definite, indefinite, or nothing (σσ. 70–71)
+## 1 · Definite, indefinite, or nothing
 
 ### Nouns
 
@@ -52,7 +52,7 @@ Question words and indefinites take **no** article:
 > **Όσα φρούτα** και να φάω… · **Όποιος μαθητής** διαβάζει… · **Ποιος κύριος** ήρθε; ·
 > Ήρθαν **κάτι / μερικοί / κάποιοι** κύριοι.
 
-### Time (σ. 71)
+### Time
 
 | αόριστο — *one particular one* | οριστικό — *the one coming* | χωρίς άρθρο — *bare* |
 |---|---|---|
@@ -63,7 +63,7 @@ Question words and indefinites take **no** article:
 | | **στις 12** το βράδυ · **στις 27** Ιουνίου | **27 Ιουνίου** |
 | | **την Πρωτοχρονιά** · **το 2013** | |
 
-### Quantity (σ. 71)
+### Quantity
 
 | οριστικό | χωρίς άρθρο |
 |---|---|
@@ -79,7 +79,7 @@ Question words and indefinites take **no** article:
 Also bare: Έχω **δίπλωμα**, αλλά δεν έχω **αυτοκίνητο**. · Οδηγείς **μηχανάκι**; ·
 Αν τρως **φρούτα**, θα αδυνατίσεις.
 
-### Fixed expressions (σ. 71)
+### Fixed expressions
 
 **No article** is the normal form:
 
@@ -106,7 +106,7 @@ Shouts: **Βοήθεια!** **Προσοχή!**
 *κάνει **μια** ζέστη…*, *έχει **μια** φασαρία…*. Also the story opener
 **Μια φορά κι έναν καιρό**…
 
-## 2 · The thousands (σ. 68)
+## 2 · The thousands
 
 **χίλιοι declines by gender** — and above it you switch to a feminine noun.
 

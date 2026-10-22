@@ -3,7 +3,7 @@
 **Rule:** the adjective agrees with its noun in **gender + case + number**, and goes **before** the noun.
 ο καλός φίλος · τη μεγάλη πόλη · των ωραίων παιδιών
 
-At A2 you need **two** patterns and two footnotes. Counted across the KLIK A2 wordlist:
+At A2 you need **two** patterns and two footnotes. Counted across the A2 wordlist:
 
 | Type | A2 adjectives | Verdict |
 |---|---|---|
@@ -48,7 +48,7 @@ end-stressed, so its endings show the accent; όμορφος is stem-stressed an
 throughout — όμορφ**ος**, όμορφ**η**, όμορφ**ου**, όμορφ**ων**. Adjective stress never moves.
 
 ⚠ **ζηλιάρης is the only type whose masculine plural is not in -οι.** It takes the **-ηδες** of the masculine nouns in -ης (ο μανάβης → οι μανάβηδες), its feminine is exactly type B, and its neuter inserts **-ικ-** before the ending. No adjective of this
-type is in the KLIK wordlist or in the 2015–2018 exam papers — it is here to be recognised, not drilled.
+type is in the A2 wordlist or in the 2015–2018 exam papers — it is here to be recognised, not drilled.
 
 ⚠ **γλυκός has only one row** because only its feminine is different. Its masculine and neuter are
 plain type A: γλυκός / γλυκό / γλυκού / γλυκοί / γλυκούς / γλυκών. Same for ξανθός and Κρητικός.
@@ -67,7 +67,7 @@ What the grid shows at a glance:
 | ζηλιάρα and ωραία are the same word-shape | the **-ης / -α / -ικο** feminine is type B’s feminine, ending for ending |
 | One row never changes at all | μπλε, γκρι, καφέ, ροζ, πορτοκαλί, μωβ — no ending, no agreement |
 
-⚠ **The whole of A2 is the A and B rows — the first two of each gender.** 191 of the 195 adjectives in the KLIK A2 wordlist are
+⚠ **The whole of A2 is the A and B rows — the first two of each gender.** 191 of the 195 adjectives in the A2 wordlist are
 type A or type B; γλυκός, ξανθός and Κρητικός are 3 more, and ελαφρύς is the last one. Types C and D
 are in the grid so you can recognise them, not so you can drill them.
 

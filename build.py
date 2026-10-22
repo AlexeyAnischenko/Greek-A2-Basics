@@ -986,7 +986,7 @@ def main():
 
     build_area(
         os.path.join(BASE, 'b1'), 'Greek B1 \u2014 what the level adds',
-        '%d sheets \u00b7 only the grammar the KLIK B1 book introduces on top of A2',
+        '%d sheets \u00b7 only the grammar B1 adds on top of A2',
         'b1')
 
     if '--no-pdf' in sys.argv:

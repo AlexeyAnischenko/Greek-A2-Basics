@@ -55,7 +55,7 @@ tables below. ⚠ **τον** and **την** drop the **-ν** before some consona
 
 ## How much of the A2 wordlist each type actually carries ⚠ read before you drill
 
-Every noun in the **KLIK A2 glossary** (1,607 entries → **792 common nouns**, proper names
+Every noun in the **A2 glossary** (1,607 entries → **792 common nouns**, proper names
 excluded) was sorted into the rows above. Seven types carry 85% of them; the rest are worth
 minutes, not hours.
 
@@ -78,7 +78,7 @@ minutes, not hours.
 | *(plural-only)* | ~30 | no singular at all — see page 6 |
 | ~~F · -ού (η αλεπού)~~ | **0** | **not an A2 type** — no word in the list uses it; η γιαγιά → οι γιαγιάδες is the only -δες feminine you meet |
 
-⚠ **Two caveats.** The glossary is the KLIK A2 book's own word list, so "0" means *this book never
+⚠ **Two caveats.** The glossary is the course's own word list, so "0" means *this book never
 asks for it*, not that the pattern is extinct. And it counts **lemmas, not frequency** — M1 has 17
 words but two of them (ο άντρας, ο μήνας) turn up constantly.
 
@@ -195,7 +195,7 @@ It declines exactly like **M3 · -ος** — only the articles are feminine:
 
 > Η **έξοδος** είναι εκεί. — Βγαίνουμε από την **έξοδο**. — Μένω στην **οδό** Ερμού.
 
-⚠ **Dropped from this page:** the old *F · -ού* type (η αλεπού, η μαϊμού). **No noun in the KLIK
+⚠ **Dropped from this page:** the old *F · -ού* type (η αλεπού, η μαϊμού). **No noun in the
 A2 list belongs to it.** The only -δες feminine you actually meet is **η γιαγιά → οι γιαγιάδες**,
 and that is one word to remember, not a declension to learn.
 
