@@ -909,19 +909,28 @@ def first_h1(md, fallback):
     m = re.search(r'^#\s+(.*)$', md, re.M)
     return plain(m.group(1)) if m else fallback
 
-def main():
-    files = [os.path.join(BASE, 'index.md')] + sorted(
-        glob.glob(os.path.join(BASE, 'grammar', '*.md')))
-    files = [f for f in files if os.path.isfile(f)]
+def build_area(root, title, sub, tag):
+    """Render one area of the site: its index.md plus its grammar/*.md sheets.
 
-    os.makedirs(PAGES, exist_ok=True)
+    The A2 material lives at the repo root and publishes to /index.html and
+    /pages; the B1 area lives under b1/ and publishes to b1/index.html and
+    b1/pages. Everything else - the CSS, the scripts, the hover balloons, the
+    click-to-copy - is shared, so an area is just a directory with an index and
+    a grammar folder in it."""
+    pages_dir = os.path.join(root, 'pages')
+    files = [os.path.join(root, 'index.md')] + sorted(
+        glob.glob(os.path.join(root, 'grammar', '*.md')))
+    files = [f for f in files if os.path.isfile(f)]
+    if len(files) < 2:
+        return None
+
+    os.makedirs(pages_dir, exist_ok=True)
 
     sheets = []
     for f in files:
         md = io.open(f, encoding='utf-8').read()
         name = os.path.basename(f)
-        title = first_h1(md, name)
-        sheets.append({'file': name, 'title': title,
+        sheets.append({'file': name, 'title': first_h1(md, name),
                        'id': slug(os.path.splitext(name)[0]),
                        'body': md_to_html(md)})
 
@@ -936,17 +945,18 @@ def main():
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
            '<meta name="viewport" content="width=device-width,initial-scale=1">'
            '<meta name="color-scheme" content="light dark">'
-           '<title>Greek A2 — Grammar Drill Sheets</title><style>%s%s</style>%s%s'
+           '<title>%s</title><style>%s%s</style>%s%s'
            '</head><body>'
            '%s'
-           '<header class="top"><h1>Greek A2 — Grammar Drill Sheets</h1>'
-           '<p>%d sheets · A2 scope · cover the right column and recite</p>%s</header>'
+           '<header class="top"><h1>%s</h1>'
+           '<p>%s</p>%s</header>'
            '<div class="wrap"><nav class="toc"><h2>Contents</h2><ol>%s</ol></nav>'
            '<main>%s</main></div>%s</body></html>'
-           % (CSS, TAP_CSS, FAVICON, THEME_HEAD, THEME_BTN, len(sheets), legend, toc, body,
+           % (html.escape(re.sub(r'<[^>]+>', '', title)), CSS, TAP_CSS, FAVICON,
+              THEME_HEAD, THEME_BTN, title, sub % len(sheets), legend, toc, body,
               THEME_JS + EX_JS + COPY_JS + GRID_JS + TAP_JS))
 
-    out_html = os.path.join(DIST, 'index.html')
+    out_html = os.path.join(root, 'index.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
 
     for s in sheets:
@@ -955,16 +965,29 @@ def main():
                 '<meta name="color-scheme" content="light dark">'
                 '<title>%s</title><style>%s%s</style>%s%s</head><body>'
                 '%s<div class="wrap"><main><section class="sheet">%s</section></main></div>'
-                '%s</body></html>' % (html.escape(s['title']), CSS, TAP_CSS, FAVICON, THEME_HEAD,
-                                      THEME_BTN, s['body'], THEME_JS + EX_JS + COPY_JS + GRID_JS + TAP_JS))
+                '%s</body></html>' % (html.escape(s['title']), CSS, TAP_CSS, FAVICON,
+                                      THEME_HEAD, THEME_BTN, s['body'],
+                                      THEME_JS + EX_JS + COPY_JS + GRID_JS + TAP_JS))
         stem = os.path.splitext(s['file'])[0]
         if stem == 'index':
             stem = 'index-sheet'      # avoid creating pages/index.html
-        io.open(os.path.join(PAGES, stem + '.html'),
+        io.open(os.path.join(pages_dir, stem + '.html'),
                 'w', encoding='utf-8', newline='\n').write(page)
 
-    print('html   : %s  (%.1f KB)' % (out_html, os.path.getsize(out_html) / 1024.0))
-    print('pages  : %d files in %s' % (len(sheets), PAGES))
+    print('%-7s: %s  (%.1f KB)' % (tag, out_html, os.path.getsize(out_html) / 1024.0))
+    print('%-7s: %d sheets in %s' % (tag + ' pg', len(sheets), pages_dir))
+    return out_html
+
+
+def main():
+    out_html = build_area(
+        BASE, 'Greek A2 \u2014 Grammar Drill Sheets',
+        '%d sheets \u00b7 A2 scope \u00b7 cover the right column and recite', 'html')
+
+    build_area(
+        os.path.join(BASE, 'b1'), 'Greek B1 \u2014 what the level adds',
+        '%d sheets \u00b7 only the grammar the KLIK B1 book introduces on top of A2',
+        'b1')
 
     if '--no-pdf' in sys.argv:
         print('pdf    : skipped (--no-pdf)')
