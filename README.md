@@ -7,12 +7,13 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 
 | | |
 |---|---|
-| 📖 **Online (all 22 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
-| 📄 **PDF (70 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
+| 📖 **Online (all 27 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
+| 📄 **PDF (87 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
 | ⌨ **Greek keyboard** | https://alexeyanischenko.github.io/Greek-A2-Basics/keyboard.html |
 | 🖨 **Noun endings, one page to print** | https://alexeyanischenko.github.io/Greek-A2-Basics/master-grid.pdf |
 | ▦ **Adjective endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/adjective-grid.html |
 | ▦ **Verb endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/verb-grid.html |
+| ▦ **Aorist, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/aorist-grid.html |
 | ▦ **Nouns and adjectives, one grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/mega-grid.html |
 
 The online version has a light/dark theme switch and a contents sidebar. The PDF is always light,
@@ -32,7 +33,10 @@ one sheet per page break, with repeating table headers.
 | 8 | Comparison & adverbs |
 | 9 | Pronouns |
 | 10 | Verbs — present |
-| 11 | Verbs — past (aorist & imperfect) |
+| 11 | Verbs — past: aorist or imperfect? |
+| 11a | **Aorist** — endings, έ- rule, stem table, master grid |
+| 11b | **Aorist — passive** (-θηκα) |
+| 11c | **Imperfect** |
 | 12 | Verbs — future & subjunctive (θα / να / ας) |
 | 13 | Verbs — perfect |
 | 14 | Imperative |
@@ -83,7 +87,7 @@ Only Python (stdlib) is needed; Chrome or Edge is used for the PDF step and is s
 
 | Output | What it is |
 |---|---|
-| `index.html` | All 22 sheets in one self-contained file, with a sticky contents sidebar |
+| `index.html` | All 27 sheets in one self-contained file, with a sticky contents sidebar |
 | `pages/*.html` | One standalone file per sheet |
 | `greek-a2.pdf` | 70-page A4 print, one sheet per page break, colour bands preserved |
 | `master-grid.html` / `.pdf` | the noun grid alone, one A4 page, grouped by case |

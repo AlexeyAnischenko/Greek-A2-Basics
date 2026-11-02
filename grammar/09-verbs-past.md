@@ -1,172 +1,46 @@
-# 09 · Past Tenses — Aorist & Imperfect
+# 09 · Past Tenses — which one?
 
-Greek has **two** simple past tenses. Choosing between them is the core A2 skill.
+Greek has **two** simple past tenses. Choosing between them is the core A2 skill. Each has its
+own sheet:
 
-| Tense | Greek name | Meaning | Test question |
-|---|---|---|---|
-| **Aorist** | Αόριστος | happened **once / completed** | "What happened?" |
-| **Imperfect** | Παρατατικός | **was happening / used to** | "What was going on?" |
+| Sheet | Tense | Greek name | Meaning | Test question |
+|---|---|---|---|---|
+| **11a** | **Aorist** — active | Αόριστος | happened **once / completed** | "What happened?" |
+| **11b** | **Aorist** — passive (-θηκα) | Αόριστος παθητικής φωνής | the same, for -μαι verbs | "What happened?" |
+| **11c** | **Imperfect** | Παρατατικός | **was happening / used to** | "What was going on?" |
+
+The **aorist master grid** — every A2 aorist pattern, all six persons, in one table — is on
+sheet 11a, and on its own page as **[the aorist grid page](https://alexeyanischenko.github.io/Greek-A2-Basics/aorist-grid.html)**.
+
+## Aorist or imperfect?
 
 | Aorist | Imperfect |
 |---|---|
 | **Έγραψα** ένα γράμμα. — I wrote a letter. | **Έγραφα** ένα γράμμα. — I was writing a letter. |
 | **Πήγα** στην Αθήνα. — I went to Athens. | **Πήγαινα** συχνά στην Αθήνα. — I used to go often. |
-| Χθες **δούλεψα** 8 ώρες. | Τότε **δούλευα** σε τράπεζα. |
-| **Είδα** τη Μαρία. | **Έβλεπα** τηλεόραση όταν ήρθε. |
+| Χθες **δούλεψα** 8 ώρες. — Yesterday I worked 8 hours. | Τότε **δούλευα** σε τράπεζα. — Back then I worked in a bank. |
+| **Είδα** τη Μαρία. — I saw Maria. | **Έβλεπα** τηλεόραση όταν ήρθε. — I was watching TV when she came. |
 
 **Signal words:** aorist ← χθες, πέρσι, ξαφνικά, μια μέρα, δύο φορές, στις 5 · imperfect ← κάθε μέρα, συνήθως, πάντα, συχνά, τότε, όταν ήμουν μικρός
 
-## 1. THE AUGMENT RULE (why "έ-" appears)
+⚠ The two often meet in one sentence: the **imperfect is the background**, the **aorist is the
+event** that interrupts it — *Έβλεπα τηλεόραση (background) όταν ήρθε (event).*
 
-Past-tense stress must fall on the **3rd syllable from the end**. If the word is too short, prefix **έ-**.
+## Same verb, both pasts
 
-| Pronoun | Person | Form | Why |
-|---|---|---|---|
-| **εγώ** | 1st singular | **έ**γραψα | γρα-ψα = only 2 syllables → add έ- |
-| **εσύ** | 2nd singular | **έ**γραψες | same |
-| **αυτός / αυτή / αυτό** | 3rd singular | **έ**γραψε | same |
-| **εμείς** | 1st plural | γράψαμε | 3 syllables already → no έ- |
-| **εσείς** | 2nd plural | γράψατε | 3 syllables → no έ- |
-| **αυτοί / αυτές / αυτά** | 3rd plural | **έ**γραψαν *or* γράψα**νε** | either add έ- or add -νε |
+The endings are the same (-α -ες -ε -αμε -ατε -αν). What differs is the **stem**: the aorist
+uses the dependent stem (the one in θα γράψω / να γράψω), the imperfect the present stem.
 
-Long verbs never take έ-: πλήρωσα, διάβασα, τηλεφώνησα, αγόρασα.
-
-## 2. AORIST — ACTIVE
-
-### Endings (identical for all groups — only the **stem** changes)
-
-| Pronoun | Person | Ending |
+| Present | Aorist (once) | Imperfect (ongoing) |
 |---|---|---|
-| **εγώ** | 1st singular | **-α** |
-| **εσύ** | 2nd singular | **-ες** |
-| **αυτός / αυτή / αυτό** | 3rd singular | **-ε** |
-| **εμείς** | 1st plural | **-αμε** |
-| **εσείς** | 2nd plural | **-ατε** |
-| **αυτοί / αυτές / αυτά** | 3rd plural | **-αν / -ανε** |
+| γράφω | έγρα**ψ**α | έγρα**φ**α |
+| διαβάζω | διάβα**σ**α | διάβα**ζ**α |
+| ανοίγω | άνοι**ξ**α | άνοι**γ**α |
+| πληρώνω | πλήρω**σ**α | πλήρω**ν**α |
+| μιλάω | μίλη**σ**α | μιλ**ούσ**α |
+| μπορώ | μπόρε**σ**α | μπορ**ούσ**α |
+| βλέπω | **είδ**α | έβλεπα |
+| πηγαίνω / πάω | **πήγ**α | πήγαινα |
+| κοιμάμαι | κοιμή**θηκ**α | κοιμόμουν |
 
-### Example: γράφω → aorist stem **γραψ-**
-
-| Pronoun | Person | Form |
-|---|---|---|
-| **εγώ** | 1st singular | έγραψ**α** |
-| **εσύ** | 2nd singular | έγραψ**ες** |
-| **αυτός / αυτή / αυτό** | 3rd singular | έγραψ**ε** |
-| **εμείς** | 1st plural | γράψ**αμε** |
-| **εσείς** | 2nd plural | γράψ**ατε** |
-| **αυτοί / αυτές / αυτά** | 3rd plural | έγραψ**αν** / γράψ**ανε** |
-
-### Aorist stem formation — sound table ⚠ THE key table
-
-| Present ends in | Aorist stem | Examples |
-|---|---|---|
-| **-π, -β, -φ, -πτ, -φτ, -εύ** | **-ψ** | γράφω→**έγραψα**, κόβω→**έκοψα**, κρύβω→**έκρυψα**, δουλεύω→**δούλεψα**, μαγειρεύω→**μαγείρεψα**, χορεύω→**χόρεψα** |
-| **-κ, -γ, -χ, -χν, -σκ, -ζ (some)** | **-ξ** | ανοίγω→**άνοιξα**, τρέχω→**έτρεξα**, ψάχνω→**έψαξα**, φτιάχνω→**έφτιαξα**, παίζω→**έπαιξα**, αλλάζω→**άλλαξα**, κοιτάζω→**κοίταξα** |
-| **-ζ, -τ, -θ, -δ, -ν (some), -σ** | **-σ** | διαβάζω→**διάβασα**, αγοράζω→**αγόρασα**, νομίζω→**νόμισα**, γνωρίζω→**γνώρισα**, αρχίζω→**άρχισα**, κλείνω→**έκλεισα**, σβήνω→**έσβησα** |
-| **-ώνω** | **-ωσ** | πληρώνω→**πλήρωσα**, τελειώνω→**τελείωσα**, μεγαλώνω→**μεγάλωσα** |
-| **-αίνω** | mostly irregular | ανεβαίνω→**ανέβηκα**, καταλαβαίνω→**κατάλαβα**, μαθαίνω→**έμαθα**, πηγαίνω→**πήγα** |
-| **B1 -άω** | **-ησ** | αγαπάω→**αγάπησα**, μιλάω→**μίλησα**, ρωτάω→**ρώτησα**, σταματάω→**σταμάτησα** |
-| **B1 -άω** (subset) | **-ασ** | περνάω→**πέρασα**, χαλάω→**χάλασα**, πεινάω→**πείνασα**, ξεχνάω→**ξέχασα** |
-| **B1 -άω** (subset) | **-εσ** | φοράω→**φόρεσα** |
-| **B2 -ώ** | **-ησ** | τηλεφωνώ→**τηλεφώνησα**, οδηγώ→**οδήγησα**, ευχαριστώ→**ευχαρίστησα**, προτιμώ→**προτίμησα**, ζω→**έζησα** |
-| **B2 -ώ** (subset) | **-εσ** | μπορώ→**μπόρεσα**, καλώ→**κάλεσα**, παρακαλώ→**παρακάλεσα** |
-
-## 3. IMPERFECT — ACTIVE
-
-### Group A: present stem + -α, -ες, -ε, -αμε, -ατε, -αν
-
-| Pronoun | Person | γράφω |
-|---|---|---|
-| **εγώ** | 1st singular | έγραφ**α** |
-| **εσύ** | 2nd singular | έγραφ**ες** |
-| **αυτός / αυτή / αυτό** | 3rd singular | έγραφ**ε** |
-| **εμείς** | 1st plural | γράφ**αμε** |
-| **εσείς** | 2nd plural | γράφ**ατε** |
-| **αυτοί / αυτές / αυτά** | 3rd plural | έγραφ**αν** / γράφ**ανε** |
-
-⚠ The only difference from the aorist is the **stem**: έγρα**φ**α (imperfect) vs έγρα**ψ**α (aorist).
-
-### Groups B1 / B2: insert **-ούσ-**
-
-| Pronoun | Person | αγαπάω | μπορώ |
-|---|---|---|---|
-| **εγώ** | 1st singular | αγαπ**ούσα** | μπορ**ούσα** |
-| **εσύ** | 2nd singular | αγαπ**ούσες** | μπορ**ούσες** |
-| **αυτός / αυτή / αυτό** | 3rd singular | αγαπ**ούσε** | μπορ**ούσε** |
-| **εμείς** | 1st plural | αγαπ**ούσαμε** | μπορ**ούσαμε** |
-| **εσείς** | 2nd plural | αγαπ**ούσατε** | μπορ**ούσατε** |
-| **αυτοί / αυτές / αυτά** | 3rd plural | αγαπ**ούσαν** | μπορ**ούσαν** |
-
-✦ Many group-A verbs also allow -ούσα. Irregulars: λέω→**έλεγα**, ακούω→**άκουγα**, τρώω→**έτρωγα**, πάω→**πήγαινα**, ξέρω→**ήξερα**.
-
-### ⚠ Irregular imperfects to memorise
-
-| Verb | Imperfect |
-|---|---|
-| **είμαι** | ήμουν, ήσουν, ήταν, ήμασταν, ήσασταν, ήταν |
-| **έχω** | είχα, είχες, είχε, είχαμε, είχατε, είχαν |
-| **πάω** | πήγαινα |
-| **λέω** | έλεγα |
-| **τρώω** | έτρωγα |
-| **ξέρω** | ήξερα (⚠ no aorist exists) |
-| **θέλω** | ήθελα |
-| **πίνω** | έπινα |
-| **ακούω** | άκουγα |
-
-## 4. AORIST — PASSIVE
-
-### Endings
-
-| Pronoun | Person | Ending |
-|---|---|---|
-| **εγώ** | 1st singular | **-θηκα** |
-| **εσύ** | 2nd singular | **-θηκες** |
-| **αυτός / αυτή / αυτό** | 3rd singular | **-θηκε** |
-| **εμείς** | 1st plural | **-θήκαμε** |
-| **εσείς** | 2nd plural | **-θήκατε** |
-| **αυτοί / αυτές / αυτά** | 3rd plural | **-θηκαν** |
-
-⚠ Note the **stress shift** to -θή- in the 1st and 2nd plural.
-
-### Passive-aorist stem table
-
-| Present passive | Aorist passive | Examples |
-|---|---|---|
-| from -φ / -β / -π | **-φτηκα / -πηκα** | γράφομαι→**γράφτηκα**, κρύβομαι→**κρύφτηκα**, κόβομαι→**κόπηκα** |
-| from -κ / -γ / -χ | **-χτηκα** | ανοίγομαι→**ανοίχτηκα**, ρίχνομαι→**ρίχτηκα** |
-| from -ζ / -σ | **-στηκα** | αγοράζομαι→**αγοράστηκα**, γνωρίζομαι→**γνωρίστηκα** |
-| from -ν / -θ | **-θηκα** | πλένομαι→**πλύθηκα**, πληρώνομαι→**πληρώθηκα**, ντύνομαι→**ντύθηκα** |
-| -ιέμαι / -άμαι (B1/B2) | **-ήθηκα** | αγαπιέμαι→**αγαπήθηκα**, κοιμάμαι→**κοιμήθηκα**, φοβάμαι→**φοβήθηκα**, θυμάμαι→**θυμήθηκα** |
-
-### The passive-form verbs you'll use daily
-
-| Verb | Aorist |
-|---|---|
-| **έρχομαι** (come) | **ήρθα**, ήρθες, ήρθε, ήρθαμε, ήρθατε, ήρθαν ⚠ active endings |
-| **γίνομαι** (become) | **έγινα**, έγινες, έγινε, γίναμε, γίνατε, έγιναν ⚠ active endings |
-| **κάθομαι** (sit) | **κάθισα** ⚠ active endings |
-| **σκέφτομαι** (think) | **σκέφτηκα** |
-| **χρειάζομαι** (need) | **χρειάστηκα** |
-| **φαίνομαι** (seem) | **φάνηκα** |
-| **βρίσκομαι** (be located) | **βρέθηκα** |
-| **επισκέπτομαι** (visit) | **επισκέφτηκα** |
-| **χαίρομαι** (be glad) | **χάρηκα** |
-| **αισθάνομαι** (feel) | **αισθάνθηκα** |
-
-## 5. Drill grid — give the aorist 1st singular
-
-| Present | Aorist | Present | Aorist |
-|---|---|---|---|
-| γράφω | έγραψα | βλέπω | **είδα** ⚠ |
-| διαβάζω | διάβασα | λέω | **είπα** ⚠ |
-| δουλεύω | δούλεψα | πάω | **πήγα** ⚠ |
-| ανοίγω | άνοιξα | τρώω | **έφαγα** ⚠ |
-| κλείνω | έκλεισα | πίνω | **ήπια** ⚠ |
-| πληρώνω | πλήρωσα | παίρνω | **πήρα** ⚠ |
-| μιλάω | μίλησα | δίνω | **έδωσα** ⚠ |
-| ρωτάω | ρώτησα | μπαίνω | **μπήκα** ⚠ |
-| περνάω | πέρασα | βγαίνω | **βγήκα** ⚠ |
-| μπορώ | μπόρεσα | βρίσκω | **βρήκα** ⚠ |
-| τηλεφωνώ | τηλεφώνησα | έρχομαι | **ήρθα** ⚠ |
-| φοράω | φόρεσα | γίνομαι | **έγινα** ⚠ |
-
-→ Full irregular list on page 16.
+The two verbs with only **one** past: **είμαι → ήμουν**, **έχω → είχα** (sheet 11c).

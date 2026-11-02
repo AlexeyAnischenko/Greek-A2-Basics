@@ -7,7 +7,7 @@ Scope is **A2 only**. Anything that belongs to B1 has been left out on purpose, 
 not here, you do not need it yet — and when you do, it is next door:
 **[Greek B1 — what the level adds](b1/index.html)**, built the same way, from the B1 course material.
 
-> Numbered left to right in teaching order. The two marked **7a** and **19a** were
+> Numbered left to right in teaching order. The sheets marked **7a**, **11a–11c** and **19a** were
 > added later and sit next to the topic they extend rather than at the end.
 
 ## Tools
@@ -18,6 +18,7 @@ not here, you do not need it yet — and when you do, it is next door:
 | ▦ **[Noun endings — master grid](master-grid.html)** | Article and ending for every A2 declension, banded by gender |
 | ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × number, banded by gender, example on every cell |
 | ▦ **[Verb endings — master grid](verb-grid.html)** | Present · past · future × all six persons, banded by tense, example on every cell |
+| ▦ **[Aorist — master grid](aorist-grid.html)** | Every A2 aorist pattern — regular, irregular, passive — all six persons as whole words |
 | ▦ **[Nouns and adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |
 | ⬆ **[Greek B1 — what the level adds](b1/index.html)** | The next level, delta only — what B1 adds on top of these sheets |
 
@@ -43,7 +44,10 @@ not here, you do not need it yet — and when you do, it is next door:
 | **8** | grammar/06-comparison.md | Comparison | πιο / ο πιο, the four irregulars, adverbs |
 | **9** | grammar/07-pronouns.md | Pronouns | Personal (strong / weak), possessive, demonstrative, που |
 | **10** | grammar/08-verbs-present.md | Verbs — present | Active + passive, groups A / B1 / B2 |
-| **11** | grammar/09-verbs-past.md | Verbs — past | Aorist & imperfect, stem changes |
+| **11** | grammar/09-verbs-past.md | Verbs — past | Which past: aorist or imperfect, and the same verb in both |
+| **11a** | grammar/09a-aorist.md | **Aorist** | Endings, the έ- rule, stem table, **aorist master grid** |
+| **11b** | grammar/09b-aorist-passive.md | **Aorist — passive** | -θηκα, the stem table, the everyday -μαι verbs |
+| **11c** | grammar/09c-imperfect.md | **Imperfect** | -α / -ούσα / -όμουν, the irregular imperfects |
 | **12** | grammar/10-verbs-future-subjunctive.md | Verbs — future & subjunctive | θα / να / ας — the **conjunctive (υποτακτική)** system |
 | **13** | grammar/11-verbs-perfect.md | Verbs — perfect | έχω γράψει |
 | **14** | grammar/12-imperative.md | Imperative | Commands, negative commands, with pronouns |

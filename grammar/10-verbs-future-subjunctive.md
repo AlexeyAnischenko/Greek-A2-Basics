@@ -11,7 +11,7 @@ That conjugated form is the **subjunctive (υποτακτική)**, built on the
 πρέπει να φύγουμε    = we must leave
 ```
 
-Everything here uses **the same two stems** you know from page 11:
+Everything here uses **the same two stems** you know from pages 11–11a:
 
 | Stem | Where it comes from | Used for |
 |---|---|---|

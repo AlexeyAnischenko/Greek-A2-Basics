@@ -999,6 +999,7 @@ def main():
     make_grid_sheet()
     make_adjective_grid()
     make_verb_grid()
+    make_aorist_grid()
     make_mega_grid()
     return out_html
 
@@ -1569,6 +1570,63 @@ def make_verb_grid():
     out = os.path.join(DIST, 'verb-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
+    return out
+
+
+def make_aorist_grid():
+    """aorist-grid.html: every A2 aorist pattern down the side, the six persons
+    across. Unlike verb-grid.html the cells are whole words - the aorist endings
+    never change, so the stem, the έ- and the stress are what there is to see."""
+    src = os.path.join(BASE, 'grammar', '09a-aorist.md')
+    if not os.path.isfile(src):
+        print('aorist : skipped - no 09a-aorist.md')
+        return None
+    md = io.open(src, encoding='utf-8').read()
+    header, rows = find_table_after(md, '## 4. Master grid')
+    if not header or grid_kind(header) != 'verb':
+        print('aorist : skipped - master grid not found')
+        return None
+    order, outer, inner = case_order_of(header)
+    notes = column_notes(header)
+    families = [('Regular stems', 'Aorist '), ('Irregular stems', 'Irregular aorist'),
+                ('Passive aorist &mdash; the -μαι verbs', 'Passive aorist')]
+    blocks = []
+    for heading, prefix in families:
+        part = [r for r in rows if plain(r[0]).startswith(prefix)]
+        if not part:
+            continue
+        blocks.append('<h2>%s</h2>%s'
+                      % (heading,
+                         render_print_grid(header, part, order, outer, inner,
+                                           label=u'Pattern · verb',
+                                           balloons=True, kind='verb',
+                                           ann=[notes[i] for i in order]
+                                           if notes else None)))
+    if sum(1 for r in rows if any(plain(r[0]).startswith(p) for _, p in families)) != len(rows):
+        print('aorist : WARNING - a grid row matched no family and was left out')
+    glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
+    if glance_h:
+        blocks.append('<h2>What the grid shows at a glance</h2>'
+                      + render_band_grid([plain(h) for h in glance_h], glance_r, cls='glance'))
+    notes = ('<div class="notes">'
+             '<b>Hover any cell</b> for the pronoun and the meaning. &nbsp; '
+             '<b>Click any cell to copy it</b> as plain text. &nbsp; '
+             '<b>The ending is in bold</b> and is the same on every active row '
+             '(-α -ες -ε -αμε -ατε '
+             '-αν) &mdash; read the grid for the stem, the έ- and the '
+             'stress. &nbsp; '
+             '<b>3rd plural in -αν</b>; the spoken -ανε '
+             '(έγραψανε, '
+             'γράψανε) is just as correct.'
+             '</div>')
+    doc = grid_page('Greek A2 &middot; Aorist &mdash; master grid',
+                    'Every A2 aorist pattern &mdash; regular, irregular and passive '
+                    '&mdash; all six persons, whole words.',
+                    ''.join(blocks), PERSON_LEGEND, notes, EX_JS + TAP_JS)
+    out = os.path.join(DIST, 'aorist-grid.html')
+    io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('aorist : %s  (%.1f KB, %d rows)'
+          % (out, os.path.getsize(out) / 1024.0, len(rows)))
     return out
 
 

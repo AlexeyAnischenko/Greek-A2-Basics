@@ -20,7 +20,7 @@ printed in the cell because they are separate words you have to say. Hover a cel
 sentence that uses exactly that form.
 
 Rows are banded and grouped by tense family: **present** amber, **past** rose, **future and
-subjunctive** cyan. The tenses themselves are taught on **page 11** (past), **page 12**
+subjunctive** cyan. The tenses themselves are taught on **pages 11–11c** (past), **page 12**
 (future & να) and **page 13** (perfect) — this grid is for reciting, not for meeting them
 the first time.
 

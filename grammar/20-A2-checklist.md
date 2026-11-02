@@ -81,7 +81,7 @@ from the glossary because the book teaches them as grammar, not as vocabulary. T
 | 34 | use the present for "I have lived here five years" | |
 | 35 | use the common passive-only verbs (έρχομαι, κάθομαι, θυμάμαι, φοβάμαι) | |
 
-## Verbs — past (pages 11, 16)
+## Verbs — past (pages 11–11c, 16)
 
 | # | Can I… | ✓ |
 |---|---|---|
