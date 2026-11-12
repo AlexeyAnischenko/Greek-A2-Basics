@@ -873,6 +873,11 @@ TAP_JS = (
 # data attributes travel with their own cells. The choice is remembered.
 GRID_JS = (
     '<script>(function(){'
+    # one switch for the whole page: a button flips every grid on it, so two
+    # grids one above the other never end up grouped two different ways
+    'var all=[];'
+    'function every(m){all.forEach(function(f){f(m);});'
+    'try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}'
     '[].forEach.call(document.querySelectorAll(".gridwrap"),function(wrap){'
     'var t=wrap.querySelector("table.grid");if(!t||!t.tBodies.length)return;'
     'var btn=wrap.querySelector(".gridtog");if(!btn)return;'
@@ -893,11 +898,11 @@ GRID_JS = (
     'btn.textContent=(m==="number")?("Group by "+grp):"Group by number";'
     'btn.setAttribute("aria-label",(m==="number")'
     '?("Columns grouped by number. Switch to grouping by "+grp+".")'
-    ':("Columns grouped by "+grp+". Switch to grouping by number."));'
-    'try{localStorage.setItem("greek-a2-grid",m);}catch(e){}}'
+    ':("Columns grouped by "+grp+". Switch to grouping by number."));}'
+    'all.push(apply);'
     'var saved=null;try{saved=localStorage.getItem("greek-a2-grid");}catch(e){}'
     'apply(saved==="case"?"case":"number");'
-    'btn.addEventListener("click",function(){apply(mode==="number"?"case":"number");});'
+    'btn.addEventListener("click",function(){every(mode==="number"?"case":"number");});'
     '});'
     '})();</script>'
 )
@@ -1137,10 +1142,25 @@ def find_master_grid(md, kind='noun'):
 
 
 def render_print_grid(header, rows, order, outer, inner, label=None, balloons=False,
-                      kind='noun', keys=None, bands=None, ann=None, rowsort=None):
+                      kind='noun', keys=None, bands=None, ann=None, rowsort=None,
+                      toggle=None):
     """One grid with the columns in `order`, banded by `outer` over `inner`.
     `label` keeps the row-label column (the noun grid drops it); `balloons` adds
-    the example-sentence markers, which only make sense on a screen."""
+    the example-sentence markers, which only make sense on a screen.
+    `toggle` ('person' / 'case') ships the cells in their markdown order with
+    both heads, wrapped for GRID_JS - the same by-number / by-<toggle> button
+    the sheets have. `order`, `outer`, `inner` and `ann` are then unused:
+    grid_header works both layouts out from `header` itself."""
+    if toggle:
+        head, data_order = grid_header(header, label, ann=column_notes(header))
+        body = render_print_grid(header, rows, list(range(len(header) - 1)), [], [],
+                                 label=label, balloons=balloons, kind=kind,
+                                 keys=keys, bands=bands, rowsort=rowsort)
+        body = body[body.index('<tbody>'):]
+        return ('<div class="gridwrap"><button class="gridtog" type="button">'
+                'Group by %s</button><div class="tw"><table class="pgrid grid" '
+                'data-grp="%s" data-order="%s"><thead>%s</thead>%s</div></div>'
+                % (toggle, toggle, data_order, head, body))
     cap = lambda t: t[:1].upper() + t[1:]
     groups = []
     for l in outer:
@@ -1273,6 +1293,13 @@ thead th.n{background:var(--n-bg); color:var(--n-fg)}
   background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 3mm}
 .rowtog:hover{border-color:var(--ink)}
 @media print{.rowtog{display:none}}
+/* the by-number / by-person switch, as on the sheets */
+.gridwrap{margin:0 0 2mm}
+.gridtog{font:inherit; font-size:9.5pt; padding:3pt 9pt; border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 2mm}
+.gridtog:hover{border-color:var(--ink)}
+table.grid tr[hidden]{display:none}
+@media print{.gridtog{display:none}}
 /* the row label the noun grid does without */
 th.rowlab{text-align:left}
 td.rowlab{font-size:9.8pt; line-height:1.3}
@@ -1548,7 +1575,7 @@ def make_verb_grid():
                                            label=plain(header[0]).strip(),
                                            balloons=True, kind='verb',
                                            ann=[notes[i] for i in order]
-                                           if notes else None)))
+                                           if notes else None, toggle='person')))
     glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
     if glance_h:
         blocks.append('<h2>What the grid shows at a glance</h2>'
@@ -1566,7 +1593,7 @@ def make_verb_grid():
     doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',
                     'Present, past and future &mdash; every A2 group, '
                     'all six persons, both voices.',
-                    ''.join(blocks), TENSE_LEGEND, notes, EX_JS + TAP_JS)
+                    ''.join(blocks), TENSE_LEGEND, notes, EX_JS + GRID_JS + TAP_JS)
     out = os.path.join(DIST, 'verb-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('verb   : %s  (%.1f KB)' % (out, os.path.getsize(out) / 1024.0))
@@ -1601,7 +1628,7 @@ def make_aorist_grid():
                                            label=u'Pattern · verb',
                                            balloons=True, kind='verb',
                                            ann=[notes[i] for i in order]
-                                           if notes else None)))
+                                           if notes else None, toggle='person')))
     if sum(1 for r in rows if any(plain(r[0]).startswith(p) for _, p in families)) != len(rows):
         print('aorist : WARNING - a grid row matched no family and was left out')
     glance_h, glance_r = find_table_after(md, 'What the grid shows at a glance')
@@ -1622,7 +1649,7 @@ def make_aorist_grid():
     doc = grid_page('Greek A2 &middot; Aorist &mdash; master grid',
                     'Every A2 aorist pattern &mdash; regular, irregular and passive '
                     '&mdash; all six persons, whole words.',
-                    ''.join(blocks), PERSON_LEGEND, notes, EX_JS + TAP_JS)
+                    ''.join(blocks), PERSON_LEGEND, notes, EX_JS + GRID_JS + TAP_JS)
     out = os.path.join(DIST, 'aorist-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('aorist : %s  (%.1f KB, %d rows)'
