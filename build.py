@@ -1049,7 +1049,15 @@ def make_pdf(out_html):
 # master-grid.pdf: the master grid alone, grouped by case, sized to one A4
 # page so it can be printed and pinned up. The toggle cannot come to paper,
 # so the printed sheet commits to the case grouping.
+# Every master grid opens with a link back to the sheets. Absolute, so it
+# also works from master-grid.pdf and from a copy saved to disk.
+HOME_URL = 'https://alexeyanischenko.github.io/Greek-A2-Basics/'
+HOME_LINK = ('<a class="home" href="%s">&larr; Greek A2 Basics &middot; all sheets and grids</a>' % HOME_URL)
+
 GRID_SHEET_CSS = """
+.home{display:inline-block; font-size:9.5pt; color:var(--sub); text-decoration:none;
+  margin:0 0 2.5mm}
+.home:hover{color:var(--ink); text-decoration:underline}
 @page{size:A4 portrait; margin:11mm 10mm}
 /* The band colours are the sheets’ own, as custom properties so the page can
    follow the theme. Pinned light they left masculine (#12243d) and feminine
@@ -1241,11 +1249,11 @@ def make_grid_sheet():
 
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
            '<title>Greek A2 - noun endings, master grid</title>%s'
-           '<style>%s%s</style></head><body>'
+           '<style>%s%s</style></head><body>%s'
            '<h1>Greek A2 &middot; Noun endings &mdash; master grid</h1>'
            '<p class="sub">Article and ending for every A2 declension, grouped by case.</p>'
            '%s%s%s%s</body></html>'
-           % (FAVICON, GRID_SHEET_CSS, TAP_CSS, legend,
+           % (FAVICON, GRID_SHEET_CSS, TAP_CSS, HOME_LINK, legend,
               render_print_grid(header, rows, order,
                                 [cases[i] for i in order], [nums[i] for i in order]),
               notes, TAP_JS))
@@ -1321,6 +1329,14 @@ td.hasex:hover::after{opacity:.75}
   transform:rotate(45deg)}
 .extip.below::after{bottom:auto; top:-6px; transform:rotate(225deg)}
 @media print{td.hasex::after{display:none} .extip{display:none}}
+/* the ψ / ξ / σ trick table on the aorist grid: the examples need the room */
+table.trick{font-size:10pt}
+table.trick th:nth-child(1){width:15%}
+table.trick th:nth-child(2){width:15%}
+table.trick th:nth-child(3){width:13%}
+table.trick th:nth-child(4){width:33%}
+table.trick th:nth-child(5){width:24%}
+table.trick td:first-child{font-size:9.6pt}
 """
 
 
@@ -1396,10 +1412,10 @@ def split_number_header(header):
 def grid_page(title, sub, blocks, legend='', notes='', scripts=''):
     return ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>%s</title>%s<style>%s%s%s</style></head><body>'
+            '<title>%s</title>%s<style>%s%s%s</style></head><body>%s'
             '<h1>%s</h1><p class="sub">%s</p>%s%s%s%s</body></html>'
             % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON,
-               GRID_SHEET_CSS, EXTRA_GRID_CSS, TAP_CSS, title, sub, legend, blocks,
+               GRID_SHEET_CSS, EXTRA_GRID_CSS, TAP_CSS, HOME_LINK, title, sub, legend, blocks,
                notes, scripts))
 
 
@@ -1618,6 +1634,16 @@ def make_aorist_grid():
     families = [('Regular stems', 'Aorist '), ('Irregular stems', 'Irregular aorist'),
                 ('Passive aorist &mdash; the -μαι verbs', 'Passive aorist')]
     blocks = []
+    trick_h, trick_r = find_table_after(md, '### The trick')
+    if trick_h:
+        blocks.append('<h2>Which letter? &psi;, &xi; or &sigma; &mdash; where in the mouth '
+                      'the last sound is made</h2>'
+                      '<p class="sub">The aorist adds &sigma;. &psi; is just &pi; + &sigma;, '
+                      '&xi; is just &kappa; + &sigma;: lips give &psi;, the throat gives &xi;, '
+                      'the tongue tip (teeth, nose) gives plain &sigma;.</p>'
+                      + render_band_grid([plain(h) for h in trick_h], trick_r, cls='trick'))
+    else:
+        print('aorist : WARNING - the trick table was not found')
     for heading, prefix in families:
         part = [r for r in rows if plain(r[0]).startswith(prefix)]
         if not part:

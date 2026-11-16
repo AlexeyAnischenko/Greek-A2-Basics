@@ -8,7 +8,7 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 | | |
 |---|---|
 | 📖 **Online (all 27 sheets)** | https://alexeyanischenko.github.io/Greek-A2-Basics/ |
-| 📄 **PDF (87 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
+| 📄 **PDF (88 pages, A4)** | https://alexeyanischenko.github.io/Greek-A2-Basics/greek-a2.pdf |
 | ⌨ **Greek keyboard** | https://alexeyanischenko.github.io/Greek-A2-Basics/keyboard.html |
 | 🖨 **Noun endings, one page to print** | https://alexeyanischenko.github.io/Greek-A2-Basics/master-grid.pdf |
 | ▦ **Adjective endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/adjective-grid.html |

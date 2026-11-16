@@ -37,6 +37,24 @@ have one, prefix **έ-** to carry the stress.
 
 ## 3. Aorist stem formation — sound table ⚠ THE key table
 
+### The trick — where in your mouth is the last sound?
+
+Say the last consonant of the present out loud and notice **where your mouth makes it**. The
+aorist adds **σ**, and σ merges with that sound: **ψ is just π + σ, ξ is just κ + σ**. So lips
+give ψ, the back of the throat gives ξ, and everything made with the tongue tip (teeth, nose)
+simply turns into σ.
+
+| Where the sound is made | Present ends in | + σ gives | Examples | Watch out |
+|---|---|---|---|---|
+| **Lips** — lips close, or lower lip on the teeth | **π, β, φ, πτ, φτ, -εύω** (ευ is said *ev*) | π + σ = **ψ** → **-ψα** | γράφω→**έγραψα**, κόβω→**έκοψα**, κρύβω→**έκρυψα**, λείπω→**έλειψα**, δουλεύω→**δούλεψα**, ταξιδεύω→**ταξίδεψα** | πέφτω→**έπεσα** |
+| **Throat** — back of the tongue up against the roof | **κ, γ, χ, χν, σκ** | κ + σ = **ξ** → **-ξα** | ανοίγω→**άνοιξα**, τρέχω→**έτρεξα**, προσέχω→**πρόσεξα**, διαλέγω→**διάλεξα**, ψάχνω→**έψαξα**, φτιάχνω→**έφτιαξα** | φεύγω→**έφυγα**, βρίσκω→**βρήκα** |
+| **Teeth** — tongue tip behind the top teeth | **τ, δ, θ, ζ** | melts into σ → **-σα** | διαβάζω→**διάβασα**, αγοράζω→**αγόρασα**, ετοιμάζω→**ετοίμασα**, αρχίζω→**άρχισα**, νομίζω→**νόμισα**, πείθω→**έπεισα** | three -ζω go to **ξ**: παίζω→**έπαιξα**, αλλάζω→**άλλαξα**, κοιτάζω→**κοίταξα** |
+| **Nose** — ν hums through the nose | **ν** (-άνω, -ίνω, -ήνω, -ώνω) | ν is replaced by σ → **-σα** | κλείνω→**έκλεισα**, φτάνω→**έφτασα**, χάνω→**έχασα**, σβήνω→**έσβησα**, πληρώνω→**πλήρωσα**, τελειώνω→**τελείωσα** | no σ: κάνω→**έκανα**, μένω→**έμεινα**, πλένω→**έπλυνα**, πίνω→**ήπια**, δίνω→**έδωσα**, and the -αίνω verbs (πήγα, έμαθα) |
+| **No consonant** — the stem ends in a vowel | **-ούω, -άω, -ώ** | σ is just added → **-σα / -ησα** | ακούω→**άκουσα**, μιλάω→**μίλησα**, ρωτάω→**ρώτησα**, τηλεφωνώ→**τηλεφώνησα** | ξεχνάω→**ξέχασα**, φοράω→**φόρεσα**, μπορώ→**μπόρεσα**, πετάω→**πέταξα** |
+| **λ / ρ** — the tongue lies flat or rolls | **-λνω, -ρνω** | σ never sticks → learn the stem | στέλνω→**έστειλα**, φέρνω→**έφερα**, παίρνω→**πήρα** | all three are irregular |
+
+### The full list
+
 | Present ends in | Aorist stem | Examples |
 |---|---|---|
 | **-π, -β, -φ, -πτ, -φτ, -εύ** | **-ψ** | γράφω→**έγραψα**, κόβω→**έκοψα**, κρύβω→**έκρυψα**, δουλεύω→**δούλεψα**, μαγειρεύω→**μαγείρεψα**, χορεύω→**χόρεψα** |
