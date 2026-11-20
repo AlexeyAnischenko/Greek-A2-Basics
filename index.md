@@ -1,8 +1,5 @@
 # Greek A2 — Grammar Drill Sheets
 
-> 🃏 **[LangCards — flashcards for this course](https://alexeyanischenko.github.io/LangCards/langcards.html)**:
-> KLIK vocabulary, aorists, the irregular verbs (all 124, or the top 50) and more.
-
 Modern Greek (Νέα Ελληνικά) grammar for A1→A2, written as **tables you can cover and recite**.
 No prose explanation longer than a line. Every ending you need is in a cell.
 
@@ -17,6 +14,7 @@ not here, you do not need it yet — and when you do, it is next door:
 
 | | |
 |---|---|
+| 🃏 **[LangCards](https://alexeyanischenko.github.io/LangCards/langcards.html)** | Flashcards for this course — KLIK vocabulary, aorists, the irregular verbs (all 124, or the top 50) and more |
 | ⌨ **[Greek keyboard](keyboard.html)** | Type Greek with accents and copy it out — for filling in online homework |
 | ▦ **[Noun endings — master grid](master-grid.html)** | Article and ending for every A2 declension, banded by gender |
 | ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × number, banded by gender, example on every cell |
