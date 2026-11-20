@@ -1,5 +1,8 @@
 # Greek A2 — Grammar Drill Sheets
 
+> 🃏 **[LangCards — flashcards for this course](https://alexeyanischenko.github.io/LangCards/langcards.html)**:
+> KLIK vocabulary, aorists, the irregular verbs (all 124, or the top 50) and more.
+
 Modern Greek (Νέα Ελληνικά) grammar for A1→A2, written as **tables you can cover and recite**.
 No prose explanation longer than a line. Every ending you need is in a cell.
 
