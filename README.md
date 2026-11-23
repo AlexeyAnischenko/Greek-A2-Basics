@@ -14,6 +14,7 @@ Scope is **A2 only** — anything belonging to B1 has been left out on purpose.
 | ▦ **Adjective endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/adjective-grid.html |
 | ▦ **Verb endings, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/verb-grid.html |
 | ▦ **Aorist, master grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/aorist-grid.html |
+| ▦ **20 core irregular verbs, all four tenses** | https://alexeyanischenko.github.io/Greek-A2-Basics/core-verbs-grid.html |
 | ▦ **Irregular verbs, past and future** | https://alexeyanischenko.github.io/Greek-A2-Basics/irregular-grid.html |
 | ▦ **Nouns and adjectives, one grid** | https://alexeyanischenko.github.io/Greek-A2-Basics/mega-grid.html |
 

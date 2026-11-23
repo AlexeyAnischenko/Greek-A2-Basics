@@ -45,6 +45,9 @@ when the word is too short.
 
 ## 4. ⚠ Irregular imperfects to memorise
 
+▦ **All four tenses, all six persons** — these 9 plus the 11 next most common irregular verbs:
+[20 core irregular verbs](https://alexeyanischenko.github.io/Greek-A2-Basics/core-verbs-grid.html).
+
 | Verb | Imperfect |
 |---|---|
 | **είμαι** | ήμουν, ήσουν, ήταν, ήμασταν, ήσασταν, ήταν |
