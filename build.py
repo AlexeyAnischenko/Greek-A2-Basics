@@ -814,7 +814,7 @@ table.grid td.copied,table.pgrid td.copied,
 
 TAP_JS = (
     '<script>(function(){'
-    'var SEL="table.grid td, table.pgrid td, table.irr td, table.core td",toast=null,ttimer=null,ftimer=null,flashed=null;'
+    'var SEL="table.grid td, table.pgrid td, table.irr td, table.core td, table.pend td",toast=null,ttimer=null,ftimer=null,flashed=null;'
     'function note(node,msg){'
     'if(!toast){toast=document.createElement("div");toast.className="cptoast";'
     'document.body.appendChild(toast);}'
@@ -1008,6 +1008,7 @@ def main():
     make_aorist_grid()
     make_irregular_grid()
     make_core_grid()
+    make_past_endings_grid()
     make_mega_grid()
     return out_html
 
@@ -1830,6 +1831,116 @@ def make_core_grid():
     print('core   : %s  (%.1f KB, %d verbs)'
           % (out_path, os.path.getsize(out_path) / 1024.0, len(rows)))
     return out_path
+
+
+# The past endings by verb group, as on the tutor's "Endings for past tenses"
+# handout: one column pair (past simple, past continuous) per group, one row
+# per person. Each cell: the ending(s) and a whole word for each.
+PAST_ENDINGS = [
+    # (group key, title, example verbs)
+    ('a', u'A group', u'ανοίγω'),
+    ('b1', u'B1 group', u'ρωτάω, γελάω'),
+    ('b2', u'B2 group', u'οδηγώ, μπορώ'),
+    ('irr', u'Irregular verbs', u'λέω'),
+]
+# per person: {group: (past simple pairs, past continuous pairs)}; a pair is
+# (ending, example); several pairs in a cell are alternatives
+PAST_ROWS = [
+    (u'εγώ', {
+        'a':   ([(u'-α', u'άνοιξα')], [(u'-α', u'άνοιγα')]),
+        'b1':  ([(u'-ησα', u'ρώτησα'), (u'-ασα', u'γέλασα')], [(u'-ούσα', u'ρωτούσα, γελούσα')]),
+        'b2':  ([(u'-ησα', u'οδήγησα'), (u'-εσα', u'μπόρεσα')], [(u'-ούσα', u'οδηγούσα, μπορούσα')]),
+        'irr': ([(u'-α', u'είπα')], [(u'-α', u'έλεγα')])}),
+    (u'εσύ', {
+        'a':   ([(u'-ες', u'άνοιξες')], [(u'-ες', u'άνοιγες')]),
+        'b1':  ([(u'-ησες', u'ρώτησες'), (u'-ασες', u'γέλασες')], [(u'-ούσες', u'ρωτούσες, γελούσες')]),
+        'b2':  ([(u'-ησες', u'οδήγησες'), (u'-εσες', u'μπόρεσες')], [(u'-ούσες', u'οδηγούσες, μπορούσες')]),
+        'irr': ([(u'-ες', u'είπες')], [(u'-ες', u'έλεγες')])}),
+    (u'αυτός', {
+        'a':   ([(u'-ε', u'άνοιξε')], [(u'-ε', u'άνοιγε')]),
+        'b1':  ([(u'-ησε', u'ρώτησε'), (u'-ασε', u'γέλασε')], [(u'-ούσε', u'ρωτούσε, γελούσε')]),
+        'b2':  ([(u'-ησε', u'οδήγησε'), (u'-εσε', u'μπόρεσε')], [(u'-ούσε', u'οδηγούσε, μπορούσε')]),
+        'irr': ([(u'-ε', u'είπε')], [(u'-ε', u'έλεγε')])}),
+    (u'εμείς', {
+        'a':   ([(u'-αμε', u'ανοίξαμε')], [(u'-αμε', u'ανοίγαμε')]),
+        'b1':  ([(u'-ήσαμε', u'ρωτήσαμε'), (u'-άσαμε', u'γελάσαμε')], [(u'-ούσαμε', u'ρωτούσαμε, γελούσαμε')]),
+        'b2':  ([(u'-ήσαμε', u'οδηγήσαμε'), (u'-έσαμε', u'μπορέσαμε')], [(u'-ούσαμε', u'οδηγούσαμε, μπορούσαμε')]),
+        'irr': ([(u'-αμε', u'είπαμε')], [(u'-αμε', u'λέγαμε')])}),
+    (u'εσείς', {
+        'a':   ([(u'-ατε', u'ανοίξατε')], [(u'-ατε', u'ανοίγατε')]),
+        'b1':  ([(u'-ήσατε', u'ρωτήσατε'), (u'-άσατε', u'γελάσατε')], [(u'-ούσατε', u'ρωτούσατε, γελούσατε')]),
+        'b2':  ([(u'-ήσατε', u'οδηγήσατε'), (u'-έσατε', u'μπορέσατε')], [(u'-ούσατε', u'οδηγούσατε, μπορούσατε')]),
+        'irr': ([(u'-ατε', u'είπατε')], [(u'-ατε', u'λέγατε')])}),
+    (u'αυτοί', {
+        'a':   ([(u'-αν', u'άνοιξαν'), (u'-ανε', u'ανοίξανε')], [(u'-αν', u'άνοιγαν'), (u'-ανε', u'ανοίγανε')]),
+        'b1':  ([(u'-ησαν', u'ρώτησαν'), (u'-ήσανε', u'ρωτήσανε'), (u'-ασαν', u'γέλασαν'), (u'-άσανε', u'γελάσανε')],
+                [(u'-ούσαν', u'ρωτούσαν, γελούσαν'), (u'-ούσανε', u'ρωτούσανε, γελούσανε')]),
+        'b2':  ([(u'-ησαν', u'οδήγησαν'), (u'-ήσανε', u'οδηγήσανε'), (u'-εσαν', u'μπόρεσαν'), (u'-έσανε', u'μπορέσανε')],
+                [(u'-ούσαν', u'οδηγούσαν, μπορούσαν'), (u'-ούσανε', u'οδηγούσανε, μπορούσανε')]),
+        'irr': ([(u'-αν', u'είπαν'), (u'-ανε', u'είπανε')], [(u'-αν', u'έλεγαν'), (u'-ανε', u'λέγανε')])}),
+]
+
+
+def make_past_endings_grid():
+    """past-endings-grid.html: past simple and past continuous endings for the
+    A, B1, B2 groups and the irregular verbs, all six persons."""
+    def cell(pairs):
+        return '<td>%s</td>' % ''.join(
+            '<div><b>%s</b> <span class="ex">%s</span></div>' % (html.escape(e), html.escape(x))
+            for e, x in pairs)
+
+    out = ['<table class="pend"><thead><tr><th rowspan="2"></th>']
+    for key, title, ex in PAST_ENDINGS:
+        out.append('<th colspan="2" class="g-%s">%s <span class="ex">(e.g. %s)</span></th>'
+                   % (key, html.escape(title), html.escape(ex)))
+    out.append('</tr><tr>')
+    for key, _, _ in PAST_ENDINGS:
+        out.append('<th class="t g-%s">Past simple</th><th class="t g-%s">Past continuous</th>'
+                   % (key, key))
+    out.append('</tr></thead><tbody>')
+    for k, (pron, cells) in enumerate(PAST_ROWS):
+        if k in (0, 3):
+            out.append('<tr class="sep"><th colspan="9">%s</th></tr>'
+                       % ('Singular' if k == 0 else 'Plural'))
+        out.append('<tr><th class="pron">%s</th>' % html.escape(pron))
+        for key, _, _ in PAST_ENDINGS:
+            simple, cont = cells[key]
+            out.append(cell(simple) + cell(cont))
+        out.append('</tr>')
+    out.append('</tbody></table>')
+    css = ('<style>'
+           'table.pend{font-size:10pt}'
+           'table.pend td{vertical-align:top;line-height:1.35}'
+           'table.pend td div+div{margin-top:3px}'
+           'table.pend .ex{font-weight:400;color:var(--sub)}'
+           'table.pend th.pron{text-align:left;white-space:nowrap;width:4%}'
+           'table.pend th.t{font-weight:400;font-size:9pt}'
+           'table.pend tr.sep th{text-align:left;font-size:9pt;color:var(--sub);'
+           'text-transform:uppercase;letter-spacing:.05em}'
+           'table.pend th.g-a{box-shadow:inset 0 -3px 0 #e8c400}'
+           'table.pend th.g-b1{box-shadow:inset 0 -3px 0 #19b8d8}'
+           'table.pend th.g-b2{box-shadow:inset 0 -3px 0 #2fb84a}'
+           'table.pend th.g-irr{box-shadow:inset 0 -3px 0 #e04040}'
+           '</style>')
+    notes = ('<div class="notes">'
+             u'<b>A group</b>: -ω verbs with the stress before the ending (ανοίγω, γράφω); '
+             u'the past simple takes the ψ / ξ / σ of the '
+             '<a href="aorist-grid.html">aorist grid</a>, the past continuous keeps the present stem. '
+             u'<b>B1</b>: -άω verbs; <b>B2</b>: -ώ verbs - both take -ούσα in the past continuous. '
+             u'<b>Irregular</b>: the endings are the A ones, the stem changes - see the '
+             '<a href="core-verbs-grid.html">20 core irregular verbs</a> and the '
+             '<a href="irregular-grid.html">full irregular list</a>. '
+             u'3rd plural: -αν and the spoken -ανε are both correct. '
+             '<b>Click any cell to copy it.</b>'
+             '</div>')
+    doc = grid_page('Greek A2 &middot; Past endings by verb group',
+                    'Past simple and past continuous endings for the A, B1 and B2 groups and the '
+                    'irregular verbs, all six persons, a whole word for every ending.',
+                    css + ''.join(out), '', notes, TAP_JS)
+    path = os.path.join(DIST, 'past-endings-grid.html')
+    io.open(path, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('pastend: %s  (%.1f KB)' % (path, os.path.getsize(path) / 1024.0))
+    return path
 
 
 def make_mega_grid():

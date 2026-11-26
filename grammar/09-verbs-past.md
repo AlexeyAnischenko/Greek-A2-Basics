@@ -12,6 +12,9 @@ own sheet:
 The **aorist master grid** — every A2 aorist pattern, all six persons, in one table — is on
 sheet 11a, and on its own page as **[the aorist grid page](https://alexeyanischenko.github.io/Greek-A2-Basics/aorist-grid.html)**.
 
+Both pasts side by side — the endings for the A, B1 and B2 groups and the irregular verbs, all six
+persons: **[Past endings by verb group](https://alexeyanischenko.github.io/Greek-A2-Basics/past-endings-grid.html)**.
+
 ## Aorist or imperfect?
 
 | Aorist | Imperfect |

@@ -20,6 +20,7 @@ not here, you do not need it yet — and when you do, it is next door:
 | ▦ **[Adjective endings — master grid](adjective-grid.html)** | Every type × case × number, banded by gender, example on every cell |
 | ▦ **[Verb endings — master grid](verb-grid.html)** | Present · past · future × all six persons, banded by tense, example on every cell |
 | ▦ **[Aorist — master grid](aorist-grid.html)** | Every A2 aorist pattern — regular, irregular, passive — all six persons as whole words |
+| ▦ **[Past endings by verb group](past-endings-grid.html)** | Past simple and past continuous endings for the A, B1, B2 groups and the irregular verbs, all six persons, with a whole word for every ending |
 | ▦ **[20 core irregular verbs — all four tenses](core-verbs-grid.html)** | The 9 irregular past continuous forms of sheet 9c + the 11 next most common irregulars: present, past simple, past continuous, future, all six persons |
 | ▦ **[Irregular verbs — past and future](irregular-grid.html)** | All 124 KLIK A1 + A2 + exam verbs whose past simple, past continuous or future breaks the rules |
 | ▦ **[Nouns and adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |

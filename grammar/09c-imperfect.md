@@ -3,6 +3,8 @@
 The imperfect (Παρατατικός) says something **was going on** or **used to happen**: *έγραφα* —
 I was writing, *πήγαινα* — I used to go. It is built on the **present** stem.
 
+▦ Next to the past simple, group by group: **[Past endings by verb group](https://alexeyanischenko.github.io/Greek-A2-Basics/past-endings-grid.html)**.
+
 ## 1. Group A: present stem + -α, -ες, -ε, -αμε, -ατε, -αν
 
 The augment rule is the same as in the aorist: stress on the 3rd syllable from the end, **έ-**
