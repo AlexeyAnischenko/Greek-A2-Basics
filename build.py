@@ -1643,11 +1643,13 @@ def make_verb_grid():
     notes = ('<div class="notes">'
              '<b>Hover any cell</b> for a sentence that uses that exact form. &nbsp; '
              '<b>Click any cell to copy it</b> as plain text — in the noun grid, click one article or the ending to take just that. &nbsp; '
-             '<b>The stem is in the row label</b>, the ending is in the cell, and '
+             '<b>The stem is in the row label</b> (the present stem wherever the past keeps it: '
+             'B1, B2, the -\u03bc\u03b1\u03b9 verbs), everything after it is in the cell, and '
              '<b>\u03b8\u03b1 / \u03bd\u03b1 / \u03ad\u03c7\u03c9</b> are printed because '
              'they are separate words. &nbsp; '
-             '<b>The whole rose band shares one set of endings</b> and so does the whole cyan '
-             'band &mdash; two sets to learn, and everything else is stems. &nbsp; '
+             '<b>Every past ending finishes in -\u03b1, -\u03b5\u03c2, -\u03b5, -\u03b1\u03bc\u03b5, '
+             '-\u03b1\u03c4\u03b5, -\u03b1\u03bd</b>; B1 / B2 put -\u03b7\u03c3- or '
+             '-\u03bf\u03cd\u03c3- in front of it. &nbsp; '
              '<b>Never an \u03ad- augment after \u03b8\u03b1 or \u03bd\u03b1.</b>'
              '</div>')
     doc = grid_page('Greek A2 &middot; Verb endings &mdash; master grid',

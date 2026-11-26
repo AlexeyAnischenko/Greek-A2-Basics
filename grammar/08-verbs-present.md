@@ -32,11 +32,11 @@ the first time.
 | **Present · B1** αγαπάω · stem αγαπ- | **-άω / -ώ** | **-άς** | **-άει / -ά** | **-άμε / -ούμε** | **-άτε** | **-άνε / -ούν** |
 | **Present · B2** μπορώ · stem μπορ- | **-ώ** | **-είς** | **-εί** | **-ούμε** | **-είτε** | **-ούν(ε)** |
 | **Aorist · A** έγραψα · stem (έ)γραψ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
-| **Aorist · B1** αγάπησα · stem αγαπησ- · ⚠ a few take -ασ- / -εσ-: γέλασα, φόρεσα | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
-| **Aorist · B2** οδήγησα · stem οδηγησ- · ⚠ a few take -εσ-: μπόρεσα, κάλεσα | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
+| **Aorist · B1** αγάπησα · stem αγαπ- · ⚠ a few take -ασα / -εσα: γέλασα, φόρεσα | **-ησα** | **-ησες** | **-ησε** | **-ήσαμε** | **-ήσατε** | **-ησαν / -ήσανε** |
+| **Aorist · B2** οδήγησα · stem οδηγ- · ⚠ a few take -εσα: μπόρεσα, κάλεσα | **-ησα** | **-ησες** | **-ησε** | **-ήσαμε** | **-ήσατε** | **-ησαν / -ήσανε** |
 | **Future simple** θα γράψω · θα + dependent stem | θα **-ω** | θα **-εις** | θα **-ει** | θα **-ουμε** | θα **-ετε** | θα **-ουν** |
 | **Imperfect · A** έγραφα · stem (έ)γραφ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
-| **Imperfect · B1 / B2** αγαπούσα · stem + -ούσ- | **-α** | **-ες** | **-ε** | **-αμε** | **-ατε** | **-αν / -ανε** |
+| **Imperfect · B1 / B2** αγαπούσα · stem αγαπ- | **-ούσα** | **-ούσες** | **-ούσε** | **-ούσαμε** | **-ούσατε** | **-ούσαν / -ούσανε** |
 | **Perfect** έχω γράψει · frozen -ει | **έχω** γράψει | **έχεις** γράψει | **έχει** γράψει | **έχουμε** γράψει | **έχετε** γράψει | **έχουν** γράψει |
 | **Future continuous** θα γράφω · θα + present stem | θα **-ω** | θα **-εις** | θα **-ει** | θα **-ουμε** | θα **-ετε** | θα **-ουν** |
 | **Subjunctive** να γράψω · να + dependent stem | να **-ω** | να **-εις** | να **-ει** | να **-ουμε** | να **-ετε** | να **-ουν** |
@@ -50,7 +50,7 @@ the first time.
 | **Present · B2** κοιμάμαι · stem κοιμ- | **-άμαι** | **-άσαι** | **-άται** | **-όμαστε** | **-άστε** | **-ούνται** |
 | **έρχομαι** present ⚠ irregular | έρχ**ομαι** | έρχ**εσαι** | έρχ**εται** | ερχ**όμαστε** | έρχ**εστε** | έρχ**ονται** |
 | **Aorist · A** πλύθηκα · stem πλυ- | **-θηκα** | **-θηκες** | **-θηκε** | **-θήκαμε** ⚠ | **-θήκατε** ⚠ | **-θηκαν** |
-| **Aorist · B2** κοιμήθηκα · stem κοιμη- | **-θηκα** | **-θηκες** | **-θηκε** | **-θήκαμε** ⚠ | **-θήκατε** ⚠ | **-θηκαν** |
+| **Aorist · B2** κοιμήθηκα · stem κοιμ- | **-ήθηκα** | **-ήθηκες** | **-ήθηκε** | **-ηθήκαμε** ⚠ | **-ηθήκατε** ⚠ | **-ήθηκαν** |
 | **έρχομαι** aorist ⚠ active endings | ήρθ**α** | ήρθ**ες** | ήρθ**ε** | ήρθ**αμε** | ήρθ**ατε** | ήρθ**αν** |
 | **Future / subjunctive** θα / να πλυθώ | θα / να **-θώ** | θα / να **-θείς** | θα / να **-θεί** | θα / να **-θούμε** | θα / να **-θείτε** | θα / να **-θούν** |
 | **Imperfect · A** πλενόμουν · stem πλεν- | **-όμουν** | **-όσουν** | **-όταν** | **-όμασταν** | **-όσασταν** | **-ονταν** |
@@ -76,9 +76,9 @@ What the grid shows at a glance:
 
 | Pattern | Where it holds |
 |---|---|
-| The whole rose band is **one set of endings**: -α, -ες, -ε, -αμε, -ατε, -αν | aorist **and** imperfect, all three groups — only the stem in the label changes |
+| Every past ending **finishes in** -α, -ες, -ε, -αμε, -ατε, -αν | B1 / B2 put **-ησ-** (past simple) or **-ούσ-** (past continuous) in front of it; group A changes the stem instead (γράφ- → έγραψ-) |
 | The whole cyan band is **one set of endings**: -ω, -εις, -ει, -ουμε, -ετε, -ουν | θα and να take present-tense endings, on either stem |
-| So there are really **two ending sets to learn**, not six | plus the passive ones, and everything else is stems |
+| So underneath there are **two ending sets**, not six | -α… for the past, -ω… for θα and να; -ησ-, -ούσ-, -θηκ- are what goes in front |
 | θα + dependent vs θα + present | the only difference is aspect: once (θα γράψω) vs repeatedly (θα γράφω) |
 | **Never an έ- augment after θα or να** | θα γράψω, not ~~θα έγραψα~~ — the augment belongs to the past alone |
 | The **1st and 2nd plural lose the έ-** | γράψαμε, γράψατε — three syllables already carry the stress |
