@@ -10,7 +10,7 @@ Output:  index.html            single self-contained file, all 20 sheets
 Everything is written in place at the repo root so GitHub Pages can serve it
 directly from main. README.md is the repo landing page and is NOT a sheet.
 """
-import io, os, re, sys, glob, html, subprocess, shutil
+import io, os, re, sys, glob, html, subprocess, shutil, unicodedata
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DIST = BASE                      # build in place: Pages serves the repo root
@@ -1379,6 +1379,8 @@ table.irr th:nth-child(4){width:18%}
 table.irr th:nth-child(5){width:12%}
 table.irr td:first-child{font-size:10pt}
 table.irr td:nth-child(6){font-size:8.6pt; color:var(--sub)}
+table.irr th:nth-child(7){width:11%}
+table.irr td:nth-child(7){font-size:8.6pt; color:var(--sub)}
 """
 
 
@@ -1750,18 +1752,21 @@ def make_irregular_grid():
     inner = [u'Present · εγώ, εσύ, αυτός', 'Meaning',
              u'Past simple · εγώ, εμείς', u'Past continuous · εγώ, εμείς',
              'Future', 'Watch out']
-    blocks, n = [], 0
-    for key, title in groups:
-        # the TSV's books column (index 6) is not shown
-        part = [r[1:6] + r[7:] for r in rows if r[0] == key]
-        if not part:
-            continue
-        n += len(part)
-        blocks.append('<h2>%s <span class="cnt">(%d)</span></h2>%s'
-                      % (html.escape(title), len(part),
-                         render_band_grid(inner, part, cls='irr')))
-    if n != len(rows):
-        print('irreg  : WARNING - %d rows matched no group' % (len(rows) - n))
+    # one A-Z table: sorted on the first present form, accents and bold ignored;
+    # the group the verb used to be filed under is kept as the last column
+    pattern = dict((k, t.split(u' — ', 1)[0]) for k, t in groups)
+    unknown = [r for r in rows if r[0] not in pattern]
+    if unknown:
+        print('irreg  : WARNING - %d rows matched no group' % len(unknown))
+
+    def az(r):
+        w = r[1].replace('*', '').split(u'·')[0].strip().lower()
+        bare = ''.join(c for c in unicodedata.normalize('NFD', w)
+                       if not unicodedata.combining(c)).replace(u'ς', u'σ')
+        return (bare, w)
+
+    part = [r[1:6] + r[7:] + [pattern.get(r[0], '')] for r in sorted(rows, key=az)]
+    blocks = render_band_grid(inner + ['Pattern'], part, cls='irr')
     notes = ('<div class="notes">'
              '<b>Bold</b> = the irregular form, the one to learn. Plain = it follows the '
              'rules. &nbsp; '
@@ -1773,8 +1778,8 @@ def make_irregular_grid():
              '</div>')
     doc = grid_page('Greek A2 &middot; Irregular verbs &mdash; past and future',
                     '%d verbs from the KLIK A1 + A2 books and the A2 exam papers whose past '
-                    'simple, past continuous or future cannot be built by rule.' % len(rows),
-                    ''.join(blocks), '', notes, TAP_JS)
+                    'simple, past continuous or future cannot be built by rule, A to Z.' % len(rows),
+                    blocks, '', notes, TAP_JS)
     out = os.path.join(DIST, 'irregular-grid.html')
     io.open(out, 'w', encoding='utf-8', newline='\n').write(doc)
     print('irreg  : %s  (%.1f KB, %d verbs)'
