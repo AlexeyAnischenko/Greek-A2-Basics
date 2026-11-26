@@ -1076,8 +1076,11 @@ GRID_SHEET_CSS = """
   --pa-bg:#ffe4e6; --pa-fg:#4a1020;
   --fu-bg:#cffafe; --fu-fg:#0a3340;
 }
+/* Dark: the system asks for it and the reader has not pinned light, or the
+   theme switch pins dark. Same switch and storage key as the sheets. */
 @media screen and (prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
     --pg:#14171a; --ink:#e6e8ea; --sub:#9aa6b2; --rule:#2b3238; --band:#1d2329;
     --note:#9aa6b2;
     --m-bg:#17314f; --m-fg:#d3e4ff;
@@ -1088,6 +1091,31 @@ GRID_SHEET_CSS = """
     --fu-bg:#0c3440; --fu-fg:#c7f1fa;
   }
 }
+@media screen{
+  :root[data-theme="dark"]{
+    color-scheme:only dark;
+    --pg:#14171a; --ink:#e6e8ea; --sub:#9aa6b2; --rule:#2b3238; --band:#1d2329;
+    --note:#9aa6b2;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
+  }
+}
+:root[data-theme="light"]{color-scheme:only light}
+.theme-toggle{position:fixed; top:10px; right:12px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:1px solid var(--rule);
+  box-shadow:0 1px 3px rgba(0,0,0,.10)}
+.theme-toggle:hover{border-color:var(--sub)}
+.theme-toggle .ico{font-size:14px}
+@media (max-width:700px){.theme-toggle{top:6px; right:6px; padding:6px 9px; font-size:12px}
+  .theme-toggle .lbl{display:none}}
+@media print{.theme-toggle{display:none !important}}
 *{box-sizing:border-box}
 body{margin:0; background:var(--pg); color:var(--ink);
   font:11.5pt/1.42 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
@@ -1122,7 +1150,7 @@ td.fu{background:var(--fu-bg); color:var(--fu-fg)}
 /* Paper is always light. Headless Chrome reports prefers-color-scheme: dark, so
    without this master-grid.pdf would print on a near-black page. */
 @media print{
-  :root{
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
     color-scheme:only light;
     --pg:#fff; --ink:#12161a; --sub:#5b6470; --rule:#b9c1c9; --band:#eef1f4; --note:#3d4650;
     --m-bg:#dbeafe; --m-fg:#12243d;
@@ -1252,15 +1280,15 @@ def make_grid_sheet():
         '</div>')
 
     doc = ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
-           '<title>Greek A2 - noun endings, master grid</title>%s'
-           '<style>%s%s</style></head><body>%s'
+           '<title>Greek A2 - noun endings, master grid</title>%s%s'
+           '<style>%s%s</style></head><body>%s%s'
            '<h1>Greek A2 &middot; Noun endings &mdash; master grid</h1>'
            '<p class="sub">Article and ending for every A2 declension, grouped by case.</p>'
-           '%s%s%s%s</body></html>'
-           % (FAVICON, GRID_SHEET_CSS, TAP_CSS, HOME_LINK, legend,
+           '%s%s%s%s%s</body></html>'
+           % (FAVICON, THEME_HEAD, GRID_SHEET_CSS, TAP_CSS, THEME_BTN, HOME_LINK, legend,
               render_print_grid(header, rows, order,
                                 [cases[i] for i in order], [nums[i] for i in order]),
-              notes, TAP_JS))
+              notes, TAP_JS, THEME_JS))
     out_html = os.path.join(DIST, 'master-grid.html')
     io.open(out_html, 'w', encoding='utf-8', newline='\n').write(doc)
 
@@ -1426,11 +1454,11 @@ def split_number_header(header):
 def grid_page(title, sub, blocks, legend='', notes='', scripts=''):
     return ('<!doctype html><html lang="el"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>%s</title>%s<style>%s%s%s</style></head><body>%s'
-            '<h1>%s</h1><p class="sub">%s</p>%s%s%s%s</body></html>'
-            % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON,
-               GRID_SHEET_CSS, EXTRA_GRID_CSS, TAP_CSS, HOME_LINK, title, sub, legend, blocks,
-               notes, scripts))
+            '<title>%s</title>%s%s<style>%s%s%s</style></head><body>%s%s'
+            '<h1>%s</h1><p class="sub">%s</p>%s%s%s%s%s</body></html>'
+            % (html.escape(re.sub(r'&\w+;|&#\d+;', '', title)), FAVICON, THEME_HEAD,
+               GRID_SHEET_CSS, EXTRA_GRID_CSS, TAP_CSS, THEME_BTN, HOME_LINK, title, sub,
+               legend, blocks, notes, scripts, THEME_JS))
 
 
 # The toggle itself. The rows carry both orderings, so this only sorts and
