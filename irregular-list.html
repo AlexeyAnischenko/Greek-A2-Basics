@@ -1,0 +1,184 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Greek A2  Irregular verbs  the teachers list</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='13' fill='%230b6ea8'/><text x='32' y='48' text-anchor='middle' font-family='Georgia,serif' font-size='46' fill='%23ffffff'>&#945;</text></svg>"><script>(function(){try{var t=localStorage.getItem("greek-a2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script><style>
+.home{display:inline-block; font-size:9.5pt; color:var(--sub); text-decoration:none;
+  margin:0 0 2.5mm}
+.home:hover{color:var(--ink); text-decoration:underline}
+@page{size:A4 portrait; margin:11mm 10mm}
+/* The band colours are the sheets’ own, as custom properties so the page can
+   follow the theme. Pinned light they left masculine (#12243d) and feminine
+   (#2b1741) reading as plain black next to a visibly green neuter. */
+:root{
+  color-scheme:light dark;
+  --pg:#fff; --ink:#12161a; --sub:#5b6470; --rule:#b9c1c9; --band:#eef1f4; --note:#3d4650;
+  --m-bg:#dbeafe; --m-fg:#12243d;
+  --f-bg:#ede0ff; --f-fg:#2b1741;
+  --n-bg:#dcfce7; --n-fg:#12301f;
+  --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+  --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+  --fu-bg:#cffafe; --fu-fg:#0a3340;
+}
+/* Dark: the system asks for it and the reader has not pinned light, or the
+   theme switch pins dark. Same switch and storage key as the sheets. */
+@media screen and (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:only dark;
+    --pg:#14171a; --ink:#e6e8ea; --sub:#9aa6b2; --rule:#2b3238; --band:#1d2329;
+    --note:#9aa6b2;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
+  }
+}
+@media screen{
+  :root[data-theme="dark"]{
+    color-scheme:only dark;
+    --pg:#14171a; --ink:#e6e8ea; --sub:#9aa6b2; --rule:#2b3238; --band:#1d2329;
+    --note:#9aa6b2;
+    --m-bg:#17314f; --m-fg:#d3e4ff;
+    --f-bg:#2f2450; --f-fg:#e8dcff;
+    --n-bg:#16351f; --n-fg:#cfeeda;
+    --pr-bg:#3d3308; --pr-fg:#fbeec2;
+    --pa-bg:#40202b; --pa-fg:#ffdbe3;
+    --fu-bg:#0c3440; --fu-fg:#c7f1fa;
+  }
+}
+:root[data-theme="light"]{color-scheme:only light}
+.theme-toggle{position:fixed; top:10px; right:12px; z-index:60;
+  display:inline-flex; align-items:center; gap:7px;
+  font:inherit; font-size:13px; line-height:1; padding:8px 12px;
+  border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:1px solid var(--rule);
+  box-shadow:0 1px 3px rgba(0,0,0,.10)}
+.theme-toggle:hover{border-color:var(--sub)}
+.theme-toggle .ico{font-size:14px}
+@media (max-width:700px){.theme-toggle{top:6px; right:6px; padding:6px 9px; font-size:12px}
+  .theme-toggle .lbl{display:none}}
+@media print{.theme-toggle{display:none !important}}
+*{box-sizing:border-box}
+body{margin:0; background:var(--pg); color:var(--ink);
+  font:11.5pt/1.42 "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact}
+h1{font-size:18pt; margin:0 0 1.5mm; letter-spacing:-.01em}
+.sub{font-size:10pt; color:var(--sub); margin:0 0 4mm}
+table{border-collapse:collapse; width:100%; font-size:12.6pt; table-layout:fixed}
+th,td{border:.5pt solid var(--rule); padding:4.2pt 6pt; text-align:left; vertical-align:middle}
+thead th{background:var(--band); font-weight:700}
+thead th.grp{text-align:center; letter-spacing:.05em; font-size:12pt}
+thead th .pron{display:block; font-weight:400; font-size:8.6pt; opacity:.72; white-space:nowrap}
+td.m{background:var(--m-bg); color:var(--m-fg)}
+td.f{background:var(--f-bg); color:var(--f-fg)}
+td.n{background:var(--n-bg); color:var(--n-fg)}
+td.pr{background:var(--pr-bg); color:var(--pr-fg)}
+td.pa{background:var(--pa-bg); color:var(--pa-fg)}
+td.fu{background:var(--fu-bg); color:var(--fu-fg)}
+.cell2{display:flex; align-items:center; justify-content:space-between; gap:7pt}
+.arts{display:flex; flex-direction:column; align-items:flex-start; line-height:1.2}
+.end{white-space:nowrap; font-weight:700}
+.notes{margin:4mm 0 0; font-size:9.2pt; color:var(--note); line-height:1.45}
+.notes b{color:var(--ink)}
+.legend{display:flex; gap:5mm; font-size:9.2pt; margin:0 0 3mm}
+.legend span{padding:1pt 5pt; border:.4pt solid var(--rule); border-radius:2pt}
+.legend .m{background:var(--m-bg); color:var(--m-fg)}
+.legend .f{background:var(--f-bg); color:var(--f-fg)}
+.legend .n{background:var(--n-bg); color:var(--n-fg)}
+.legend .pr{background:var(--pr-bg); color:var(--pr-fg)}
+.legend .pa{background:var(--pa-bg); color:var(--pa-fg)}
+.legend .fu{background:var(--fu-bg); color:var(--fu-fg)}
+.legend.people{display:block; font-size:9pt; color:var(--note); margin:0 0 3mm}
+/* Paper is always light. Headless Chrome reports prefers-color-scheme: dark, so
+   without this master-grid.pdf would print on a near-black page. */
+@media print{
+  :root,:root[data-theme="dark"],:root[data-theme="light"]{
+    color-scheme:only light;
+    --pg:#fff; --ink:#12161a; --sub:#5b6470; --rule:#b9c1c9; --band:#eef1f4; --note:#3d4650;
+    --m-bg:#dbeafe; --m-fg:#12243d;
+    --f-bg:#ede0ff; --f-fg:#2b1741;
+    --n-bg:#dcfce7; --n-fg:#12301f;
+    --pr-bg:#fef3c7; --pr-fg:#3d2c06;
+    --pa-bg:#ffe4e6; --pa-fg:#4a1020;
+    --fu-bg:#cffafe; --fu-fg:#0a3340;
+  }
+}
+
+h2{font-size:12.5pt; margin:6mm 0 2mm; letter-spacing:-.01em}
+h2:first-of-type{margin-top:0}
+table{font-size:10.8pt; margin:0 0 2mm}
+th,td{padding:3.4pt 5pt}
+td:first-child,th:first-child{width:19%; font-size:10pt}
+thead th{font-size:10.5pt}
+thead th.m{background:var(--m-bg); color:var(--m-fg)}
+thead th.f{background:var(--f-bg); color:var(--f-fg)}
+thead th.n{background:var(--n-bg); color:var(--n-fg)}
+.glance td:first-child{width:38%}
+.rowtog{font:inherit; font-size:9.5pt; padding:3pt 9pt; border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 3mm}
+.rowtog:hover{border-color:var(--ink)}
+@media print{.rowtog{display:none}}
+/* the by-number / by-person switch, as on the sheets */
+.gridwrap{margin:0 0 2mm}
+.gridtog{font:inherit; font-size:9.5pt; padding:3pt 9pt; border-radius:999px; cursor:pointer;
+  background:var(--band); color:var(--ink); border:.5pt solid var(--rule); margin:0 0 2mm}
+.gridtog:hover{border-color:var(--ink)}
+table.grid tr[hidden]{display:none}
+@media print{.gridtog{display:none}}
+/* the row label the noun grid does without */
+th.rowlab{text-align:left}
+td.rowlab{font-size:9.8pt; line-height:1.3}
+/* hover balloons: same markup as the sheets, with the palette spelled out
+   because this page does not load the main stylesheet's custom properties */
+:root{--line:var(--rule); --head:var(--band); --fg:var(--ink); --muted:var(--sub)}
+td.hasex{position:relative; cursor:help}
+td.hasex::after{content:""; position:absolute; top:3px; right:3px; width:4px; height:4px;
+  border-radius:50%; background:currentColor; opacity:.32}
+td.hasex:hover::after{opacity:.75}
+.extip{position:absolute; z-index:80; max-width:300px; padding:9px 12px;
+  border:1px solid var(--line); border-radius:9px; background:var(--head); color:var(--fg);
+  box-shadow:0 8px 22px rgba(0,0,0,.28); font-size:12px; line-height:1.45; pointer-events:none}
+.extip .el{font-weight:600}
+.extip .en{margin-top:3px; color:var(--muted); font-size:11px}
+.extip::after{content:""; position:absolute; left:50%; margin-left:-6px; bottom:-6px;
+  width:11px; height:11px; background:var(--head);
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  transform:rotate(45deg)}
+.extip.below::after{bottom:auto; top:-6px; transform:rotate(225deg)}
+@media print{td.hasex::after{display:none} .extip{display:none}}
+/* the ψ / ξ / σ trick table on the aorist grid: the examples need the room */
+table.trick{font-size:10pt}
+table.trick th:nth-child(1){width:15%}
+table.trick th:nth-child(2){width:15%}
+table.trick th:nth-child(3){width:13%}
+table.trick th:nth-child(4){width:33%}
+table.trick th:nth-child(5){width:24%}
+table.trick td:first-child{font-size:9.6pt}
+/* the irregular-verbs grid: one row per verb, principal parts across */
+h2 .cnt{font-weight:400; font-size:10pt; color:var(--sub)}
+table.irr{font-size:10pt}
+table.irr th:nth-child(1){width:19%}
+table.irr th:nth-child(2){width:11%}
+table.irr th:nth-child(3){width:17%}
+table.irr th:nth-child(4){width:18%}
+table.irr th:nth-child(5){width:12%}
+table.irr td:first-child{font-size:10pt}
+table.irr td:nth-child(6){font-size:8.6pt; color:var(--sub)}
+table.irr th:nth-child(7){width:11%}
+table.irr td:nth-child(7){font-size:8.6pt; color:var(--sub)}
+
+table.grid td,table.pgrid td{cursor:copy}
+table.grid td.rowlab,table.pgrid td.rowlab{cursor:default}
+table.grid td.copied,table.pgrid td.copied,
+.cell2 .arts span.copied,.cell2 .end.copied{
+  outline:2px solid #2f7fe0;outline-offset:-2px;border-radius:3px}
+.cptoast{position:fixed;left:50%;bottom:18px;z-index:9999;max-width:90vw;
+  transform:translateX(-50%) translateY(8px);
+  background:#111c2e;color:#eaf1ff;border:1px solid #2c4160;
+  padding:7px 13px;border-radius:7px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;pointer-events:none;opacity:0;
+  font:600 13px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);transition:opacity .13s,transform .13s}
+.cptoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media print{.cptoast{display:none}
+  table.grid td,table.pgrid td{cursor:auto}
+  table.grid td.copied,table.pgrid td.copied{outline:none}}
+</style></head><body><button class="theme-toggle" id="themeToggle" type="button"><span class="ico" aria-hidden="true">◐</span><span class="lbl">Auto</span></button><a class="home" href="https://alexeyanischenko.github.io/Greek-A2-Basics/">&larr; Greek A2 Basics &middot; all sheets and grids</a><h1>Greek A2 &middot; Irregular verbs &mdash; the teacher&rsquo;s list</h1><p class="sub">46 verbs in 5 groups, every tense in one row: present, both pasts, both futures and the perfect.</p><style>table.ilist{font-size:10.5pt}table.ilist td{vertical-align:top;line-height:1.35}table.ilist td.v{font-weight:700}table.ilist td.en{font-size:9.5pt;color:var(--sub)}table.ilist th{width:13%;white-space:normal}table.ilist th.pr{background:var(--pr-bg);color:var(--pr-fg)}table.ilist th.pa{background:var(--pa-bg);color:var(--pa-fg)}table.ilist th.fu{background:var(--fu-bg);color:var(--fu-fg)}@media (max-width:900px){table.ilist{font-size:9.5pt}table.ilist th{font-size:8.5pt;padding:6px 5px}}table.ilist th:nth-child(6){width:16%}</style><h2>1. Completely different stem <span class="cnt">(14)</span></h2><table class="ilist"><thead><tr><th class="pr">Present</th><th class="pa">Simple past</th><th class="pa">Past continuous</th><th class="fu">Simple future</th><th class="fu">Future continuous</th><th>Present perfect / Past perfect</th><th>English</th></tr></thead><tbody><tr><td class="v">είμαι</td><td>ήμουν</td><td>ήμουν</td><td>θα είμαι</td><td>θα είμαι</td><td>—</td><td class="en">to be</td></tr><tr><td class="v">έχω</td><td>είχα</td><td>είχα</td><td>θα έχω</td><td>θα έχω</td><td>έχω / είχα έχει (rare)</td><td class="en">to have</td></tr><tr><td class="v">λέω</td><td>είπα</td><td>έλεγα</td><td>θα πω</td><td>θα λέω</td><td>έχω / είχα πει</td><td class="en">to say, to tell</td></tr><tr><td class="v">βλέπω</td><td>είδα</td><td>έβλεπα</td><td>θα δω</td><td>θα βλέπω</td><td>έχω / είχα δει</td><td class="en">to see</td></tr><tr><td class="v">τρώω</td><td>έφαγα</td><td>έτρωγα</td><td>θα φάω</td><td>θα τρώω</td><td>έχω / είχα φάει</td><td class="en">to eat</td></tr><tr><td class="v">πίνω</td><td>ήπια</td><td>έπινα</td><td>θα πιω</td><td>θα πίνω</td><td>έχω / είχα πιει</td><td class="en">to drink</td></tr><tr><td class="v">πηγαίνω / πάω</td><td>πήγα</td><td>πήγαινα</td><td>θα πάω</td><td>θα πηγαίνω</td><td>έχω / είχα πάει</td><td class="en">to go</td></tr><tr><td class="v">παίρνω</td><td>πήρα</td><td>έπαιρνα</td><td>θα πάρω</td><td>θα παίρνω</td><td>έχω / είχα πάρει</td><td class="en">to take</td></tr><tr><td class="v">βρίσκω</td><td>βρήκα</td><td>έβρισκα</td><td>θα βρω</td><td>θα βρίσκω</td><td>έχω / είχα βρει</td><td class="en">to find</td></tr><tr><td class="v">θέλω</td><td>θέλησα (rare)</td><td>ήθελα</td><td>θα θελήσω (rare)</td><td>θα θέλω</td><td>έχω / είχα θελήσει (rare)</td><td class="en">to want</td></tr><tr><td class="v">ξέρω</td><td>ήξερα</td><td>ήξερα</td><td>θα ξέρω</td><td>θα ξέρω</td><td>—</td><td class="en">to know</td></tr><tr><td class="v">μαθαίνω</td><td>έμαθα</td><td>μάθαινα</td><td>θα μάθω</td><td>θα μαθαίνω</td><td>έχω / είχα μάθει</td><td class="en">to learn</td></tr><tr><td class="v">πεθαίνω</td><td>πέθανα</td><td>πέθαινα</td><td>θα πεθάνω</td><td>θα πεθαίνω</td><td>έχω / είχα πεθάνει</td><td class="en">to die</td></tr><tr><td class="v">ζω</td><td>έζησα</td><td>ζούσα</td><td>θα ζήσω</td><td>θα ζω</td><td>έχω / είχα ζήσει</td><td class="en">to live</td></tr></tbody></table><h2>2. Verbs of movement (-β(γ)αίνω / -μπαίνω) <span class="cnt">(6)</span></h2><table class="ilist"><thead><tr><th class="pr">Present</th><th class="pa">Simple past</th><th class="pa">Past continuous</th><th class="fu">Simple future</th><th class="fu">Future continuous</th><th>Present perfect / Past perfect</th><th>English</th></tr></thead><tbody><tr><td class="v">μπαίνω</td><td>μπήκα</td><td>έμπαινα</td><td>θα μπω</td><td>θα μπαίνω</td><td>έχω / είχα μπει</td><td class="en">to enter</td></tr><tr><td class="v">βγαίνω</td><td>βγήκα</td><td>έβγαινα</td><td>θα βγω</td><td>θα βγαίνω</td><td>έχω / είχα βγει</td><td class="en">to go out</td></tr><tr><td class="v">ανεβαίνω</td><td>ανέβηκα</td><td>ανέβαινα</td><td>θα ανέβω</td><td>θα ανεβαίνω</td><td>έχω / είχα ανέβει</td><td class="en">to go up</td></tr><tr><td class="v">κατεβαίνω</td><td>κατέβηκα</td><td>κατέβαινα</td><td>θα κατέβω</td><td>θα κατεβαίνω</td><td>έχω / είχα κατέβει</td><td class="en">to go down</td></tr><tr><td class="v">φεύγω</td><td>έφυγα</td><td>έφευγα</td><td>θα φύγω</td><td>θα φεύγω</td><td>έχω / είχα φύγει</td><td class="en">to leave</td></tr><tr><td class="v">πέφτω</td><td>έπεσα</td><td>έπεφτα</td><td>θα πέσω</td><td>θα πέφτω</td><td>έχω / είχα πέσει</td><td class="en">to fall</td></tr></tbody></table><h2>3. Verbs with a consonant change in the aorist <span class="cnt">(11)</span></h2><table class="ilist"><thead><tr><th class="pr">Present</th><th class="pa">Simple past</th><th class="pa">Past continuous</th><th class="fu">Simple future</th><th class="fu">Future continuous</th><th>Present perfect / Past perfect</th><th>English</th></tr></thead><tbody><tr><td class="v">δίνω</td><td>έδωσα</td><td>έδινα</td><td>θα δώσω</td><td>θα δίνω</td><td>έχω / είχα δώσει</td><td class="en">to give</td></tr><tr><td class="v">βάζω</td><td>έβαλα</td><td>έβαζα</td><td>θα βάλω</td><td>θα βάζω</td><td>έχω / είχα βάλει</td><td class="en">to put</td></tr><tr><td class="v">βγάζω</td><td>έβγαλα</td><td>έβγαζα</td><td>θα βγάλω</td><td>θα βγάζω</td><td>έχω / είχα βγάλει</td><td class="en">to take out</td></tr><tr><td class="v">φέρνω</td><td>έφερα</td><td>έφερνα</td><td>θα φέρω</td><td>θα φέρνω</td><td>έχω / είχα φέρει</td><td class="en">to bring</td></tr><tr><td class="v">καίω</td><td>έκαψα</td><td>έκαιγα</td><td>θα κάψω</td><td>θα καίω</td><td>έχω / είχα κάψει</td><td class="en">to burn</td></tr><tr><td class="v">κλαίω</td><td>έκλαψα</td><td>έκλαιγα</td><td>θα κλάψω</td><td>θα κλαίω</td><td>έχω / είχα κλάψει</td><td class="en">to cry</td></tr><tr><td class="v">λαμβάνω</td><td>έλαβα</td><td>λάμβανα</td><td>θα λάβω</td><td>θα λαμβάνω</td><td>έχω / είχα λάβει</td><td class="en">to receive</td></tr><tr><td class="v">αναλαμβάνω</td><td>ανέλαβα</td><td>ανελάμβανα</td><td>θα αναλάβω</td><td>θα αναλαμβάνω</td><td>έχω / είχα αναλάβει</td><td class="en">to take over, to undertake</td></tr><tr><td class="v">ακούω</td><td>άκουσα</td><td>άκουγα</td><td>θα ακούσω</td><td>θα ακούω</td><td>έχω / είχα ακούσει</td><td class="en">to hear, to listen</td></tr><tr><td class="v">κάνω</td><td>έκανα</td><td>έκανα</td><td>θα κάνω</td><td>θα κάνω</td><td>έχω / είχα κάνει</td><td class="en">to do, to make</td></tr><tr><td class="v">υπάρχω</td><td>υπήρξα</td><td>υπήρχα</td><td>θα υπάρξω</td><td>θα υπάρχω</td><td>έχω / είχα υπάρξει</td><td class="en">to exist</td></tr></tbody></table><h2>4. Passive (deponent) verbs <span class="cnt">(12)</span></h2><table class="ilist"><thead><tr><th class="pr">Present</th><th class="pa">Simple past</th><th class="pa">Past continuous</th><th class="fu">Simple future</th><th class="fu">Future continuous</th><th>Present perfect / Past perfect</th><th>English</th></tr></thead><tbody><tr><td class="v">έρχομαι</td><td>ήρθα</td><td>ερχόμουν</td><td>θα έρθω</td><td>θα έρχομαι</td><td>έχω / είχα έρθει</td><td class="en">to come</td></tr><tr><td class="v">γίνομαι</td><td>έγινα</td><td>γινόμουν</td><td>θα γίνω</td><td>θα γίνομαι</td><td>έχω / είχα γίνει</td><td class="en">to become, to happen</td></tr><tr><td class="v">κάθομαι</td><td>κάθισα</td><td>καθόμουν</td><td>θα καθίσω</td><td>θα κάθομαι</td><td>έχω / είχα καθίσει</td><td class="en">to sit</td></tr><tr><td class="v">κοιμάμαι</td><td>κοιμήθηκα</td><td>κοιμόμουν</td><td>θα κοιμηθώ</td><td>θα κοιμάμαι</td><td>έχω / είχα κοιμηθεί</td><td class="en">to sleep</td></tr><tr><td class="v">στέκομαι</td><td>στάθηκα</td><td>στεκόμουν</td><td>θα σταθώ</td><td>θα στέκομαι</td><td>έχω / είχα σταθεί</td><td class="en">to stand</td></tr><tr><td class="v">φοβάμαι</td><td>φοβήθηκα</td><td>φοβόμουν</td><td>θα φοβηθώ</td><td>θα φοβάμαι</td><td>έχω / είχα φοβηθεί</td><td class="en">to be afraid</td></tr><tr><td class="v">θυμάμαι</td><td>θυμήθηκα</td><td>θυμόμουν</td><td>θα θυμηθώ</td><td>θα θυμάμαι</td><td>έχω / είχα θυμηθεί</td><td class="en">to remember</td></tr><tr><td class="v">σκέφτομαι</td><td>σκέφτηκα</td><td>σκεφτόμουν</td><td>θα σκεφτώ</td><td>θα σκέφτομαι</td><td>έχω / είχα σκεφτεί</td><td class="en">to think</td></tr><tr><td class="v">δέχομαι</td><td>δέχτηκα</td><td>δεχόμουν</td><td>θα δεχτώ</td><td>θα δέχομαι</td><td>έχω / είχα δεχτεί</td><td class="en">to accept</td></tr><tr><td class="v">χαίρομαι</td><td>χάρηκα</td><td>χαιρόμουν</td><td>θα χαρώ</td><td>θα χαίρομαι</td><td>έχω / είχα χαρεί</td><td class="en">to be glad</td></tr><tr><td class="v">φαίνομαι</td><td>φάνηκα</td><td>φαινόμουν</td><td>θα φανώ</td><td>θα φαίνομαι</td><td>έχω / είχα φανεί</td><td class="en">to seem, to appear</td></tr><tr><td class="v">αισθάνομαι</td><td>αισθάνθηκα</td><td>αισθανόμουν</td><td>θα αισθανθώ</td><td>θα αισθάνομαι</td><td>έχω / είχα αισθανθεί</td><td class="en">to feel</td></tr></tbody></table><h2>5. Contracted verbs (-άω / -ώ) with an irregular aorist <span class="cnt">(3)</span></h2><table class="ilist"><thead><tr><th class="pr">Present</th><th class="pa">Simple past</th><th class="pa">Past continuous</th><th class="fu">Simple future</th><th class="fu">Future continuous</th><th>Present perfect / Past perfect</th><th>English</th></tr></thead><tbody><tr><td class="v">ξεχνάω</td><td>ξέχασα</td><td>ξεχνούσα</td><td>θα ξεχάσω</td><td>θα ξεχνάω</td><td>έχω / είχα ξεχάσει</td><td class="en">to forget</td></tr><tr><td class="v">ζητάω</td><td>ζήτησα</td><td>ζητούσα</td><td>θα ζητήσω</td><td>θα ζητάω</td><td>έχω / είχα ζητήσει</td><td class="en">to ask for</td></tr><tr><td class="v">αρέσω</td><td>άρεσα</td><td>άρεσα</td><td>θα αρέσω</td><td>θα αρέσω</td><td>έχω / είχα αρέσει</td><td class="en">to be liked, to please (μου αρέσει = I like)</td></tr></tbody></table><div class="notes"><ul><li>Same form in both futures: for είμαι, έχω, ξέρω, κάνω and αρέσω the simple future and the future continuous look the same, because these verbs have no separate aorist stem for the future.</li><li>Missing perfect forms (—): είμαι and ξέρω have no present perfect / past perfect. Greek uses other verbs instead (for example, έμαθα for &quot;I came to know&quot;).</li><li>έρχομαι: the simple past ήρθα and the simple future θα έρθω have active endings, even though the present is passive in form. That is why it sits in the passive group together with γίνομαι.</li><li>κάθομαι: the colloquial forms θα κάτσω and έχω κάτσει are also common.</li><li>The perfect tenses: they are built with έχω / είχα + the same fixed form (πει, δει, φάει, ...), which does not change with the person. For example: έχω πει, έχεις πει, έχει πει; είχα πει, είχες πει, είχε πει.</li><li>είμαι and έχω have no separate aorist, so the same form (ήμουν, είχα) is used for both past tenses.</li><li>θέλω: the imperfect ήθελα is used far more often than the aorist θέλησα.</li><li>ξέρω: ήξερα means &quot;I knew&quot;. For &quot;I found out&quot; or &quot;I learned&quot;, use έμαθα.</li><li>Many compound verbs follow the verb they come from, for example προσθέτω → πρόσθεσα, and παραλαμβάνω → παρέλαβα, like λαμβάνω.</li></ul><b>Click any cell to copy it.</b> More verbs: the <a href="irregular-grid.html">full irregular list</a> (124 verbs) and the <a href="core-verbs-grid.html">20 core irregular verbs</a> in all six persons.</div><script>(function(){var SEL="table.grid td, table.pgrid td, table.irr td, table.core td, table.pend td, table.ilist td",toast=null,ttimer=null,ftimer=null,flashed=null;function note(node,msg){if(!toast){toast=document.createElement("div");toast.className="cptoast";document.body.appendChild(toast);}toast.textContent=msg;toast.classList.add("on");if(ttimer)clearTimeout(ttimer);ttimer=setTimeout(function(){toast.classList.remove("on");},1100);if(ftimer){clearTimeout(ftimer);}if(flashed)flashed.classList.remove("copied");flashed=node;if(node){node.classList.add("copied");ftimer=setTimeout(function(){if(flashed)flashed.classList.remove("copied");flashed=null;},550);}}function fallback(t){var ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.cssText="position:fixed;top:-1000px;left:0;opacity:0";document.body.appendChild(ta);ta.select();try{ta.setSelectionRange(0,t.length);}catch(e){}var ok=false;try{ok=document.execCommand("copy");}catch(e2){}document.body.removeChild(ta);return ok;}function put(t,node){var done=function(ok){note(node,ok?"Copied  "+t:"Could not copy  "+t);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){done(fallback(t));});}else{done(fallback(t));}}function part(e,td){var n=e.target;if(n&&n.closest){var a=n.closest(".arts span");if(a)return [a.textContent,a];var d=n.closest(".end");if(d)return [d.textContent,d];var f=n.closest("table.core td div");if(f)return [f.textContent,f];}var c=td.querySelector(".cell2");if(c){var arts=[].map.call(c.querySelectorAll(".arts span"),function(s){return s.textContent.trim();});var end=c.querySelector(".end");return [arts.join(" / ")+(end?" "+end.textContent.trim():""),td];}return [td.textContent,td];}document.addEventListener("click",function(e){var td=e.target&&e.target.closest?e.target.closest(SEL):null;if(!td||td.classList.contains("rowlab"))return;var s=window.getSelection();if(s&&!s.isCollapsed&&String(s).trim())return;var got=part(e,td);var t=(got[0]||"").replace(/\s+/g," ").trim();if(!t)return;put(t,got[1]);});})();</script><script>(function(){var KEY="greek-a2-theme",r=document.documentElement,b=document.getElementById("themeToggle");if(!b)return;var ico=b.querySelector(".ico"),lbl=b.querySelector(".lbl");function read(){try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";}}function paint(m){if(m==="auto"){r.removeAttribute("data-theme");}else{r.setAttribute("data-theme",m);}ico.textContent=(m==="dark")?"☾":((m==="light")?"☀":"◐");lbl.textContent=(m==="dark")?"Dark":((m==="light")?"Light":"Auto");b.setAttribute("aria-label","Colour theme: "+lbl.textContent+". Click to change.");b.setAttribute("title","Colour theme: "+lbl.textContent+" (click to change)");}var m=read();paint(m);b.addEventListener("click",function(){m=(m==="auto")?"light":((m==="light")?"dark":"auto");try{if(m==="auto"){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,m);}}catch(e){}paint(m);});})();</script></body></html>

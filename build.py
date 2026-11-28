@@ -814,7 +814,7 @@ table.grid td.copied,table.pgrid td.copied,
 
 TAP_JS = (
     '<script>(function(){'
-    'var SEL="table.grid td, table.pgrid td, table.irr td, table.core td, table.pend td",toast=null,ttimer=null,ftimer=null,flashed=null;'
+    'var SEL="table.grid td, table.pgrid td, table.irr td, table.core td, table.pend td, table.ilist td",toast=null,ttimer=null,ftimer=null,flashed=null;'
     'function note(node,msg){'
     'if(!toast){toast=document.createElement("div");toast.className="cptoast";'
     'document.body.appendChild(toast);}'
@@ -1009,6 +1009,7 @@ def main():
     make_irregular_grid()
     make_core_grid()
     make_past_endings_grid()
+    make_irregular_list()
     make_mega_grid()
     return out_html
 
@@ -1914,6 +1915,66 @@ PAST_ROWS = [
                 [(u'-ούσαν', u'οδηγούσαν, μπορούσαν'), (u'-ούσανε', u'οδηγούσανε, μπορούσανε')]),
         'irr': ([(u'-αν', u'είπαν'), (u'-ανε', u'είπανε')], [(u'-αν', u'έλεγαν'), (u'-ανε', u'λέγανε')])}),
 ]
+
+
+def make_irregular_list():
+    """irregular-list.html: the teacher's list of irregular verbs, 5 groups, every
+    tense in one row. The data is grammar/data/irregular-list.tsv, taken from
+    LIST_of_IRREGULAR_verbs.docx."""
+    src = os.path.join(BASE, 'grammar', 'data', 'irregular-list.tsv')
+    if not os.path.isfile(src):
+        print('ilist  : skipped - no irregular-list.tsv')
+        return None
+    sections, notes, n = [], [], 0
+    for line in io.open(src, encoding='utf-8').read().split('\n'):
+        if not line.strip() or line.startswith('#'):
+            continue
+        cells = line.split('\t')
+        if cells[0] == 'section':
+            sections.append((cells[1], []))
+        elif cells[0] == 'note':
+            notes.append(cells[1])
+        else:
+            sections[-1][1].append(cells)
+            n += 1
+    head = [('Present', 'pr'), ('Simple past', 'pa'), ('Past continuous', 'pa'),
+            ('Simple future', 'fu'), ('Future continuous', 'fu'),
+            ('Present perfect / Past perfect', ''), ('English', '')]
+    thead = '<thead><tr>%s</tr></thead>' % ''.join(
+        '<th%s>%s</th>' % (' class="%s"' % c if c else '', t) for t, c in head)
+    blocks = []
+    for title, rows in sections:
+        body = ''.join('<tr>%s</tr>' % ''.join(
+            '<td%s>%s</td>' % (' class="v"' if i == 0 else (' class="en"' if i == 6 else ''),
+                               html.escape(c)) for i, c in enumerate(r)) for r in rows)
+        blocks.append('<h2>%s <span class="cnt">(%d)</span></h2>'
+                      '<table class="ilist">%s<tbody>%s</tbody></table>'
+                      % (html.escape(title), len(rows), thead, body))
+    css = ('<style>'
+           'table.ilist{font-size:10.5pt}'
+           'table.ilist td{vertical-align:top;line-height:1.35}'
+           'table.ilist td.v{font-weight:700}'
+           'table.ilist td.en{font-size:9.5pt;color:var(--sub)}'
+           'table.ilist th{width:13%;white-space:normal}'
+           'table.ilist th.pr{background:var(--pr-bg);color:var(--pr-fg)}'
+           'table.ilist th.pa{background:var(--pa-bg);color:var(--pa-fg)}'
+           'table.ilist th.fu{background:var(--fu-bg);color:var(--fu-fg)}'
+           '@media (max-width:900px){table.ilist{font-size:9.5pt}table.ilist th{font-size:8.5pt;padding:6px 5px}}'
+           'table.ilist th:nth-child(6){width:16%}'
+           '</style>')
+    note_html = ('<div class="notes"><ul>%s</ul>'
+                 '<b>Click any cell to copy it.</b> More verbs: the '
+                 '<a href="irregular-grid.html">full irregular list</a> (124 verbs) and the '
+                 '<a href="core-verbs-grid.html">20 core irregular verbs</a> in all six persons.'
+                 '</div>' % ''.join('<li>%s</li>' % html.escape(t) for t in notes))
+    doc = grid_page('Greek A2 &middot; Irregular verbs &mdash; the teacher&rsquo;s list',
+                    '%d verbs in 5 groups, every tense in one row: present, both pasts, both '
+                    'futures and the perfect.' % n,
+                    css + ''.join(blocks), '', note_html, TAP_JS)
+    path = os.path.join(DIST, 'irregular-list.html')
+    io.open(path, 'w', encoding='utf-8', newline='\n').write(doc)
+    print('ilist  : %s  (%.1f KB, %d verbs)' % (path, os.path.getsize(path) / 1024.0, n))
+    return path
 
 
 def make_past_endings_grid():

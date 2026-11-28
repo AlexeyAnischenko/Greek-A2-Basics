@@ -5,6 +5,8 @@ The dependent column is also what you need for **θα** (future) and, with **-ε
 
 ▦ **The full list** — all 124 irregular verbs from the KLIK A1 + A2 books and the exam papers, with the past continuous and the future: [Irregular verbs — past and future](https://alexeyanischenko.github.io/Greek-A2-Basics/irregular-grid.html).
 
+▦ **The teacher's list** — 46 verbs in 5 groups, every tense in one row, both futures and the perfect: [Irregular verbs — the teacher's list](https://alexeyanischenko.github.io/Greek-A2-Basics/irregular-list.html).
+
 ⚠ Every verb below is in the **A2 wordlist**. Twenty-one that used to be here are not, and have been removed: τυχαίνω, σέρνω, δέρνω, κρίνω, πιάνω, διώχνω, κλαίω, φταίω, γελάω, διψάω, γερνάω, κρεμάω, χωράω, τραβάω, φυλάω, συγχωρώ, στέκομαι, σηκώνομαι, δέχομαι, υπόσχομαι, εργάζομαι. They are real Greek — look one up if you meet it, but none of them is A2 vocabulary.
 
 ## Tier 1 — the 20 you cannot avoid

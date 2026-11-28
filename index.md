@@ -22,6 +22,7 @@ not here, you do not need it yet — and when you do, it is next door:
 | ▦ **[Aorist — master grid](aorist-grid.html)** | Every A2 aorist pattern — regular, irregular, passive — all six persons as whole words |
 | ▦ **[Past endings by verb group](past-endings-grid.html)** | Past simple and past continuous endings for the A, B1, B2 groups and the irregular verbs, all six persons, with a whole word for every ending |
 | ▦ **[20 core irregular verbs — all four tenses](core-verbs-grid.html)** | The 9 irregular past continuous forms of sheet 9c + the 11 next most common irregulars: present, past simple, past continuous, future, all six persons |
+| ▦ **[Irregular verbs — the teacher's list](irregular-list.html)** | 46 verbs in 5 groups, every tense in one row: present, both pasts, both futures and the perfect |
 | ▦ **[Irregular verbs — past and future](irregular-grid.html)** | All 124 KLIK A1 + A2 + exam verbs whose past simple, past continuous or future breaks the rules |
 | ▦ **[Nouns and adjectives — one grid](mega-grid.html)** | Both of the above merged into one table, gender band by gender band |
 | ⬆ **[Greek B1 — what the level adds](b1/index.html)** | The next level, delta only — what B1 adds on top of these sheets |

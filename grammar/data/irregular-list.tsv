@@ -1,0 +1,64 @@
+# Irregular verbs - the teacher's list (LIST of IRREGULAR verbs.docx), 5 groups.
+# consumed by build.py -> irregular-list.html
+# section<TAB>title  /  note<TAB>text  /  otherwise one verb per line:
+# present, simple past, past continuous, simple future, future continuous, perfect, English
+section	1. Completely different stem
+είμαι	ήμουν	ήμουν	θα είμαι	θα είμαι	—	to be
+έχω	είχα	είχα	θα έχω	θα έχω	έχω / είχα έχει (rare)	to have
+λέω	είπα	έλεγα	θα πω	θα λέω	έχω / είχα πει	to say, to tell
+βλέπω	είδα	έβλεπα	θα δω	θα βλέπω	έχω / είχα δει	to see
+τρώω	έφαγα	έτρωγα	θα φάω	θα τρώω	έχω / είχα φάει	to eat
+πίνω	ήπια	έπινα	θα πιω	θα πίνω	έχω / είχα πιει	to drink
+πηγαίνω / πάω	πήγα	πήγαινα	θα πάω	θα πηγαίνω	έχω / είχα πάει	to go
+παίρνω	πήρα	έπαιρνα	θα πάρω	θα παίρνω	έχω / είχα πάρει	to take
+βρίσκω	βρήκα	έβρισκα	θα βρω	θα βρίσκω	έχω / είχα βρει	to find
+θέλω	θέλησα (rare)	ήθελα	θα θελήσω (rare)	θα θέλω	έχω / είχα θελήσει (rare)	to want
+ξέρω	ήξερα	ήξερα	θα ξέρω	θα ξέρω	—	to know
+μαθαίνω	έμαθα	μάθαινα	θα μάθω	θα μαθαίνω	έχω / είχα μάθει	to learn
+πεθαίνω	πέθανα	πέθαινα	θα πεθάνω	θα πεθαίνω	έχω / είχα πεθάνει	to die
+ζω	έζησα	ζούσα	θα ζήσω	θα ζω	έχω / είχα ζήσει	to live
+section	2. Verbs of movement (-β(γ)αίνω / -μπαίνω)
+μπαίνω	μπήκα	έμπαινα	θα μπω	θα μπαίνω	έχω / είχα μπει	to enter
+βγαίνω	βγήκα	έβγαινα	θα βγω	θα βγαίνω	έχω / είχα βγει	to go out
+ανεβαίνω	ανέβηκα	ανέβαινα	θα ανέβω	θα ανεβαίνω	έχω / είχα ανέβει	to go up
+κατεβαίνω	κατέβηκα	κατέβαινα	θα κατέβω	θα κατεβαίνω	έχω / είχα κατέβει	to go down
+φεύγω	έφυγα	έφευγα	θα φύγω	θα φεύγω	έχω / είχα φύγει	to leave
+πέφτω	έπεσα	έπεφτα	θα πέσω	θα πέφτω	έχω / είχα πέσει	to fall
+section	3. Verbs with a consonant change in the aorist
+δίνω	έδωσα	έδινα	θα δώσω	θα δίνω	έχω / είχα δώσει	to give
+βάζω	έβαλα	έβαζα	θα βάλω	θα βάζω	έχω / είχα βάλει	to put
+βγάζω	έβγαλα	έβγαζα	θα βγάλω	θα βγάζω	έχω / είχα βγάλει	to take out
+φέρνω	έφερα	έφερνα	θα φέρω	θα φέρνω	έχω / είχα φέρει	to bring
+καίω	έκαψα	έκαιγα	θα κάψω	θα καίω	έχω / είχα κάψει	to burn
+κλαίω	έκλαψα	έκλαιγα	θα κλάψω	θα κλαίω	έχω / είχα κλάψει	to cry
+λαμβάνω	έλαβα	λάμβανα	θα λάβω	θα λαμβάνω	έχω / είχα λάβει	to receive
+αναλαμβάνω	ανέλαβα	ανελάμβανα	θα αναλάβω	θα αναλαμβάνω	έχω / είχα αναλάβει	to take over, to undertake
+ακούω	άκουσα	άκουγα	θα ακούσω	θα ακούω	έχω / είχα ακούσει	to hear, to listen
+κάνω	έκανα	έκανα	θα κάνω	θα κάνω	έχω / είχα κάνει	to do, to make
+υπάρχω	υπήρξα	υπήρχα	θα υπάρξω	θα υπάρχω	έχω / είχα υπάρξει	to exist
+section	4. Passive (deponent) verbs
+έρχομαι	ήρθα	ερχόμουν	θα έρθω	θα έρχομαι	έχω / είχα έρθει	to come
+γίνομαι	έγινα	γινόμουν	θα γίνω	θα γίνομαι	έχω / είχα γίνει	to become, to happen
+κάθομαι	κάθισα	καθόμουν	θα καθίσω	θα κάθομαι	έχω / είχα καθίσει	to sit
+κοιμάμαι	κοιμήθηκα	κοιμόμουν	θα κοιμηθώ	θα κοιμάμαι	έχω / είχα κοιμηθεί	to sleep
+στέκομαι	στάθηκα	στεκόμουν	θα σταθώ	θα στέκομαι	έχω / είχα σταθεί	to stand
+φοβάμαι	φοβήθηκα	φοβόμουν	θα φοβηθώ	θα φοβάμαι	έχω / είχα φοβηθεί	to be afraid
+θυμάμαι	θυμήθηκα	θυμόμουν	θα θυμηθώ	θα θυμάμαι	έχω / είχα θυμηθεί	to remember
+σκέφτομαι	σκέφτηκα	σκεφτόμουν	θα σκεφτώ	θα σκέφτομαι	έχω / είχα σκεφτεί	to think
+δέχομαι	δέχτηκα	δεχόμουν	θα δεχτώ	θα δέχομαι	έχω / είχα δεχτεί	to accept
+χαίρομαι	χάρηκα	χαιρόμουν	θα χαρώ	θα χαίρομαι	έχω / είχα χαρεί	to be glad
+φαίνομαι	φάνηκα	φαινόμουν	θα φανώ	θα φαίνομαι	έχω / είχα φανεί	to seem, to appear
+αισθάνομαι	αισθάνθηκα	αισθανόμουν	θα αισθανθώ	θα αισθάνομαι	έχω / είχα αισθανθεί	to feel
+section	5. Contracted verbs (-άω / -ώ) with an irregular aorist
+ξεχνάω	ξέχασα	ξεχνούσα	θα ξεχάσω	θα ξεχνάω	έχω / είχα ξεχάσει	to forget
+ζητάω	ζήτησα	ζητούσα	θα ζητήσω	θα ζητάω	έχω / είχα ζητήσει	to ask for
+αρέσω	άρεσα	άρεσα	θα αρέσω	θα αρέσω	έχω / είχα αρέσει	to be liked, to please (μου αρέσει = I like)
+note	Same form in both futures: for είμαι, έχω, ξέρω, κάνω and αρέσω the simple future and the future continuous look the same, because these verbs have no separate aorist stem for the future.
+note	Missing perfect forms (—): είμαι and ξέρω have no present perfect / past perfect. Greek uses other verbs instead (for example, έμαθα for "I came to know").
+note	έρχομαι: the simple past ήρθα and the simple future θα έρθω have active endings, even though the present is passive in form. That is why it sits in the passive group together with γίνομαι.
+note	κάθομαι: the colloquial forms θα κάτσω and έχω κάτσει are also common.
+note	The perfect tenses: they are built with έχω / είχα + the same fixed form (πει, δει, φάει, ...), which does not change with the person. For example: έχω πει, έχεις πει, έχει πει; είχα πει, είχες πει, είχε πει.
+note	είμαι and έχω have no separate aorist, so the same form (ήμουν, είχα) is used for both past tenses.
+note	θέλω: the imperfect ήθελα is used far more often than the aorist θέλησα.
+note	ξέρω: ήξερα means "I knew". For "I found out" or "I learned", use έμαθα.
+note	Many compound verbs follow the verb they come from, for example προσθέτω → πρόσθεσα, and παραλαμβάνω → παρέλαβα, like λαμβάνω.
